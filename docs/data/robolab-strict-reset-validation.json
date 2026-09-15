@@ -1,0 +1,48 @@
+{
+  "verified": true,
+  "scope": "initial state recording and camera refresh; restoration and policy control evaluated separately",
+  "task": "BlocksInBinTask",
+  "native_controls": 0,
+  "initial_state_sha256": "9d86ea97e1749e1c4383b0b2cce1adaeaf599cbcdf654aff399776010c08ec4d",
+  "empty_native_state_families": [
+    "gripper"
+  ],
+  "camera_refresh": {
+    "render_frames": 3,
+    "cameras": [
+      "egocentric_mirrored_camera",
+      "over_shoulder_left_camera",
+      "wrist_cam"
+    ],
+    "physical_steps": 0,
+    "clocks_unchanged": true,
+    "physical_state_unchanged": true,
+    "sensor_reset_then_update_dt": 0.0,
+    "observation_update_history": false
+  },
+  "camera_images": {
+    "main_rgb": {
+      "shape": [
+        504,
+        896,
+        3
+      ],
+      "dtype": "uint8",
+      "min": 0,
+      "max": 255,
+      "std": 68.51388260934257
+    },
+    "wrist_rgb": {
+      "shape": [
+        504,
+        896,
+        3
+      ],
+      "dtype": "uint8",
+      "min": 0,
+      "max": 242,
+      "std": 57.67152034929796
+    }
+  },
+  "implementation_sha256": "f74b86d202340e49f93155504aad26957324b3da9ced50716dfcd30d41ff97ec"
+}

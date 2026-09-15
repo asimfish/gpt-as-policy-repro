@@ -318,6 +318,24 @@
     "bytes": 2784837
   },
   {
+    "path": "media/pi05_chunk50__arrange_largest_number__standard__g0__l1.mp4",
+    "source_sha256": "a327ca1e3087f7a39bb7fc2fa95d6776f07d8595269f1a0112de8bf10a5b768a",
+    "sha256": "ab24c3987df309142e7cd763bff7c82087815a020a776272e170b56045fd6f32",
+    "bytes": 2799984
+  },
+  {
+    "path": "media/pi05_chunk50__build_tower__standard__g0__l0.mp4",
+    "source_sha256": "18d1b5a5dc8ea1346b4acbc40d2587f58fccf0a046623c4db8ad1aa6babd3c2e",
+    "sha256": "b0d52f038dbe71054e8b0d59591dbacb9a03713576cbbb1ba11b9df1396d8cf1",
+    "bytes": 1910189
+  },
+  {
+    "path": "media/pi05_chunk50__build_tower__standard__g0__l1.mp4",
+    "source_sha256": "7f42851e1d89ae06e05bcad402c6b2b2cb42312285e9b49194e6be7724a08b66",
+    "sha256": "a3f548d4a0663fe315f535b35325615c2163ae2df5ac9a9bd0442a334b67b2e0",
+    "bytes": 1915714
+  },
+  {
     "path": "media/pi05_chunk50__put_bottles_into_dustbin__standard__g0__l0.mp4",
     "source_sha256": "64bf5c3838ef721cb00c9cebbef7bacd29c99cd38ad6f7f9a732e082c16f3460",
     "sha256": "21a48f69c4a65ddd2ce4f7fb4e5de57053779e064c4b6c4f3ac7246e52beff77",

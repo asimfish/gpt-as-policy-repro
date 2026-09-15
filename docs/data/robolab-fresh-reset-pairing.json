@@ -1,0 +1,420 @@
+{
+  "verified": true,
+  "scope": "two fresh simulator processes, BlocksInBinTask seed 0; no rollback performed",
+  "physical_comparison": {
+    "passed": true,
+    "reference_state_sha256": "9d86ea97e1749e1c4383b0b2cce1adaeaf599cbcdf654aff399776010c08ec4d",
+    "actual_state_sha256": "9d86ea97e1749e1c4383b0b2cce1adaeaf599cbcdf654aff399776010c08ec4d",
+    "missing": [],
+    "unexpected": [],
+    "mismatches": [],
+    "metrics": [
+      {
+        "path": "controller_targets/robot/joint_effort_target",
+        "metric": "joint_effort_target_native",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "controller_targets/robot/joint_pos_target",
+        "metric": "joint_position_target_rad",
+        "error": 0.0,
+        "tolerance": 0.001,
+        "passed": true
+      },
+      {
+        "path": "controller_targets/robot/joint_vel_target",
+        "metric": "joint_velocity_target_rad_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/articulation/robot/joint_position",
+        "metric": "joint_position_rad",
+        "error": 0.0,
+        "tolerance": 0.001,
+        "passed": true
+      },
+      {
+        "path": "scene_state/articulation/robot/joint_velocity",
+        "metric": "joint_velocity_rad_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/articulation/robot/root_pose",
+        "metric": "position_m",
+        "error": 0.0,
+        "tolerance": 0.001,
+        "passed": true
+      },
+      {
+        "path": "scene_state/articulation/robot/root_pose",
+        "metric": "orientation_rad",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/articulation/robot/root_velocity",
+        "metric": "linear_velocity_m_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/articulation/robot/root_velocity",
+        "metric": "angular_velocity_rad_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/birdhouse/root_pose",
+        "metric": "position_m",
+        "error": 0.0,
+        "tolerance": 0.001,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/birdhouse/root_pose",
+        "metric": "orientation_rad",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/birdhouse/root_velocity",
+        "metric": "linear_velocity_m_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/birdhouse/root_velocity",
+        "metric": "angular_velocity_rad_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/blue_block/root_pose",
+        "metric": "position_m",
+        "error": 0.0,
+        "tolerance": 0.001,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/blue_block/root_pose",
+        "metric": "orientation_rad",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/blue_block/root_velocity",
+        "metric": "linear_velocity_m_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/blue_block/root_velocity",
+        "metric": "angular_velocity_rad_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/green_block/root_pose",
+        "metric": "position_m",
+        "error": 0.0,
+        "tolerance": 0.001,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/green_block/root_pose",
+        "metric": "orientation_rad",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/green_block/root_velocity",
+        "metric": "linear_velocity_m_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/green_block/root_velocity",
+        "metric": "angular_velocity_rad_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/grey_bin/root_pose",
+        "metric": "position_m",
+        "error": 0.0,
+        "tolerance": 0.001,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/grey_bin/root_pose",
+        "metric": "orientation_rad",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/grey_bin/root_velocity",
+        "metric": "linear_velocity_m_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/grey_bin/root_velocity",
+        "metric": "angular_velocity_rad_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/lizard_figurine/root_pose",
+        "metric": "position_m",
+        "error": 0.0,
+        "tolerance": 0.001,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/lizard_figurine/root_pose",
+        "metric": "orientation_rad",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/lizard_figurine/root_velocity",
+        "metric": "linear_velocity_m_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/lizard_figurine/root_velocity",
+        "metric": "angular_velocity_rad_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/lizard_figurine_01/root_pose",
+        "metric": "position_m",
+        "error": 0.0,
+        "tolerance": 0.001,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/lizard_figurine_01/root_pose",
+        "metric": "orientation_rad",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/lizard_figurine_01/root_velocity",
+        "metric": "linear_velocity_m_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/lizard_figurine_01/root_velocity",
+        "metric": "angular_velocity_rad_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/red_block/root_pose",
+        "metric": "position_m",
+        "error": 0.0,
+        "tolerance": 0.001,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/red_block/root_pose",
+        "metric": "orientation_rad",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/red_block/root_velocity",
+        "metric": "linear_velocity_m_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/red_block/root_velocity",
+        "metric": "angular_velocity_rad_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/rubiks_cube/root_pose",
+        "metric": "position_m",
+        "error": 0.0,
+        "tolerance": 0.001,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/rubiks_cube/root_pose",
+        "metric": "orientation_rad",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/rubiks_cube/root_velocity",
+        "metric": "linear_velocity_m_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/rubiks_cube/root_velocity",
+        "metric": "angular_velocity_rad_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/rubiks_cube_1/root_pose",
+        "metric": "position_m",
+        "error": 0.0,
+        "tolerance": 0.001,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/rubiks_cube_1/root_pose",
+        "metric": "orientation_rad",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/rubiks_cube_1/root_velocity",
+        "metric": "linear_velocity_m_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/rubiks_cube_1/root_velocity",
+        "metric": "angular_velocity_rad_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/rubiks_cube_2/root_pose",
+        "metric": "position_m",
+        "error": 0.0,
+        "tolerance": 0.001,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/rubiks_cube_2/root_pose",
+        "metric": "orientation_rad",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/rubiks_cube_2/root_velocity",
+        "metric": "linear_velocity_m_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/rubiks_cube_2/root_velocity",
+        "metric": "angular_velocity_rad_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/table/root_pose",
+        "metric": "position_m",
+        "error": 0.0,
+        "tolerance": 0.001,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/table/root_pose",
+        "metric": "orientation_rad",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/table/root_velocity",
+        "metric": "linear_velocity_m_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/table/root_velocity",
+        "metric": "angular_velocity_rad_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/yellow_block/root_pose",
+        "metric": "position_m",
+        "error": 0.0,
+        "tolerance": 0.001,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/yellow_block/root_pose",
+        "metric": "orientation_rad",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/yellow_block/root_velocity",
+        "metric": "linear_velocity_m_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      },
+      {
+        "path": "scene_state/rigid_object/yellow_block/root_velocity",
+        "metric": "angular_velocity_rad_s",
+        "error": 0.0,
+        "tolerance": 0.01,
+        "passed": true
+      }
+    ],
+    "compared_scope": "physical_state_and_controller_targets_only",
+    "complete_checkpoint_validated": false
+  },
+  "first_sha256": "9d86ea97e1749e1c4383b0b2cce1adaeaf599cbcdf654aff399776010c08ec4d",
+  "second_sha256": "9d86ea97e1749e1c4383b0b2cce1adaeaf599cbcdf654aff399776010c08ec4d",
+  "exact_hash_match": true,
+  "native_controls": 0,
+  "restore_api_supported": false
+}

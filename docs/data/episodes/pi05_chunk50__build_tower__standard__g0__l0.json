@@ -1,0 +1,106 @@
+{
+  "id": "pi05_chunk50__build_tower__standard__g0__l0",
+  "case_id": "build_tower__standard__g0__l0",
+  "task": "build_tower",
+  "task_label": "搭建积木塔",
+  "runtime_task": "build_tower",
+  "variant": "standard",
+  "seed": 0,
+  "method": "pi05_chunk50",
+  "method_label": "π0.5 · 完整 50 步",
+  "status": "success",
+  "status_label": "成功",
+  "complete": true,
+  "eligible": true,
+  "success": true,
+  "score": 1.0,
+  "steps": 724,
+  "native_horizon": 1050,
+  "run_id": "20260915T130318.430057Z",
+  "layout_sha256": "afcf896086392357a8826f84bebe4910dcb7a5f1b84e7be435e16e3d5c3607a4",
+  "checkpoint_sha256": "d15fb8bd1d29cb30b69f01b71c66596cb0293c1a8a94111b343c1580dd3e3e5b",
+  "native_status": "native_completed",
+  "teacher_invoked": false,
+  "evidence": "data/episodes/pi05_chunk50__build_tower__standard__g0__l0.json",
+  "video": "media/pi05_chunk50__build_tower__standard__g0__l0.mp4",
+  "poster": "media/pi05_chunk50__build_tower__standard__g0__l0.jpg",
+  "decisions": 15,
+  "execution_trace": [
+    {
+      "end_tick": 50,
+      "executed_steps": 50,
+      "inference_index": 0
+    },
+    {
+      "end_tick": 100,
+      "executed_steps": 50,
+      "inference_index": 1
+    },
+    {
+      "end_tick": 150,
+      "executed_steps": 50,
+      "inference_index": 2
+    },
+    {
+      "end_tick": 200,
+      "executed_steps": 50,
+      "inference_index": 3
+    },
+    {
+      "end_tick": 250,
+      "executed_steps": 50,
+      "inference_index": 4
+    },
+    {
+      "end_tick": 300,
+      "executed_steps": 50,
+      "inference_index": 5
+    },
+    {
+      "end_tick": 350,
+      "executed_steps": 50,
+      "inference_index": 6
+    },
+    {
+      "end_tick": 400,
+      "executed_steps": 50,
+      "inference_index": 7
+    },
+    {
+      "end_tick": 450,
+      "executed_steps": 50,
+      "inference_index": 8
+    },
+    {
+      "end_tick": 500,
+      "executed_steps": 50,
+      "inference_index": 9
+    },
+    {
+      "end_tick": 550,
+      "executed_steps": 50,
+      "inference_index": 10
+    },
+    {
+      "end_tick": 600,
+      "executed_steps": 50,
+      "inference_index": 11
+    },
+    {
+      "end_tick": 650,
+      "executed_steps": 50,
+      "inference_index": 12
+    },
+    {
+      "end_tick": 700,
+      "executed_steps": 50,
+      "inference_index": 13
+    },
+    {
+      "end_tick": 724,
+      "executed_steps": 24,
+      "inference_index": 14
+    }
+  ],
+  "interpretation": "原生失败计入分母；无效布局、基础设施错误和未完成轨迹不计入分母。"
+}
