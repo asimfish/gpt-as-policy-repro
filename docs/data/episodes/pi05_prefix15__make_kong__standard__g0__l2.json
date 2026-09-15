@@ -1,0 +1,351 @@
+{
+  "id": "pi05_prefix15__make_kong__standard__g0__l2",
+  "case_id": "make_kong__standard__g0__l2",
+  "task": "make_kong",
+  "task_label": "制作 Kong 玩具",
+  "runtime_task": "make_kong",
+  "variant": "standard",
+  "seed": 2,
+  "method": "pi05_prefix15",
+  "method_label": "π0.5 · 前 15 步",
+  "status": "failure",
+  "status_label": "原生失败",
+  "complete": true,
+  "eligible": true,
+  "success": false,
+  "score": 0.0,
+  "steps": 600,
+  "native_horizon": 600,
+  "run_id": "20260915T054433.756781Z",
+  "layout_sha256": "09af2487241bf330bb495da875a0f812630db5de4ed2e8621aeefdf297a625cf",
+  "checkpoint_sha256": "d15fb8bd1d29cb30b69f01b71c66596cb0293c1a8a94111b343c1580dd3e3e5b",
+  "native_status": "native_completed",
+  "teacher_invoked": false,
+  "evidence": "data/episodes/pi05_prefix15__make_kong__standard__g0__l2.json",
+  "video": "media/pi05_prefix15__make_kong__standard__g0__l2.mp4",
+  "poster": "media/pi05_prefix15__make_kong__standard__g0__l2.jpg",
+  "decisions": 40,
+  "execution_trace": [
+    {
+      "decision": 0,
+      "start_tick": 0,
+      "end_tick": 15,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 1,
+      "start_tick": 15,
+      "end_tick": 30,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 2,
+      "start_tick": 30,
+      "end_tick": 45,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 3,
+      "start_tick": 45,
+      "end_tick": 60,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 4,
+      "start_tick": 60,
+      "end_tick": 75,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 5,
+      "start_tick": 75,
+      "end_tick": 90,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 6,
+      "start_tick": 90,
+      "end_tick": 105,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 7,
+      "start_tick": 105,
+      "end_tick": 120,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 8,
+      "start_tick": 120,
+      "end_tick": 135,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 9,
+      "start_tick": 135,
+      "end_tick": 150,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 10,
+      "start_tick": 150,
+      "end_tick": 165,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 11,
+      "start_tick": 165,
+      "end_tick": 180,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 12,
+      "start_tick": 180,
+      "end_tick": 195,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 13,
+      "start_tick": 195,
+      "end_tick": 210,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 14,
+      "start_tick": 210,
+      "end_tick": 225,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 15,
+      "start_tick": 225,
+      "end_tick": 240,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 16,
+      "start_tick": 240,
+      "end_tick": 255,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 17,
+      "start_tick": 255,
+      "end_tick": 270,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 18,
+      "start_tick": 270,
+      "end_tick": 285,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 19,
+      "start_tick": 285,
+      "end_tick": 300,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 20,
+      "start_tick": 300,
+      "end_tick": 315,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 21,
+      "start_tick": 315,
+      "end_tick": 330,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 22,
+      "start_tick": 330,
+      "end_tick": 345,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 23,
+      "start_tick": 345,
+      "end_tick": 360,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 24,
+      "start_tick": 360,
+      "end_tick": 375,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 25,
+      "start_tick": 375,
+      "end_tick": 390,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 26,
+      "start_tick": 390,
+      "end_tick": 405,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 27,
+      "start_tick": 405,
+      "end_tick": 420,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 28,
+      "start_tick": 420,
+      "end_tick": 435,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 29,
+      "start_tick": 435,
+      "end_tick": 450,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 30,
+      "start_tick": 450,
+      "end_tick": 465,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 31,
+      "start_tick": 465,
+      "end_tick": 480,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 32,
+      "start_tick": 480,
+      "end_tick": 495,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 33,
+      "start_tick": 495,
+      "end_tick": 510,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 34,
+      "start_tick": 510,
+      "end_tick": 525,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 35,
+      "start_tick": 525,
+      "end_tick": 540,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 36,
+      "start_tick": 540,
+      "end_tick": 555,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 37,
+      "start_tick": 555,
+      "end_tick": 570,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 38,
+      "start_tick": 570,
+      "end_tick": 585,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 39,
+      "start_tick": 585,
+      "end_tick": 600,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": true
+    }
+  ],
+  "interpretation": "原生失败计入分母；无效布局、基础设施错误和未完成轨迹不计入分母。"
+}

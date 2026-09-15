@@ -1,0 +1,623 @@
+{
+  "id": "pi05_prefix15__classify_objects_by_language__standard__g0__l0",
+  "case_id": "classify_objects_by_language__standard__g0__l0",
+  "task": "classify_objects_by_language",
+  "task_label": "按语言分类",
+  "runtime_task": "classify_objects_by_language",
+  "variant": "standard",
+  "seed": 0,
+  "method": "pi05_prefix15",
+  "method_label": "π0.5 · 前 15 步",
+  "status": "failure",
+  "status_label": "原生失败",
+  "complete": true,
+  "eligible": true,
+  "success": false,
+  "score": 0.0,
+  "steps": 1100,
+  "native_horizon": 1100,
+  "run_id": "20260915T031336.637456Z",
+  "layout_sha256": "eb7bc205a8e5f3acad8fdada3bf7a26b8e11fc39d7944f434aa4989356044eb2",
+  "checkpoint_sha256": "d15fb8bd1d29cb30b69f01b71c66596cb0293c1a8a94111b343c1580dd3e3e5b",
+  "native_status": "native_completed",
+  "teacher_invoked": false,
+  "evidence": "data/episodes/pi05_prefix15__classify_objects_by_language__standard__g0__l0.json",
+  "video": "media/pi05_prefix15__classify_objects_by_language__standard__g0__l0.mp4",
+  "poster": "media/pi05_prefix15__classify_objects_by_language__standard__g0__l0.jpg",
+  "decisions": 74,
+  "execution_trace": [
+    {
+      "decision": 0,
+      "start_tick": 0,
+      "end_tick": 15,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 1,
+      "start_tick": 15,
+      "end_tick": 30,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 2,
+      "start_tick": 30,
+      "end_tick": 45,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 3,
+      "start_tick": 45,
+      "end_tick": 60,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 4,
+      "start_tick": 60,
+      "end_tick": 75,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 5,
+      "start_tick": 75,
+      "end_tick": 90,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 6,
+      "start_tick": 90,
+      "end_tick": 105,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 7,
+      "start_tick": 105,
+      "end_tick": 120,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 8,
+      "start_tick": 120,
+      "end_tick": 135,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 9,
+      "start_tick": 135,
+      "end_tick": 150,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 10,
+      "start_tick": 150,
+      "end_tick": 165,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 11,
+      "start_tick": 165,
+      "end_tick": 180,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 12,
+      "start_tick": 180,
+      "end_tick": 195,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 13,
+      "start_tick": 195,
+      "end_tick": 210,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 14,
+      "start_tick": 210,
+      "end_tick": 225,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 15,
+      "start_tick": 225,
+      "end_tick": 240,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 16,
+      "start_tick": 240,
+      "end_tick": 255,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 17,
+      "start_tick": 255,
+      "end_tick": 270,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 18,
+      "start_tick": 270,
+      "end_tick": 285,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 19,
+      "start_tick": 285,
+      "end_tick": 300,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 20,
+      "start_tick": 300,
+      "end_tick": 315,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 21,
+      "start_tick": 315,
+      "end_tick": 330,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 22,
+      "start_tick": 330,
+      "end_tick": 345,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 23,
+      "start_tick": 345,
+      "end_tick": 360,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 24,
+      "start_tick": 360,
+      "end_tick": 375,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 25,
+      "start_tick": 375,
+      "end_tick": 390,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 26,
+      "start_tick": 390,
+      "end_tick": 405,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 27,
+      "start_tick": 405,
+      "end_tick": 420,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 28,
+      "start_tick": 420,
+      "end_tick": 435,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 29,
+      "start_tick": 435,
+      "end_tick": 450,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 30,
+      "start_tick": 450,
+      "end_tick": 465,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 31,
+      "start_tick": 465,
+      "end_tick": 480,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 32,
+      "start_tick": 480,
+      "end_tick": 495,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 33,
+      "start_tick": 495,
+      "end_tick": 510,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 34,
+      "start_tick": 510,
+      "end_tick": 525,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 35,
+      "start_tick": 525,
+      "end_tick": 540,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 36,
+      "start_tick": 540,
+      "end_tick": 555,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 37,
+      "start_tick": 555,
+      "end_tick": 570,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 38,
+      "start_tick": 570,
+      "end_tick": 585,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 39,
+      "start_tick": 585,
+      "end_tick": 600,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 40,
+      "start_tick": 600,
+      "end_tick": 615,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 41,
+      "start_tick": 615,
+      "end_tick": 630,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 42,
+      "start_tick": 630,
+      "end_tick": 645,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 43,
+      "start_tick": 645,
+      "end_tick": 660,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 44,
+      "start_tick": 660,
+      "end_tick": 675,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 45,
+      "start_tick": 675,
+      "end_tick": 690,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 46,
+      "start_tick": 690,
+      "end_tick": 705,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 47,
+      "start_tick": 705,
+      "end_tick": 720,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 48,
+      "start_tick": 720,
+      "end_tick": 735,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 49,
+      "start_tick": 735,
+      "end_tick": 750,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 50,
+      "start_tick": 750,
+      "end_tick": 765,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 51,
+      "start_tick": 765,
+      "end_tick": 780,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 52,
+      "start_tick": 780,
+      "end_tick": 795,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 53,
+      "start_tick": 795,
+      "end_tick": 810,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 54,
+      "start_tick": 810,
+      "end_tick": 825,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 55,
+      "start_tick": 825,
+      "end_tick": 840,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 56,
+      "start_tick": 840,
+      "end_tick": 855,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 57,
+      "start_tick": 855,
+      "end_tick": 870,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 58,
+      "start_tick": 870,
+      "end_tick": 885,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 59,
+      "start_tick": 885,
+      "end_tick": 900,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 60,
+      "start_tick": 900,
+      "end_tick": 915,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 61,
+      "start_tick": 915,
+      "end_tick": 930,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 62,
+      "start_tick": 930,
+      "end_tick": 945,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 63,
+      "start_tick": 945,
+      "end_tick": 960,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 64,
+      "start_tick": 960,
+      "end_tick": 975,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 65,
+      "start_tick": 975,
+      "end_tick": 990,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 66,
+      "start_tick": 990,
+      "end_tick": 1005,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 67,
+      "start_tick": 1005,
+      "end_tick": 1020,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 68,
+      "start_tick": 1020,
+      "end_tick": 1035,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 69,
+      "start_tick": 1035,
+      "end_tick": 1050,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 70,
+      "start_tick": 1050,
+      "end_tick": 1065,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 71,
+      "start_tick": 1065,
+      "end_tick": 1080,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 72,
+      "start_tick": 1080,
+      "end_tick": 1095,
+      "executed_steps": 15,
+      "native_success": false,
+      "terminal": false
+    },
+    {
+      "decision": 73,
+      "start_tick": 1095,
+      "end_tick": 1100,
+      "executed_steps": 5,
+      "native_success": false,
+      "terminal": true
+    }
+  ],
+  "interpretation": "原生失败计入分母；无效布局、基础设施错误和未完成轨迹不计入分母。"
+}

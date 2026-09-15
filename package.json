@@ -1,0 +1,1 @@
+{"name":"gpt-as-policy-repro","private":true,"version":"1.0.0","scripts":{"verify:browser":"node tools/verify-browser.cjs"},"devDependencies":{"playwright":"1.58.2"}}

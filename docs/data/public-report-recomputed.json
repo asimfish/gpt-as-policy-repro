@@ -1,0 +1,28 @@
+{
+  "mix": {
+    "episodes": 50,
+    "successes": 24,
+    "success_rate": 0.48,
+    "score_n": 50,
+    "mean_score": 0.626,
+    "steps": 42750,
+    "chunks": 3776,
+    "corrected_steps": 6174,
+    "corrected_fraction": 0.14442105263157895,
+    "total_tokens": 624762828,
+    "mean_steps": 855
+  },
+  "gpt": {
+    "episodes": 50,
+    "successes": 13,
+    "success_rate": 0.26,
+    "score_n": 48,
+    "mean_score": 0.378125,
+    "steps": 38221,
+    "chunks": 7729,
+    "corrected_steps": 0,
+    "corrected_fraction": 0.0,
+    "total_tokens": 1132343772,
+    "mean_steps": 764.42
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "cases": 51,
+  "filters": [
+    "task",
+    "result",
+    "protocol",
+    "search",
+    "empty",
+    "reset"
+  ],
+  "deep_links": true,
+  "theme_persistence": true,
+  "video": {
+    "time": 1.815835,
+    "duration": 28.066667,
+    "width": 1440,
+    "height": 270
+  },
+  "mobile": {
+    "viewport": 390,
+    "scroll": 390
+  },
+  "errors": []
+}
