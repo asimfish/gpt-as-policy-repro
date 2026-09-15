@@ -1,0 +1,22 @@
+{
+  "verified": true,
+  "scope": "completed_query_prefix_only",
+  "complete_episode": false,
+  "queries": 1,
+  "native_actions": 15,
+  "max_absolute_action_error": 0,
+  "initial_state_sha256": "9d86ea97e1749e1c4383b0b2cce1adaeaf599cbcdf654aff399776010c08ec4d",
+  "checkpoint_manifest_sha256": "14623e476057b934d9a9fc9a280a0b89e3b378dd48258881e383c93f4342507a",
+  "terminal": {
+    "terminated": false,
+    "truncated": false,
+    "success": false
+  },
+  "files_sha256": {
+    "rollout/policy_identity.json": "d362f72051f3c054109a99b6e1319a90371a6460ab346b1efe466a88155dc61d",
+    "sim/aca634e12476442c88160dae6f550153/initial_scene.json": "9961c0131c7ea8e2474229f9b4c20d4ddfc3d6312061045be814a4d8e9807a57",
+    "rollout/queries/00000/ack.json": "232a7bf1e61a40c71228fbbff26f11f906b3f8bc5181662392e1317bad2576b4",
+    "rollout/queries/00000/prediction.npz": "ad8b26f05646f1628e9afe28cca643b53dc16ea450fdf5eec5e5b0ede8cdd1b8",
+    "sim/aca634e12476442c88160dae6f550153/chunk_00000.npz": "839f90c4737ce19f6f09aca1fca1db6837ad433534bf4be88cd0b34908aa3825"
+  }
+}

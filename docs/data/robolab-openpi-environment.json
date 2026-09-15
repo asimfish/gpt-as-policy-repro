@@ -1,0 +1,12 @@
+{
+  "config": "pi05_droid_jointpos",
+  "action_horizon": 15,
+  "versions": {
+    "jax": "0.5.3",
+    "jaxlib": "0.5.3",
+    "flax": "0.10.2",
+    "orbax-checkpoint": "0.11.13",
+    "torch": "2.7.1",
+    "numpy": "1.26.4"
+  }
+}
