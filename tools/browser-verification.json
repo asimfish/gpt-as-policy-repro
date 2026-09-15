@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "cases": 62,
+  "cases": 64,
   "filters": [
     "task",
     "result",
@@ -12,7 +12,7 @@
   "deep_links": true,
   "theme_persistence": true,
   "video": {
-    "time": 1.821695,
+    "time": 1.821552,
     "duration": 42.066667,
     "width": 1440,
     "height": 270
@@ -20,6 +20,19 @@
   "mobile": {
     "viewport": 390,
     "scroll": 390
+  },
+  "robolab": {
+    "episodes": 1,
+    "video": {
+      "time": 1.505187,
+      "duration": 118.933333,
+      "width": 1440,
+      "height": 406
+    },
+    "mobile": {
+      "viewport": 390,
+      "scroll": 390
+    }
   },
   "errors": []
 }

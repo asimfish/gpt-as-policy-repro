@@ -360,6 +360,18 @@
     "bytes": 2395504
   },
   {
+    "path": "media/pi05_chunk50__classify_objects__standard__g0__l1.mp4",
+    "source_sha256": "427c53d20684eb768eecf331062185827f75d61763965ce22846e799b206685e",
+    "sha256": "967f7708cff5a8aa6b95bd3e102a8520cd2003252a4780f84c923aa87cda2bf4",
+    "bytes": 2396505
+  },
+  {
+    "path": "media/pi05_chunk50__classify_objects__standard__g0__l2.mp4",
+    "source_sha256": "8422a61328cd0fa85afff6f8aead30bec936f524c37e6bcbfd49d6a627db6207",
+    "sha256": "ae9c7093a7a79983db6c2961fb27c9bb33b2778fd6c058a0a59c4f5475a1f7f8",
+    "bytes": 3162855
+  },
+  {
     "path": "media/pi05_chunk50__put_bottles_into_dustbin__standard__g0__l0.mp4",
     "source_sha256": "64bf5c3838ef721cb00c9cebbef7bacd29c99cd38ad6f7f9a732e082c16f3460",
     "sha256": "21a48f69c4a65ddd2ce4f7fb4e5de57053779e064c4b6c4f3ac7246e52beff77",

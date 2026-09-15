@@ -122,6 +122,8 @@ def main():
     write(out/'data/robolab-fresh-reset-pairing.json',read(root/'mainskill_fresh_reset_pairing.json'))
     write(out/'data/robolab-first-action-audit.json',read(root/'mainskill_robolab_first_action_audit.json'))
     write(out/'data/robolab-openpi-environment.json',read(root/'mainskill/openpi_environment.json'))
+    from build_robolab_site import build as build_robolab
+    build_robolab(root,out)
     from markdown import markdown
     interpretation=(root/'report_interpretation_zh.md').read_text().replace('`independent_report.md`','本页「独立结果」').replace('`recompute_public_metrics.py`','公开结果复算脚本')
     article=markdown(interpretation,extensions=['tables','fenced_code'])

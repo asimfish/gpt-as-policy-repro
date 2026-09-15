@@ -1,5 +1,6 @@
 """Check published data, all internal links, and the public export boundary."""
 import argparse
+import hashlib
 from html.parser import HTMLParser
 import json
 from pathlib import Path
@@ -30,7 +31,15 @@ def verify(root):
         evidence=json.loads((root/row['evidence']).read_text())
         assert evidence['id']==row['id'] and evidence['eligible']==row['eligible']
         if row['status']=='excluded':assert not row['eligible'] and row['score'] is None
-    for name in ('index.html','scenes.html'):
+    robolab=json.loads((root/'data/robolab-report.json').read_text())['episodes']
+    assert robolab
+    for row in robolab:
+        evidence=json.loads((root/row['evidence']).read_text());audit=json.loads((root/row['audit']).read_text())
+        assert evidence==row and row['complete'] and audit['verified'] and audit['complete_episode']
+        assert row['control_steps']==audit['native_actions'] and row['predictions']==audit['queries']
+        assert row['success']==audit['terminal']['success'] and (row['terminated'] or row['truncated'])
+        assert hashlib.sha256((root/row['video']).read_bytes()).hexdigest()==row['video_sha256']
+    for name in ('index.html','scenes.html','robolab.html'):
         parser=Links();parser.feed((root/name).read_text())
         for link in parser.links:
             url=urlsplit(link)
@@ -38,7 +47,7 @@ def verify(root):
             if url.path:
                 target=(root/unquote(url.path)).resolve();target.relative_to(root.resolve());assert target.is_file(),link
             elif url.fragment:assert unquote(url.fragment) in parser.ids,link
-        assert parser.videos==sum(bool(r['video']) for r in rows)
+        assert parser.videos==(len(robolab) if name=='robolab.html' else sum(bool(r['video']) for r in rows))
     assert (root/'index.html').read_bytes()==(root/'scenes.html').read_bytes()
     forbidden=(r'/home/',r'/mnt/',r'github_pat_[A-Za-z0-9_]+',r'ghp_[A-Za-z0-9]+',r'127\.0\.0\.1',r'BEGIN .*PRIVATE KEY',r'Bearer\s+[A-Za-z0-9_.-]{12,}')
     for path in root.rglob('*'):
@@ -48,7 +57,7 @@ def verify(root):
         if path.suffix in ('.html','.js','.css','.json','.md'):
             text=path.read_text()
             for pattern in forbidden:assert not re.search(pattern,text),(path,pattern)
-    print(json.dumps(dict(status='passed',cases=len(rows),videos=sum(bool(r['video']) for r in rows),eligible_prefix15=len(valid),successes=summary['successes'],checks=['internal_links','unique_ids','score_denominators','public_export_fields','file_sizes','lazy_video']),indent=2))
+    print(json.dumps(dict(status='passed',cases=len(rows),videos=sum(bool(r['video']) for r in rows),robolab_complete_episodes=len(robolab),eligible_prefix15=len(valid),successes=summary['successes'],checks=['internal_links','unique_ids','score_denominators','public_export_fields','file_sizes','lazy_video']),indent=2))
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('root',type=Path);a=p.parse_args();verify(a.root)
