@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "cases": 51,
+  "cases": 52,
   "filters": [
     "task",
     "result",
@@ -12,8 +12,8 @@
   "deep_links": true,
   "theme_persistence": true,
   "video": {
-    "time": 1.815835,
-    "duration": 28.066667,
+    "time": 1.814557,
+    "duration": 42.066667,
     "width": 1440,
     "height": 270
   },

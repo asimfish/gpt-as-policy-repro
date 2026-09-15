@@ -108,6 +108,12 @@ def main():
                 source_report_sha256=digest(root/'independent_report.json'))
     write(out/'data/report.json',public);write(out/'data/media-manifest.json',media_manifest)
     write(out/'data/public-report-recomputed.json',read(root/'public_metrics_recomputed.json'))
+    baselines=read(root/'additional_baseline_sources.json')
+    public_baselines=[{key:row[key] for key in ('method','source_commit','checkpoint_repository','checkpoint_revision','status','verified_files','verified_bytes','manifest_sha256','inference_completed','excluded_prefixes') if key in row} for row in baselines]
+    write(out/'data/model-readiness.json',dict(generated_at=now,models=public_baselines))
+    action_audit=read(root/'chunk50_first_episode_audit.json')
+    write(out/'data/chunk50-action-audit.json',{key:action_audit[key] for key in ('verified','native_actions','predictions','max_absolute_action_error','checks')})
+
     shutil.copyfile(root/'independent_task_results.png',out/'assets/task-results.png')
     smoke=root/'mainskill_robolab_smoke/20260915T083211Z/rollout/observations/000'
     for name in ('main_rgb','wrist_rgb'):shutil.copyfile(smoke/(name+'.png'),out/'assets'/('robolab-'+name+'.png'))

@@ -1,0 +1,31 @@
+{
+  "generated_at": "2026-09-15 12:23 UTC",
+  "models": [
+    {
+      "method": "dreamzero",
+      "source_commit": "ab790c198fbce33503358efbbd4187ce9a89adf3",
+      "checkpoint_repository": "GEAR-Dreams/DreamZero-DROID",
+      "checkpoint_revision": "96ad344138c66e82536422432ad742f015784942",
+      "status": "download_verified_remote_transfer_queued",
+      "verified_files": 21,
+      "verified_bytes": 45877085643,
+      "manifest_sha256": "bac8319ba42274d8dbe8d3bcb2aa1263bb73e5dc6a7ccc5182c9d3a06bf674a0",
+      "inference_completed": false,
+      "excluded_prefixes": [
+        "tensorrt/"
+      ]
+    },
+    {
+      "method": "cosmos3",
+      "source_commit": "2a8339d46a6e10e96f26c98509e6080d04ead490",
+      "checkpoint_repository": "nvidia/Cosmos3-Nano-Policy-DROID",
+      "checkpoint_revision": "2b9f9517efcfbf26e222945b386ae9b65c0930ac",
+      "status": "download_verified_remote_transfer_queued",
+      "verified_files": 43,
+      "verified_bytes": 32937433081,
+      "manifest_sha256": "da9e34bf8b3f4b4ce81678298483266b4f9b31d626a8c8dcae5a71a220c8447c",
+      "inference_completed": false,
+      "excluded_prefixes": []
+    }
+  ]
+}

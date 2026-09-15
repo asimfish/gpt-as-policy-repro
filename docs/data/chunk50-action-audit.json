@@ -1,0 +1,12 @@
+{
+  "verified": true,
+  "native_actions": 700,
+  "predictions": 14,
+  "max_absolute_action_error": 0,
+  "checks": [
+    "ordered full-chunk action equality",
+    "prediction identity and transport slice offsets",
+    "contiguous native steps",
+    "native terminal"
+  ]
+}
