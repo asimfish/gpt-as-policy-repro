@@ -1,0 +1,28 @@
+{
+  "id": "robolab_pi05_BlocksInBinTask_seed0_20260915T141014Z",
+  "task": "BlocksInBinTask",
+  "seed": 0,
+  "success": false,
+  "control_steps": 2250,
+  "predictions": 150,
+  "complete": true,
+  "scope": "new_fixed_seed_cohort",
+  "historical_paired_benchmark": false,
+  "terminated": false,
+  "truncated": true,
+  "initial_state_sha256": "9d86ea97e1749e1c4383b0b2cce1adaeaf599cbcdf654aff399776010c08ec4d",
+  "checkpoint_manifest_sha256": "14623e476057b934d9a9fc9a280a0b89e3b378dd48258881e383c93f4342507a",
+  "policy": {
+    "config": "pi05_droid_jointpos",
+    "action_horizon": 15,
+    "openpi_revision": "aa64205615295931141608226e5ad155792b272f3"
+  },
+  "video": "media/robolab_pi05_BlocksInBinTask_seed0_20260915T141014Z.mp4",
+  "poster": "media/robolab_pi05_BlocksInBinTask_seed0_20260915T141014Z.jpg",
+  "duration_seconds": 150.066667,
+  "native_video_frames": 2251,
+  "source_video_sha256": "d72f46cc5c5401040cf8ec60e7542f720dc204c1d2a29ec79d2ce345bcd701a9",
+  "video_sha256": "dcbedb7623de722a26f0c32c8b0d5822cf09d0df0ec3c49b250ca0a00ed53e94",
+  "audit": "data/robolab/robolab_pi05_BlocksInBinTask_seed0_20260915T141014Z-audit.json",
+  "evidence": "data/robolab/robolab_pi05_BlocksInBinTask_seed0_20260915T141014Z.json"
+}

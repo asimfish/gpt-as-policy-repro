@@ -372,6 +372,48 @@
     "bytes": 3162855
   },
   {
+    "path": "media/pi05_chunk50__classify_objects__standard__g0__l3.mp4",
+    "source_sha256": "a6ed4f60bc5122047bf687d34f8f6e4cf5b723dd2421085169908310197be746",
+    "sha256": "ed187319af47bc132f33923d77343d69dd2116a6cd34c1d2e8f9a17f1260ecce",
+    "bytes": 3252985
+  },
+  {
+    "path": "media/pi05_chunk50__classify_objects__standard__g0__l4.mp4",
+    "source_sha256": "252433a9f8d1154b40ae28ce9c1a8dbc8237e8d8dd34e9f56309fb97c57b9cfc",
+    "sha256": "8b409342343dd3cbdd21402842f3ad952a0c6e3431b2d726a1a44f255e93373f",
+    "bytes": 3392615
+  },
+  {
+    "path": "media/pi05_chunk50__classify_objects_by_language__standard__g0__l0.mp4",
+    "source_sha256": "d64b771d8e04ebf81621be641a29390486c3f1bb25ad9452ed8dce125086d73b",
+    "sha256": "0591b3fb5c322e0aab08311a25c41efe83a96be4ead1a6f372435640c8a0109d",
+    "bytes": 3109514
+  },
+  {
+    "path": "media/pi05_chunk50__classify_objects_by_language__standard__g0__l1.mp4",
+    "source_sha256": "fcb50c3e02df22790e785fcb31abea15bd57b9a20c84712856b49071049f3494",
+    "sha256": "8b204bc41099fd250c27bd7047cb074362ff937a92b6bc44b32f1731d36746fc",
+    "bytes": 3161321
+  },
+  {
+    "path": "media/pi05_chunk50__classify_objects_by_language__standard__g0__l2.mp4",
+    "source_sha256": "ac00df6e764d5c794c6841151f79fcda1273d4d6ce34f9e8e774efe23fbfd133",
+    "sha256": "b6e1e4cecfc02b0982ae0db6122be34b7bd834f2023f5fc95a5a5ee30f7ff24e",
+    "bytes": 3087296
+  },
+  {
+    "path": "media/pi05_chunk50__classify_objects_by_language__standard__g0__l3.mp4",
+    "source_sha256": "a60bea7d5206c2ef1ae94451981972f4f71cafd3fbfa6f81f0e45a78a6c77585",
+    "sha256": "c60811ea8612b7aaf72ef98ed3b9ae95e140372957602578d1ec8f3d5eb76821",
+    "bytes": 3159755
+  },
+  {
+    "path": "media/pi05_chunk50__classify_objects_by_language__standard__g0__l4.mp4",
+    "source_sha256": "8691f3bb695ea79753a78a82f23bf707c282563810de1880560d1088ae0ec6d6",
+    "sha256": "63d5f4f5b79fb4b2faea3189fd5ebf43027fcc6c619199ce8bc8a4ea2b3687b1",
+    "bytes": 3307817
+  },
+  {
     "path": "media/pi05_chunk50__put_bottles_into_dustbin__standard__g0__l0.mp4",
     "source_sha256": "64bf5c3838ef721cb00c9cebbef7bacd29c99cd38ad6f7f9a732e082c16f3460",
     "sha256": "21a48f69c4a65ddd2ce4f7fb4e5de57053779e064c4b6c4f3ac7246e52beff77",
