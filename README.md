@@ -31,3 +31,20 @@ python3 -m http.server 8080 --directory docs
 ## 浏览器验收
 
 启动上面的本地 HTTP 服务后，运行 `npm install` 和 `npm run verify:browser`。也可设置 `BASE_URL` 验证线上站点，`CHROME_PATH` 指定 Chrome 可执行文件。验收覆盖桌面和 390 px 手机宽度、筛选、空结果、案例深链接、主题持久化和真实视频播放。结果和截图保存在 `.artifacts/`。
+
+## 主方法状态更新
+
+主板在历史基线前展示 GPT Direct / π0.5 + GPT 的独立状态。状态源为
+`docs/data/gpt-methods-progress.json`，每次更新必须附 UTC 快照时间与已通过的动作审计。
+运行中、网络中断和可计分原生终止分别标记；前缀审计不代表完整任务成功。
+公开字段不得包含凭据、服务器路径或模型内部推理日志。
+
+更新审核后的状态 JSON 和对应审计文件，再运行：
+
+```bash
+python3 tools/render_gpt_progress.py docs
+python3 tools/verify_site.py docs
+```
+
+完整构建也会调用上述渲染器，保留主方法状态区。当前渲染器针对未完成回合，
+完整回合到来时须先核对原生终止与完整动作审计，再更新计分逻辑。

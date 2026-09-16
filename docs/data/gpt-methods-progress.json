@@ -1,5 +1,5 @@
 {
-  "snapshot": "2026-09-16",
+  "snapshot": "2026-09-16T16:07:00+00:00",
   "direct": {
     "method": "gpt_only",
     "model": "gpt-6-astra",
@@ -20,9 +20,20 @@
     "audit": "data/gpt-direct-prefix-audit.json"
   },
   "hybrid": {
-    "status": "starting",
+    "status": "running",
     "complete": false,
-    "eligible": false
+    "eligible": false,
+    "success": null,
+    "audited_control_steps": 320,
+    "audited_decisions": 32,
+    "actions_by_mode": {
+      "student": 240,
+      "edit": 30,
+      "eef": 50
+    },
+    "audit": "data/gpt-hybrid-prefix-audit.json",
+    "initial_state_hash": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
+    "audit_limitation": "Checks recorded correction-to-joint-action mapping, not an independent IK recomputation."
   },
   "scope": "own original-controller runs; incomplete attempts excluded from success rates"
 }

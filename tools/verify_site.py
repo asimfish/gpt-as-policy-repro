@@ -44,6 +44,16 @@ def verify(root):
     assert proof['verified'] and not proof['complete_episode'] and not gpt['complete'] and not gpt['eligible']
     assert proof['native_actions']==gpt['control_steps']==940
     assert hashlib.sha256((root/gpt['video']).read_bytes()).hexdigest()==gpt['video_sha256']
+    progress=json.loads((root/'data/gpt-methods-progress.json').read_text())
+    hybrid=progress['hybrid'];audit=json.loads((root/hybrid['audit']).read_text())
+    assert audit['verified'] and not audit['complete_episode']
+    assert not hybrid['eligible'] and not hybrid['complete'] and hybrid['success'] is None
+    assert audit['native_actions']==hybrid['audited_control_steps']
+    assert audit['decisions']==hybrid['audited_decisions']
+    assert audit['actions_by_mode']==hybrid['actions_by_mode']
+    assert sum(hybrid['actions_by_mode'].values())==hybrid['audited_control_steps']
+    assert audit['initial_state_hash']==proof['initial_state_hash']
+    assert progress['snapshot'] in (root/'scenes.html').read_text()
     for name in ('index.html','scenes.html','robolab.html','gpt-methods.html'):
         parser=Links();parser.feed((root/name).read_text())
         for link in parser.links:

@@ -159,6 +159,8 @@ def main():
     assert '{{' not in html_template
     (out/'index.html').write_text(html_template)
     (out/'scenes.html').write_text(html_template)
+    from render_gpt_progress import render
+    render(out)
     (out/'.nojekyll').touch()
     print(json.dumps(dict(site=str(out),episodes=len(records),videos=len(media_manifest),media_mib=sum(x['bytes'] for x in media_manifest)/2**20,summary=summary),ensure_ascii=False),flush=True)
 
