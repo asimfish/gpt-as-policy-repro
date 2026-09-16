@@ -1,0 +1,28 @@
+{
+  "snapshot": "2026-09-16",
+  "direct": {
+    "method": "gpt_only",
+    "model": "gpt-6-astra",
+    "reasoning_effort": "xhigh",
+    "task": "arrange_largest_number_random",
+    "case_id": "arrange_largest_number__random__g0__l0",
+    "control_steps": 940,
+    "native_horizon": 1050,
+    "decisions": 188,
+    "complete": false,
+    "eligible": false,
+    "success": null,
+    "status": "network_interrupted",
+    "pi05_calls": 0,
+    "video": "media/gpt_direct_arrange_largest_number_20260916.mp4",
+    "video_sha256": "05acda34b3de3ec28766251234ef4fa4aa68f1b9db5397473d20036530c2d3a3",
+    "source_video_sha256": "ceb6a2c2fd49fd54c8ac736af495c454b1c51aae19d07c75a8686cbf3247d9bc",
+    "audit": "data/gpt-direct-prefix-audit.json"
+  },
+  "hybrid": {
+    "status": "starting",
+    "complete": false,
+    "eligible": false
+  },
+  "scope": "own original-controller runs; incomplete attempts excluded from success rates"
+}

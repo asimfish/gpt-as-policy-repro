@@ -39,7 +39,12 @@ def verify(root):
         assert row['control_steps']==audit['native_actions'] and row['predictions']==audit['queries']
         assert row['success']==audit['terminal']['success'] and (row['terminated'] or row['truncated'])
         assert hashlib.sha256((root/row['video']).read_bytes()).hexdigest()==row['video_sha256']
-    for name in ('index.html','scenes.html','robolab.html'):
+    gpt=json.loads((root/'data/gpt-methods-progress.json').read_text())['direct']
+    proof=json.loads((root/gpt['audit']).read_text())
+    assert proof['verified'] and not proof['complete_episode'] and not gpt['complete'] and not gpt['eligible']
+    assert proof['native_actions']==gpt['control_steps']==940
+    assert hashlib.sha256((root/gpt['video']).read_bytes()).hexdigest()==gpt['video_sha256']
+    for name in ('index.html','scenes.html','robolab.html','gpt-methods.html'):
         parser=Links();parser.feed((root/name).read_text())
         for link in parser.links:
             url=urlsplit(link)
@@ -47,7 +52,7 @@ def verify(root):
             if url.path:
                 target=(root/unquote(url.path)).resolve();target.relative_to(root.resolve());assert target.is_file(),link
             elif url.fragment:assert unquote(url.fragment) in parser.ids,link
-        assert parser.videos==(len(robolab) if name=='robolab.html' else sum(bool(r['video']) for r in rows))
+        assert parser.videos==(1 if name=='gpt-methods.html' else len(robolab) if name=='robolab.html' else sum(bool(r['video']) for r in rows))
     assert (root/'index.html').read_bytes()==(root/'scenes.html').read_bytes()
     forbidden=(r'/home/',r'/mnt/',r'github_pat_[A-Za-z0-9_]+',r'ghp_[A-Za-z0-9]+',r'127\.0\.0\.1',r'BEGIN .*PRIVATE KEY',r'Bearer\s+[A-Za-z0-9_.-]{12,}')
     for path in root.rglob('*'):
