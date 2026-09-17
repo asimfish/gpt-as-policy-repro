@@ -1,5 +1,5 @@
 {
-  "snapshot": "2026-09-16T16:07:00+00:00",
+  "snapshot": "2026-09-17T14:17:05+00:00",
   "direct": {
     "method": "gpt_only",
     "model": "gpt-6-astra",
@@ -20,20 +20,36 @@
     "audit": "data/gpt-direct-prefix-audit.json"
   },
   "hybrid": {
-    "status": "running",
+    "status": "capacity_interrupted",
     "complete": false,
     "eligible": false,
     "success": null,
-    "audited_control_steps": 320,
-    "audited_decisions": 32,
+    "audited_control_steps": 550,
+    "audited_decisions": 60,
     "actions_by_mode": {
-      "student": 240,
-      "edit": 30,
-      "eef": 50
+      "student": 380,
+      "edit": 35,
+      "eef": 135
     },
     "audit": "data/gpt-hybrid-prefix-audit.json",
     "initial_state_hash": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
-    "audit_limitation": "Checks recorded correction-to-joint-action mapping, not an independent IK recomputation."
+    "audit_limitation": "Checks recorded correction-to-joint-action mapping, not an independent IK recomputation.",
+    "native_horizon": 1050,
+    "case_id": "arrange_largest_number__random__g0__l0",
+    "interruption_reason": "serverOverloaded",
+    "video": "media/gpt_hybrid_arrange_largest_number_20260916.mp4",
+    "video_sha256": "1c9584d4cc369bdf658a071ef073cbaa4b606007c2d2423ca021ae331e27c4b0",
+    "source_video_sha256": "b99ed763c7143d1ccbd8c02a5db6920d299c626ce736bee0f7f99ab697a16049",
+    "duration_seconds": 22.04
   },
-  "scope": "own original-controller runs; incomplete attempts excluded from success rates"
+  "scope": "own original-controller runs; incomplete attempts excluded from success rates",
+  "active_campaign": {
+    "case_id": "arrange_largest_number__random__g0__l1",
+    "status": "Direct 运行中",
+    "method_order": [
+      "gpt_only",
+      "pi05_plus_gpt"
+    ],
+    "note": "Fresh frozen case; prior interrupted attempts retained and excluded from task success rates."
+  }
 }

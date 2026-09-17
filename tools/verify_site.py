@@ -53,6 +53,8 @@ def verify(root):
     assert audit['actions_by_mode']==hybrid['actions_by_mode']
     assert sum(hybrid['actions_by_mode'].values())==hybrid['audited_control_steps']
     assert audit['initial_state_hash']==proof['initial_state_hash']
+    if hybrid.get('video'):
+        assert hashlib.sha256((root/hybrid['video']).read_bytes()).hexdigest()==hybrid['video_sha256']
     assert progress['snapshot'] in (root/'scenes.html').read_text()
     for name in ('index.html','scenes.html','robolab.html','gpt-methods.html'):
         parser=Links();parser.feed((root/name).read_text())
@@ -62,7 +64,7 @@ def verify(root):
             if url.path:
                 target=(root/unquote(url.path)).resolve();target.relative_to(root.resolve());assert target.is_file(),link
             elif url.fragment:assert unquote(url.fragment) in parser.ids,link
-        assert parser.videos==(1 if name=='gpt-methods.html' else len(robolab) if name=='robolab.html' else sum(bool(r['video']) for r in rows))
+        assert parser.videos==((1+bool(hybrid.get('video'))) if name=='gpt-methods.html' else len(robolab) if name=='robolab.html' else sum(bool(r['video']) for r in rows))
     assert (root/'index.html').read_bytes()==(root/'scenes.html').read_bytes()
     forbidden=(r'/home/',r'/mnt/',r'github_pat_[A-Za-z0-9_]+',r'ghp_[A-Za-z0-9]+',r'127\.0\.0\.1',r'BEGIN .*PRIVATE KEY',r'Bearer\s+[A-Za-z0-9_.-]{12,}')
     for path in root.rglob('*'):
