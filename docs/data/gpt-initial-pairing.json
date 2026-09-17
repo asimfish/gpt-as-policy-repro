@@ -1,0 +1,40 @@
+{
+  "direct_layout0": {
+    "case_id": "arrange_largest_number__random__g0__l0",
+    "fixture_layout_sha256": "c7897e5204ca76bbd7c6cb3c93a794a4e5218c0c17a4312f047930f5e7e822d5",
+    "recorded_scene_layout_sha256": "c7897e5204ca76bbd7c6cb3c93a794a4e5218c0c17a4312f047930f5e7e822d5",
+    "robot_joint_state_sha256": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
+    "camera_sha256": {
+      "cam_high": "0db3e23ef58baa89249f967230ecb7f760c063cce99543b7b6b4ee27661deebb",
+      "cam_left_wrist": "df5032b0d9f7e4570752ff7e9948112f54c3ea83abec52696a0f41627d157f53",
+      "cam_right_wrist": "40f4fc912c164162db3cf5c8cebfc14bf80c585de5744f5e1942cfec480cf257"
+    }
+  },
+  "hybrid_layout0": {
+    "case_id": "arrange_largest_number__random__g0__l0",
+    "fixture_layout_sha256": "c7897e5204ca76bbd7c6cb3c93a794a4e5218c0c17a4312f047930f5e7e822d5",
+    "recorded_scene_layout_sha256": "c7897e5204ca76bbd7c6cb3c93a794a4e5218c0c17a4312f047930f5e7e822d5",
+    "robot_joint_state_sha256": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
+    "camera_sha256": {
+      "cam_high": "1de9b3921f298d07a85548d3e3ac161f633cd8f5bac962d42086da1eb2dc54e0",
+      "cam_left_wrist": "9ef87fd310012431fb2cfa1803ba3ab5fca1687e99dc8c0eb14dc7ac5be95e90",
+      "cam_right_wrist": "d7b46b355a85a55afc5a334417cc49ea43066fb69fca2a0b1b2fce808e236120"
+    }
+  },
+  "direct_layout1": {
+    "case_id": "arrange_largest_number__random__g0__l1",
+    "fixture_layout_sha256": "f24eb21ce320f29577217f7cf9fa44e9213435964038ed481bb99e99bb7ae370",
+    "recorded_scene_layout_sha256": "f24eb21ce320f29577217f7cf9fa44e9213435964038ed481bb99e99bb7ae370",
+    "robot_joint_state_sha256": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
+    "camera_sha256": {
+      "cam_high": "f3053223a74259c694b9248349761f98d0930a357440a10ed32a15c684109272",
+      "cam_left_wrist": "1dc10c76dab7e461de1c812ba84cfe24b86a65b2fc6fea56b078d8f263acd5c7",
+      "cam_right_wrist": "1d3adc9ebbf784fe9be2e8aa5278b19c7fdd21245d147606ecfb67799c5da03f"
+    }
+  },
+  "same_case_fixture_layout": true,
+  "same_case_recorded_scene_layout": true,
+  "same_case_robot_joints": true,
+  "different_case_layout_distinct": true,
+  "limitation": "Joint-state hashes cover 14 robot state values, not full simulator physical state; scene layout records and camera hashes are separate evidence. No bitwise physics guarantee."
+}
