@@ -31,15 +31,18 @@ def render(out):
     document = path.read_text()
     direct_start = '<section class="panel report-section"><h2>GPT Direct：网络中断，未完成</h2>'
     direct_end = '<section class="panel report-section"><h2>π0.5 + GPT（Hybrid）</h2>'
-    d_before, d_rest = document.split(direct_start, 1)
-    _, d_after = d_rest.split(direct_end, 1)
-    dvideo = f"<video controls playsinline preload='none' style='width:100%;height:auto' aria-label='GPT Direct 布局1完整回放'><source src='{escape(direct['video'])}' type='video/mp4'></video>"
-    direct_html = f'''<section class="panel report-section"><h2>GPT Direct：{'成功' if direct['success'] else '失败'}</h2><p>排列最大数字 · 冻结布局 1。原生完整回合 {direct['control_steps']} 步、{direct['decisions']} 次决策，score {direct['score']}；终止条件与逐动作审计均通过。</p>{dvideo}<p>完整原生回放；计入主方法结果。</p><p><a href="{escape(direct['audit'])}">下载完整动作审计</a> · <a href="data/gpt-methods-progress.json">下载实验状态</a></p></section>'''
-    document = d_before + direct_html + direct_end + d_after
+    if direct_start in document:
+        d_before, d_rest = document.split(direct_start, 1)
+        _, d_after = d_rest.split(direct_end, 1)
+        dvideo = f"<video controls playsinline preload='none' style='width:100%;height:auto' aria-label='GPT Direct 布局1完整回放'><source src='{escape(direct['video'])}' type='video/mp4'></video>"
+        direct_html = f'''<section class="panel report-section"><h2>GPT Direct：{'成功' if direct['success'] else '失败'}</h2><p>排列最大数字 · 冻结布局 1。原生完整回合 {direct['control_steps']} 步、{direct['decisions']} 次决策，score {direct['score']}；终止条件与逐动作审计均通过。</p>{dvideo}<p>完整原生回放；计入主方法结果。</p><p><a href="{escape(direct['audit'])}">下载完整动作审计</a> · <a href="data/gpt-methods-progress.json">下载实验状态</a></p></section>'''
+        document = d_before + direct_html + direct_end + d_after
     start = '<section class="panel report-section"><h2>π0.5 + GPT（Hybrid）</h2>'
     before, rest = document.split(start, 1)
     _, after = rest.split('</section>', 1)
-    path.write_text(before + start + video + f'<p>同一冻结场景：{status}。已独立审计前 {decisions} 次决策、{steps} 个原生动作，动作核对误差为零。student / edit / eef 分别为 {hybrid["actions_by_mode"]["student"]} / {hybrid["actions_by_mode"]["edit"]} / {hybrid["actions_by_mode"]["eef"]} 步；审计不包含独立 IK 重算。Hybrid 运行到原生 1050 步上限，任务未成功，计入失败分母。</p><p>状态快照：{snapshot}。<a href="{escape(hybrid["audit"])}">下载 Hybrid 前缀审计</a></p></section>' + after)
+    latest = data.get('latest_attempt')
+    latest_html = '' if latest is None else f'<p>最新尝试：{escape(latest["case_id"])}，{escape(latest["status"])}，{latest["native_actions"]} 步 / {latest["decisions"]} 次决策；不计入成绩。 <a href="{escape(latest["audit"])}">前缀审计 ↗</a></p>'
+    path.write_text(before + start + video + latest_html + f'<p>同一冻结场景：{status}。已独立审计前 {decisions} 次决策、{steps} 个原生动作，动作核对误差为零。student / edit / eef 分别为 {hybrid["actions_by_mode"]["student"]} / {hybrid["actions_by_mode"]["edit"]} / {hybrid["actions_by_mode"]["eef"]} 步；审计不包含独立 IK 重算。Hybrid 运行到原生 1050 步上限，任务未成功，计入失败分母。</p><p>状态快照：{snapshot}。<a href="{escape(hybrid["audit"])}">下载 Hybrid 前缀审计</a></p></section>' + after)
 
 
 if __name__ == '__main__':
