@@ -1,5 +1,5 @@
 {
-  "snapshot": "2026-09-29T17:58:25+00:00",
+  "snapshot": "2026-09-29T17:59:29+00:00",
   "direct": {
     "method": "gpt_only",
     "model": "gpt-6-astra",
@@ -47,7 +47,7 @@
   "scope": "own original-controller runs; incomplete attempts excluded from success rates",
   "active_campaign": {
     "case_id": "build_tower__standard__g0__l0",
-    "status": "queued",
+    "status": "Direct running",
     "method_order": [
       "gpt_only",
       "pi05_plus_gpt"
