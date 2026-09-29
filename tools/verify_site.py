@@ -41,13 +41,17 @@ def verify(root):
         assert hashlib.sha256((root/row['video']).read_bytes()).hexdigest()==row['video_sha256']
     gpt=json.loads((root/'data/gpt-methods-progress.json').read_text())['direct']
     proof=json.loads((root/gpt['audit']).read_text())
-    assert proof['verified'] and not proof['complete_episode'] and not gpt['complete'] and not gpt['eligible']
-    assert proof['native_actions']==gpt['control_steps']==940
+    assert proof['verified'] and proof['complete_episode']==gpt['complete'] and gpt['eligible']==gpt['complete']
+    assert proof['native_actions']==gpt['control_steps']
+    assert proof['terminal']['success']==gpt['success'] if gpt['complete'] else True
     assert hashlib.sha256((root/gpt['video']).read_bytes()).hexdigest()==gpt['video_sha256']
+    if gpt['complete']:
+        assert proof['complete_episode'] and proof['terminal']['success']==gpt['success']
+    assert (root/gpt['audit']).is_file()
     progress=json.loads((root/'data/gpt-methods-progress.json').read_text())
     hybrid=progress['hybrid'];audit=json.loads((root/hybrid['audit']).read_text())
-    assert audit['verified'] and not audit['complete_episode']
-    assert not hybrid['eligible'] and not hybrid['complete'] and hybrid['success'] is None
+    assert audit['verified'] and audit['complete_episode']==hybrid['complete']
+    assert hybrid['eligible']==hybrid['complete'] and hybrid['success'] is not None
     assert audit['native_actions']==hybrid['audited_control_steps']
     assert audit['decisions']==hybrid['audited_decisions']
     assert audit['actions_by_mode']==hybrid['actions_by_mode']
@@ -55,6 +59,8 @@ def verify(root):
     assert audit['initial_state_hash']==proof['initial_state_hash']
     if hybrid.get('video'):
         assert hashlib.sha256((root/hybrid['video']).read_bytes()).hexdigest()==hybrid['video_sha256']
+    if hybrid['complete']:
+        assert audit['terminal']['success']==hybrid['success'] and audit['native_score']==hybrid['score']
     assert progress['snapshot'] in (root/'scenes.html').read_text()
     for name in ('index.html','scenes.html','robolab.html','gpt-methods.html'):
         parser=Links();parser.feed((root/name).read_text())
