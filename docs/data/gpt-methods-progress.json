@@ -1,5 +1,5 @@
 {
-  "snapshot": "2026-09-29T17:59:29+00:00",
+  "snapshot": "2026-09-30T17:09:08+00:00",
   "direct": {
     "method": "gpt_only",
     "model": "gpt-6-astra",
@@ -46,20 +46,22 @@
   },
   "scope": "own original-controller runs; incomplete attempts excluded from success rates",
   "active_campaign": {
-    "case_id": "build_tower__standard__g0__l0",
-    "status": "Direct running",
+    "case_id": "classify_objects__standard__g0__l0",
+    "status": "queued",
     "method_order": [
       "gpt_only",
       "pi05_plus_gpt"
     ],
-    "note": "Fresh case after capacity interruption; prior attempts preserved."
+    "note": "Fresh case after completed build_tower pair; prior attempts preserved."
   },
   "summary": {
-    "own_primary_completed_pairs": 1,
+    "own_primary_completed_pairs": 2,
     "direct_successes": 1,
     "hybrid_successes": 0,
-    "eligible_pairs": 1,
-    "note": "One paired frozen case has complete native terminal evidence; prior interrupted prefixes remain excluded."
+    "eligible_pairs": 2,
+    "direct_completed_episodes": 2,
+    "hybrid_completed_episodes": 2,
+    "note": "Two paired frozen cases have complete native terminal evidence; prior interrupted prefixes remain excluded."
   },
   "latest_attempt": {
     "case_id": "arrange_largest_number__standard__g0__l1",
@@ -71,5 +73,30 @@
     "reason": "serverOverloaded",
     "eligible": false,
     "complete": false
+  },
+  "latest_completed_pair": {
+    "case_id": "build_tower__standard__g0__l0",
+    "task": "build_tower",
+    "direct": {
+      "success": false,
+      "score": 0.0,
+      "control_steps": 1050,
+      "decisions": 215,
+      "audit": "data/gpt-direct-build-tower-complete-audit.json",
+      "video": "media/gpt_direct_build_tower.mp4"
+    },
+    "hybrid": {
+      "success": false,
+      "score": 0.0,
+      "control_steps": 1050,
+      "decisions": 82,
+      "actions_by_mode": {
+        "student": 965,
+        "edit": 0,
+        "eef": 85
+      },
+      "audit": "data/gpt-hybrid-build-tower-complete-audit.json",
+      "video": "media/gpt_hybrid_build_tower.mp4"
+    }
   }
 }
