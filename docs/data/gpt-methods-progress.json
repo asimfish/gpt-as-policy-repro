@@ -1,5 +1,5 @@
 {
-  "snapshot": "2026-09-30T17:11:40+00:00",
+  "snapshot": "2026-09-30T17:34:51+00:00",
   "direct": {
     "method": "gpt_only",
     "model": "gpt-6-astra",
@@ -47,12 +47,12 @@
   "scope": "own original-controller runs; incomplete attempts excluded from success rates",
   "active_campaign": {
     "case_id": "classify_objects__standard__g0__l0",
-    "status": "Direct running",
+    "status": "Direct running; all-50 queue active",
     "method_order": [
       "gpt_only",
       "pi05_plus_gpt"
     ],
-    "note": "Fresh case after completed build_tower pair; prior attempts preserved."
+    "note": "Queue service continues every paired frozen case; prior attempts preserved."
   },
   "summary": {
     "own_primary_completed_pairs": 2,
@@ -98,5 +98,16 @@
       "audit": "data/gpt-hybrid-build-tower-complete-audit.json",
       "video": "media/gpt_hybrid_build_tower.mp4"
     }
+  },
+  "campaign_queue": {
+    "planned_pairs": 50,
+    "completed_pairs": 2,
+    "status": "running",
+    "methods_per_pair": [
+      "gpt_only",
+      "pi05_plus_gpt"
+    ],
+    "fresh_attempts_only": true,
+    "capacity_interrupted_attempts_are_retried": true
   }
 }
