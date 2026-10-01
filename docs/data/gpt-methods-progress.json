@@ -1,5 +1,5 @@
 {
-  "snapshot": "2026-10-01T02:35:59+00:00",
+  "snapshot": "2026-10-01T17:29:44+00:00",
   "direct": {
     "method": "gpt_only",
     "model": "gpt-6-astra",
@@ -46,13 +46,13 @@
   },
   "scope": "own original-controller runs; incomplete attempts excluded from success rates",
   "active_campaign": {
-    "case_id": "classify_objects__standard__g0__l0",
-    "status": "Direct running; all-50 queue active",
+    "case_id": "arrange_largest_number__standard__g0__l0",
+    "status": "Direct running",
     "method_order": [
       "gpt_only",
       "pi05_plus_gpt"
     ],
-    "note": "Queue service continues every paired frozen case; prior attempts preserved."
+    "note": "Fresh case after completed random-layout pair; prior attempts preserved."
   },
   "summary": {
     "own_primary_completed_pairs": 2,
@@ -75,34 +75,34 @@
     "complete": false
   },
   "latest_completed_pair": {
-    "case_id": "arrange_largest_number__random__g0__l0",
+    "case_id": "arrange_largest_number__random__g0__l2",
     "task": "arrange_largest_number",
     "direct": {
       "success": false,
       "score": 0.0,
       "control_steps": 1050,
-      "decisions": 221,
-      "audit": "data/gpt-direct-arrange-random-l0-complete-audit.json",
-      "video": "media/gpt_direct_arrange_random_l0.mp4"
+      "decisions": 213,
+      "audit": "data/gpt-direct-arrange-random-l2-complete-audit.json",
+      "video": "media/gpt_direct_arrange_random_l2.mp4"
     },
     "hybrid": {
       "success": false,
-      "score": 0.05,
+      "score": 0.0,
       "control_steps": 1050,
-      "decisions": 147,
+      "decisions": 93,
       "actions_by_mode": {
-        "student": 480,
+        "student": 890,
         "edit": 0,
-        "eef": 570
+        "eef": 160
       },
-      "audit": "data/gpt-hybrid-arrange-random-l0-complete-audit.json",
-      "video": "media/gpt_hybrid_arrange_random_l0.mp4"
+      "audit": "data/gpt-hybrid-arrange-random-l2-complete-audit.json",
+      "video": "media/gpt_hybrid_arrange_random_l2.mp4"
     }
   },
   "campaign_queue": {
     "planned_pairs": 50,
-    "completed_pairs": 3,
-    "complete_methods": 8,
+    "completed_pairs": 4,
+    "complete_methods": 9,
     "status": "running",
     "methods_per_pair": [
       "gpt_only",
