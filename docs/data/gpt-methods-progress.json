@@ -1,5 +1,5 @@
 {
-  "snapshot": "2026-09-30T17:34:51+00:00",
+  "snapshot": "2026-10-01T02:35:59+00:00",
   "direct": {
     "method": "gpt_only",
     "model": "gpt-6-astra",
@@ -75,33 +75,34 @@
     "complete": false
   },
   "latest_completed_pair": {
-    "case_id": "build_tower__standard__g0__l0",
-    "task": "build_tower",
+    "case_id": "arrange_largest_number__random__g0__l0",
+    "task": "arrange_largest_number",
     "direct": {
       "success": false,
       "score": 0.0,
       "control_steps": 1050,
-      "decisions": 215,
-      "audit": "data/gpt-direct-build-tower-complete-audit.json",
-      "video": "media/gpt_direct_build_tower.mp4"
+      "decisions": 221,
+      "audit": "data/gpt-direct-arrange-random-l0-complete-audit.json",
+      "video": "media/gpt_direct_arrange_random_l0.mp4"
     },
     "hybrid": {
       "success": false,
-      "score": 0.0,
+      "score": 0.05,
       "control_steps": 1050,
-      "decisions": 82,
+      "decisions": 147,
       "actions_by_mode": {
-        "student": 965,
+        "student": 480,
         "edit": 0,
-        "eef": 85
+        "eef": 570
       },
-      "audit": "data/gpt-hybrid-build-tower-complete-audit.json",
-      "video": "media/gpt_hybrid_build_tower.mp4"
+      "audit": "data/gpt-hybrid-arrange-random-l0-complete-audit.json",
+      "video": "media/gpt_hybrid_arrange_random_l0.mp4"
     }
   },
   "campaign_queue": {
     "planned_pairs": 50,
-    "completed_pairs": 2,
+    "completed_pairs": 3,
+    "complete_methods": 8,
     "status": "running",
     "methods_per_pair": [
       "gpt_only",
