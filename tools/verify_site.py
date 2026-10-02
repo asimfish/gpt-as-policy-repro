@@ -88,6 +88,14 @@ def verify(root):
             assert audit['native_actions']==attempt['audited_control_steps']<=attempt['control_steps']
         if attempt.get('video'):
             assert hashlib.sha256((root/attempt['video']).read_bytes()).hexdigest()==attempt['video_sha256']
+    bundle=progress.get('infrastructure')
+    if bundle:
+        assert bundle==json.loads((root/'data/infrastructure-bundle.json').read_text())
+        assert bundle['contents_verified'] is True and bundle['full_reproduction_complete'] is False
+        archive=root/bundle['archive']
+        assert archive.stat().st_size==bundle['bytes']
+        assert hashlib.sha256(archive.read_bytes()).hexdigest()==bundle['sha256']
+        assert 'infra-bundle-download' in (root/'scenes.html').read_text()
     assert progress['snapshot'] in (root/'scenes.html').read_text()
     supplementary = progress.get('supplementary', {}).get('robolab')
     if supplementary:

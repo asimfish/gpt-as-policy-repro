@@ -335,6 +335,9 @@ def build(source, out):
                               denominator='complete native successes and failures only; no partial/capacity/infrastructure attempts',
                               comparability='Matched layouts and seeds, not a historical-model-identical replication.',
                               limitation='Recorded joint actions audited; IK and full simulator state not independently recomputed.'))
+    from export_infra_bundle import export_bundle
+    bundle=export_bundle(source,out)
+    if bundle:data['infrastructure']=bundle
     supplementary = robolab_status(source)
     if supplementary:
         data['supplementary'] = dict(robolab=supplementary)

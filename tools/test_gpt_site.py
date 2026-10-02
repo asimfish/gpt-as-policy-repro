@@ -188,7 +188,10 @@ class PublicationBoundaryTests(unittest.TestCase):
     def test_online_proof_uses_committed_data_not_mutable_worktree(self):
         committed = {'scenes.html': b'page', 'gpt-methods.html': b'methods',
                      'assets/gpt.js': b'js', 'assets/gpt.css': b'css',
-                     'data/gpt-methods-progress.json': b'{"summary":{"complete_method_runs":1},"snapshot":"committed"}'}
+                     'data/gpt-methods-progress.json': b'{"summary":{"complete_method_runs":1},"snapshot":"committed"}',
+                     'data/robolab-gpt-prefix-audit.json': b'prefix',
+                     'data/infrastructure-bundle.json': b'{"archive":"downloads/infrastructure_bundle_20261002.tar.gz"}',
+                     'downloads/infrastructure_bundle_20261002.tar.gz': b'verified archive'}
         write(self.repo/'docs/data/gpt-methods-progress.json', dict(summary=dict(complete_method_runs=99), snapshot='uncommitted'))
         class Response:
             status = 200
@@ -196,13 +199,15 @@ class PublicationBoundaryTests(unittest.TestCase):
             def __enter__(self): return self
             def __exit__(self, *args): pass
             def read(self): return self.value
-        with patch.object(publisher, 'git', return_value='a'*40), \
+        with patch.object(publisher, 'git', side_effect=lambda repo,*args,**kw: '\n'.join('docs/'+name for name in ('data/robolab-gpt-prefix-audit.json','data/infrastructure-bundle.json')) if args[0]=='ls-tree' else 'a'*40), \
              patch.object(publisher.subprocess, 'check_output', side_effect=lambda args, **kw: committed[args[-1].split(':docs/',1)[1]]), \
              patch.object(publisher.urllib.request, 'urlopen', side_effect=lambda req, **kw: Response(committed[urlsplit(req.full_url).path.split('/gpt-as-policy-repro/',1)[1]])):
             publisher.verify_online(self.repo, self.repo)
         proof = publisher.json.loads((self.repo/'online_publication.json').read_text())
         self.assertEqual(proof['gpt_summary']['complete_method_runs'], 1)
         self.assertEqual(proof['snapshot'], 'committed')
+        self.assertEqual({row['file'] for row in proof['files']},set(committed))
+        self.assertTrue(all(row['matches'] for row in proof['files']))
 
 
 if __name__ == '__main__':

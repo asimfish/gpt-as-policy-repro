@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-02T10:30:25.495713+00:00",
+  "snapshot": "2026-10-02T10:36:42.460790+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -4065,8 +4065,8 @@
       "supervisor_status": "running",
       "eligible": false,
       "status": "running",
-      "control_steps": 285,
-      "decisions": 19
+      "control_steps": 510,
+      "decisions": 36
     }
   ],
   "interruptions": {
@@ -4086,6 +4086,20 @@
     "denominator": "complete native successes and failures only; no partial/capacity/infrastructure attempts",
     "comparability": "Matched layouts and seeds, not a historical-model-identical replication.",
     "limitation": "Recorded joint actions audited; IK and full simulator state not independently recomputed."
+  },
+  "infrastructure": {
+    "schema": "gpt_policy_infrastructure_bundle.v1",
+    "archive": "downloads/infrastructure_bundle_20261002.tar.gz",
+    "bytes": 817385,
+    "sha256": "d10edbc2474a03b55d5c82309a5252f9e5772251fad404de3c4494f8c7473f19",
+    "files": 660,
+    "created_utc": "2026-10-02T10:33:10.058346+00:00",
+    "active_methods": [
+      "gpt_only",
+      "pi05_plus_gpt"
+    ],
+    "full_reproduction_complete": false,
+    "contents_verified": true
   },
   "supplementary": {
     "robolab": {

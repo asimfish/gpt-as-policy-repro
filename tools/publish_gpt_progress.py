@@ -16,7 +16,7 @@ import urllib.request
 GENERATED = ('docs/index.html', 'docs/scenes.html', 'docs/gpt-methods.html',
              'docs/data/gpt-methods-progress.json', 'docs/data/gpt-media-manifest.json',
              'docs/data/gpt-episodes/', 'docs/data/gpt-attempts/', 'docs/data/robolab-gpt-prefix-audit.json',
-             'docs/media/gpt-episodes/', 'docs/assets/gpt.css', 'docs/assets/gpt.js')
+             'docs/downloads/infrastructure_bundle_', 'docs/data/infrastructure-bundle.json', 'docs/media/gpt-episodes/', 'docs/assets/gpt.css', 'docs/assets/gpt.js')
 
 
 def git(repo, *args, env=None, stdin=None):
@@ -29,6 +29,9 @@ def git(repo, *args, env=None, stdin=None):
 
 
 def owned(path):
+    if path.startswith('docs/downloads/infrastructure_bundle_'):
+        import re
+        return bool(re.fullmatch(r'docs/downloads/infrastructure_bundle_20[0-9]{6}(?:T[0-9]{6}Z)?\.tar\.gz',path))
     return any(path.startswith(p) if p.endswith('/') else path == p for p in GENERATED)
 
 
@@ -62,6 +65,14 @@ def verify_online(repo, source):
     # No deployment-success claim is inferred just from a successful push.
     files = ('scenes.html', 'gpt-methods.html', 'data/gpt-methods-progress.json', 'assets/gpt.js', 'assets/gpt.css')
     commit = git(repo, 'rev-parse', 'HEAD')
+    files=list(files)
+    optional=git(repo,'ls-tree','-r','--name-only',commit,'--','docs/data/robolab-gpt-prefix-audit.json','docs/data/infrastructure-bundle.json').splitlines()
+    for path in optional:
+        if path in ('docs/data/robolab-gpt-prefix-audit.json','docs/data/infrastructure-bundle.json'):files.append(path.removeprefix('docs/'))
+    if 'data/infrastructure-bundle.json' in files:
+        bundle=json.loads(subprocess.check_output(['git','-C',str(repo),'show',commit+':docs/data/infrastructure-bundle.json'],timeout=180))
+        assert owned('docs/'+bundle['archive'])
+        files.append(bundle['archive'])
     rows = []
     committed = {}
     for name in files:
