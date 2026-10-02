@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-02T07:41:53.808073+00:00",
+  "snapshot": "2026-10-02T07:51:22.219116+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -714,7 +714,7 @@
       "task_label": "搭建积木塔",
       "methods": {
         "gpt_only": {
-          "status": "running",
+          "status": "audit_pending",
           "attempts": 1,
           "episode_id": null
         },
@@ -3851,12 +3851,13 @@
       "case_id": "build_tower__standard__g0__l2",
       "method": "gpt_only",
       "started_utc": "2026-10-02T05:57:35.319876+00:00",
-      "finished_utc": null,
-      "supervisor_status": "running",
+      "finished_utc": "2026-10-02T07:48:03.941703+00:00",
+      "supervisor_status": "complete",
       "eligible": false,
-      "status": "running",
-      "control_steps": 1040,
-      "decisions": 208
+      "status": "audit_pending",
+      "control_steps": 1050,
+      "decisions": 210,
+      "reason_class": "missing_or_inconsistent_complete_audit"
     }
   ],
   "interruptions": {
