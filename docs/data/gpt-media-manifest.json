@@ -241,5 +241,14 @@
     "duration_seconds": 40.934,
     "video_sha256": "0a562517776c6c2d51d8c394859ff8fb8e11ec05b9856fe905f5407fe2b88c71",
     "source_video_sha256": "4aa390eb906a0e812cdb066daeb6b91eaa34f5b75edd600134d75a7a9573c2e0"
+  },
+  {
+    "id": "pi05_plus_gpt__classify_objects__standard__g0__l4",
+    "run_id": "queue_20261002T205354Z_pi05_plus_gpt_classify_objects_standard_g0_l4",
+    "video": "media/gpt-episodes/pi05_plus_gpt__classify_objects__standard__g0__l4.mp4",
+    "video_bytes": 2311622,
+    "duration_seconds": 32.4,
+    "video_sha256": "e07d40433a34f8fd5ffdd9e4b849638be319ba6fd01ab52ef4113ef315dd098a",
+    "source_video_sha256": "7d4215cf3a3ff4181587dcff404178dd5d6891bac15cebe6b31539ba0fbf6619"
   }
 ]
