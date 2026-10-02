@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-02T08:10:23.161755+00:00",
+  "snapshot": "2026-10-02T08:20:44.920430+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -752,8 +752,8 @@
           "episode_id": null
         },
         "pi05_plus_gpt": {
-          "status": "pending",
-          "attempts": 0,
+          "status": "running",
+          "attempts": 1,
           "episode_id": null
         }
       },
@@ -3931,6 +3931,18 @@
       "control_steps": 0,
       "decisions": 0,
       "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261002T081014Z_pi05_plus_gpt_build_tower_standard_g0_l3",
+      "case_id": "build_tower__standard__g0__l3",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-02T08:10:15.030368+00:00",
+      "finished_utc": null,
+      "supervisor_status": "running",
+      "eligible": false,
+      "status": "running",
+      "control_steps": 135,
+      "decisions": 9
     }
   ],
   "interruptions": {
