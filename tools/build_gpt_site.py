@@ -63,13 +63,19 @@ def robolab_status(source):
                       'controller_finished', 'infrastructure_interrupted')
     task, seed = active.get('task'), active.get('seed')
     assert not active or (task in tasks and type(seed) is int and seed in range(5))
-    assert not active or active.get('method') == 'pi05_plus_gpt'
+    assert not active or active.get('method') in METHODS
     result = dict(planned_pairs=50, planned_method_runs=100,
                   status=status, task=task, seed=seed, method=active.get('method'),
                   started_utc=active.get('started_utc'),
                   results_eligible=False, action_audit_status='pending',
-                  direct_implementation_status='adapter_pending',
+                  direct_implementation_status='implemented_pending_native_validation',
                   cohort='new fixed-seed cohort; historical raw initial states unavailable')
+    prefix=read(source/'robolab_gpt_latest_prefix_audit.json')
+    result['last_prefix_audit']=None
+    if prefix:
+        assert prefix['verified'] is True and prefix['complete_episode'] is False
+        result['last_prefix_audit']={k:prefix[k] for k in ('method','decisions','native_actions','complete_episode')}
+        result['last_prefix_audit']['evidence']='data/robolab-gpt-prefix-audit.json'
     # The workspace is a private input only. No host paths or raw model logs leave it.
     workspace = active.get('local_workspace')
     progress = read(Path(workspace)/'rollout/progress.json', {}) if workspace else {}
@@ -332,6 +338,12 @@ def build(source, out):
     supplementary = robolab_status(source)
     if supplementary:
         data['supplementary'] = dict(robolab=supplementary)
+        prefix=read(source/'robolab_gpt_latest_prefix_audit.json')
+        if prefix:
+            assert prefix['complete_episode'] is False and prefix['verified'] is True
+            public_prefix={k:prefix[k] for k in PROOF_KEYS if k in prefix}
+            public_prefix.update(method=prefix['method'],terminal=prefix['terminal'])
+            write(out/'data/robolab-gpt-prefix-audit.json',public_prefix)
     # An unchanged poll must not create a new publication merely for a timestamp.
     previous = read(out / 'data/gpt-methods-progress.json', {})
     compare = lambda d: {k: v for k, v in d.items() if k != 'snapshot'}

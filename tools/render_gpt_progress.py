@@ -38,12 +38,15 @@ def robolab_html(data):
     if not value:
         return ''
     states = dict(not_started='待启动', starting='仿真与策略服务启动中',
-                  controller_running='原仓库 Hybrid 控制器运行中',
+                  controller_running='持久控制器运行中',
                   controller_finished='回合收尾，待完整审计',
                   infrastructure_interrupted='基础设施中断，待排查')
     case = '' if value['task'] is None else f' · {E(value["task"])} / seed {value["seed"]}'
+    method = METHODS.get(value['method'],'Hybrid')
     steps = value['observed_control_steps']
-    return f'<div class="panel" id="robolab-methods-progress"><h3>RoboLab · 两方法补充进度</h3><p>冻结计划：50 个案例 × 两种方法，共 100 条轨迹。Hybrid：{states[value["status"]]}{case}；当前尝试已记录 {steps} 个控制步，完整动作审计待完成，暂不计分。</p><p>公开仓库的 RoboLab 入口仅提供 Hybrid，Direct 控制接口正在补齐。采用新的固定种子组；历史原始初态尚未恢复，环境等价性仍有限制。</p></div>'
+    prefix=value.get('last_prefix_audit')
+    evidence='' if not prefix else f'<p>此前 Hybrid 中断尝试已有 {prefix["decisions"]} 轮 / {prefix["native_actions"]} 步通过前缀动作核对；不是完整回合，不计分。<a href="{prefix["evidence"]}">下载前缀审计 ↗</a></p>'
+    return f'<div class="panel" id="robolab-methods-progress"><h3>RoboLab · 两方法补充进度</h3><p>冻结计划：50 个案例 × 两种方法，共 100 条轨迹。当前 {method}：{states[value["status"]]}{case}；当前尝试已记录 {steps} 个控制步，完整动作审计待完成，暂不计分。</p>{evidence}<p>公开仓库的 RoboLab 入口仅提供 Hybrid。自有 Direct EEF 适配器已通过接口测试，正在进行原生回合验证；历史 Direct 源码与 prompt 未提供。采用新的固定种子组，历史原始初态尚未恢复，环境等价性仍有限制。</p></div>'
 
 
 def render(out):
@@ -85,7 +88,7 @@ def render(out):
                                     '<td>RoboLab · GPT Direct / hybrid</td><td>各 50 案例</td><td><span id="robolab-infra-progress"></span></td>')
         if supplement:
             document = re.sub(r'<span id="robolab-infra-progress">.*?</span>',
-                              '<span id="robolab-infra-progress">Hybrid 已启动接入，完整审计待完成；Direct 接口待补齐。<a href="#robolab-methods-progress">本快照详情 ↗</a></span>', document)
+                              '<span id="robolab-infra-progress">两方法接入与原生验证推进中，完整审计待完成。<a href="#robolab-methods-progress">本快照详情 ↗</a></span>', document)
         # Do not leave a historical baseline date beside current primary counts.
         document = re.sub(r'(<p class="updated">)(?:数据快照|主方法快照) · [^<]*(</p>)',
                           rf'\g<1>主方法快照 · {snapshot}\g<2>', document, count=1)

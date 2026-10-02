@@ -15,7 +15,8 @@ import urllib.request
 
 GENERATED = ('docs/index.html', 'docs/scenes.html', 'docs/gpt-methods.html',
              'docs/data/gpt-methods-progress.json', 'docs/data/gpt-media-manifest.json',
-             'docs/data/gpt-episodes/', 'docs/data/gpt-attempts/', 'docs/media/gpt-episodes/', 'docs/assets/gpt.css', 'docs/assets/gpt.js')
+             'docs/data/gpt-episodes/', 'docs/data/gpt-attempts/', 'docs/data/robolab-gpt-prefix-audit.json',
+             'docs/media/gpt-episodes/', 'docs/assets/gpt.css', 'docs/assets/gpt.js')
 
 
 def git(repo, *args, env=None, stdin=None):

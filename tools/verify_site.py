@@ -92,10 +92,14 @@ def verify(root):
     supplementary = progress.get('supplementary', {}).get('robolab')
     if supplementary:
         assert set(supplementary) == {'planned_pairs','planned_method_runs','status','task','seed','method',
-            'started_utc','results_eligible','action_audit_status','direct_implementation_status','cohort','observed_control_steps'}
+            'started_utc','results_eligible','action_audit_status','direct_implementation_status','cohort','observed_control_steps','last_prefix_audit'}
         assert supplementary['results_eligible'] is False
         assert supplementary['planned_pairs']==50 and supplementary['planned_method_runs']==100
         assert 'robolab-methods-progress' in (root/'scenes.html').read_text()
+        if supplementary['last_prefix_audit']:
+            prefix=json.loads((root/supplementary['last_prefix_audit']['evidence']).read_text())
+            assert prefix['verified'] is True and prefix['complete_episode'] is False
+            assert prefix['native_actions']==supplementary['last_prefix_audit']['native_actions']
     assert f"完整可计分主方法回合：{len(episodes)} / 100" in (root/'scenes.html').read_text()
     for name in ('index.html','scenes.html','robolab.html','gpt-methods.html'):
         parser=Links();parser.feed((root/name).read_text())
