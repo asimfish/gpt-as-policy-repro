@@ -90,6 +90,8 @@ def verify_online(repo, source):
                  url='https://asimfish.github.io/gpt-as-policy-repro/scenes.html', status='published_and_http_verified',
                  verified_utc=datetime.now(timezone.utc).isoformat(), files=rows,
                  gpt_summary=data['summary'], snapshot=data['snapshot'])
+    if 'data/robolab-methods-progress.json' in committed:
+        proof['robolab_summary'] = json.loads(committed['data/robolab-methods-progress.json'])['summary']
     destination = source / 'online_publication.json'
     temp = destination.with_suffix('.tmp')
     temp.write_text(json.dumps(proof, ensure_ascii=False, indent=2) + '\n')
