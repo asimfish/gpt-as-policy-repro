@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-02T15:50:42.091051+00:00",
+  "snapshot": "2026-10-02T16:04:14.496213+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -4317,8 +4317,8 @@
       "supervisor_status": "running",
       "eligible": false,
       "status": "running",
-      "control_steps": 555,
-      "decisions": 111
+      "control_steps": 640,
+      "decisions": 128
     }
   ],
   "interruptions": {
@@ -4341,11 +4341,11 @@
   },
   "infrastructure": {
     "schema": "gpt_policy_infrastructure_bundle.v1",
-    "archive": "downloads/infrastructure_bundle_20261002T113016Z.tar.gz",
-    "bytes": 826240,
-    "sha256": "c36d982f26552a35ef41580886c8db958a9169f35b206c432967ce1b1ba07c62",
-    "files": 669,
-    "created_utc": "2026-10-02T11:30:36.132392+00:00",
+    "archive": "downloads/infrastructure_bundle_20261002T160301Z.tar.gz",
+    "bytes": 831482,
+    "sha256": "22982dbc505df11714479ed6be7083797885bf08d88837ef7bd53f57099de7b3",
+    "files": 672,
+    "created_utc": "2026-10-02T16:03:04.329956+00:00",
     "active_methods": [
       "gpt_only",
       "pi05_plus_gpt"
@@ -4357,14 +4357,14 @@
     "robolab": {
       "planned_pairs": 50,
       "planned_method_runs": 100,
-      "status": "controller_finished",
+      "status": "controller_running",
       "task": "BlocksInBinTask",
       "seed": 0,
-      "method": "gpt_only",
-      "started_utc": "2026-10-02T11:11:56.241761+00:00",
-      "results_eligible": false,
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-02T15:53:47.877585+00:00",
+      "results_eligible": true,
       "action_audit_status": "pending",
-      "direct_implementation_status": "implemented_pending_native_validation",
+      "direct_implementation_status": "native_episode_audited",
       "cohort": "new fixed-seed cohort; historical raw initial states unavailable",
       "last_prefix_audit": {
         "method": "pi05_plus_gpt",
@@ -4373,19 +4373,19 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 986,
+      "observed_control_steps": 75,
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
         "completed_pairs": 0,
-        "complete_method_runs": 0,
+        "complete_method_runs": 1,
         "methods": {
           "gpt_only": {
             "all_completed": {
-              "evaluated": 0,
-              "successes": 0,
+              "evaluated": 1,
+              "successes": 1,
               "failures": 0,
-              "success_rate": null
+              "success_rate": 1.0
             },
             "paired_completed": {
               "evaluated": 0,

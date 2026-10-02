@@ -90,8 +90,8 @@
       "seed": 0,
       "methods": {
         "gpt_only": {
-          "status": "audit_pending",
-          "episode_id": null
+          "status": "complete",
+          "episode_id": "robolab_BlocksInBinTask__seed0__gpt_only"
         },
         "pi05_plus_gpt": {
           "status": "pending",
@@ -805,7 +805,40 @@
       "paired_complete": false
     }
   ],
-  "episodes": [],
+  "episodes": [
+    {
+      "id": "robolab_BlocksInBinTask__seed0__gpt_only",
+      "run_id": "direct_20261002T111156Z_BlocksInBinTask_seed0",
+      "case_id": "BlocksInBinTask__seed0",
+      "task": "BlocksInBinTask",
+      "seed": 0,
+      "method": "gpt_only",
+      "success": true,
+      "complete": true,
+      "eligible": true,
+      "control_steps": 986,
+      "decisions": 198,
+      "terminated": true,
+      "truncated": false,
+      "actions_by_mode": {
+        "student": 0,
+        "edit": 0,
+        "eef": 986
+      },
+      "pi05_inference_calls": 0,
+      "initial_state_hash": "9d86ea97e1749e1c4383b0b2cce1adaeaf599cbcdf654aff399776010c08ec4d",
+      "native_horizon": 2250,
+      "audit": "data/robolab-method-episodes/robolab_BlocksInBinTask__seed0__gpt_only-audit.json",
+      "audit_sha256": "3ce37db9d01a8823583413fbdbfb5a9c178251185d915953973e0edb895b77c0",
+      "video": "media/robolab-methods/robolab_BlocksInBinTask__seed0__gpt_only.mp4",
+      "poster": "media/robolab-methods/robolab_BlocksInBinTask__seed0__gpt_only.jpg",
+      "video_sha256": "e7f974e1e2f4b6b7a07457a607d8f1f06f3d3236cb9ebf2776137d9a5b34e7f8",
+      "source_video_sha256": "366b56ba3794a05a828cba5e2ab396070a570c126a902c9b8fea73ea0f1d9ebf",
+      "video_bytes": 4709249,
+      "duration_seconds": 65.8,
+      "evidence": "data/robolab-method-episodes/robolab_BlocksInBinTask__seed0__gpt_only.json"
+    }
+  ],
   "attempts": [
     {
       "run_id": "direct_20261002T094218Z_BlocksInBinTask_seed0",
@@ -848,9 +881,9 @@
       "task": "BlocksInBinTask",
       "seed": 0,
       "method": "gpt_only",
-      "status": "controller_finished",
+      "status": "complete",
       "started_utc": "2026-10-02T11:11:56.241761+00:00",
-      "eligible": false
+      "eligible": true
     },
     {
       "run_id": "hybrid_20261002T090455Z_BlocksInBinTask_seed0",
@@ -860,20 +893,29 @@
       "status": "infrastructure_interrupted",
       "started_utc": "2026-10-02T09:04:55.931106+00:00",
       "eligible": false
+    },
+    {
+      "run_id": "hybrid_20261002T155347Z_BlocksInBinTask_seed0",
+      "task": "BlocksInBinTask",
+      "seed": 0,
+      "method": "pi05_plus_gpt",
+      "status": "controller_running",
+      "started_utc": "2026-10-02T15:53:47.877585+00:00",
+      "eligible": false
     }
   ],
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
     "completed_pairs": 0,
-    "complete_method_runs": 0,
+    "complete_method_runs": 1,
     "methods": {
       "gpt_only": {
         "all_completed": {
-          "evaluated": 0,
-          "successes": 0,
+          "evaluated": 1,
+          "successes": 1,
           "failures": 0,
-          "success_rate": null
+          "success_rate": 1.0
         },
         "paired_completed": {
           "evaluated": 0,
