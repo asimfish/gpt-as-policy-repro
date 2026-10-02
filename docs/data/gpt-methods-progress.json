@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-02T10:00:26.509322+00:00",
+  "snapshot": "2026-10-02T10:10:38.932966+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -4005,8 +4005,8 @@
       "supervisor_status": "running",
       "eligible": false,
       "status": "running",
-      "control_steps": 895,
-      "decisions": 179
+      "control_steps": 970,
+      "decisions": 194
     }
   ],
   "interruptions": {
@@ -4031,7 +4031,7 @@
     "robolab": {
       "planned_pairs": 50,
       "planned_method_runs": 100,
-      "status": "starting",
+      "status": "infrastructure_interrupted",
       "task": "BlocksInBinTask",
       "seed": 0,
       "method": "gpt_only",
