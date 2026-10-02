@@ -1,114 +1,3880 @@
 {
-  "snapshot": "2026-10-01T17:29:44+00:00",
-  "direct": {
-    "method": "gpt_only",
-    "model": "gpt-6-astra",
-    "reasoning_effort": "xhigh",
-    "task": "arrange_largest_number_random",
-    "case_id": "arrange_largest_number__random__g0__l1",
-    "control_steps": 847,
-    "native_horizon": 1050,
-    "decisions": 170,
-    "complete": true,
-    "eligible": true,
-    "success": true,
-    "status": "native_completed",
-    "score": 1.0,
-    "pi05_calls": 0,
-    "video": "media/gpt_direct_layout1_complete.mp4",
-    "video_sha256": "3ea6867c071678481c0dd9dbd128199f6dd3d7585288f617f6006511a4bb050b",
-    "source_video_sha256": "13d505c461c76a8feaea9e5cad1f1347b3b37b26ed410259d0962dbc56da9ed3",
-    "audit": "data/gpt-direct-layout1-complete-audit.json"
-  },
-  "hybrid": {
-    "status": "native_completed",
-    "complete": true,
-    "eligible": true,
-    "success": false,
-    "audited_control_steps": 1050,
-    "audited_decisions": 137,
-    "actions_by_mode": {
-      "student": 610,
-      "edit": 5,
-      "eef": 435
-    },
-    "audit": "data/gpt-hybrid-layout1-complete-audit.json",
-    "initial_state_hash": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
-    "audit_limitation": "Checks recorded correction-to-joint-action mapping, not an independent IK recomputation.",
-    "native_horizon": 1050,
-    "case_id": "arrange_largest_number__random__g0__l1",
-    "interruption_reason": "serverOverloaded",
-    "video": "media/gpt_hybrid_layout1_complete.mp4",
-    "video_sha256": "8a11e225ff48f281cec3d983bf9847a8681825cdbc5df5191c0b6751c3ce725b",
-    "source_video_sha256": "e61004c0b2a7292af2fd149b415fbd9fd5dba6456e296d3bd51a9fab57601169",
-    "duration_seconds": 22.04,
-    "score": 0.25
-  },
-  "scope": "own original-controller runs; incomplete attempts excluded from success rates",
-  "active_campaign": {
-    "case_id": "arrange_largest_number__standard__g0__l0",
-    "status": "Direct running",
-    "method_order": [
-      "gpt_only",
-      "pi05_plus_gpt"
-    ],
-    "note": "Fresh case after completed random-layout pair; prior attempts preserved."
-  },
+  "schema": "gpt_policy_progress.v2",
+  "snapshot": "2026-10-02T06:33:38.234257+00:00",
   "summary": {
-    "own_primary_completed_pairs": 2,
-    "direct_successes": 1,
-    "hybrid_successes": 0,
-    "eligible_pairs": 2,
-    "direct_completed_episodes": 2,
-    "hybrid_completed_episodes": 2,
-    "note": "Two paired frozen cases have complete native terminal evidence; prior interrupted prefixes remain excluded."
+    "planned_pairs": 50,
+    "planned_method_runs": 100,
+    "completed_pairs": 7,
+    "complete_method_runs": 15,
+    "methods": {
+      "gpt_only": {
+        "all_completed": {
+          "evaluated": 8,
+          "successes": 1,
+          "failures": 7,
+          "success_rate": 0.125,
+          "mean_score": 0.125
+        },
+        "paired_completed": {
+          "evaluated": 7,
+          "successes": 1,
+          "failures": 6,
+          "success_rate": 0.14285714285714285,
+          "mean_score": 0.14285714285714285
+        }
+      },
+      "pi05_plus_gpt": {
+        "all_completed": {
+          "evaluated": 7,
+          "successes": 0,
+          "failures": 7,
+          "success_rate": 0.0,
+          "mean_score": 0.06428571428571428
+        },
+        "paired_completed": {
+          "evaluated": 7,
+          "successes": 0,
+          "failures": 7,
+          "success_rate": 0.0,
+          "mean_score": 0.06428571428571428
+        }
+      }
+    }
   },
-  "latest_attempt": {
-    "case_id": "arrange_largest_number__standard__g0__l1",
-    "method": "gpt_only",
-    "status": "capacity_interrupted",
-    "native_actions": 106,
-    "decisions": 22,
-    "audit": "data/gpt-direct-standard-layout1-prefix-audit.json",
-    "reason": "serverOverloaded",
-    "eligible": false,
-    "complete": false
-  },
-  "latest_completed_pair": {
-    "case_id": "arrange_largest_number__random__g0__l2",
-    "task": "arrange_largest_number",
-    "direct": {
+  "task_summary": [
+    {
+      "task": "arrange_largest_number",
+      "task_label": "排列最大数字",
+      "planned_pairs": 5,
+      "planned_method_runs": 10,
+      "completed_pairs": 5,
+      "complete_method_runs": 10,
+      "methods": {
+        "gpt_only": {
+          "all_completed": {
+            "evaluated": 5,
+            "successes": 1,
+            "failures": 4,
+            "success_rate": 0.2,
+            "mean_score": 0.2
+          },
+          "paired_completed": {
+            "evaluated": 5,
+            "successes": 1,
+            "failures": 4,
+            "success_rate": 0.2,
+            "mean_score": 0.2
+          }
+        },
+        "pi05_plus_gpt": {
+          "all_completed": {
+            "evaluated": 5,
+            "successes": 0,
+            "failures": 5,
+            "success_rate": 0.0,
+            "mean_score": 0.09
+          },
+          "paired_completed": {
+            "evaluated": 5,
+            "successes": 0,
+            "failures": 5,
+            "success_rate": 0.0,
+            "mean_score": 0.09
+          }
+        }
+      }
+    },
+    {
+      "task": "build_tower",
+      "task_label": "搭建积木塔",
+      "planned_pairs": 5,
+      "planned_method_runs": 10,
+      "completed_pairs": 2,
+      "complete_method_runs": 4,
+      "methods": {
+        "gpt_only": {
+          "all_completed": {
+            "evaluated": 2,
+            "successes": 0,
+            "failures": 2,
+            "success_rate": 0.0,
+            "mean_score": 0.0
+          },
+          "paired_completed": {
+            "evaluated": 2,
+            "successes": 0,
+            "failures": 2,
+            "success_rate": 0.0,
+            "mean_score": 0.0
+          }
+        },
+        "pi05_plus_gpt": {
+          "all_completed": {
+            "evaluated": 2,
+            "successes": 0,
+            "failures": 2,
+            "success_rate": 0.0,
+            "mean_score": 0.0
+          },
+          "paired_completed": {
+            "evaluated": 2,
+            "successes": 0,
+            "failures": 2,
+            "success_rate": 0.0,
+            "mean_score": 0.0
+          }
+        }
+      }
+    },
+    {
+      "task": "classify_objects",
+      "task_label": "物体分类",
+      "planned_pairs": 5,
+      "planned_method_runs": 10,
+      "completed_pairs": 0,
+      "complete_method_runs": 1,
+      "methods": {
+        "gpt_only": {
+          "all_completed": {
+            "evaluated": 1,
+            "successes": 0,
+            "failures": 1,
+            "success_rate": 0.0,
+            "mean_score": 0.0
+          },
+          "paired_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          }
+        },
+        "pi05_plus_gpt": {
+          "all_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          },
+          "paired_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          }
+        }
+      }
+    },
+    {
+      "task": "classify_objects_by_language",
+      "task_label": "按语言分类",
+      "planned_pairs": 5,
+      "planned_method_runs": 10,
+      "completed_pairs": 0,
+      "complete_method_runs": 0,
+      "methods": {
+        "gpt_only": {
+          "all_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          },
+          "paired_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          }
+        },
+        "pi05_plus_gpt": {
+          "all_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          },
+          "paired_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          }
+        }
+      }
+    },
+    {
+      "task": "fold_clothes",
+      "task_label": "折叠衣物",
+      "planned_pairs": 5,
+      "planned_method_runs": 10,
+      "completed_pairs": 0,
+      "complete_method_runs": 0,
+      "methods": {
+        "gpt_only": {
+          "all_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          },
+          "paired_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          }
+        },
+        "pi05_plus_gpt": {
+          "all_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          },
+          "paired_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          }
+        }
+      }
+    },
+    {
+      "task": "imitate_sorting_sequence",
+      "task_label": "模仿排序序列",
+      "planned_pairs": 5,
+      "planned_method_runs": 10,
+      "completed_pairs": 0,
+      "complete_method_runs": 0,
+      "methods": {
+        "gpt_only": {
+          "all_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          },
+          "paired_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          }
+        },
+        "pi05_plus_gpt": {
+          "all_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          },
+          "paired_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          }
+        }
+      }
+    },
+    {
+      "task": "make_kong",
+      "task_label": "制作 Kong 玩具",
+      "planned_pairs": 5,
+      "planned_method_runs": 10,
+      "completed_pairs": 0,
+      "complete_method_runs": 0,
+      "methods": {
+        "gpt_only": {
+          "all_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          },
+          "paired_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          }
+        },
+        "pi05_plus_gpt": {
+          "all_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          },
+          "paired_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          }
+        }
+      }
+    },
+    {
+      "task": "organize_table",
+      "task_label": "整理桌面",
+      "planned_pairs": 5,
+      "planned_method_runs": 10,
+      "completed_pairs": 0,
+      "complete_method_runs": 0,
+      "methods": {
+        "gpt_only": {
+          "all_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          },
+          "paired_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          }
+        },
+        "pi05_plus_gpt": {
+          "all_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          },
+          "paired_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          }
+        }
+      }
+    },
+    {
+      "task": "pack_objects_into_box",
+      "task_label": "物品装箱",
+      "planned_pairs": 5,
+      "planned_method_runs": 10,
+      "completed_pairs": 0,
+      "complete_method_runs": 0,
+      "methods": {
+        "gpt_only": {
+          "all_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          },
+          "paired_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          }
+        },
+        "pi05_plus_gpt": {
+          "all_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          },
+          "paired_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          }
+        }
+      }
+    },
+    {
+      "task": "put_bottles_into_dustbin",
+      "task_label": "瓶子放入垃圾桶",
+      "planned_pairs": 5,
+      "planned_method_runs": 10,
+      "completed_pairs": 0,
+      "complete_method_runs": 0,
+      "methods": {
+        "gpt_only": {
+          "all_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          },
+          "paired_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          }
+        },
+        "pi05_plus_gpt": {
+          "all_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          },
+          "paired_completed": {
+            "evaluated": 0,
+            "successes": 0,
+            "failures": 0,
+            "success_rate": null,
+            "mean_score": null
+          }
+        }
+      }
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "arrange_largest_number__random__g0__l0",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "arrange_largest_number__random__g0__l0",
+        "task": "arrange_largest_number",
+        "runtime_task": "arrange_largest_number_random",
+        "variant": "random",
+        "eval_seed": 0,
+        "layout_id": 0,
+        "reset_seed": 0,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "c7897e5204ca76bbd7c6cb3c93a794a4e5218c0c17a4312f047930f5e7e822d5"
+      },
+      "task_label": "排列最大数字",
+      "methods": {
+        "gpt_only": {
+          "status": "complete",
+          "attempts": 3,
+          "episode_id": "gpt_only__arrange_largest_number__random__g0__l0"
+        },
+        "pi05_plus_gpt": {
+          "status": "complete",
+          "attempts": 2,
+          "episode_id": "pi05_plus_gpt__arrange_largest_number__random__g0__l0"
+        }
+      },
+      "paired_complete": true,
+      "robot_joint_states_equal": true,
+      "scene_layout_records_equal": true
+    },
+    {
+      "case_id": "arrange_largest_number__random__g0__l1",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "arrange_largest_number__random__g0__l1",
+        "task": "arrange_largest_number",
+        "runtime_task": "arrange_largest_number_random",
+        "variant": "random",
+        "eval_seed": 0,
+        "layout_id": 1,
+        "reset_seed": 1,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "f24eb21ce320f29577217f7cf9fa44e9213435964038ed481bb99e99bb7ae370"
+      },
+      "task_label": "排列最大数字",
+      "methods": {
+        "gpt_only": {
+          "status": "complete",
+          "attempts": 1,
+          "episode_id": "gpt_only__arrange_largest_number__random__g0__l1"
+        },
+        "pi05_plus_gpt": {
+          "status": "complete",
+          "attempts": 1,
+          "episode_id": "pi05_plus_gpt__arrange_largest_number__random__g0__l1"
+        }
+      },
+      "paired_complete": true,
+      "robot_joint_states_equal": true,
+      "scene_layout_records_equal": true
+    },
+    {
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "arrange_largest_number__random__g0__l2",
+        "task": "arrange_largest_number",
+        "runtime_task": "arrange_largest_number_random",
+        "variant": "random",
+        "eval_seed": 0,
+        "layout_id": 2,
+        "reset_seed": 2,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "b3e22d7d04bdcdbbf00dd498b177ff2b2f463a59df568fc38963009ac6f4707a"
+      },
+      "task_label": "排列最大数字",
+      "methods": {
+        "gpt_only": {
+          "status": "complete",
+          "attempts": 2,
+          "episode_id": "gpt_only__arrange_largest_number__random__g0__l2"
+        },
+        "pi05_plus_gpt": {
+          "status": "complete",
+          "attempts": 50,
+          "episode_id": "pi05_plus_gpt__arrange_largest_number__random__g0__l2"
+        }
+      },
+      "paired_complete": true,
+      "robot_joint_states_equal": true,
+      "scene_layout_records_equal": true
+    },
+    {
+      "case_id": "arrange_largest_number__standard__g0__l0",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "arrange_largest_number__standard__g0__l0",
+        "task": "arrange_largest_number",
+        "runtime_task": "arrange_largest_number",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 0,
+        "reset_seed": 0,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "8d45b23010c950c35d5618c8701c6b8203036abaaf20a228db067ec3b1e30617"
+      },
+      "task_label": "排列最大数字",
+      "methods": {
+        "gpt_only": {
+          "status": "complete",
+          "attempts": 2,
+          "episode_id": "gpt_only__arrange_largest_number__standard__g0__l0"
+        },
+        "pi05_plus_gpt": {
+          "status": "complete",
+          "attempts": 1,
+          "episode_id": "pi05_plus_gpt__arrange_largest_number__standard__g0__l0"
+        }
+      },
+      "paired_complete": true,
+      "robot_joint_states_equal": true,
+      "scene_layout_records_equal": true
+    },
+    {
+      "case_id": "arrange_largest_number__standard__g0__l1",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "arrange_largest_number__standard__g0__l1",
+        "task": "arrange_largest_number",
+        "runtime_task": "arrange_largest_number",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 1,
+        "reset_seed": 1,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "46bc75b456018bb220962d0c7d0403b9495aa05c5c0b947a72fbf1a6bd5b08fa"
+      },
+      "task_label": "排列最大数字",
+      "methods": {
+        "gpt_only": {
+          "status": "complete",
+          "attempts": 2,
+          "episode_id": "gpt_only__arrange_largest_number__standard__g0__l1"
+        },
+        "pi05_plus_gpt": {
+          "status": "complete",
+          "attempts": 1,
+          "episode_id": "pi05_plus_gpt__arrange_largest_number__standard__g0__l1"
+        }
+      },
+      "paired_complete": true,
+      "robot_joint_states_equal": true,
+      "scene_layout_records_equal": true
+    },
+    {
+      "case_id": "build_tower__standard__g0__l0",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "build_tower__standard__g0__l0",
+        "task": "build_tower",
+        "runtime_task": "build_tower",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 0,
+        "reset_seed": 0,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "afcf896086392357a8826f84bebe4910dcb7a5f1b84e7be435e16e3d5c3607a4"
+      },
+      "task_label": "搭建积木塔",
+      "methods": {
+        "gpt_only": {
+          "status": "complete",
+          "attempts": 1,
+          "episode_id": "gpt_only__build_tower__standard__g0__l0"
+        },
+        "pi05_plus_gpt": {
+          "status": "complete",
+          "attempts": 1,
+          "episode_id": "pi05_plus_gpt__build_tower__standard__g0__l0"
+        }
+      },
+      "paired_complete": true,
+      "robot_joint_states_equal": true,
+      "scene_layout_records_equal": true
+    },
+    {
+      "case_id": "build_tower__standard__g0__l1",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "build_tower__standard__g0__l1",
+        "task": "build_tower",
+        "runtime_task": "build_tower",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 1,
+        "reset_seed": 1,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "c4c67f1c1c2abe8ae32d2686048e61eb6e4396c79025b30779091f14705db18c"
+      },
+      "task_label": "搭建积木塔",
+      "methods": {
+        "gpt_only": {
+          "status": "complete",
+          "attempts": 1,
+          "episode_id": "gpt_only__build_tower__standard__g0__l1"
+        },
+        "pi05_plus_gpt": {
+          "status": "complete",
+          "attempts": 2,
+          "episode_id": "pi05_plus_gpt__build_tower__standard__g0__l1"
+        }
+      },
+      "paired_complete": true,
+      "robot_joint_states_equal": true,
+      "scene_layout_records_equal": true
+    },
+    {
+      "case_id": "build_tower__standard__g0__l2",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "build_tower__standard__g0__l2",
+        "task": "build_tower",
+        "runtime_task": "build_tower",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 2,
+        "reset_seed": 2,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "8d6bff06259a8ae1dbaf982639c3febabccc9e681a34e18acc368647deced338"
+      },
+      "task_label": "搭建积木塔",
+      "methods": {
+        "gpt_only": {
+          "status": "running",
+          "attempts": 1,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "build_tower__standard__g0__l3",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "build_tower__standard__g0__l3",
+        "task": "build_tower",
+        "runtime_task": "build_tower",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 3,
+        "reset_seed": 3,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "2baf81cf370a985354a616bc965938e8d3d685ebd11c1372e79a22276ac95db2"
+      },
+      "task_label": "搭建积木塔",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "build_tower__standard__g0__l4",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "build_tower__standard__g0__l4",
+        "task": "build_tower",
+        "runtime_task": "build_tower",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 4,
+        "reset_seed": 4,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "bd298ba59bcdc04051c63251c3b0fefda7eb5536a30a220bcd9a8c8dd8fa6b61"
+      },
+      "task_label": "搭建积木塔",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "classify_objects__standard__g0__l0",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "classify_objects__standard__g0__l0",
+        "task": "classify_objects",
+        "runtime_task": "classify_objects",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 0,
+        "reset_seed": 0,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "5ceb9e18e6d8490a7db85dd001462d63265c297ea6fad0d7438364deb2de3ece"
+      },
+      "task_label": "物体分类",
+      "methods": {
+        "gpt_only": {
+          "status": "complete",
+          "attempts": 1,
+          "episode_id": "gpt_only__classify_objects__standard__g0__l0"
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "classify_objects__standard__g0__l1",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "classify_objects__standard__g0__l1",
+        "task": "classify_objects",
+        "runtime_task": "classify_objects",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 1,
+        "reset_seed": 1,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "013d7141ffc9865d7cccf650301f642e6b83b3eb59f78cf5b1d0caf47158e17a"
+      },
+      "task_label": "物体分类",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "classify_objects__standard__g0__l2",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "classify_objects__standard__g0__l2",
+        "task": "classify_objects",
+        "runtime_task": "classify_objects",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 2,
+        "reset_seed": 2,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "6b3a30251bd92a465ffdc82436e14dde84879906eeab3b0e8944865b9eef38f7"
+      },
+      "task_label": "物体分类",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "classify_objects__standard__g0__l3",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "classify_objects__standard__g0__l3",
+        "task": "classify_objects",
+        "runtime_task": "classify_objects",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 3,
+        "reset_seed": 3,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "d11ac5e14ab8fd9c8eee0c1cc827d7827b86b3cec4b97e496ef384470f171ff5"
+      },
+      "task_label": "物体分类",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "classify_objects__standard__g0__l4",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "classify_objects__standard__g0__l4",
+        "task": "classify_objects",
+        "runtime_task": "classify_objects",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 4,
+        "reset_seed": 4,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "49c99299e632b60fde270fb69ce6421739d6e517971654ae5566ef213a754aa3"
+      },
+      "task_label": "物体分类",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "classify_objects_by_language__standard__g0__l0",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "classify_objects_by_language__standard__g0__l0",
+        "task": "classify_objects_by_language",
+        "runtime_task": "classify_objects_by_language",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 0,
+        "reset_seed": 0,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "eb7bc205a8e5f3acad8fdada3bf7a26b8e11fc39d7944f434aa4989356044eb2"
+      },
+      "task_label": "按语言分类",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "classify_objects_by_language__standard__g0__l1",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "classify_objects_by_language__standard__g0__l1",
+        "task": "classify_objects_by_language",
+        "runtime_task": "classify_objects_by_language",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 1,
+        "reset_seed": 1,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "a8dfaa02ceec29c527c2ef4d98beb5862c31cc8ffe01bc978ea63987f696500b"
+      },
+      "task_label": "按语言分类",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "classify_objects_by_language__standard__g0__l2",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "classify_objects_by_language__standard__g0__l2",
+        "task": "classify_objects_by_language",
+        "runtime_task": "classify_objects_by_language",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 2,
+        "reset_seed": 2,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "224acdad14e9087fe1c488537960aa4edc63d19167e2a41fef124e745fc1217c"
+      },
+      "task_label": "按语言分类",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "classify_objects_by_language__standard__g0__l3",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "classify_objects_by_language__standard__g0__l3",
+        "task": "classify_objects_by_language",
+        "runtime_task": "classify_objects_by_language",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 3,
+        "reset_seed": 3,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "c986ce753c840a80d83e706b3ddebd56f2fa7c5dd569eb015febacc9e4ce330c"
+      },
+      "task_label": "按语言分类",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "classify_objects_by_language__standard__g0__l4",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "classify_objects_by_language__standard__g0__l4",
+        "task": "classify_objects_by_language",
+        "runtime_task": "classify_objects_by_language",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 4,
+        "reset_seed": 4,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "14018986e7d50443a084a961998a11e3cc3415cec04447d4bab7d0b3fd872046"
+      },
+      "task_label": "按语言分类",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "fold_clothes__random__g0__l0",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "fold_clothes__random__g0__l0",
+        "task": "fold_clothes",
+        "runtime_task": "fold_clothes_random",
+        "variant": "random",
+        "eval_seed": 0,
+        "layout_id": 0,
+        "reset_seed": 0,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "91ca045a523167ea32cf84551db921862b49d107995586a853c6b9eff1db10f0"
+      },
+      "task_label": "折叠衣物",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "fold_clothes__random__g0__l1",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "fold_clothes__random__g0__l1",
+        "task": "fold_clothes",
+        "runtime_task": "fold_clothes_random",
+        "variant": "random",
+        "eval_seed": 0,
+        "layout_id": 1,
+        "reset_seed": 1,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "d6ccfa56ee655613306344c2c4ad493bc54588ff082d961604da322929089658"
+      },
+      "task_label": "折叠衣物",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "fold_clothes__random__g0__l2",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "fold_clothes__random__g0__l2",
+        "task": "fold_clothes",
+        "runtime_task": "fold_clothes_random",
+        "variant": "random",
+        "eval_seed": 0,
+        "layout_id": 2,
+        "reset_seed": 2,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "cdaab145fbadb25e0b452ae5ece2d384c8fe2201e8decb646db67c08f6723384"
+      },
+      "task_label": "折叠衣物",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "fold_clothes__standard__g0__l0",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "fold_clothes__standard__g0__l0",
+        "task": "fold_clothes",
+        "runtime_task": "fold_clothes",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 0,
+        "reset_seed": 0,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "53de16e28978c71cfaa0620712633a0e07ed9d4bb79cdb63c5a953fa26f1b5ba"
+      },
+      "task_label": "折叠衣物",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "fold_clothes__standard__g0__l1",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "fold_clothes__standard__g0__l1",
+        "task": "fold_clothes",
+        "runtime_task": "fold_clothes",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 1,
+        "reset_seed": 1,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "c43d694499bdb86c1ec3b8c6f2362893e0cfbbb5d00921378fc8c6fec2f79583"
+      },
+      "task_label": "折叠衣物",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "imitate_sorting_sequence__standard__g0__l0",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "imitate_sorting_sequence__standard__g0__l0",
+        "task": "imitate_sorting_sequence",
+        "runtime_task": "imitate_sorting_sequence",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 0,
+        "reset_seed": 0,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "3f49325bc7198569671b2e6a478460d9ea3a323edb38a5da4da389c7a29b2f27"
+      },
+      "task_label": "模仿排序序列",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "imitate_sorting_sequence__standard__g0__l1",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "imitate_sorting_sequence__standard__g0__l1",
+        "task": "imitate_sorting_sequence",
+        "runtime_task": "imitate_sorting_sequence",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 1,
+        "reset_seed": 1,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "a9d1637fa0a50433be91e360bc1d25d7b95ce2b485ec055a04b4b01ed7f15038"
+      },
+      "task_label": "模仿排序序列",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "imitate_sorting_sequence__standard__g0__l2",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "imitate_sorting_sequence__standard__g0__l2",
+        "task": "imitate_sorting_sequence",
+        "runtime_task": "imitate_sorting_sequence",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 2,
+        "reset_seed": 2,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "1b0fc859dbc088411be7eee6ee1985f07384fdce11dd903ae59a5af1d0a3834a"
+      },
+      "task_label": "模仿排序序列",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "imitate_sorting_sequence__standard__g0__l3",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "imitate_sorting_sequence__standard__g0__l3",
+        "task": "imitate_sorting_sequence",
+        "runtime_task": "imitate_sorting_sequence",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 3,
+        "reset_seed": 3,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "6135752298d155b0f2cb591da3199bd98a5349c013196fd5ed2e714e87592171"
+      },
+      "task_label": "模仿排序序列",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "imitate_sorting_sequence__standard__g0__l4",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "imitate_sorting_sequence__standard__g0__l4",
+        "task": "imitate_sorting_sequence",
+        "runtime_task": "imitate_sorting_sequence",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 4,
+        "reset_seed": 4,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "822665f497405d86cd25fb43d18abb2d51a3335dc049339d1bd303d70546f4a1"
+      },
+      "task_label": "模仿排序序列",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "make_kong__standard__g0__l0",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "make_kong__standard__g0__l0",
+        "task": "make_kong",
+        "runtime_task": "make_kong",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 0,
+        "reset_seed": 0,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "4e13e55934b1b3bdab5f3697f7b997080e4f7652fa265f24a6b05cbb761a7228"
+      },
+      "task_label": "制作 Kong 玩具",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "make_kong__standard__g0__l1",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "make_kong__standard__g0__l1",
+        "task": "make_kong",
+        "runtime_task": "make_kong",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 1,
+        "reset_seed": 1,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "e609adadc84a75aa78afc6893abb5fcc12c51d2c1d2f4535cda36544478edf12"
+      },
+      "task_label": "制作 Kong 玩具",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "make_kong__standard__g0__l2",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "make_kong__standard__g0__l2",
+        "task": "make_kong",
+        "runtime_task": "make_kong",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 2,
+        "reset_seed": 2,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "09af2487241bf330bb495da875a0f812630db5de4ed2e8621aeefdf297a625cf"
+      },
+      "task_label": "制作 Kong 玩具",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "make_kong__standard__g0__l3",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "make_kong__standard__g0__l3",
+        "task": "make_kong",
+        "runtime_task": "make_kong",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 3,
+        "reset_seed": 3,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "4e24a48c7ee599fc50c04c174f3d1e49802b1c3cd33f539ec4ff2878021ebc58"
+      },
+      "task_label": "制作 Kong 玩具",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "make_kong__standard__g0__l4",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "make_kong__standard__g0__l4",
+        "task": "make_kong",
+        "runtime_task": "make_kong",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 4,
+        "reset_seed": 4,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "c0cbfe6e11a00ebb75a445d335c92607faa74d844e06a114a0f0c33b2f308ae7"
+      },
+      "task_label": "制作 Kong 玩具",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "organize_table__standard__g0__l0",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "organize_table__standard__g0__l0",
+        "task": "organize_table",
+        "runtime_task": "organize_table",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 0,
+        "reset_seed": 0,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "e55e5cffef73b1967ad26dc0c7c8933ce05e68f329450ae0ac933abf386fa5ba"
+      },
+      "task_label": "整理桌面",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "organize_table__standard__g0__l1",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "organize_table__standard__g0__l1",
+        "task": "organize_table",
+        "runtime_task": "organize_table",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 1,
+        "reset_seed": 1,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "cc44fde5d0d4461123b2ec469d6bb02f47a621ee2f6b2bc81269213b82b2342d"
+      },
+      "task_label": "整理桌面",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "organize_table__standard__g0__l2",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "organize_table__standard__g0__l2",
+        "task": "organize_table",
+        "runtime_task": "organize_table",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 2,
+        "reset_seed": 2,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "2b995768c4dfada0ac4c313fa20e467e645f6ff700e81fe05ef513d61ed0e343"
+      },
+      "task_label": "整理桌面",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "organize_table__standard__g0__l3",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "organize_table__standard__g0__l3",
+        "task": "organize_table",
+        "runtime_task": "organize_table",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 3,
+        "reset_seed": 3,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "12e2492a1f688b800774543f2e9805bc1e4b7a0950c1037f59e7dfe073e43711"
+      },
+      "task_label": "整理桌面",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "organize_table__standard__g0__l4",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "organize_table__standard__g0__l4",
+        "task": "organize_table",
+        "runtime_task": "organize_table",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 4,
+        "reset_seed": 4,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "82764ab142f4748fe581b4993460743ae59ba08c7d6aea3770d4bf61844dc20a"
+      },
+      "task_label": "整理桌面",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "pack_objects_into_box__random__g0__l0",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "pack_objects_into_box__random__g0__l0",
+        "task": "pack_objects_into_box",
+        "runtime_task": "pack_objects_into_box_random",
+        "variant": "random",
+        "eval_seed": 0,
+        "layout_id": 0,
+        "reset_seed": 0,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "f51946657574f10da34a6760128dd5701ec948a3ce638b6168f5ceb6478166c4"
+      },
+      "task_label": "物品装箱",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "pack_objects_into_box__random__g0__l1",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "pack_objects_into_box__random__g0__l1",
+        "task": "pack_objects_into_box",
+        "runtime_task": "pack_objects_into_box_random",
+        "variant": "random",
+        "eval_seed": 0,
+        "layout_id": 1,
+        "reset_seed": 1,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "afd36f32cca5734104502a24c2085bf415315da85aad4b81800d9eb5bf0f019f"
+      },
+      "task_label": "物品装箱",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "pack_objects_into_box__random__g0__l2",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "pack_objects_into_box__random__g0__l2",
+        "task": "pack_objects_into_box",
+        "runtime_task": "pack_objects_into_box_random",
+        "variant": "random",
+        "eval_seed": 0,
+        "layout_id": 2,
+        "reset_seed": 2,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "a55c44608c7ea8ae11c1206d0fdc24e595b8650e7b14a86da9a0a536445c8b01"
+      },
+      "task_label": "物品装箱",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "pack_objects_into_box__standard__g0__l0",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "pack_objects_into_box__standard__g0__l0",
+        "task": "pack_objects_into_box",
+        "runtime_task": "pack_objects_into_box",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 0,
+        "reset_seed": 0,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "d529ff309408abf0270efa996832d3e70dcc9e070c2e90c9824fba60f396d2b2"
+      },
+      "task_label": "物品装箱",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "pack_objects_into_box__standard__g0__l1",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "pack_objects_into_box__standard__g0__l1",
+        "task": "pack_objects_into_box",
+        "runtime_task": "pack_objects_into_box",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 1,
+        "reset_seed": 1,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "4166accd9642b354d1dbe9d9dd4a7b37fbf52f2e749485bc38f66ca554a797a6"
+      },
+      "task_label": "物品装箱",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "put_bottles_into_dustbin__standard__g0__l0",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "put_bottles_into_dustbin__standard__g0__l0",
+        "task": "put_bottles_into_dustbin",
+        "runtime_task": "put_bottles_into_dustbin",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 0,
+        "reset_seed": 0,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "3c2168f460d48dde2d72d55429f1af7e850725b642dfcb8c8d5e31ed2ec25537"
+      },
+      "task_label": "瓶子放入垃圾桶",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "put_bottles_into_dustbin__standard__g0__l1",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "put_bottles_into_dustbin__standard__g0__l1",
+        "task": "put_bottles_into_dustbin",
+        "runtime_task": "put_bottles_into_dustbin",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 1,
+        "reset_seed": 1,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "baf037612b844efdcf660d2f6f6ea064fb288e064a9d2d944c4c75ef0396968b"
+      },
+      "task_label": "瓶子放入垃圾桶",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "put_bottles_into_dustbin__standard__g0__l2",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "put_bottles_into_dustbin__standard__g0__l2",
+        "task": "put_bottles_into_dustbin",
+        "runtime_task": "put_bottles_into_dustbin",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 2,
+        "reset_seed": 2,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "7110decf67ccb6d77942719bf2f79d567c5d1d080413d2c713d3b41e691c11fe"
+      },
+      "task_label": "瓶子放入垃圾桶",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "put_bottles_into_dustbin__standard__g0__l3",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "put_bottles_into_dustbin__standard__g0__l3",
+        "task": "put_bottles_into_dustbin",
+        "runtime_task": "put_bottles_into_dustbin",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 3,
+        "reset_seed": 3,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "659a6fc1bffc692e8e61d07544d1c5145a3c17e8d8e75fc4af543b1a9fba41f5"
+      },
+      "task_label": "瓶子放入垃圾桶",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    },
+    {
+      "case_id": "put_bottles_into_dustbin__standard__g0__l4",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "put_bottles_into_dustbin__standard__g0__l4",
+        "task": "put_bottles_into_dustbin",
+        "runtime_task": "put_bottles_into_dustbin",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 4,
+        "reset_seed": 4,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "79fdd9de9ace106330d3a338380beb9fde98ee37ad87e7ee76a0b08684f2c695"
+      },
+      "task_label": "瓶子放入垃圾桶",
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "attempts": 0,
+          "episode_id": null
+        }
+      },
+      "paired_complete": false,
+      "robot_joint_states_equal": null,
+      "scene_layout_records_equal": null
+    }
+  ],
+  "episodes": [
+    {
+      "id": "gpt_only__arrange_largest_number__random__g0__l0",
+      "case_id": "arrange_largest_number__random__g0__l0",
+      "method": "gpt_only",
+      "method_label": "GPT Direct",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "arrange_largest_number__random__g0__l0",
+        "task": "arrange_largest_number",
+        "runtime_task": "arrange_largest_number_random",
+        "variant": "random",
+        "eval_seed": 0,
+        "layout_id": 0,
+        "reset_seed": 0,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "c7897e5204ca76bbd7c6cb3c93a794a4e5218c0c17a4312f047930f5e7e822d5"
+      },
+      "task_label": "排列最大数字",
+      "run_id": "queue_20260930T192053Z_gpt_only_arrange_largest_number_random_g0_l0",
+      "started_utc": "2026-09-30T19:20:55.204424+00:00",
+      "finished_utc": "2026-09-30T20:44:11.061572+00:00",
+      "supervisor_status": "complete",
+      "complete": true,
+      "eligible": true,
+      "success": false,
+      "score": 0.0,
+      "control_steps": 1050,
+      "decisions": 221,
+      "terminated": false,
+      "truncated": true,
+      "native_horizon": 1050,
+      "model": "gpt-6-astra",
+      "reasoning_effort": "xhigh",
+      "initial_robot_state_sha256": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
+      "scene_layout_record_sha256": "c7897e5204ca76bbd7c6cb3c93a794a4e5218c0c17a4312f047930f5e7e822d5",
+      "actions_by_mode": null,
+      "audit": "data/gpt-episodes/gpt_only__arrange_largest_number__random__g0__l0-audit.json",
+      "evidence": "data/gpt-episodes/gpt_only__arrange_largest_number__random__g0__l0.json",
+      "audit_sha256": "f684f2cfb173902eac72eb4f127111cc12808835d86940b0c05f0d6b34cca641",
+      "video": "media/gpt-episodes/gpt_only__arrange_largest_number__random__g0__l0.mp4",
+      "poster": "media/gpt-episodes/gpt_only__arrange_largest_number__random__g0__l0.jpg",
+      "video_sha256": "d7e57366182efe48ea4e4588cfac964d52d0a93e2acbfc25830a69df732cfc09",
+      "source_video_sha256": "994abe0c8740fcda34bd5c8608869c4d517f8aa5f6d46bc16ae5432a9058e0e6",
+      "video_bytes": 2853195,
+      "duration_seconds": 42.067
+    },
+    {
+      "id": "pi05_plus_gpt__arrange_largest_number__random__g0__l0",
+      "case_id": "arrange_largest_number__random__g0__l0",
+      "method": "pi05_plus_gpt",
+      "method_label": "π0.5 + GPT Hybrid",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "arrange_largest_number__random__g0__l0",
+        "task": "arrange_largest_number",
+        "runtime_task": "arrange_largest_number_random",
+        "variant": "random",
+        "eval_seed": 0,
+        "layout_id": 0,
+        "reset_seed": 0,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "c7897e5204ca76bbd7c6cb3c93a794a4e5218c0c17a4312f047930f5e7e822d5"
+      },
+      "task_label": "排列最大数字",
+      "run_id": "queue_20260930T204815Z_pi05_plus_gpt_arrange_largest_number_random_g0_l0",
+      "started_utc": "2026-09-30T20:48:16.936799+00:00",
+      "finished_utc": "2026-09-30T22:55:29.664360+00:00",
+      "supervisor_status": "complete",
+      "complete": true,
+      "eligible": true,
+      "success": false,
+      "score": 0.05,
+      "control_steps": 1050,
+      "decisions": 147,
+      "terminated": false,
+      "truncated": true,
+      "native_horizon": 1050,
+      "model": "gpt-6-astra",
+      "reasoning_effort": "xhigh",
+      "initial_robot_state_sha256": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
+      "scene_layout_record_sha256": "c7897e5204ca76bbd7c6cb3c93a794a4e5218c0c17a4312f047930f5e7e822d5",
+      "actions_by_mode": {
+        "student": 480,
+        "edit": 0,
+        "eef": 570
+      },
+      "audit": "data/gpt-episodes/pi05_plus_gpt__arrange_largest_number__random__g0__l0-audit.json",
+      "evidence": "data/gpt-episodes/pi05_plus_gpt__arrange_largest_number__random__g0__l0.json",
+      "audit_sha256": "782647441707263ce461aedfce4682353939667616732598eecdb56f0d0ef9dd",
+      "video": "media/gpt-episodes/pi05_plus_gpt__arrange_largest_number__random__g0__l0.mp4",
+      "poster": "media/gpt-episodes/pi05_plus_gpt__arrange_largest_number__random__g0__l0.jpg",
+      "video_sha256": "5dbf13397f28a866cc8d6f733018bf32052bf233cd90be638515481f004d8f9b",
+      "source_video_sha256": "91bba3618a94b52c5efadabcb31a9b4cb8a8751430836310f1ea0c8a1a67d4ea",
+      "video_bytes": 2786315,
+      "duration_seconds": 42.067
+    },
+    {
+      "id": "gpt_only__arrange_largest_number__random__g0__l1",
+      "case_id": "arrange_largest_number__random__g0__l1",
+      "method": "gpt_only",
+      "method_label": "GPT Direct",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "arrange_largest_number__random__g0__l1",
+        "task": "arrange_largest_number",
+        "runtime_task": "arrange_largest_number_random",
+        "variant": "random",
+        "eval_seed": 0,
+        "layout_id": 1,
+        "reset_seed": 1,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "f24eb21ce320f29577217f7cf9fa44e9213435964038ed481bb99e99bb7ae370"
+      },
+      "task_label": "排列最大数字",
+      "run_id": "20260917T141635Z",
+      "started_utc": "2026-09-17T14:16:35.853511+00:00",
+      "finished_utc": "2026-09-17T15:26:18.783216+00:00",
+      "supervisor_status": "complete",
+      "complete": true,
+      "eligible": true,
+      "success": true,
+      "score": 1.0,
+      "control_steps": 847,
+      "decisions": 170,
+      "terminated": true,
+      "truncated": false,
+      "native_horizon": 1050,
+      "model": "gpt-6-astra",
+      "reasoning_effort": "xhigh",
+      "initial_robot_state_sha256": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
+      "scene_layout_record_sha256": "f24eb21ce320f29577217f7cf9fa44e9213435964038ed481bb99e99bb7ae370",
+      "actions_by_mode": null,
+      "audit": "data/gpt-episodes/gpt_only__arrange_largest_number__random__g0__l1-audit.json",
+      "evidence": "data/gpt-episodes/gpt_only__arrange_largest_number__random__g0__l1.json",
+      "audit_sha256": "6ffa7dd91ae4ef5dbc4e87c674b981e9d7caf53b2c244976a3b9e1478f0103b0",
+      "video": "media/gpt-episodes/gpt_only__arrange_largest_number__random__g0__l1.mp4",
+      "poster": "media/gpt-episodes/gpt_only__arrange_largest_number__random__g0__l1.jpg",
+      "video_sha256": "3ea6867c071678481c0dd9dbd128199f6dd3d7585288f617f6006511a4bb050b",
+      "source_video_sha256": "13d505c461c76a8feaea9e5cad1f1347b3b37b26ed410259d0962dbc56da9ed3",
+      "video_bytes": 2464684,
+      "duration_seconds": 33.934
+    },
+    {
+      "id": "pi05_plus_gpt__arrange_largest_number__random__g0__l1",
+      "case_id": "arrange_largest_number__random__g0__l1",
+      "method": "pi05_plus_gpt",
+      "method_label": "π0.5 + GPT Hybrid",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "arrange_largest_number__random__g0__l1",
+        "task": "arrange_largest_number",
+        "runtime_task": "arrange_largest_number_random",
+        "variant": "random",
+        "eval_seed": 0,
+        "layout_id": 1,
+        "reset_seed": 1,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "f24eb21ce320f29577217f7cf9fa44e9213435964038ed481bb99e99bb7ae370"
+      },
+      "task_label": "排列最大数字",
+      "run_id": "20260917T141635Z",
+      "started_utc": "2026-09-17T15:26:18.796302+00:00",
+      "finished_utc": "2026-09-17T16:31:23.921881+00:00",
+      "supervisor_status": "complete",
+      "complete": true,
+      "eligible": true,
+      "success": false,
+      "score": 0.25,
+      "control_steps": 1050,
+      "decisions": 137,
+      "terminated": false,
+      "truncated": true,
+      "native_horizon": 1050,
+      "model": "gpt-6-astra",
+      "reasoning_effort": "xhigh",
+      "initial_robot_state_sha256": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
+      "scene_layout_record_sha256": "f24eb21ce320f29577217f7cf9fa44e9213435964038ed481bb99e99bb7ae370",
+      "actions_by_mode": {
+        "student": 610,
+        "edit": 5,
+        "eef": 435
+      },
+      "audit": "data/gpt-episodes/pi05_plus_gpt__arrange_largest_number__random__g0__l1-audit.json",
+      "evidence": "data/gpt-episodes/pi05_plus_gpt__arrange_largest_number__random__g0__l1.json",
+      "audit_sha256": "7b6076ab2d1f15784dad315de55c57a2b20df6959cddd58b5dd71aa636aa3074",
+      "video": "media/gpt-episodes/pi05_plus_gpt__arrange_largest_number__random__g0__l1.mp4",
+      "poster": "media/gpt-episodes/pi05_plus_gpt__arrange_largest_number__random__g0__l1.jpg",
+      "video_sha256": "8a11e225ff48f281cec3d983bf9847a8681825cdbc5df5191c0b6751c3ce725b",
+      "source_video_sha256": "e61004c0b2a7292af2fd149b415fbd9fd5dba6456e296d3bd51a9fab57601169",
+      "video_bytes": 2723760,
+      "duration_seconds": 42.067
+    },
+    {
+      "id": "gpt_only__arrange_largest_number__random__g0__l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "gpt_only",
+      "method_label": "GPT Direct",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "arrange_largest_number__random__g0__l2",
+        "task": "arrange_largest_number",
+        "runtime_task": "arrange_largest_number_random",
+        "variant": "random",
+        "eval_seed": 0,
+        "layout_id": 2,
+        "reset_seed": 2,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "b3e22d7d04bdcdbbf00dd498b177ff2b2f463a59df568fc38963009ac6f4707a"
+      },
+      "task_label": "排列最大数字",
+      "run_id": "queue_20260930T225944Z_gpt_only_arrange_largest_number_random_g0_l2",
+      "started_utc": "2026-09-30T22:59:45.438903+00:00",
+      "finished_utc": "2026-10-01T01:09:01.662244+00:00",
+      "supervisor_status": "complete",
+      "complete": true,
+      "eligible": true,
       "success": false,
       "score": 0.0,
       "control_steps": 1050,
       "decisions": 213,
-      "audit": "data/gpt-direct-arrange-random-l2-complete-audit.json",
-      "video": "media/gpt_direct_arrange_random_l2.mp4"
+      "terminated": false,
+      "truncated": true,
+      "native_horizon": 1050,
+      "model": "gpt-6-astra",
+      "reasoning_effort": "xhigh",
+      "initial_robot_state_sha256": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
+      "scene_layout_record_sha256": "b3e22d7d04bdcdbbf00dd498b177ff2b2f463a59df568fc38963009ac6f4707a",
+      "actions_by_mode": null,
+      "audit": "data/gpt-episodes/gpt_only__arrange_largest_number__random__g0__l2-audit.json",
+      "evidence": "data/gpt-episodes/gpt_only__arrange_largest_number__random__g0__l2.json",
+      "audit_sha256": "59d4b9583f067957851a7b6cdde3849d914bf02846823713cdfc893d672b89f8",
+      "video": "media/gpt-episodes/gpt_only__arrange_largest_number__random__g0__l2.mp4",
+      "poster": "media/gpt-episodes/gpt_only__arrange_largest_number__random__g0__l2.jpg",
+      "video_sha256": "57cf2a90b17cf102e20bb1a7a1526e512e2caf5298e438166cd92a9e0010af2d",
+      "source_video_sha256": "6982d8f3700fa21630a544b73367062185b716167909190bd99de8a31508919a",
+      "video_bytes": 2628310,
+      "duration_seconds": 42.067
     },
-    "hybrid": {
+    {
+      "id": "pi05_plus_gpt__arrange_largest_number__random__g0__l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "method_label": "π0.5 + GPT Hybrid",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "arrange_largest_number__random__g0__l2",
+        "task": "arrange_largest_number",
+        "runtime_task": "arrange_largest_number_random",
+        "variant": "random",
+        "eval_seed": 0,
+        "layout_id": 2,
+        "reset_seed": 2,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "b3e22d7d04bdcdbbf00dd498b177ff2b2f463a59df568fc38963009ac6f4707a"
+      },
+      "task_label": "排列最大数字",
+      "run_id": "queue_20261001T134145Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "started_utc": "2026-10-01T13:41:48.273166+00:00",
+      "finished_utc": "2026-10-01T15:43:00.208343+00:00",
+      "supervisor_status": "complete",
+      "complete": true,
+      "eligible": true,
       "success": false,
       "score": 0.0,
       "control_steps": 1050,
       "decisions": 93,
+      "terminated": false,
+      "truncated": true,
+      "native_horizon": 1050,
+      "model": "gpt-6-astra",
+      "reasoning_effort": "xhigh",
+      "initial_robot_state_sha256": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
+      "scene_layout_record_sha256": "b3e22d7d04bdcdbbf00dd498b177ff2b2f463a59df568fc38963009ac6f4707a",
       "actions_by_mode": {
         "student": 890,
         "edit": 0,
         "eef": 160
       },
-      "audit": "data/gpt-hybrid-arrange-random-l2-complete-audit.json",
-      "video": "media/gpt_hybrid_arrange_random_l2.mp4"
+      "audit": "data/gpt-episodes/pi05_plus_gpt__arrange_largest_number__random__g0__l2-audit.json",
+      "evidence": "data/gpt-episodes/pi05_plus_gpt__arrange_largest_number__random__g0__l2.json",
+      "audit_sha256": "b98ae697acd241482f77af616cd64dfa1e876315ce72330df93b8038ec5e488b",
+      "video": "media/gpt-episodes/pi05_plus_gpt__arrange_largest_number__random__g0__l2.mp4",
+      "poster": "media/gpt-episodes/pi05_plus_gpt__arrange_largest_number__random__g0__l2.jpg",
+      "video_sha256": "f05290395d8d8bdebcf9d2776c92f17e8114df382a349ff9ca98e98659ee0ced",
+      "source_video_sha256": "66fb749da57bbc6418c3f3bdb140df6999872b1f9a2e968bed1a8d01bc44e705",
+      "video_bytes": 3147440,
+      "duration_seconds": 42.067
+    },
+    {
+      "id": "gpt_only__arrange_largest_number__standard__g0__l0",
+      "case_id": "arrange_largest_number__standard__g0__l0",
+      "method": "gpt_only",
+      "method_label": "GPT Direct",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "arrange_largest_number__standard__g0__l0",
+        "task": "arrange_largest_number",
+        "runtime_task": "arrange_largest_number",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 0,
+        "reset_seed": 0,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "8d45b23010c950c35d5618c8701c6b8203036abaaf20a228db067ec3b1e30617"
+      },
+      "task_label": "排列最大数字",
+      "run_id": "queue_20261001T154329Z_gpt_only_arrange_largest_number_standard_g0_l0",
+      "started_utc": "2026-10-01T15:43:29.519334+00:00",
+      "finished_utc": "2026-10-01T19:32:12.088647+00:00",
+      "supervisor_status": "complete",
+      "complete": true,
+      "eligible": true,
+      "success": false,
+      "score": 0.0,
+      "control_steps": 1050,
+      "decisions": 412,
+      "terminated": false,
+      "truncated": true,
+      "native_horizon": 1050,
+      "model": "gpt-6-astra",
+      "reasoning_effort": "xhigh",
+      "initial_robot_state_sha256": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
+      "scene_layout_record_sha256": "8d45b23010c950c35d5618c8701c6b8203036abaaf20a228db067ec3b1e30617",
+      "actions_by_mode": null,
+      "audit": "data/gpt-episodes/gpt_only__arrange_largest_number__standard__g0__l0-audit.json",
+      "evidence": "data/gpt-episodes/gpt_only__arrange_largest_number__standard__g0__l0.json",
+      "audit_sha256": "249252884c3f0c1787d2081224cecf23dbc49dbf5e5070615a85afb0e8e397f0",
+      "video": "media/gpt-episodes/gpt_only__arrange_largest_number__standard__g0__l0.mp4",
+      "poster": "media/gpt-episodes/gpt_only__arrange_largest_number__standard__g0__l0.jpg",
+      "video_sha256": "4f58621b8a1ae3164e2d35e20b3b2bc1ff06c908bc8c524e27fc4488832c2809",
+      "source_video_sha256": "76dbd8c9219d47ca151653b117a6edadad09ceb2985c3a51a786939021c696fe",
+      "video_bytes": 1752758,
+      "duration_seconds": 42.067
+    },
+    {
+      "id": "pi05_plus_gpt__arrange_largest_number__standard__g0__l0",
+      "case_id": "arrange_largest_number__standard__g0__l0",
+      "method": "pi05_plus_gpt",
+      "method_label": "π0.5 + GPT Hybrid",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "arrange_largest_number__standard__g0__l0",
+        "task": "arrange_largest_number",
+        "runtime_task": "arrange_largest_number",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 0,
+        "reset_seed": 0,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "8d45b23010c950c35d5618c8701c6b8203036abaaf20a228db067ec3b1e30617"
+      },
+      "task_label": "排列最大数字",
+      "run_id": "queue_20261001T193305Z_pi05_plus_gpt_arrange_largest_number_standard_g0_l0",
+      "started_utc": "2026-10-01T19:33:05.468063+00:00",
+      "finished_utc": "2026-10-01T20:52:28.623924+00:00",
+      "supervisor_status": "complete",
+      "complete": true,
+      "eligible": true,
+      "success": false,
+      "score": 0.15,
+      "control_steps": 1050,
+      "decisions": 130,
+      "terminated": false,
+      "truncated": true,
+      "native_horizon": 1050,
+      "model": "gpt-6-astra",
+      "reasoning_effort": "xhigh",
+      "initial_robot_state_sha256": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
+      "scene_layout_record_sha256": "8d45b23010c950c35d5618c8701c6b8203036abaaf20a228db067ec3b1e30617",
+      "actions_by_mode": {
+        "student": 605,
+        "edit": 0,
+        "eef": 445
+      },
+      "audit": "data/gpt-episodes/pi05_plus_gpt__arrange_largest_number__standard__g0__l0-audit.json",
+      "evidence": "data/gpt-episodes/pi05_plus_gpt__arrange_largest_number__standard__g0__l0.json",
+      "audit_sha256": "d260a1af4fa6a19b39f6a50dffe50c9a19fa2ab48b75764d5a15f8d3eff333e6",
+      "video": "media/gpt-episodes/pi05_plus_gpt__arrange_largest_number__standard__g0__l0.mp4",
+      "poster": "media/gpt-episodes/pi05_plus_gpt__arrange_largest_number__standard__g0__l0.jpg",
+      "video_sha256": "e28fb1225bed4bd3bfc4140c4065f5c343c6087be9e970d1b4f33f103a29ab2a",
+      "source_video_sha256": "39067d987ccde172bbea80700c1ff5109bb37a722af64e53abed843c7cc1eaba",
+      "video_bytes": 2450298,
+      "duration_seconds": 42.067
+    },
+    {
+      "id": "gpt_only__arrange_largest_number__standard__g0__l1",
+      "case_id": "arrange_largest_number__standard__g0__l1",
+      "method": "gpt_only",
+      "method_label": "GPT Direct",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "arrange_largest_number__standard__g0__l1",
+        "task": "arrange_largest_number",
+        "runtime_task": "arrange_largest_number",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 1,
+        "reset_seed": 1,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "46bc75b456018bb220962d0c7d0403b9495aa05c5c0b947a72fbf1a6bd5b08fa"
+      },
+      "task_label": "排列最大数字",
+      "run_id": "queue_20261001T205245Z_gpt_only_arrange_largest_number_standard_g0_l1",
+      "started_utc": "2026-10-01T20:52:45.958956+00:00",
+      "finished_utc": "2026-10-01T23:38:24.567989+00:00",
+      "supervisor_status": "complete",
+      "complete": true,
+      "eligible": true,
+      "success": false,
+      "score": 0.0,
+      "control_steps": 1050,
+      "decisions": 318,
+      "terminated": false,
+      "truncated": true,
+      "native_horizon": 1050,
+      "model": "gpt-6-astra",
+      "reasoning_effort": "xhigh",
+      "initial_robot_state_sha256": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
+      "scene_layout_record_sha256": "46bc75b456018bb220962d0c7d0403b9495aa05c5c0b947a72fbf1a6bd5b08fa",
+      "actions_by_mode": null,
+      "audit": "data/gpt-episodes/gpt_only__arrange_largest_number__standard__g0__l1-audit.json",
+      "evidence": "data/gpt-episodes/gpt_only__arrange_largest_number__standard__g0__l1.json",
+      "audit_sha256": "4ad8370b1226be951cf847acc374b3c92f1aa34196f345a5190cc49d1ae1e821",
+      "video": "media/gpt-episodes/gpt_only__arrange_largest_number__standard__g0__l1.mp4",
+      "poster": "media/gpt-episodes/gpt_only__arrange_largest_number__standard__g0__l1.jpg",
+      "video_sha256": "79b574027fbcb189477ff1c9d04ceb485677b8e2633869c806b4f90552767acb",
+      "source_video_sha256": "aa94f5b6125b594131542c0fe13b13c42259122f268321333941d7d474171ef6",
+      "video_bytes": 1834854,
+      "duration_seconds": 42.067
+    },
+    {
+      "id": "pi05_plus_gpt__arrange_largest_number__standard__g0__l1",
+      "case_id": "arrange_largest_number__standard__g0__l1",
+      "method": "pi05_plus_gpt",
+      "method_label": "π0.5 + GPT Hybrid",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "arrange_largest_number__standard__g0__l1",
+        "task": "arrange_largest_number",
+        "runtime_task": "arrange_largest_number",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 1,
+        "reset_seed": 1,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "46bc75b456018bb220962d0c7d0403b9495aa05c5c0b947a72fbf1a6bd5b08fa"
+      },
+      "task_label": "排列最大数字",
+      "run_id": "queue_20261001T233846Z_pi05_plus_gpt_arrange_largest_number_standard_g0_l1",
+      "started_utc": "2026-10-01T23:38:46.187525+00:00",
+      "finished_utc": "2026-10-02T00:36:32.862210+00:00",
+      "supervisor_status": "complete",
+      "complete": true,
+      "eligible": true,
+      "success": false,
+      "score": 0.0,
+      "control_steps": 1050,
+      "decisions": 87,
+      "terminated": false,
+      "truncated": true,
+      "native_horizon": 1050,
+      "model": "gpt-6-astra",
+      "reasoning_effort": "xhigh",
+      "initial_robot_state_sha256": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
+      "scene_layout_record_sha256": "46bc75b456018bb220962d0c7d0403b9495aa05c5c0b947a72fbf1a6bd5b08fa",
+      "actions_by_mode": {
+        "student": 934,
+        "edit": 1,
+        "eef": 115
+      },
+      "audit": "data/gpt-episodes/pi05_plus_gpt__arrange_largest_number__standard__g0__l1-audit.json",
+      "evidence": "data/gpt-episodes/pi05_plus_gpt__arrange_largest_number__standard__g0__l1.json",
+      "audit_sha256": "0195f54b09de11a8920f8f9edb9e2234c595841b7abc2b977fad266c8d277d27",
+      "video": "media/gpt-episodes/pi05_plus_gpt__arrange_largest_number__standard__g0__l1.mp4",
+      "poster": "media/gpt-episodes/pi05_plus_gpt__arrange_largest_number__standard__g0__l1.jpg",
+      "video_sha256": "9adc62cfcbc6c9d754ee67ea85551151db2a53b9002a67f9054c4fbe89c77d6a",
+      "source_video_sha256": "6ebf4d8e2cb547f9c5297c50bb04ee1eb04c6d8814f71c0a98fad7d2286a0642",
+      "video_bytes": 2565498,
+      "duration_seconds": 42.067
+    },
+    {
+      "id": "gpt_only__build_tower__standard__g0__l0",
+      "case_id": "build_tower__standard__g0__l0",
+      "method": "gpt_only",
+      "method_label": "GPT Direct",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "build_tower__standard__g0__l0",
+        "task": "build_tower",
+        "runtime_task": "build_tower",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 0,
+        "reset_seed": 0,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "afcf896086392357a8826f84bebe4910dcb7a5f1b84e7be435e16e3d5c3607a4"
+      },
+      "task_label": "搭建积木塔",
+      "run_id": "20260929T175913Z",
+      "started_utc": "2026-09-29T17:59:13.427549+00:00",
+      "finished_utc": "2026-09-29T21:13:52.833408+00:00",
+      "supervisor_status": "complete",
+      "complete": true,
+      "eligible": true,
+      "success": false,
+      "score": 0.0,
+      "control_steps": 1050,
+      "decisions": 215,
+      "terminated": false,
+      "truncated": true,
+      "native_horizon": 1050,
+      "model": "gpt-6-astra",
+      "reasoning_effort": "xhigh",
+      "initial_robot_state_sha256": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
+      "scene_layout_record_sha256": "afcf896086392357a8826f84bebe4910dcb7a5f1b84e7be435e16e3d5c3607a4",
+      "actions_by_mode": null,
+      "audit": "data/gpt-episodes/gpt_only__build_tower__standard__g0__l0-audit.json",
+      "evidence": "data/gpt-episodes/gpt_only__build_tower__standard__g0__l0.json",
+      "audit_sha256": "65d70d7de0f6a081d2d40de787dffc1cb1dadd947283b4e0c4c70b0ee7f69cf3",
+      "video": "media/gpt-episodes/gpt_only__build_tower__standard__g0__l0.mp4",
+      "poster": "media/gpt-episodes/gpt_only__build_tower__standard__g0__l0.jpg",
+      "video_sha256": "f718e3aa999ed9325791390dbc2421627b2dfa0406d406b728a51cbf5a583882",
+      "source_video_sha256": "ab9f281d4b6db66efb1c11b2e66724d799f8140b29e9cd9547d8ed27a53cc106",
+      "video_bytes": 1770096,
+      "duration_seconds": 42.067
+    },
+    {
+      "id": "pi05_plus_gpt__build_tower__standard__g0__l0",
+      "case_id": "build_tower__standard__g0__l0",
+      "method": "pi05_plus_gpt",
+      "method_label": "π0.5 + GPT Hybrid",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "build_tower__standard__g0__l0",
+        "task": "build_tower",
+        "runtime_task": "build_tower",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 0,
+        "reset_seed": 0,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "afcf896086392357a8826f84bebe4910dcb7a5f1b84e7be435e16e3d5c3607a4"
+      },
+      "task_label": "搭建积木塔",
+      "run_id": "20260929T175913Z",
+      "started_utc": "2026-09-29T21:13:52.848593+00:00",
+      "finished_utc": "2026-09-29T22:29:34.124959+00:00",
+      "supervisor_status": "complete",
+      "complete": true,
+      "eligible": true,
+      "success": false,
+      "score": 0.0,
+      "control_steps": 1050,
+      "decisions": 82,
+      "terminated": false,
+      "truncated": true,
+      "native_horizon": 1050,
+      "model": "gpt-6-astra",
+      "reasoning_effort": "xhigh",
+      "initial_robot_state_sha256": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
+      "scene_layout_record_sha256": "afcf896086392357a8826f84bebe4910dcb7a5f1b84e7be435e16e3d5c3607a4",
+      "actions_by_mode": {
+        "student": 965,
+        "edit": 0,
+        "eef": 85
+      },
+      "audit": "data/gpt-episodes/pi05_plus_gpt__build_tower__standard__g0__l0-audit.json",
+      "evidence": "data/gpt-episodes/pi05_plus_gpt__build_tower__standard__g0__l0.json",
+      "audit_sha256": "5e06a0b251ad7a0f9a5b66956a70846bc7dd0ed1500c0500a48382dd0ddcc14f",
+      "video": "media/gpt-episodes/pi05_plus_gpt__build_tower__standard__g0__l0.mp4",
+      "poster": "media/gpt-episodes/pi05_plus_gpt__build_tower__standard__g0__l0.jpg",
+      "video_sha256": "8dbbc8aee56512b2655ed37a498e9a12b65fe9f9a88b6402356ae1482e244897",
+      "source_video_sha256": "da27278931a56a4b023d898e427caad233dedc1528fd30b7b2f2d7a6face1644",
+      "video_bytes": 2762329,
+      "duration_seconds": 42.067
+    },
+    {
+      "id": "gpt_only__build_tower__standard__g0__l1",
+      "case_id": "build_tower__standard__g0__l1",
+      "method": "gpt_only",
+      "method_label": "GPT Direct",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "build_tower__standard__g0__l1",
+        "task": "build_tower",
+        "runtime_task": "build_tower",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 1,
+        "reset_seed": 1,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "c4c67f1c1c2abe8ae32d2686048e61eb6e4396c79025b30779091f14705db18c"
+      },
+      "task_label": "搭建积木塔",
+      "run_id": "queue_20261002T003654Z_gpt_only_build_tower_standard_g0_l1",
+      "started_utc": "2026-10-02T00:36:54.742168+00:00",
+      "finished_utc": "2026-10-02T03:49:27.131701+00:00",
+      "supervisor_status": "complete",
+      "complete": true,
+      "eligible": true,
+      "success": false,
+      "score": 0.0,
+      "control_steps": 1050,
+      "decisions": 255,
+      "terminated": false,
+      "truncated": true,
+      "native_horizon": 1050,
+      "model": "gpt-6-astra",
+      "reasoning_effort": "xhigh",
+      "initial_robot_state_sha256": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
+      "scene_layout_record_sha256": "c4c67f1c1c2abe8ae32d2686048e61eb6e4396c79025b30779091f14705db18c",
+      "actions_by_mode": null,
+      "audit": "data/gpt-episodes/gpt_only__build_tower__standard__g0__l1-audit.json",
+      "evidence": "data/gpt-episodes/gpt_only__build_tower__standard__g0__l1.json",
+      "audit_sha256": "21bbfaf6d7c3e9d1bc26e81bc2d16f29ad8fab0f7bfe33ef2cd629cc49b292ed",
+      "video": "media/gpt-episodes/gpt_only__build_tower__standard__g0__l1.mp4",
+      "poster": "media/gpt-episodes/gpt_only__build_tower__standard__g0__l1.jpg",
+      "video_sha256": "13dc7936d64c61b9edd8bb15bd45de7ea72f551747017aa7295f8cf95deefe51",
+      "source_video_sha256": "fb63e321e01deee9acd316a38936f5a578dfc056f9449b31d838254aa064ba62",
+      "video_bytes": 2152271,
+      "duration_seconds": 42.067
+    },
+    {
+      "id": "pi05_plus_gpt__build_tower__standard__g0__l1",
+      "case_id": "build_tower__standard__g0__l1",
+      "method": "pi05_plus_gpt",
+      "method_label": "π0.5 + GPT Hybrid",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "build_tower__standard__g0__l1",
+        "task": "build_tower",
+        "runtime_task": "build_tower",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 1,
+        "reset_seed": 1,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "c4c67f1c1c2abe8ae32d2686048e61eb6e4396c79025b30779091f14705db18c"
+      },
+      "task_label": "搭建积木塔",
+      "run_id": "queue_20261002T040921Z_pi05_plus_gpt_build_tower_standard_g0_l1",
+      "started_utc": "2026-10-02T04:09:21.823959+00:00",
+      "finished_utc": "2026-10-02T05:49:29.785571+00:00",
+      "supervisor_status": "complete",
+      "complete": true,
+      "eligible": true,
+      "success": false,
+      "score": 0.0,
+      "control_steps": 1050,
+      "decisions": 107,
+      "terminated": false,
+      "truncated": true,
+      "native_horizon": 1050,
+      "model": "gpt-6-astra",
+      "reasoning_effort": "xhigh",
+      "initial_robot_state_sha256": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
+      "scene_layout_record_sha256": "c4c67f1c1c2abe8ae32d2686048e61eb6e4396c79025b30779091f14705db18c",
+      "actions_by_mode": {
+        "student": 815,
+        "edit": 1,
+        "eef": 234
+      },
+      "audit": "data/gpt-episodes/pi05_plus_gpt__build_tower__standard__g0__l1-audit.json",
+      "evidence": "data/gpt-episodes/pi05_plus_gpt__build_tower__standard__g0__l1.json",
+      "audit_sha256": "dd2093f9053b98dd421e3a276d25fd0a5f20d20fb4f1400694c47aa6c21f12bb",
+      "video": "media/gpt-episodes/pi05_plus_gpt__build_tower__standard__g0__l1.mp4",
+      "poster": "media/gpt-episodes/pi05_plus_gpt__build_tower__standard__g0__l1.jpg",
+      "video_sha256": "4b18d26808aae4289e73436c1f7a7fabaf105b301f3464b8d397a7c9d7f4b59f",
+      "source_video_sha256": "9786cdd8745874393e750f58ea75119228679f8cc2f4be9f28d0483bbafa1572",
+      "video_bytes": 2511694,
+      "duration_seconds": 42.067
+    },
+    {
+      "id": "gpt_only__classify_objects__standard__g0__l0",
+      "case_id": "classify_objects__standard__g0__l0",
+      "method": "gpt_only",
+      "method_label": "GPT Direct",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "classify_objects__standard__g0__l0",
+        "task": "classify_objects",
+        "runtime_task": "classify_objects",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 0,
+        "reset_seed": 0,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "5ceb9e18e6d8490a7db85dd001462d63265c297ea6fad0d7438364deb2de3ece"
+      },
+      "task_label": "物体分类",
+      "run_id": "20260930T171125Z",
+      "started_utc": "2026-09-30T17:11:26.851925+00:00",
+      "finished_utc": "2026-09-30T19:20:41.101231+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "complete": true,
+      "eligible": true,
+      "success": false,
+      "score": 0.0,
+      "control_steps": 1100,
+      "decisions": 353,
+      "terminated": false,
+      "truncated": true,
+      "native_horizon": 1100,
+      "model": "gpt-6-astra",
+      "reasoning_effort": "xhigh",
+      "initial_robot_state_sha256": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
+      "scene_layout_record_sha256": "5ceb9e18e6d8490a7db85dd001462d63265c297ea6fad0d7438364deb2de3ece",
+      "actions_by_mode": null,
+      "audit": "data/gpt-episodes/gpt_only__classify_objects__standard__g0__l0-audit.json",
+      "evidence": "data/gpt-episodes/gpt_only__classify_objects__standard__g0__l0.json",
+      "audit_sha256": "fc88b0f233b4925311beebbc2b85c661f7b239e70cde4566cbf1951bac4de707",
+      "video": "media/gpt-episodes/gpt_only__classify_objects__standard__g0__l0.mp4",
+      "poster": "media/gpt-episodes/gpt_only__classify_objects__standard__g0__l0.jpg",
+      "video_sha256": "20423daa44e5d7d8f20dc02a52c9170b687526664973cc41465cab45736f86d5",
+      "source_video_sha256": "a852d39f03d4a1183f4acb7806bed3903f2234eb33a53e1124733a0079b8adb2",
+      "video_bytes": 1956995,
+      "duration_seconds": 44.067
+    }
+  ],
+  "attempts": [
+    {
+      "run_id": "20260916T091119Z",
+      "case_id": "arrange_largest_number__random__g0__l0",
+      "method": "gpt_only",
+      "started_utc": "2026-09-16T09:11:19.347999+00:00",
+      "finished_utc": "2026-09-16T09:13:15.908389+00:00",
+      "supervisor_status": "interrupted",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "supervisor_interrupted"
+    },
+    {
+      "run_id": "20260916T091342Z",
+      "case_id": "arrange_largest_number__random__g0__l0",
+      "method": "gpt_only",
+      "started_utc": "2026-09-16T09:13:42.415106+00:00",
+      "finished_utc": "2026-09-16T11:02:34.163019+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 940,
+      "decisions": 188,
+      "reason_class": "model_response_timeout",
+      "audit": "data/gpt-attempts/gpt_only__20260916T091342Z-audit.json",
+      "audited_control_steps": 940,
+      "audited_decisions": 188,
+      "video": "media/gpt-episodes/attempt__gpt_only__20260916T091342Z.mp4",
+      "poster": "media/gpt-episodes/attempt__gpt_only__20260916T091342Z.jpg",
+      "video_sha256": "7659db5a652d2971afd41bdea48cc8c66c970c8522249885f707e6bfc9ede92e",
+      "source_video_sha256": "ceb6a2c2fd49fd54c8ac736af495c454b1c51aae19d07c75a8686cbf3247d9bc",
+      "video_bytes": 2795141,
+      "duration_seconds": 37.667
+    },
+    {
+      "run_id": "20260916T154536Z",
+      "case_id": "arrange_largest_number__random__g0__l0",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-09-16T15:45:36.492598+00:00",
+      "finished_utc": "2026-09-16T16:13:58.008096+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 550,
+      "decisions": 60,
+      "reason_class": "model_capacity",
+      "audit": "data/gpt-attempts/pi05_plus_gpt__20260916T154536Z-audit.json",
+      "audited_control_steps": 550,
+      "audited_decisions": 60,
+      "video": "media/gpt-episodes/attempt__pi05_plus_gpt__20260916T154536Z.mp4",
+      "poster": "media/gpt-episodes/attempt__pi05_plus_gpt__20260916T154536Z.jpg",
+      "video_sha256": "1c9584d4cc369bdf658a071ef073cbaa4b606007c2d2423ca021ae331e27c4b0",
+      "source_video_sha256": "b99ed763c7143d1ccbd8c02a5db6920d299c626ce736bee0f7f99ab697a16049",
+      "video_bytes": 1513317,
+      "duration_seconds": 22.067
+    },
+    {
+      "run_id": "20260917T141635Z",
+      "case_id": "arrange_largest_number__random__g0__l1",
+      "method": "gpt_only",
+      "started_utc": "2026-09-17T14:16:35.853511+00:00",
+      "finished_utc": "2026-09-17T15:26:18.783216+00:00",
+      "supervisor_status": "complete",
+      "eligible": true,
+      "status": "complete",
+      "control_steps": 847,
+      "decisions": 170
+    },
+    {
+      "run_id": "20260917T141635Z",
+      "case_id": "arrange_largest_number__random__g0__l1",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-09-17T15:26:18.796302+00:00",
+      "finished_utc": "2026-09-17T16:31:23.921881+00:00",
+      "supervisor_status": "complete",
+      "eligible": true,
+      "status": "complete",
+      "control_steps": 1050,
+      "decisions": 137
+    },
+    {
+      "run_id": "20260929T074158Z",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "gpt_only",
+      "started_utc": "2026-09-29T07:41:58.792439+00:00",
+      "finished_utc": "2026-09-29T07:49:22.796058+00:00",
+      "supervisor_status": "controller_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "model_capacity"
+    },
+    {
+      "run_id": "20260929T112046Z",
+      "case_id": "arrange_largest_number__standard__g0__l0",
+      "method": "gpt_only",
+      "started_utc": "2026-09-29T11:20:47.039093+00:00",
+      "finished_utc": "2026-09-29T11:53:01.108419+00:00",
+      "supervisor_status": "controller_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 70,
+      "decisions": 14,
+      "reason_class": "model_capacity",
+      "audit": "data/gpt-attempts/gpt_only__20260929T112046Z-audit.json",
+      "audited_control_steps": 70,
+      "audited_decisions": 14,
+      "video": "media/gpt-episodes/attempt__gpt_only__20260929T112046Z.mp4",
+      "poster": "media/gpt-episodes/attempt__gpt_only__20260929T112046Z.jpg",
+      "video_sha256": "aee40a2401dae83e16b2881459e9b59ab242b40e74add11ae8f75e4656412930",
+      "source_video_sha256": "ea64fb78835f515ed1b456cbf3ebd3f9c1fe883712c6755a85f601a70cb89ce1",
+      "video_bytes": 201110,
+      "duration_seconds": 2.867
+    },
+    {
+      "run_id": "20260929T130809Z",
+      "case_id": "arrange_largest_number__standard__g0__l1",
+      "method": "gpt_only",
+      "started_utc": "2026-09-29T13:08:09.938971+00:00",
+      "finished_utc": "2026-09-29T13:53:48.896217+00:00",
+      "supervisor_status": "controller_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 106,
+      "decisions": 22,
+      "reason_class": "model_capacity",
+      "audit": "data/gpt-attempts/gpt_only__20260929T130809Z-audit.json",
+      "audited_control_steps": 106,
+      "audited_decisions": 22,
+      "video": "media/gpt-episodes/attempt__gpt_only__20260929T130809Z.mp4",
+      "poster": "media/gpt-episodes/attempt__gpt_only__20260929T130809Z.jpg",
+      "video_sha256": "5d92595005afb3a7291767f6fdb179e017e5f04ed85f46e866dc7c2d28f5bbf1",
+      "source_video_sha256": "810d1caa536784765b17ba108b4a2c2670c4489a6fa7529372cb1f0841ab63e7",
+      "video_bytes": 243117,
+      "duration_seconds": 4.267
+    },
+    {
+      "run_id": "20260929T175913Z",
+      "case_id": "build_tower__standard__g0__l0",
+      "method": "gpt_only",
+      "started_utc": "2026-09-29T17:59:13.427549+00:00",
+      "finished_utc": "2026-09-29T21:13:52.833408+00:00",
+      "supervisor_status": "complete",
+      "eligible": true,
+      "status": "complete",
+      "control_steps": 1050,
+      "decisions": 215
+    },
+    {
+      "run_id": "20260929T175913Z",
+      "case_id": "build_tower__standard__g0__l0",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-09-29T21:13:52.848593+00:00",
+      "finished_utc": "2026-09-29T22:29:34.124959+00:00",
+      "supervisor_status": "complete",
+      "eligible": true,
+      "status": "complete",
+      "control_steps": 1050,
+      "decisions": 82
+    },
+    {
+      "run_id": "20260930T171125Z",
+      "case_id": "classify_objects__standard__g0__l0",
+      "method": "gpt_only",
+      "started_utc": "2026-09-30T17:11:26.851925+00:00",
+      "finished_utc": "2026-09-30T19:20:41.101231+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": true,
+      "status": "complete",
+      "control_steps": 1100,
+      "decisions": 353
+    },
+    {
+      "run_id": "queue_20260930T192053Z_gpt_only_arrange_largest_number_random_g0_l0",
+      "case_id": "arrange_largest_number__random__g0__l0",
+      "method": "gpt_only",
+      "started_utc": "2026-09-30T19:20:55.204424+00:00",
+      "finished_utc": "2026-09-30T20:44:11.061572+00:00",
+      "supervisor_status": "complete",
+      "eligible": true,
+      "status": "complete",
+      "control_steps": 1050,
+      "decisions": 221
+    },
+    {
+      "run_id": "queue_20260930T204815Z_pi05_plus_gpt_arrange_largest_number_random_g0_l0",
+      "case_id": "arrange_largest_number__random__g0__l0",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-09-30T20:48:16.936799+00:00",
+      "finished_utc": "2026-09-30T22:55:29.664360+00:00",
+      "supervisor_status": "complete",
+      "eligible": true,
+      "status": "complete",
+      "control_steps": 1050,
+      "decisions": 147
+    },
+    {
+      "run_id": "queue_20260930T225944Z_gpt_only_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "gpt_only",
+      "started_utc": "2026-09-30T22:59:45.438903+00:00",
+      "finished_utc": "2026-10-01T01:09:01.662244+00:00",
+      "supervisor_status": "complete",
+      "eligible": true,
+      "status": "complete",
+      "control_steps": 1050,
+      "decisions": 213
+    },
+    {
+      "run_id": "queue_20261001T011732Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T01:17:34.766955+00:00",
+      "finished_utc": "2026-10-01T03:52:34.936023+00:00",
+      "supervisor_status": "controller_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 950,
+      "decisions": 115,
+      "reason_class": "model_capacity",
+      "audit": "data/gpt-attempts/pi05_plus_gpt__queue_20261001T011732Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2-audit.json",
+      "audited_control_steps": 950,
+      "audited_decisions": 115,
+      "video": "media/gpt-episodes/attempt__pi05_plus_gpt__queue_20261001T011732Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2.mp4",
+      "poster": "media/gpt-episodes/attempt__pi05_plus_gpt__queue_20261001T011732Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2.jpg",
+      "video_sha256": "84ca210c0eec2d8c18bbe3c670dce606d2683736114a1eb5961aed4a2f10ec26",
+      "source_video_sha256": "14201a59142d3bfc95723d1782dc4965bb5e4d32c397ddaad2c217a54888d04d",
+      "video_bytes": 2654606,
+      "duration_seconds": 38.067
+    },
+    {
+      "run_id": "queue_20261001T035924Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T03:59:25.547253+00:00",
+      "finished_utc": "2026-10-01T04:05:18.615476+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T040726Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T04:07:28.147094+00:00",
+      "finished_utc": "2026-10-01T04:13:13.437290+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T041523Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T04:15:25.506796+00:00",
+      "finished_utc": "2026-10-01T04:21:14.107479+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T042319Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T04:23:21.367164+00:00",
+      "finished_utc": "2026-10-01T04:30:16.988713+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T043227Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T04:32:30.169789+00:00",
+      "finished_utc": "2026-10-01T04:38:21.771123+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T044032Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T04:40:33.920710+00:00",
+      "finished_utc": "2026-10-01T04:46:14.000508+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T044826Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T04:48:29.418264+00:00",
+      "finished_utc": "2026-10-01T04:54:37.675999+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T045655Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T04:56:58.405520+00:00",
+      "finished_utc": "2026-10-01T05:02:39.239043+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T050451Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T05:04:53.186632+00:00",
+      "finished_utc": "2026-10-01T05:10:51.855951+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T051244Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T05:12:45.340386+00:00",
+      "finished_utc": "2026-10-01T05:18:24.508536+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T052024Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T05:20:27.804375+00:00",
+      "finished_utc": "2026-10-01T05:26:37.569751+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T052838Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T05:28:39.064439+00:00",
+      "finished_utc": "2026-10-01T05:34:32.791447+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T053808Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T05:38:10.622798+00:00",
+      "finished_utc": "2026-10-01T05:44:05.707957+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T054603Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T05:46:04.562293+00:00",
+      "finished_utc": "2026-10-01T05:52:33.006152+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T055425Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T05:54:27.472550+00:00",
+      "finished_utc": "2026-10-01T06:00:10.571541+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T060205Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T06:02:07.075065+00:00",
+      "finished_utc": "2026-10-01T06:07:24.985869+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T060934Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T06:09:35.778180+00:00",
+      "finished_utc": "2026-10-01T06:14:50.329137+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T061715Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T06:17:17.705536+00:00",
+      "finished_utc": "2026-10-01T06:22:48.192324+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T062535Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T06:25:38.102169+00:00",
+      "finished_utc": "2026-10-01T06:31:29.789345+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T063426Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T06:34:28.922667+00:00",
+      "finished_utc": "2026-10-01T06:40:25.185989+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T064218Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T06:42:19.515970+00:00",
+      "finished_utc": "2026-10-01T06:48:01.008090+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T064955Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T06:49:56.504937+00:00",
+      "finished_utc": "2026-10-01T06:55:08.566171+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T065721Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T06:57:22.807238+00:00",
+      "finished_utc": "2026-10-01T07:02:50.557971+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T070736Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T07:07:38.419798+00:00",
+      "finished_utc": "2026-10-01T07:14:09.893757+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T072000Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T07:20:03.560014+00:00",
+      "finished_utc": "2026-10-01T07:27:12.201334+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T073124Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T07:31:27.187190+00:00",
+      "finished_utc": "2026-10-01T07:38:31.591976+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T074221Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T07:42:23.179517+00:00",
+      "finished_utc": "2026-10-01T07:47:53.559999+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T074946Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T07:49:48.517452+00:00",
+      "finished_utc": "2026-10-01T07:54:52.995665+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T075721Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T07:57:22.569644+00:00",
+      "finished_utc": "2026-10-01T08:02:23.122733+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T080419Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T08:04:20.978295+00:00",
+      "finished_utc": "2026-10-01T08:09:09.935284+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T081106Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T08:11:07.323811+00:00",
+      "finished_utc": "2026-10-01T08:15:36.960683+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T081745Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T08:17:46.579631+00:00",
+      "finished_utc": "2026-10-01T08:22:27.094016+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T082426Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T08:24:28.461582+00:00",
+      "finished_utc": "2026-10-01T08:28:43.292434+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T083048Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T08:30:49.870308+00:00",
+      "finished_utc": "2026-10-01T08:35:14.422530+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T083711Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T08:37:13.288551+00:00",
+      "finished_utc": "2026-10-01T08:41:51.863245+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T084400Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T08:44:01.610892+00:00",
+      "finished_utc": "2026-10-01T08:48:15.251885+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T085023Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T08:50:23.839828+00:00",
+      "finished_utc": "2026-10-01T09:14:00.921788+00:00",
+      "supervisor_status": "controller_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 95,
+      "decisions": 7,
+      "reason_class": "model_capacity",
+      "audit": "data/gpt-attempts/pi05_plus_gpt__queue_20261001T085023Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2-audit.json",
+      "audited_control_steps": 95,
+      "audited_decisions": 7,
+      "video": "media/gpt-episodes/attempt__pi05_plus_gpt__queue_20261001T085023Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2.mp4",
+      "poster": "media/gpt-episodes/attempt__pi05_plus_gpt__queue_20261001T085023Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2.jpg",
+      "video_sha256": "d053b9ccd0d0e8e9e18a3f2e4e334900318b006d1a2c4bd6c690051a06c10531",
+      "source_video_sha256": "f554fc067f419427e50d167db01c6e63d81336122d4473c0697e7b724fa6b733",
+      "video_bytes": 310582,
+      "duration_seconds": 3.867
+    },
+    {
+      "run_id": "queue_20261001T091858Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T09:18:59.748939+00:00",
+      "finished_utc": "2026-10-01T09:25:01.870915+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T092705Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T09:27:09.059384+00:00",
+      "finished_utc": "2026-10-01T09:33:27.574805+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T093550Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T09:35:51.280519+00:00",
+      "finished_utc": "2026-10-01T09:41:39.977154+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T094548Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T09:45:49.066092+00:00",
+      "finished_utc": "2026-10-01T09:51:26.720459+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T095343Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T09:53:43.396643+00:00",
+      "finished_utc": "2026-10-01T10:00:18.690939+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T100347Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T10:03:51.424260+00:00",
+      "finished_utc": "2026-10-01T10:14:07.944846+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T102142Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T10:21:45.222167+00:00",
+      "finished_utc": "2026-10-01T10:31:23.220956+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T104327Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T10:43:33.925759+00:00",
+      "finished_utc": "2026-10-01T10:57:29.369813+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T111424Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T11:14:34.218324+00:00",
+      "finished_utc": "2026-10-01T11:26:55.790040+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T114457Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T11:44:59.000128+00:00",
+      "finished_utc": "2026-10-01T13:14:09.973123+00:00",
+      "supervisor_status": "controller_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 370,
+      "decisions": 28,
+      "reason_class": "model_capacity",
+      "audit": "data/gpt-attempts/pi05_plus_gpt__queue_20261001T114457Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2-audit.json",
+      "audited_control_steps": 370,
+      "audited_decisions": 28,
+      "video": "media/gpt-episodes/attempt__pi05_plus_gpt__queue_20261001T114457Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2.mp4",
+      "poster": "media/gpt-episodes/attempt__pi05_plus_gpt__queue_20261001T114457Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2.jpg",
+      "video_sha256": "ac0417f460187afb1eb6acb3d668986a3ecf29f1aee181bf08839a769f046814",
+      "source_video_sha256": "de873f5193ca0fdcd06ab75b00abf00cdf4a6a75319263df6be7f1cb4269b83f",
+      "video_bytes": 1191419,
+      "duration_seconds": 14.867
+    },
+    {
+      "run_id": "queue_20261001T132505Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T13:25:06.996839+00:00",
+      "finished_utc": "2026-10-01T13:30:39.843147+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "queue_20261001T134145Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+      "case_id": "arrange_largest_number__random__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T13:41:48.273166+00:00",
+      "finished_utc": "2026-10-01T15:43:00.208343+00:00",
+      "supervisor_status": "complete",
+      "eligible": true,
+      "status": "complete",
+      "control_steps": 1050,
+      "decisions": 93
+    },
+    {
+      "run_id": "queue_20261001T154329Z_gpt_only_arrange_largest_number_standard_g0_l0",
+      "case_id": "arrange_largest_number__standard__g0__l0",
+      "method": "gpt_only",
+      "started_utc": "2026-10-01T15:43:29.519334+00:00",
+      "finished_utc": "2026-10-01T19:32:12.088647+00:00",
+      "supervisor_status": "complete",
+      "eligible": true,
+      "status": "complete",
+      "control_steps": 1050,
+      "decisions": 412
+    },
+    {
+      "run_id": "queue_20261001T193305Z_pi05_plus_gpt_arrange_largest_number_standard_g0_l0",
+      "case_id": "arrange_largest_number__standard__g0__l0",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T19:33:05.468063+00:00",
+      "finished_utc": "2026-10-01T20:52:28.623924+00:00",
+      "supervisor_status": "complete",
+      "eligible": true,
+      "status": "complete",
+      "control_steps": 1050,
+      "decisions": 130
+    },
+    {
+      "run_id": "queue_20261001T205245Z_gpt_only_arrange_largest_number_standard_g0_l1",
+      "case_id": "arrange_largest_number__standard__g0__l1",
+      "method": "gpt_only",
+      "started_utc": "2026-10-01T20:52:45.958956+00:00",
+      "finished_utc": "2026-10-01T23:38:24.567989+00:00",
+      "supervisor_status": "complete",
+      "eligible": true,
+      "status": "complete",
+      "control_steps": 1050,
+      "decisions": 318
+    },
+    {
+      "run_id": "queue_20261001T233846Z_pi05_plus_gpt_arrange_largest_number_standard_g0_l1",
+      "case_id": "arrange_largest_number__standard__g0__l1",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-01T23:38:46.187525+00:00",
+      "finished_utc": "2026-10-02T00:36:32.862210+00:00",
+      "supervisor_status": "complete",
+      "eligible": true,
+      "status": "complete",
+      "control_steps": 1050,
+      "decisions": 87
+    },
+    {
+      "run_id": "queue_20261002T003654Z_gpt_only_build_tower_standard_g0_l1",
+      "case_id": "build_tower__standard__g0__l1",
+      "method": "gpt_only",
+      "started_utc": "2026-10-02T00:36:54.742168+00:00",
+      "finished_utc": "2026-10-02T03:49:27.131701+00:00",
+      "supervisor_status": "complete",
+      "eligible": true,
+      "status": "complete",
+      "control_steps": 1050,
+      "decisions": 255
+    },
+    {
+      "run_id": "queue_20261002T034950Z_pi05_plus_gpt_build_tower_standard_g0_l1",
+      "case_id": "build_tower__standard__g0__l1",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-02T03:49:50.989213+00:00",
+      "finished_utc": "2026-10-02T04:07:44.999644+00:00",
+      "supervisor_status": "controller_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 15,
+      "decisions": 1,
+      "reason_class": "infrastructure",
+      "audit": "data/gpt-attempts/pi05_plus_gpt__queue_20261002T034950Z_pi05_plus_gpt_build_tower_standard_g0_l1-audit.json",
+      "audited_control_steps": 15,
+      "audited_decisions": 1,
+      "video": "media/gpt-episodes/attempt__pi05_plus_gpt__queue_20261002T034950Z_pi05_plus_gpt_build_tower_standard_g0_l1.mp4",
+      "poster": "media/gpt-episodes/attempt__pi05_plus_gpt__queue_20261002T034950Z_pi05_plus_gpt_build_tower_standard_g0_l1.jpg",
+      "video_sha256": "ac3dfcaee3dcfd6637551cc761228abd792b7d11babf6f78b7fb6f0f77fda413",
+      "source_video_sha256": "85d9802847e45ba8aaf91fa223d6c20839ab274ab00503d40e7daea71c20af0f",
+      "video_bytes": 50176,
+      "duration_seconds": 0.667
+    },
+    {
+      "run_id": "queue_20261002T040921Z_pi05_plus_gpt_build_tower_standard_g0_l1",
+      "case_id": "build_tower__standard__g0__l1",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-02T04:09:21.823959+00:00",
+      "finished_utc": "2026-10-02T05:49:29.785571+00:00",
+      "supervisor_status": "complete",
+      "eligible": true,
+      "status": "complete",
+      "control_steps": 1050,
+      "decisions": 107
+    },
+    {
+      "run_id": "queue_20261002T055733Z_gpt_only_build_tower_standard_g0_l2",
+      "case_id": "build_tower__standard__g0__l2",
+      "method": "gpt_only",
+      "started_utc": "2026-10-02T05:57:35.319876+00:00",
+      "finished_utc": null,
+      "supervisor_status": "running",
+      "eligible": false,
+      "status": "running",
+      "control_steps": 505,
+      "decisions": 101
+    }
+  ],
+  "interruptions": {
+    "count": 56,
+    "by_reason": {
+      "supervisor_interrupted": 1,
+      "model_response_timeout": 1,
+      "model_capacity": 7,
+      "infrastructure": 47
     }
   },
-  "campaign_queue": {
-    "planned_pairs": 50,
-    "completed_pairs": 4,
-    "complete_methods": 9,
-    "status": "running",
-    "methods_per_pair": [
-      "gpt_only",
-      "pi05_plus_gpt"
-    ],
-    "fresh_attempts_only": true,
-    "capacity_interrupted_attempts_are_retried": true
+  "protocol": {
+    "model": "gpt-6-astra",
+    "reasoning_effort": "xhigh",
+    "controller": "original_persistent_codex",
+    "selection": "first audited native complete attempt per frozen case and method",
+    "denominator": "complete native successes and failures only; no partial/capacity/infrastructure attempts",
+    "comparability": "Matched layouts and seeds, not a historical-model-identical replication.",
+    "limitation": "Recorded joint actions audited; IK and full simulator state not independently recomputed."
   }
 }

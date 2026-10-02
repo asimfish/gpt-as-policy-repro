@@ -39,29 +39,57 @@ def verify(root):
         assert row['control_steps']==audit['native_actions'] and row['predictions']==audit['queries']
         assert row['success']==audit['terminal']['success'] and (row['terminated'] or row['truncated'])
         assert hashlib.sha256((root/row['video']).read_bytes()).hexdigest()==row['video_sha256']
-    gpt=json.loads((root/'data/gpt-methods-progress.json').read_text())['direct']
-    proof=json.loads((root/gpt['audit']).read_text())
-    assert proof['verified'] and proof['complete_episode']==gpt['complete'] and gpt['eligible']==gpt['complete']
-    assert proof['native_actions']==gpt['control_steps']
-    assert proof['terminal']['success']==gpt['success'] if gpt['complete'] else True
-    assert hashlib.sha256((root/gpt['video']).read_bytes()).hexdigest()==gpt['video_sha256']
-    if gpt['complete']:
-        assert proof['complete_episode'] and proof['terminal']['success']==gpt['success']
-    assert (root/gpt['audit']).is_file()
     progress=json.loads((root/'data/gpt-methods-progress.json').read_text())
-    hybrid=progress['hybrid'];audit=json.loads((root/hybrid['audit']).read_text())
-    assert audit['verified'] and audit['complete_episode']==hybrid['complete']
-    assert hybrid['eligible']==hybrid['complete'] and hybrid['success'] is not None
-    assert audit['native_actions']==hybrid['audited_control_steps']
-    assert audit['decisions']==hybrid['audited_decisions']
-    assert audit['actions_by_mode']==hybrid['actions_by_mode']
-    assert sum(hybrid['actions_by_mode'].values())==hybrid['audited_control_steps']
-    assert audit['initial_state_hash']==proof['initial_state_hash']
-    if hybrid.get('video'):
-        assert hashlib.sha256((root/hybrid['video']).read_bytes()).hexdigest()==hybrid['video_sha256']
-    if hybrid['complete']:
-        assert audit['terminal']['success']==hybrid['success'] and audit['native_score']==hybrid['score']
+    assert progress['schema']=='gpt_policy_progress.v2'
+    from build_gpt_site import summarize, task_summaries, METHODS
+    episodes=progress['episodes']; cases=progress['cases']
+    assert len(cases)==50 and len({c['case_id'] for c in cases})==50
+    assert len({(e['case_id'],e['method']) for e in episodes})==len(episodes)
+    assert summarize(cases,episodes)==progress['summary']
+    assert task_summaries(cases,episodes)==progress['task_summary']
+    lookup={e['id']:e for e in episodes}
+    manifest=json.loads((root/'data/gpt-media-manifest.json').read_text())
+    assert {r['id'] for r in manifest}==set(lookup)
+    for episode in episodes:
+        assert episode['complete'] is True and episode['eligible'] is True
+        assert type(episode['success']) is bool
+        assert episode['terminated'] is True or episode['truncated'] is True
+        evidence=json.loads((root/episode['evidence']).read_text())
+        assert evidence==episode
+        audit=json.loads((root/episode['audit']).read_text())
+        assert audit['verified'] is True and audit['complete_episode'] is True
+        assert audit['scope']=='complete_native_episode'
+        assert (audit['model'],audit['reasoning_effort'])==('gpt-6-astra','xhigh')
+        assert audit['native_actions']==episode['control_steps'] and audit['decisions']==episode['decisions']
+        assert audit['terminal']=={k:episode[k] for k in ('success','terminated','truncated')}
+        assert audit['native_score']==episode['score']
+        assert audit['result_identity']==episode['identity']
+        if episode['method']=='gpt_only':assert audit['pi05_inference_calls']==0
+        else:assert audit['actions_by_mode']==episode['actions_by_mode'] and sum(audit['actions_by_mode'].values())==episode['control_steps']
+        for path,sha in ((episode['video'],episode['video_sha256']),(episode['audit'],episode['audit_sha256'])):
+            assert hashlib.sha256((root/path).read_bytes()).hexdigest()==sha
+        item=next(r for r in manifest if r['id']==episode['id'])
+        assert all(item[k]==episode[k] for k in item)
+    for case in cases:
+        for method in METHODS:
+            value=case['methods'][method]
+            if value['episode_id']:
+                episode=lookup[value['episode_id']]
+                assert (episode['case_id'],episode['method'])==(case['case_id'],method)
+                assert episode['identity']==case['identity'] and value['status']=='complete'
+            else:assert value['status']!='complete'
+        assert case['paired_complete']==all(case['methods'][m]['episode_id'] for m in METHODS)
+    assert sum(a['status']=='interrupted' for a in progress['attempts'])==progress['interruptions']['count']
+    for attempt in progress['attempts']:
+        if attempt['status'] in ('interrupted','audit_pending'):assert attempt['eligible'] is False
+        if attempt.get('audit'):
+            audit=json.loads((root/attempt['audit']).read_text())
+            assert audit['verified'] is True and audit['complete_episode'] is False
+            assert audit['native_actions']==attempt['audited_control_steps']<=attempt['control_steps']
+        if attempt.get('video'):
+            assert hashlib.sha256((root/attempt['video']).read_bytes()).hexdigest()==attempt['video_sha256']
     assert progress['snapshot'] in (root/'scenes.html').read_text()
+    assert f"完整可计分主方法回合：{len(episodes)} / 100" in (root/'scenes.html').read_text()
     for name in ('index.html','scenes.html','robolab.html','gpt-methods.html'):
         parser=Links();parser.feed((root/name).read_text())
         for link in parser.links:
@@ -70,7 +98,7 @@ def verify(root):
             if url.path:
                 target=(root/unquote(url.path)).resolve();target.relative_to(root.resolve());assert target.is_file(),link
             elif url.fragment:assert unquote(url.fragment) in parser.ids,link
-        assert parser.videos==((2 + (2 if progress.get('latest_completed_pair') else 0)) if name=='gpt-methods.html' else len(robolab) if name=='robolab.html' else sum(bool(r['video']) for r in rows))
+        assert parser.videos==(len(episodes) if name=='gpt-methods.html' else len(robolab) if name=='robolab.html' else sum(bool(r['video']) for r in rows))
     assert (root/'index.html').read_bytes()==(root/'scenes.html').read_bytes()
     forbidden=(r'/home/',r'/mnt/',r'github_pat_[A-Za-z0-9_]+',r'ghp_[A-Za-z0-9]+',r'127\.0\.0\.1',r'BEGIN .*PRIVATE KEY',r'Bearer\s+[A-Za-z0-9_.-]{12,}')
     for path in root.rglob('*'):
@@ -80,7 +108,7 @@ def verify(root):
         if path.suffix in ('.html','.js','.css','.json','.md'):
             text=path.read_text()
             for pattern in forbidden:assert not re.search(pattern,text),(path,pattern)
-    print(json.dumps(dict(status='passed',cases=len(rows),videos=sum(bool(r['video']) for r in rows),robolab_complete_episodes=len(robolab),eligible_prefix15=len(valid),successes=summary['successes'],checks=['internal_links','unique_ids','score_denominators','public_export_fields','file_sizes','lazy_video']),indent=2))
+    print(json.dumps(dict(status='passed',cases=len(rows),videos=sum(bool(r['video']) for r in rows),robolab_complete_episodes=len(robolab),eligible_prefix15=len(valid),successes=summary['successes'],gpt_complete_method_runs=len(episodes),gpt_completed_pairs=progress['summary']['completed_pairs'],checks=['internal_links','unique_ids','score_denominators','public_export_fields','file_sizes','lazy_video']),indent=2))
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('root',type=Path);a=p.parse_args();verify(a.root)

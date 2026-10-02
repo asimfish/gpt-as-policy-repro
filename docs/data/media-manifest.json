@@ -414,6 +414,60 @@
     "bytes": 3307817
   },
   {
+    "path": "media/pi05_chunk50__fold_clothes__random__g0__l0.mp4",
+    "source_sha256": "cbef576ce4f65bd1c3ada3b36afa4f593dcf1e991b4dafc4ee4ef9dc3a885bc3",
+    "sha256": "fe2368a3ed4efa634e268751e773ec98dc1299dc88132b9b245d0be24a84d193",
+    "bytes": 1498667
+  },
+  {
+    "path": "media/pi05_chunk50__fold_clothes__random__g0__l1.mp4",
+    "source_sha256": "176a1ef38e6ab917f0b6aa0766777b95fc9a287bf46cb7f585ded26edc9efca3",
+    "sha256": "29a3f4ad15c2f3fcf37ef60900b48f709b0533f259ef85f8b6fa802160485e15",
+    "bytes": 1498223
+  },
+  {
+    "path": "media/pi05_chunk50__fold_clothes__random__g0__l2.mp4",
+    "source_sha256": "c5327fad720b69860a428cf2519d75e5985c5d9df9086de3468809fd7aae33da",
+    "sha256": "d477363d5e0577e28ddbce479b6c7cb351f1d4c454505396c23a5d6cb3151ec4",
+    "bytes": 1934364
+  },
+  {
+    "path": "media/pi05_chunk50__fold_clothes__standard__g0__l0.mp4",
+    "source_sha256": "4e91d855076287992436945270db1c226f12ae52bc59032d2d97db0e94376346",
+    "sha256": "8b51b021c0c4349d29bf05612e0e2fb80bd5004a9722695aa035031c335139b5",
+    "bytes": 857576
+  },
+  {
+    "path": "media/pi05_chunk50__fold_clothes__standard__g0__l1.mp4",
+    "source_sha256": "6355724156dc89343961a8d0f2591c03ae2c4f9040197d59f2611b0e233099f4",
+    "sha256": "94fcb95ac67d4a5b4f80031e5583bff947d4bc8ad43481f65bedeba11ab7c6b5",
+    "bytes": 981391
+  },
+  {
+    "path": "media/pi05_chunk50__imitate_sorting_sequence__standard__g0__l0.mp4",
+    "source_sha256": "d91b1816bd30f210ebbd2e0401d9db1a5be0a06e98c691a03759d22c48224e58",
+    "sha256": "d1be148eadb4d5c3dbcaf8564bf14056a56f48e103a9acfb6f0e548d8f55c1a6",
+    "bytes": 1160118
+  },
+  {
+    "path": "media/pi05_chunk50__imitate_sorting_sequence__standard__g0__l1.mp4",
+    "source_sha256": "32b1aaae8b205f6e8cb3e877c52c2f088553ef290537bf1b13b51869971fc486",
+    "sha256": "aad0d974b9e25fc2228bfbfe2558b96ec5c90c8284dead7d2ce3315506324e2f",
+    "bytes": 2978096
+  },
+  {
+    "path": "media/pi05_chunk50__imitate_sorting_sequence__standard__g0__l2.mp4",
+    "source_sha256": "758cf4ae09465b1dfb14a8a1734a2b62d3eff03aac2d554358d5f31a877dbd3c",
+    "sha256": "1fa37f608e947bc0e6263973a0c57cfb130d3cebb96c82f81b956850e65efecc",
+    "bytes": 1798464
+  },
+  {
+    "path": "media/pi05_chunk50__imitate_sorting_sequence__standard__g0__l3.mp4",
+    "source_sha256": "6176b2fb8e309928cefecd035e06819862de07aee060d625e37c731dae5c9f27",
+    "sha256": "fb5cc2a8d4b495293f13385cd32c01bf5ad90f3de0695a2bcddef5564e7d1fe4",
+    "bytes": 836606
+  },
+  {
     "path": "media/pi05_chunk50__put_bottles_into_dustbin__standard__g0__l0.mp4",
     "source_sha256": "64bf5c3838ef721cb00c9cebbef7bacd29c99cd38ad6f7f9a732e082c16f3460",
     "sha256": "21a48f69c4a65ddd2ce4f7fb4e5de57053779e064c4b6c4f3ac7246e52beff77",

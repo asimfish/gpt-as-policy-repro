@@ -34,17 +34,38 @@ python3 -m http.server 8080 --directory docs
 
 ## 主方法状态更新
 
-主板在历史基线前展示 GPT Direct / π0.5 + GPT 的独立状态。状态源为
-`docs/data/gpt-methods-progress.json`，每次更新必须附 UTC 快照时间与已通过的动作审计。
-运行中、网络中断和可计分原生终止分别标记；前缀审计不代表完整任务成功。
-公开字段不得包含凭据、服务器路径或模型内部推理日志。
+主板先展示 GPT Direct / π0.5 + GPT 的自有实验。`gpt-methods.html` 包含全部完整回放、
+50 案例配对矩阵、筛选和中断记录；状态源为 `docs/data/gpt-methods-progress.json`（v2）。
+生成器读取冻结面板和各运行的完整动作审计，核对原生终止、分数、步数、模型身份、
+SHA256 与布局身份。选取每案例每方法首次通过完整审计的原生终止回合，完整失败也保留。
+此前完整回合若尚未审计，不允许跳过它挑选后续高分回合。
 
-更新审核后的状态 JSON 和对应审计文件，再运行：
+运行以下命令重新生成、验证并预览主方法报告，无须手工编辑快照：
 
 ```bash
-python3 tools/render_gpt_progress.py docs
+python3 tools/build_gpt_site.py --source /path/to/experiment --out docs
+python3 -m unittest discover -s tools -p test_gpt_site.py
 python3 tools/verify_site.py docs
 ```
 
-完整构建也会调用上述渲染器，保留主方法状态区。当前渲染器针对未完成回合，
-完整回合到来时须先核对原生终止与完整动作审计，再更新计分逻辑。
+仅原生有效完整回合且通过完整动作审计才计分；网络、容量、基础设施中断另列。
+全部已完成样本与已配齐子集使用独立分母。任务覆盖不均衡时不能外推全量成功率。
+模型为 GPT-6 Astra / xhigh，不能当作历史模型配置相同的复现。审计核对已执行关节动作，
+不独立重算 IK；关节状态哈希也不代表完整物理初态。公开字段不含凭据、机器路径或模型内部推理。
+完整构建会调用同一主方法生成器；`data/gpt-media-manifest.json` 保存每条完整视频的来源与发布 SHA256。
+
+## 定时发布
+
+`tools/publish_gpt_progress.py` 每次执行一个发布周期：加锁、检查分支和工作区、生成报告、
+验证全部站点、提交限定的生成文件、普通 push，最后核对在线页面和 JSON 的精确字节。
+在线部署尚未完成时记为 `pushed_pending_online_verification`，下一个周期继续核对。
+它通过已存在的 Git credential helper 读取授权，不保存凭据，不修改实验控制器或队列。
+
+```bash
+python3 tools/publish_gpt_progress.py --source /path/to/experiment \
+  --credentials-repo /path/to/authorized-git-repository
+```
+
+生产环境使用 `gpt-policy-report-progress.timer` 每 10 分钟运行一次。编辑生成页面前先停止
+该 timer；存在源码修改、用户暂存内容或意外文件时发布周期会退出，保留工作区。
+发布回退使用普通 revert，不改写已发布历史。

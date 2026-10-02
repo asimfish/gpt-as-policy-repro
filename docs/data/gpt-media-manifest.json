@@ -1,0 +1,137 @@
+[
+  {
+    "id": "gpt_only__arrange_largest_number__random__g0__l0",
+    "run_id": "queue_20260930T192053Z_gpt_only_arrange_largest_number_random_g0_l0",
+    "video": "media/gpt-episodes/gpt_only__arrange_largest_number__random__g0__l0.mp4",
+    "video_bytes": 2853195,
+    "duration_seconds": 42.067,
+    "video_sha256": "d7e57366182efe48ea4e4588cfac964d52d0a93e2acbfc25830a69df732cfc09",
+    "source_video_sha256": "994abe0c8740fcda34bd5c8608869c4d517f8aa5f6d46bc16ae5432a9058e0e6"
+  },
+  {
+    "id": "pi05_plus_gpt__arrange_largest_number__random__g0__l0",
+    "run_id": "queue_20260930T204815Z_pi05_plus_gpt_arrange_largest_number_random_g0_l0",
+    "video": "media/gpt-episodes/pi05_plus_gpt__arrange_largest_number__random__g0__l0.mp4",
+    "video_bytes": 2786315,
+    "duration_seconds": 42.067,
+    "video_sha256": "5dbf13397f28a866cc8d6f733018bf32052bf233cd90be638515481f004d8f9b",
+    "source_video_sha256": "91bba3618a94b52c5efadabcb31a9b4cb8a8751430836310f1ea0c8a1a67d4ea"
+  },
+  {
+    "id": "gpt_only__arrange_largest_number__random__g0__l1",
+    "run_id": "20260917T141635Z",
+    "video": "media/gpt-episodes/gpt_only__arrange_largest_number__random__g0__l1.mp4",
+    "video_bytes": 2464684,
+    "duration_seconds": 33.934,
+    "video_sha256": "3ea6867c071678481c0dd9dbd128199f6dd3d7585288f617f6006511a4bb050b",
+    "source_video_sha256": "13d505c461c76a8feaea9e5cad1f1347b3b37b26ed410259d0962dbc56da9ed3"
+  },
+  {
+    "id": "pi05_plus_gpt__arrange_largest_number__random__g0__l1",
+    "run_id": "20260917T141635Z",
+    "video": "media/gpt-episodes/pi05_plus_gpt__arrange_largest_number__random__g0__l1.mp4",
+    "video_bytes": 2723760,
+    "duration_seconds": 42.067,
+    "video_sha256": "8a11e225ff48f281cec3d983bf9847a8681825cdbc5df5191c0b6751c3ce725b",
+    "source_video_sha256": "e61004c0b2a7292af2fd149b415fbd9fd5dba6456e296d3bd51a9fab57601169"
+  },
+  {
+    "id": "gpt_only__arrange_largest_number__random__g0__l2",
+    "run_id": "queue_20260930T225944Z_gpt_only_arrange_largest_number_random_g0_l2",
+    "video": "media/gpt-episodes/gpt_only__arrange_largest_number__random__g0__l2.mp4",
+    "video_bytes": 2628310,
+    "duration_seconds": 42.067,
+    "video_sha256": "57cf2a90b17cf102e20bb1a7a1526e512e2caf5298e438166cd92a9e0010af2d",
+    "source_video_sha256": "6982d8f3700fa21630a544b73367062185b716167909190bd99de8a31508919a"
+  },
+  {
+    "id": "pi05_plus_gpt__arrange_largest_number__random__g0__l2",
+    "run_id": "queue_20261001T134145Z_pi05_plus_gpt_arrange_largest_number_random_g0_l2",
+    "video": "media/gpt-episodes/pi05_plus_gpt__arrange_largest_number__random__g0__l2.mp4",
+    "video_bytes": 3147440,
+    "duration_seconds": 42.067,
+    "video_sha256": "f05290395d8d8bdebcf9d2776c92f17e8114df382a349ff9ca98e98659ee0ced",
+    "source_video_sha256": "66fb749da57bbc6418c3f3bdb140df6999872b1f9a2e968bed1a8d01bc44e705"
+  },
+  {
+    "id": "gpt_only__arrange_largest_number__standard__g0__l0",
+    "run_id": "queue_20261001T154329Z_gpt_only_arrange_largest_number_standard_g0_l0",
+    "video": "media/gpt-episodes/gpt_only__arrange_largest_number__standard__g0__l0.mp4",
+    "video_bytes": 1752758,
+    "duration_seconds": 42.067,
+    "video_sha256": "4f58621b8a1ae3164e2d35e20b3b2bc1ff06c908bc8c524e27fc4488832c2809",
+    "source_video_sha256": "76dbd8c9219d47ca151653b117a6edadad09ceb2985c3a51a786939021c696fe"
+  },
+  {
+    "id": "pi05_plus_gpt__arrange_largest_number__standard__g0__l0",
+    "run_id": "queue_20261001T193305Z_pi05_plus_gpt_arrange_largest_number_standard_g0_l0",
+    "video": "media/gpt-episodes/pi05_plus_gpt__arrange_largest_number__standard__g0__l0.mp4",
+    "video_bytes": 2450298,
+    "duration_seconds": 42.067,
+    "video_sha256": "e28fb1225bed4bd3bfc4140c4065f5c343c6087be9e970d1b4f33f103a29ab2a",
+    "source_video_sha256": "39067d987ccde172bbea80700c1ff5109bb37a722af64e53abed843c7cc1eaba"
+  },
+  {
+    "id": "gpt_only__arrange_largest_number__standard__g0__l1",
+    "run_id": "queue_20261001T205245Z_gpt_only_arrange_largest_number_standard_g0_l1",
+    "video": "media/gpt-episodes/gpt_only__arrange_largest_number__standard__g0__l1.mp4",
+    "video_bytes": 1834854,
+    "duration_seconds": 42.067,
+    "video_sha256": "79b574027fbcb189477ff1c9d04ceb485677b8e2633869c806b4f90552767acb",
+    "source_video_sha256": "aa94f5b6125b594131542c0fe13b13c42259122f268321333941d7d474171ef6"
+  },
+  {
+    "id": "pi05_plus_gpt__arrange_largest_number__standard__g0__l1",
+    "run_id": "queue_20261001T233846Z_pi05_plus_gpt_arrange_largest_number_standard_g0_l1",
+    "video": "media/gpt-episodes/pi05_plus_gpt__arrange_largest_number__standard__g0__l1.mp4",
+    "video_bytes": 2565498,
+    "duration_seconds": 42.067,
+    "video_sha256": "9adc62cfcbc6c9d754ee67ea85551151db2a53b9002a67f9054c4fbe89c77d6a",
+    "source_video_sha256": "6ebf4d8e2cb547f9c5297c50bb04ee1eb04c6d8814f71c0a98fad7d2286a0642"
+  },
+  {
+    "id": "gpt_only__build_tower__standard__g0__l0",
+    "run_id": "20260929T175913Z",
+    "video": "media/gpt-episodes/gpt_only__build_tower__standard__g0__l0.mp4",
+    "video_bytes": 1770096,
+    "duration_seconds": 42.067,
+    "video_sha256": "f718e3aa999ed9325791390dbc2421627b2dfa0406d406b728a51cbf5a583882",
+    "source_video_sha256": "ab9f281d4b6db66efb1c11b2e66724d799f8140b29e9cd9547d8ed27a53cc106"
+  },
+  {
+    "id": "pi05_plus_gpt__build_tower__standard__g0__l0",
+    "run_id": "20260929T175913Z",
+    "video": "media/gpt-episodes/pi05_plus_gpt__build_tower__standard__g0__l0.mp4",
+    "video_bytes": 2762329,
+    "duration_seconds": 42.067,
+    "video_sha256": "8dbbc8aee56512b2655ed37a498e9a12b65fe9f9a88b6402356ae1482e244897",
+    "source_video_sha256": "da27278931a56a4b023d898e427caad233dedc1528fd30b7b2f2d7a6face1644"
+  },
+  {
+    "id": "gpt_only__build_tower__standard__g0__l1",
+    "run_id": "queue_20261002T003654Z_gpt_only_build_tower_standard_g0_l1",
+    "video": "media/gpt-episodes/gpt_only__build_tower__standard__g0__l1.mp4",
+    "video_bytes": 2152271,
+    "duration_seconds": 42.067,
+    "video_sha256": "13dc7936d64c61b9edd8bb15bd45de7ea72f551747017aa7295f8cf95deefe51",
+    "source_video_sha256": "fb63e321e01deee9acd316a38936f5a578dfc056f9449b31d838254aa064ba62"
+  },
+  {
+    "id": "pi05_plus_gpt__build_tower__standard__g0__l1",
+    "run_id": "queue_20261002T040921Z_pi05_plus_gpt_build_tower_standard_g0_l1",
+    "video": "media/gpt-episodes/pi05_plus_gpt__build_tower__standard__g0__l1.mp4",
+    "video_bytes": 2511694,
+    "duration_seconds": 42.067,
+    "video_sha256": "4b18d26808aae4289e73436c1f7a7fabaf105b301f3464b8d397a7c9d7f4b59f",
+    "source_video_sha256": "9786cdd8745874393e750f58ea75119228679f8cc2f4be9f28d0483bbafa1572"
+  },
+  {
+    "id": "gpt_only__classify_objects__standard__g0__l0",
+    "run_id": "20260930T171125Z",
+    "video": "media/gpt-episodes/gpt_only__classify_objects__standard__g0__l0.mp4",
+    "video_bytes": 1956995,
+    "duration_seconds": 44.067,
+    "video_sha256": "20423daa44e5d7d8f20dc02a52c9170b687526664973cc41465cab45736f86d5",
+    "source_video_sha256": "a852d39f03d4a1183f4acb7806bed3903f2234eb33a53e1124733a0079b8adb2"
+  }
+]
