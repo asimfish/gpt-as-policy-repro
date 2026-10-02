@@ -1,10 +1,10 @@
 {
   "schema": "gpt_policy_infrastructure_bundle.v1",
-  "archive": "downloads/infrastructure_bundle_20261002T161101Z.tar.gz",
-  "bytes": 831957,
-  "sha256": "ed2e0afbbf08a7285c8556fef3a0cd261b116d08bf4fd9af7544d459f10a4670",
+  "archive": "downloads/infrastructure_bundle_20261002T162207Z.tar.gz",
+  "bytes": 832106,
+  "sha256": "b512aeb1d67ee49ff44ba9e8a4829f838279d0430dde1f2df924e5277b959fc0",
   "files": 672,
-  "created_utc": "2026-10-02T16:11:03.723380+00:00",
+  "created_utc": "2026-10-02T16:22:09.916515+00:00",
   "active_methods": [
     "gpt_only",
     "pi05_plus_gpt"
