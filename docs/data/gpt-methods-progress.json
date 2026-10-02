@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-02T09:13:32.805434+00:00",
+  "snapshot": "2026-10-02T09:20:38.045747+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -4005,8 +4005,8 @@
       "supervisor_status": "running",
       "eligible": false,
       "status": "running",
-      "control_steps": 485,
-      "decisions": 97
+      "control_steps": 550,
+      "decisions": 110
     }
   ],
   "interruptions": {
@@ -4040,7 +4040,7 @@
       "action_audit_status": "pending",
       "direct_implementation_status": "adapter_pending",
       "cohort": "new fixed-seed cohort; historical raw initial states unavailable",
-      "observed_control_steps": 45
+      "observed_control_steps": 105
     }
   }
 }
