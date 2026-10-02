@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-02T17:40:33.526197+00:00",
+  "snapshot": "2026-10-02T17:50:17.938281+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -4441,8 +4441,8 @@
       "supervisor_status": "running",
       "eligible": false,
       "status": "running",
-      "control_steps": 190,
-      "decisions": 38
+      "control_steps": 355,
+      "decisions": 71
     }
   ],
   "interruptions": {
@@ -4481,11 +4481,11 @@
     "robolab": {
       "planned_pairs": 50,
       "planned_method_runs": 100,
-      "status": "controller_running",
+      "status": "starting",
       "task": "BlocksInBinTask",
-      "seed": 0,
+      "seed": 1,
       "method": "pi05_plus_gpt",
-      "started_utc": "2026-10-02T15:53:47.877585+00:00",
+      "started_utc": "2026-10-02T17:48:23.198858+00:00",
       "results_eligible": true,
       "action_audit_status": "pending",
       "direct_implementation_status": "native_episode_audited",
@@ -4497,12 +4497,12 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 1269,
+      "observed_control_steps": 0,
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
-        "completed_pairs": 0,
-        "complete_method_runs": 1,
+        "completed_pairs": 1,
+        "complete_method_runs": 2,
         "methods": {
           "gpt_only": {
             "all_completed": {
@@ -4512,24 +4512,24 @@
               "success_rate": 1.0
             },
             "paired_completed": {
-              "evaluated": 0,
-              "successes": 0,
+              "evaluated": 1,
+              "successes": 1,
               "failures": 0,
-              "success_rate": null
+              "success_rate": 1.0
             }
           },
           "pi05_plus_gpt": {
             "all_completed": {
-              "evaluated": 0,
-              "successes": 0,
+              "evaluated": 1,
+              "successes": 1,
               "failures": 0,
-              "success_rate": null
+              "success_rate": 1.0
             },
             "paired_completed": {
-              "evaluated": 0,
-              "successes": 0,
+              "evaluated": 1,
+              "successes": 1,
               "failures": 0,
-              "success_rate": null
+              "success_rate": 1.0
             }
           }
         }
