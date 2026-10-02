@@ -58,7 +58,8 @@ python3 tools/verify_site.py docs
 
 `tools/publish_gpt_progress.py` 每次执行一个发布周期：加锁、检查分支和工作区、生成报告、
 验证全部站点、提交限定的生成文件、普通 push，最后核对在线页面和 JSON 的精确字节。
-在线部署尚未完成时记为 `pushed_pending_online_verification`，下一个周期继续核对。
+在线部署尚未完成时使用新查询参数重试，最多等待 5 分钟；核对提交中的页面、JSON、JS 和 CSS
+精确字节。超时记为 `pushed_pending_online_verification` 并保留独立待验记录，不覆盖已验证证据。
 它通过已存在的 Git credential helper 读取授权，不保存凭据，不修改实验控制器或队列。
 
 ```bash

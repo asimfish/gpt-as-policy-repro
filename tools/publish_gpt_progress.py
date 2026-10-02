@@ -9,6 +9,7 @@ import os
 from pathlib import Path
 import subprocess
 import sys
+import time
 import urllib.request
 
 
@@ -58,18 +59,22 @@ def credential_env(credentials_repo):
 def verify_online(repo, source):
     # Exact published JSON bytes tie the hosted report to this committed pulse.
     # No deployment-success claim is inferred just from a successful push.
-    files = ('scenes.html', 'gpt-methods.html', 'data/gpt-methods-progress.json')
+    files = ('scenes.html', 'gpt-methods.html', 'data/gpt-methods-progress.json', 'assets/gpt.js', 'assets/gpt.css')
+    commit = git(repo, 'rev-parse', 'HEAD')
     rows = []
+    committed = {}
     for name in files:
-        expected = (repo / 'docs' / name).read_bytes()
-        url = 'https://asimfish.github.io/gpt-as-policy-repro/' + name + '?check=' + git(repo, 'rev-parse', 'HEAD')
-        with urllib.request.urlopen(url, timeout=30) as response:
+        expected = subprocess.check_output(['git', '-C', str(repo), 'show', commit + ':docs/' + name], timeout=180)
+        committed[name] = expected
+        url = 'https://asimfish.github.io/gpt-as-policy-repro/' + name + '?commit=' + commit + '&verify=' + str(time.time_ns())
+        request = urllib.request.Request(url, headers={'Cache-Control': 'no-cache'})
+        with urllib.request.urlopen(request, timeout=30) as response:
             actual, status = response.read(), response.status
         rows.append(dict(file=name, http_status=status, local_sha256=hashlib.sha256(expected).hexdigest(),
                          online_sha256=hashlib.sha256(actual).hexdigest(), matches=actual == expected))
     assert all(r['matches'] and r['http_status'] == 200 for r in rows), 'Pages has not deployed this pulse yet'
-    data = json.loads((repo / 'docs/data/gpt-methods-progress.json').read_text())
-    proof = dict(repository='asimfish/gpt-as-policy-repro', branch='docs/site', commit=git(repo, 'rev-parse', 'HEAD'),
+    data = json.loads(committed['data/gpt-methods-progress.json'])
+    proof = dict(repository='asimfish/gpt-as-policy-repro', branch='docs/site', commit=commit,
                  url='https://asimfish.github.io/gpt-as-policy-repro/scenes.html', status='published_and_http_verified',
                  verified_utc=datetime.now(timezone.utc).isoformat(), files=rows,
                  gpt_summary=data['summary'], snapshot=data['snapshot'])
@@ -81,6 +86,30 @@ def verify_online(repo, source):
     evidence.mkdir(parents=True, exist_ok=True)
     (evidence / 'http.json').write_text(json.dumps(proof, ensure_ascii=False, indent=2) + '\n')
     print(json.dumps(dict(status=proof['status'], commit=proof['commit'], summary=data['summary'])), flush=True)
+
+
+def await_online(repo, source, timeout=300, interval=15):
+    """Finish delayed Pages verification before a later pulse changes the snapshot."""
+    deadline = time.monotonic() + timeout
+    attempts = 0
+    while True:
+        attempts += 1
+        try:
+            verify_online(repo, source)
+            (source / 'online_publication_pending.json').unlink(missing_ok=True)
+            return True
+        except (AssertionError, OSError):
+            pending = dict(status='pushed_pending_online_verification', commit=git(repo, 'rev-parse', 'HEAD'),
+                           attempts=attempts, observed_utc=datetime.now(timezone.utc).isoformat())
+            path = source / 'online_publication_pending.json'
+            temp = path.with_suffix('.tmp')
+            temp.write_text(json.dumps(pending, indent=2)+'\n')
+            temp.replace(path)
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                print(json.dumps(pending), flush=True)
+                return False
+            time.sleep(min(interval, remaining))
 
 
 def publish(repo, source, credentials_repo, proxy):
@@ -101,10 +130,7 @@ def publish(repo, source, credentials_repo, proxy):
     env = credential_env(credentials_repo)
     # Also retries an earlier successful commit whose push failed. Normal push only.
     git(repo, '-c', 'http.proxy=' + proxy, 'push', 'origin', 'docs/site', env=env)
-    try:
-        verify_online(repo, source)
-    except (AssertionError, OSError):
-        print(json.dumps(dict(status='pushed_pending_online_verification', commit=git(repo, 'rev-parse', 'HEAD'))), flush=True)
+    await_online(repo, source)
 
 
 if __name__ == '__main__':

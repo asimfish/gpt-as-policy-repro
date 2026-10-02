@@ -3,6 +3,10 @@ from pathlib import Path
 import subprocess
 import tempfile
 import unittest
+from unittest.mock import patch
+from urllib.parse import urlsplit
+
+import publish_gpt_progress as publisher
 
 from build_gpt_site import check_episode, digest, first_complete, summarize, write
 from render_gpt_progress import render
@@ -139,6 +143,44 @@ class PublicationBoundaryTests(unittest.TestCase):
         (self.repo / 'docs').mkdir()
         (self.repo / 'docs/gpt-methods.html').write_text('generated output\n')
         check_worktree(self.repo)
+
+    def test_publication_waits_for_deployment_instead_of_abandoning_proof(self):
+        write(self.repo / 'docs/data/gpt-methods-progress.json', dict(episodes=[], summary=dict(complete_method_runs=0)))
+        with patch.object(publisher, 'check_worktree'), patch.object(publisher.subprocess, 'run'), \
+             patch.object(publisher, 'git', return_value=''), patch.object(publisher, 'credential_env', return_value={}), \
+             patch.object(publisher, 'verify_online', side_effect=[AssertionError('Pages not ready'), None]) as verify, \
+             patch('time.sleep'):
+            publisher.publish(self.repo, self.repo, self.repo, 'http://example.invalid')
+        self.assertEqual(verify.call_count, 2, 'A delayed deployment must be verified before this publication cycle ends')
+
+    def test_deployment_timeout_preserves_last_verified_proof(self):
+        previous = dict(commit='previous', status='published_and_http_verified')
+        write(self.repo/'online_publication.json', previous)
+        with patch.object(publisher, 'verify_online', side_effect=OSError('offline')), \
+             patch.object(publisher, 'git', return_value='next'), \
+             patch.object(publisher.time, 'monotonic', side_effect=[0, 1]):
+            self.assertFalse(publisher.await_online(self.repo, self.repo, timeout=0))
+        self.assertEqual(publisher.json.loads((self.repo/'online_publication.json').read_text()), previous)
+        self.assertEqual(publisher.json.loads((self.repo/'online_publication_pending.json').read_text())['commit'], 'next')
+
+    def test_online_proof_uses_committed_data_not_mutable_worktree(self):
+        committed = {'scenes.html': b'page', 'gpt-methods.html': b'methods',
+                     'assets/gpt.js': b'js', 'assets/gpt.css': b'css',
+                     'data/gpt-methods-progress.json': b'{"summary":{"complete_method_runs":1},"snapshot":"committed"}'}
+        write(self.repo/'docs/data/gpt-methods-progress.json', dict(summary=dict(complete_method_runs=99), snapshot='uncommitted'))
+        class Response:
+            status = 200
+            def __init__(self, value): self.value = value
+            def __enter__(self): return self
+            def __exit__(self, *args): pass
+            def read(self): return self.value
+        with patch.object(publisher, 'git', return_value='a'*40), \
+             patch.object(publisher.subprocess, 'check_output', side_effect=lambda args, **kw: committed[args[-1].split(':docs/',1)[1]]), \
+             patch.object(publisher.urllib.request, 'urlopen', side_effect=lambda req, **kw: Response(committed[urlsplit(req.full_url).path.split('/gpt-as-policy-repro/',1)[1]])):
+            publisher.verify_online(self.repo, self.repo)
+        proof = publisher.json.loads((self.repo/'online_publication.json').read_text())
+        self.assertEqual(proof['gpt_summary']['complete_method_runs'], 1)
+        self.assertEqual(proof['snapshot'], 'committed')
 
 
 if __name__ == '__main__':
