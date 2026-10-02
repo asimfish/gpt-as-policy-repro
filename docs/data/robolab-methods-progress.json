@@ -110,8 +110,8 @@
           "episode_id": null
         },
         "pi05_plus_gpt": {
-          "status": "pending",
-          "episode_id": null
+          "status": "complete",
+          "episode_id": "robolab_BlocksInBinTask__seed1__pi05_plus_gpt"
         }
       },
       "paired_complete": false
@@ -869,6 +869,38 @@
       "video_bytes": 6354269,
       "duration_seconds": 84.667,
       "evidence": "data/robolab-method-episodes/robolab_BlocksInBinTask__seed0__pi05_plus_gpt.json"
+    },
+    {
+      "id": "robolab_BlocksInBinTask__seed1__pi05_plus_gpt",
+      "run_id": "hybrid_20261002T174822Z_BlocksInBinTask_seed1",
+      "case_id": "BlocksInBinTask__seed1",
+      "task": "BlocksInBinTask",
+      "seed": 1,
+      "method": "pi05_plus_gpt",
+      "success": true,
+      "complete": true,
+      "eligible": true,
+      "control_steps": 1154,
+      "decisions": 106,
+      "terminated": true,
+      "truncated": false,
+      "actions_by_mode": {
+        "student": 954,
+        "edit": 5,
+        "eef": 195
+      },
+      "pi05_inference_calls": 106,
+      "initial_state_hash": "9d86ea97e1749e1c4383b0b2cce1adaeaf599cbcdf654aff399776010c08ec4d",
+      "native_horizon": 2250,
+      "audit": "data/robolab-method-episodes/robolab_BlocksInBinTask__seed1__pi05_plus_gpt-audit.json",
+      "audit_sha256": "e8fe626b1dee4ffcce692e54dcaadf98064baf6315627c76b7d4b0e4db49a2be",
+      "video": "media/robolab-methods/robolab_BlocksInBinTask__seed1__pi05_plus_gpt.mp4",
+      "poster": "media/robolab-methods/robolab_BlocksInBinTask__seed1__pi05_plus_gpt.jpg",
+      "video_sha256": "067750f0e7acca61d23cbe645a1a13ea62ecf582b766a315c9e72e6bb741fea3",
+      "source_video_sha256": "cc8efe745ad6071e63f58295413502728a86b5b87f4f033aa8d55d1d20b2aa81",
+      "video_bytes": 5898120,
+      "duration_seconds": 77.0,
+      "evidence": "data/robolab-method-episodes/robolab_BlocksInBinTask__seed1__pi05_plus_gpt.json"
     }
   ],
   "attempts": [
@@ -940,8 +972,17 @@
       "task": "BlocksInBinTask",
       "seed": 1,
       "method": "pi05_plus_gpt",
-      "status": "controller_running",
+      "status": "complete",
       "started_utc": "2026-10-02T17:48:23.198858+00:00",
+      "eligible": true
+    },
+    {
+      "run_id": "hybrid_20261002T194644Z_BlocksInBinTask_seed2",
+      "task": "BlocksInBinTask",
+      "seed": 2,
+      "method": "pi05_plus_gpt",
+      "status": "controller_running",
+      "started_utc": "2026-10-02T19:46:44.550325+00:00",
       "eligible": false
     }
   ],
@@ -949,7 +990,7 @@
     "planned_pairs": 50,
     "planned_method_runs": 100,
     "completed_pairs": 1,
-    "complete_method_runs": 2,
+    "complete_method_runs": 3,
     "methods": {
       "gpt_only": {
         "all_completed": {
@@ -967,8 +1008,8 @@
       },
       "pi05_plus_gpt": {
         "all_completed": {
-          "evaluated": 1,
-          "successes": 1,
+          "evaluated": 2,
+          "successes": 2,
           "failures": 0,
           "success_rate": 1.0
         },
