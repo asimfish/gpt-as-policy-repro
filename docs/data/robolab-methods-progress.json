@@ -90,7 +90,7 @@
       "seed": 0,
       "methods": {
         "gpt_only": {
-          "status": "pending",
+          "status": "audit_pending",
           "episode_id": null
         },
         "pi05_plus_gpt": {
@@ -848,7 +848,7 @@
       "task": "BlocksInBinTask",
       "seed": 0,
       "method": "gpt_only",
-      "status": "controller_running",
+      "status": "controller_finished",
       "started_utc": "2026-10-02T11:11:56.241761+00:00",
       "eligible": false
     },
