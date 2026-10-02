@@ -8,7 +8,7 @@ from urllib.parse import urlsplit
 
 import publish_gpt_progress as publisher
 
-from build_gpt_site import check_episode, digest, first_complete, summarize, write
+from build_gpt_site import check_episode, digest, first_complete, summarize, write, robolab_status
 from render_gpt_progress import render
 from publish_gpt_progress import check_worktree
 
@@ -116,6 +116,28 @@ class RenderTests(unittest.TestCase):
             render(out)
             self.assertEqual(first, [(out / name).read_bytes() for name in ('index.html', 'scenes.html', 'gpt-methods.html')])
             self.assertEqual(first[0], first[1])
+
+
+class SupplementaryStatusTests(unittest.TestCase):
+    def test_robolab_partial_progress_stays_unscored_and_private_inputs_do_not_escape(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory)
+            workspace = source/'private-workspace'
+            tasks = ['BlocksInBinTask'] + ['task'+str(i) for i in range(9)]
+            write(source/'fixtures/robolab_two_methods_frozen.json',
+                  dict(cases=50, entries=[dict(task=t,seed=s,method=m) for t in tasks
+                       for s in range(5) for m in ('gpt_only','pi05_plus_gpt')]))
+            write(source/'robolab_gpt_active.json', dict(status='controller_running',
+                  task='BlocksInBinTask', seed=0, method='pi05_plus_gpt',
+                  local_workspace=str(workspace), remote_output='/private/remote',
+                  secret='must-not-export'))
+            write(workspace/'rollout/progress.json', dict(step_id=30))
+            exported = robolab_status(source)
+            self.assertFalse(exported['results_eligible'])
+            self.assertEqual(exported['observed_control_steps'], 30)
+            self.assertNotIn('complete_method_runs', exported)
+            self.assertNotIn('private', publisher.json.dumps(exported))
+            self.assertNotIn('secret', exported)
 
 
 class PublicationBoundaryTests(unittest.TestCase):

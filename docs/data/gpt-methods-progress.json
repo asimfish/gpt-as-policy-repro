@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-02T08:59:25.237511+00:00",
+  "snapshot": "2026-10-02T09:12:49.623627+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -4005,8 +4005,8 @@
       "supervisor_status": "running",
       "eligible": false,
       "status": "running",
-      "control_steps": 330,
-      "decisions": 66
+      "control_steps": 480,
+      "decisions": 96
     }
   ],
   "interruptions": {
@@ -4026,5 +4026,21 @@
     "denominator": "complete native successes and failures only; no partial/capacity/infrastructure attempts",
     "comparability": "Matched layouts and seeds, not a historical-model-identical replication.",
     "limitation": "Recorded joint actions audited; IK and full simulator state not independently recomputed."
+  },
+  "supplementary": {
+    "robolab": {
+      "planned_pairs": 50,
+      "planned_method_runs": 100,
+      "status": "controller_running",
+      "task": "BlocksInBinTask",
+      "seed": 0,
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-02T09:04:55.931106+00:00",
+      "results_eligible": false,
+      "action_audit_status": "pending",
+      "direct_implementation_status": "adapter_pending",
+      "cohort": "new fixed-seed cohort; historical raw initial states unavailable",
+      "observed_control_steps": 15
+    }
   }
 }

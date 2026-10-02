@@ -89,6 +89,13 @@ def verify(root):
         if attempt.get('video'):
             assert hashlib.sha256((root/attempt['video']).read_bytes()).hexdigest()==attempt['video_sha256']
     assert progress['snapshot'] in (root/'scenes.html').read_text()
+    supplementary = progress.get('supplementary', {}).get('robolab')
+    if supplementary:
+        assert set(supplementary) == {'planned_pairs','planned_method_runs','status','task','seed','method',
+            'started_utc','results_eligible','action_audit_status','direct_implementation_status','cohort','observed_control_steps'}
+        assert supplementary['results_eligible'] is False
+        assert supplementary['planned_pairs']==50 and supplementary['planned_method_runs']==100
+        assert 'robolab-methods-progress' in (root/'scenes.html').read_text()
     assert f"完整可计分主方法回合：{len(episodes)} / 100" in (root/'scenes.html').read_text()
     for name in ('index.html','scenes.html','robolab.html','gpt-methods.html'):
         parser=Links();parser.feed((root/name).read_text())

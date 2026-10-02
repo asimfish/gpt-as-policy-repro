@@ -62,6 +62,9 @@ python3 tools/verify_site.py docs
 精确字节。超时记为 `pushed_pending_online_verification` 并保留独立待验记录，不覆盖已验证证据。
 它通过已存在的 Git credential helper 读取授权，不保存凭据，不修改实验控制器或队列。
 
+RoboLab 补充状态从独立的两方法冻结清单与活动回合导出，只公开任务、种子、启动状态和
+已记录控制步。服务就绪、部分动作和待审计终止均不进入 RoboDojo 分母；当前 Direct 接口缺口单列。
+
 ```bash
 python3 tools/publish_gpt_progress.py --source /path/to/experiment \
   --credentials-repo /path/to/authorized-git-repository

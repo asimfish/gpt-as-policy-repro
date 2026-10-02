@@ -46,6 +46,39 @@ def digest(path):
     return h.hexdigest()
 
 
+def robolab_status(source):
+    """Export only supplementary readiness; partial actions never join the main score."""
+    frozen = read(source/'fixtures/robolab_two_methods_frozen.json')
+    if not frozen:
+        return None
+    tasks = {row['task'] for row in frozen['entries']}
+    assert len(frozen['entries']) == 100 and frozen['cases'] == 50
+    pairs = {(row['task'], row['seed']) for row in frozen['entries']}
+    assert len(tasks) == 10 and len(pairs) == 50
+    assert {(row['task'], row['seed'], row['method']) for row in frozen['entries']} == {
+        (task, seed, method) for task in tasks for seed in range(5) for method in METHODS}
+    active = read(source/'robolab_gpt_active.json', {})
+    status = active.get('status', 'not_started')
+    assert status in ('not_started', 'starting', 'controller_running',
+                      'controller_finished', 'infrastructure_interrupted')
+    task, seed = active.get('task'), active.get('seed')
+    assert not active or (task in tasks and type(seed) is int and seed in range(5))
+    assert not active or active.get('method') == 'pi05_plus_gpt'
+    result = dict(planned_pairs=50, planned_method_runs=100,
+                  status=status, task=task, seed=seed, method=active.get('method'),
+                  started_utc=active.get('started_utc'),
+                  results_eligible=False, action_audit_status='pending',
+                  direct_implementation_status='adapter_pending',
+                  cohort='new fixed-seed cohort; historical raw initial states unavailable')
+    # The workspace is a private input only. No host paths or raw model logs leave it.
+    workspace = active.get('local_workspace')
+    progress = read(Path(workspace)/'rollout/progress.json', {}) if workspace else {}
+    step = progress.get('step_id', 0)
+    assert type(step) is int and step >= 0
+    result['observed_control_steps'] = step
+    return result
+
+
 def check_episode(run, expected):
     """Fail closed on missing full audit, changed audit inputs, or identity mismatch."""
     result = read(run / 'rollout/result.json', {})
@@ -296,6 +329,9 @@ def build(source, out):
                               denominator='complete native successes and failures only; no partial/capacity/infrastructure attempts',
                               comparability='Matched layouts and seeds, not a historical-model-identical replication.',
                               limitation='Recorded joint actions audited; IK and full simulator state not independently recomputed.'))
+    supplementary = robolab_status(source)
+    if supplementary:
+        data['supplementary'] = dict(robolab=supplementary)
     # An unchanged poll must not create a new publication merely for a timestamp.
     previous = read(out / 'data/gpt-methods-progress.json', {})
     compare = lambda d: {k: v for k, v in d.items() if k != 'snapshot'}
