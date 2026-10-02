@@ -1,19 +1,19 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-02T07:51:22.219116+00:00",
+  "snapshot": "2026-10-02T08:01:49.247469+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
     "completed_pairs": 7,
-    "complete_method_runs": 15,
+    "complete_method_runs": 16,
     "methods": {
       "gpt_only": {
         "all_completed": {
-          "evaluated": 8,
+          "evaluated": 9,
           "successes": 1,
-          "failures": 7,
-          "success_rate": 0.125,
-          "mean_score": 0.125
+          "failures": 8,
+          "success_rate": 0.1111111111111111,
+          "mean_score": 0.12222222222222223
         },
         "paired_completed": {
           "evaluated": 7,
@@ -90,15 +90,15 @@
       "planned_pairs": 5,
       "planned_method_runs": 10,
       "completed_pairs": 2,
-      "complete_method_runs": 4,
+      "complete_method_runs": 5,
       "methods": {
         "gpt_only": {
           "all_completed": {
-            "evaluated": 2,
+            "evaluated": 3,
             "successes": 0,
-            "failures": 2,
+            "failures": 3,
             "success_rate": 0.0,
-            "mean_score": 0.0
+            "mean_score": 0.03333333333333333
           },
           "paired_completed": {
             "evaluated": 2,
@@ -714,13 +714,13 @@
       "task_label": "搭建积木塔",
       "methods": {
         "gpt_only": {
-          "status": "audit_pending",
+          "status": "complete",
           "attempts": 1,
-          "episode_id": null
+          "episode_id": "gpt_only__build_tower__standard__g0__l2"
         },
         "pi05_plus_gpt": {
-          "status": "pending",
-          "attempts": 0,
+          "status": "running",
+          "attempts": 1,
           "episode_id": null
         }
       },
@@ -2817,6 +2817,54 @@
       "duration_seconds": 42.067
     },
     {
+      "id": "gpt_only__build_tower__standard__g0__l2",
+      "case_id": "build_tower__standard__g0__l2",
+      "method": "gpt_only",
+      "method_label": "GPT Direct",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "build_tower__standard__g0__l2",
+        "task": "build_tower",
+        "runtime_task": "build_tower",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 2,
+        "reset_seed": 2,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "8d6bff06259a8ae1dbaf982639c3febabccc9e681a34e18acc368647deced338"
+      },
+      "task_label": "搭建积木塔",
+      "run_id": "queue_20261002T055733Z_gpt_only_build_tower_standard_g0_l2",
+      "started_utc": "2026-10-02T05:57:35.319876+00:00",
+      "finished_utc": "2026-10-02T07:48:03.941703+00:00",
+      "supervisor_status": "complete",
+      "complete": true,
+      "eligible": true,
+      "success": false,
+      "score": 0.1,
+      "control_steps": 1050,
+      "decisions": 210,
+      "terminated": false,
+      "truncated": true,
+      "native_horizon": 1050,
+      "model": "gpt-6-astra",
+      "reasoning_effort": "xhigh",
+      "initial_robot_state_sha256": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
+      "scene_layout_record_sha256": "8d6bff06259a8ae1dbaf982639c3febabccc9e681a34e18acc368647deced338",
+      "actions_by_mode": null,
+      "audit": "data/gpt-episodes/gpt_only__build_tower__standard__g0__l2-audit.json",
+      "evidence": "data/gpt-episodes/gpt_only__build_tower__standard__g0__l2.json",
+      "audit_sha256": "e5e42f24977e8df7a8ffcd0f661818934022e01317cf0d311b39e3bec210126e",
+      "video": "media/gpt-episodes/gpt_only__build_tower__standard__g0__l2.mp4",
+      "poster": "media/gpt-episodes/gpt_only__build_tower__standard__g0__l2.jpg",
+      "video_sha256": "13b8364ef9bb45c008bcc8ec47de0fcf2258dd2ef3ed3ec3aa03229b90a0e803",
+      "source_video_sha256": "b2703891df246827d457b47b04956d27cc0d6df7337c7ad72e20b61d232ea9c4",
+      "video_bytes": 2552569,
+      "duration_seconds": 42.067
+    },
+    {
       "id": "gpt_only__classify_objects__standard__g0__l0",
       "case_id": "classify_objects__standard__g0__l0",
       "method": "gpt_only",
@@ -3853,11 +3901,22 @@
       "started_utc": "2026-10-02T05:57:35.319876+00:00",
       "finished_utc": "2026-10-02T07:48:03.941703+00:00",
       "supervisor_status": "complete",
-      "eligible": false,
-      "status": "audit_pending",
+      "eligible": true,
+      "status": "complete",
       "control_steps": 1050,
-      "decisions": 210,
-      "reason_class": "missing_or_inconsistent_complete_audit"
+      "decisions": 210
+    },
+    {
+      "run_id": "queue_20261002T075448Z_pi05_plus_gpt_build_tower_standard_g0_l2",
+      "case_id": "build_tower__standard__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-02T07:54:49.213799+00:00",
+      "finished_utc": null,
+      "supervisor_status": "starting",
+      "eligible": false,
+      "status": "running",
+      "control_steps": 0,
+      "decisions": 0
     }
   ],
   "interruptions": {
