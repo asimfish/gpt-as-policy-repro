@@ -1,11 +1,11 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-02T17:20:30.085827+00:00",
+  "snapshot": "2026-10-02T17:30:25.086657+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
-    "completed_pairs": 10,
-    "complete_method_runs": 23,
+    "completed_pairs": 11,
+    "complete_method_runs": 24,
     "methods": {
       "gpt_only": {
         "all_completed": {
@@ -16,27 +16,27 @@
           "mean_score": 0.2125
         },
         "paired_completed": {
-          "evaluated": 10,
-          "successes": 1,
-          "failures": 9,
-          "success_rate": 0.1,
-          "mean_score": 0.145
-        }
-      },
-      "pi05_plus_gpt": {
-        "all_completed": {
           "evaluated": 11,
           "successes": 2,
           "failures": 9,
           "success_rate": 0.18181818181818182,
-          "mean_score": 0.26818181818181813
+          "mean_score": 0.22272727272727275
+        }
+      },
+      "pi05_plus_gpt": {
+        "all_completed": {
+          "evaluated": 12,
+          "successes": 2,
+          "failures": 10,
+          "success_rate": 0.16666666666666666,
+          "mean_score": 0.2583333333333333
         },
         "paired_completed": {
-          "evaluated": 10,
+          "evaluated": 11,
           "successes": 1,
-          "failures": 9,
-          "success_rate": 0.1,
-          "mean_score": 0.19499999999999998
+          "failures": 10,
+          "success_rate": 0.09090909090909091,
+          "mean_score": 0.1909090909090909
         }
       }
     }
@@ -131,8 +131,8 @@
       "task_label": "物体分类",
       "planned_pairs": 5,
       "planned_method_runs": 10,
-      "completed_pairs": 2,
-      "complete_method_runs": 5,
+      "completed_pairs": 3,
+      "complete_method_runs": 6,
       "methods": {
         "gpt_only": {
           "all_completed": {
@@ -143,27 +143,27 @@
             "mean_score": 0.3833333333333333
           },
           "paired_completed": {
-            "evaluated": 2,
-            "successes": 0,
+            "evaluated": 3,
+            "successes": 1,
             "failures": 2,
-            "success_rate": 0.0,
-            "mean_score": 0.075
+            "success_rate": 0.3333333333333333,
+            "mean_score": 0.3833333333333333
           }
         },
         "pi05_plus_gpt": {
           "all_completed": {
-            "evaluated": 2,
+            "evaluated": 3,
             "successes": 1,
-            "failures": 1,
-            "success_rate": 0.5,
-            "mean_score": 0.7
+            "failures": 2,
+            "success_rate": 0.3333333333333333,
+            "mean_score": 0.5166666666666666
           },
           "paired_completed": {
-            "evaluated": 2,
+            "evaluated": 3,
             "successes": 1,
-            "failures": 1,
-            "success_rate": 0.5,
-            "mean_score": 0.7
+            "failures": 2,
+            "success_rate": 0.3333333333333333,
+            "mean_score": 0.5166666666666666
           }
         }
       }
@@ -884,14 +884,14 @@
           "episode_id": "gpt_only__classify_objects__standard__g0__l2"
         },
         "pi05_plus_gpt": {
-          "status": "running",
+          "status": "complete",
           "attempts": 1,
-          "episode_id": null
+          "episode_id": "pi05_plus_gpt__classify_objects__standard__g0__l2"
         }
       },
-      "paired_complete": false,
-      "robot_joint_states_equal": null,
-      "scene_layout_records_equal": null
+      "paired_complete": true,
+      "robot_joint_states_equal": true,
+      "scene_layout_records_equal": true
     },
     {
       "case_id": "classify_objects__standard__g0__l3",
@@ -912,8 +912,8 @@
       "task_label": "物体分类",
       "methods": {
         "gpt_only": {
-          "status": "pending",
-          "attempts": 0,
+          "status": "running",
+          "attempts": 1,
           "episode_id": null
         },
         "pi05_plus_gpt": {
@@ -3263,6 +3263,58 @@
       "source_video_sha256": "0d3085be9e4bc7a63496c240081d6341effc3092f522f2065b6ac45601918e69",
       "video_bytes": 3206199,
       "duration_seconds": 38.267
+    },
+    {
+      "id": "pi05_plus_gpt__classify_objects__standard__g0__l2",
+      "case_id": "classify_objects__standard__g0__l2",
+      "method": "pi05_plus_gpt",
+      "method_label": "π0.5 + GPT Hybrid",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "classify_objects__standard__g0__l2",
+        "task": "classify_objects",
+        "runtime_task": "classify_objects",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 2,
+        "reset_seed": 2,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "6b3a30251bd92a465ffdc82436e14dde84879906eeab3b0e8944865b9eef38f7"
+      },
+      "task_label": "物体分类",
+      "run_id": "queue_20261002T163038Z_pi05_plus_gpt_classify_objects_standard_g0_l2",
+      "started_utc": "2026-10-02T16:30:39.112035+00:00",
+      "finished_utc": "2026-10-02T17:24:58.820627+00:00",
+      "supervisor_status": "complete",
+      "complete": true,
+      "eligible": true,
+      "success": false,
+      "score": 0.15,
+      "control_steps": 1100,
+      "decisions": 109,
+      "terminated": false,
+      "truncated": true,
+      "native_horizon": 1100,
+      "model": "gpt-6-astra",
+      "reasoning_effort": "xhigh",
+      "initial_robot_state_sha256": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
+      "scene_layout_record_sha256": "6b3a30251bd92a465ffdc82436e14dde84879906eeab3b0e8944865b9eef38f7",
+      "actions_by_mode": {
+        "student": 845,
+        "edit": 10,
+        "eef": 245
+      },
+      "audit": "data/gpt-episodes/pi05_plus_gpt__classify_objects__standard__g0__l2-audit.json",
+      "evidence": "data/gpt-episodes/pi05_plus_gpt__classify_objects__standard__g0__l2.json",
+      "audit_sha256": "80cc50ce71e3a854384dfbae8316223f90e8c91e103677e15fdce1f6df559220",
+      "video": "media/gpt-episodes/pi05_plus_gpt__classify_objects__standard__g0__l2.mp4",
+      "poster": "media/gpt-episodes/pi05_plus_gpt__classify_objects__standard__g0__l2.jpg",
+      "video_sha256": "957534c646306faf36db02b4237e225affbb98b7fb13b8f2ad7242437239c0d6",
+      "source_video_sha256": "b6386631ec5c240f726567e8e29cdab93f9ef2d37a0dc56fc0babca0162ee8af",
+      "video_bytes": 3053955,
+      "duration_seconds": 44.067
     }
   ],
   "attempts": [
@@ -4373,12 +4425,24 @@
       "case_id": "classify_objects__standard__g0__l2",
       "method": "pi05_plus_gpt",
       "started_utc": "2026-10-02T16:30:39.112035+00:00",
+      "finished_utc": "2026-10-02T17:24:58.820627+00:00",
+      "supervisor_status": "complete",
+      "eligible": true,
+      "status": "complete",
+      "control_steps": 1100,
+      "decisions": 109
+    },
+    {
+      "run_id": "queue_20261002T172517Z_gpt_only_classify_objects_standard_g0_l3",
+      "case_id": "classify_objects__standard__g0__l3",
+      "method": "gpt_only",
+      "started_utc": "2026-10-02T17:25:17.659886+00:00",
       "finished_utc": null,
       "supervisor_status": "running",
       "eligible": false,
       "status": "running",
-      "control_steps": 1010,
-      "decisions": 101
+      "control_steps": 20,
+      "decisions": 4
     }
   ],
   "interruptions": {
@@ -4433,7 +4497,7 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 970,
+      "observed_control_steps": 1055,
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
