@@ -88,6 +88,19 @@ def verify(root):
             assert audit['native_actions']==attempt['audited_control_steps']<=attempt['control_steps']
         if attempt.get('video'):
             assert hashlib.sha256((root/attempt['video']).read_bytes()).hexdigest()==attempt['video_sha256']
+    from build_robolab_methods import summarize as summarize_robolab
+    supplemental=json.loads((root/'data/robolab-methods-progress.json').read_text())
+    assert len(supplemental['cases'])==50 and len({c['case_id'] for c in supplemental['cases']})==50
+    assert supplemental['summary']==summarize_robolab(supplemental['cases'],supplemental['episodes'])
+    assert supplemental['summary']==progress['supplementary']['robolab']['summary']
+    for episode in supplemental['episodes']:
+        audit=json.loads((root/episode['audit']).read_text())
+        assert episode==json.loads((root/episode['evidence']).read_text())
+        assert episode['eligible'] is True and audit['verified'] is True and audit['complete_episode'] is True
+        assert audit['method']==episode['method'] and audit['native_actions']==episode['control_steps']
+        assert audit['terminal']=={k:episode[k] for k in ('success','terminated','truncated')}
+        assert hashlib.sha256((root/episode['video']).read_bytes()).hexdigest()==episode['video_sha256']
+        assert hashlib.sha256((root/episode['audit']).read_bytes()).hexdigest()==episode['audit_sha256']
     bundle=progress.get('infrastructure')
     if bundle:
         assert bundle==json.loads((root/'data/infrastructure-bundle.json').read_text())
@@ -100,8 +113,8 @@ def verify(root):
     supplementary = progress.get('supplementary', {}).get('robolab')
     if supplementary:
         assert set(supplementary) == {'planned_pairs','planned_method_runs','status','task','seed','method',
-            'started_utc','results_eligible','action_audit_status','direct_implementation_status','cohort','observed_control_steps','last_prefix_audit'}
-        assert supplementary['results_eligible'] is False
+            'started_utc','results_eligible','action_audit_status','direct_implementation_status','cohort','observed_control_steps','last_prefix_audit','summary','report'}
+        assert supplementary['results_eligible'] is (supplementary['summary']['complete_method_runs']>0)
         assert supplementary['planned_pairs']==50 and supplementary['planned_method_runs']==100
         assert 'robolab-methods-progress' in (root/'scenes.html').read_text()
         if supplementary['last_prefix_audit']:
@@ -109,7 +122,7 @@ def verify(root):
             assert prefix['verified'] is True and prefix['complete_episode'] is False
             assert prefix['native_actions']==supplementary['last_prefix_audit']['native_actions']
     assert f"完整可计分主方法回合：{len(episodes)} / 100" in (root/'scenes.html').read_text()
-    for name in ('index.html','scenes.html','robolab.html','gpt-methods.html'):
+    for name in ('index.html','scenes.html','robolab.html','gpt-methods.html','robolab-methods.html'):
         parser=Links();parser.feed((root/name).read_text())
         for link in parser.links:
             url=urlsplit(link)
@@ -117,7 +130,7 @@ def verify(root):
             if url.path:
                 target=(root/unquote(url.path)).resolve();target.relative_to(root.resolve());assert target.is_file(),link
             elif url.fragment:assert unquote(url.fragment) in parser.ids,link
-        assert parser.videos==(len(episodes) if name=='gpt-methods.html' else len(robolab) if name=='robolab.html' else sum(bool(r['video']) for r in rows))
+        assert parser.videos==(len(episodes) if name=='gpt-methods.html' else len(robolab) if name=='robolab.html' else len(supplemental['episodes']) if name=='robolab-methods.html' else sum(bool(r['video']) for r in rows))
     assert (root/'index.html').read_bytes()==(root/'scenes.html').read_bytes()
     forbidden=(r'/home/',r'/mnt/',r'github_pat_[A-Za-z0-9_]+',r'ghp_[A-Za-z0-9]+',r'127\.0\.0\.1',r'BEGIN .*PRIVATE KEY',r'Bearer\s+[A-Za-z0-9_.-]{12,}')
     for path in root.rglob('*'):

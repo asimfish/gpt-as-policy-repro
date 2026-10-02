@@ -13,7 +13,7 @@ import time
 import urllib.request
 
 
-GENERATED = ('docs/index.html', 'docs/scenes.html', 'docs/gpt-methods.html',
+GENERATED = ('docs/index.html', 'docs/scenes.html', 'docs/gpt-methods.html', 'docs/robolab-methods.html', 'docs/data/robolab-methods-progress.json', 'docs/data/robolab-method-episodes/', 'docs/media/robolab-methods/',
              'docs/data/gpt-methods-progress.json', 'docs/data/gpt-media-manifest.json',
              'docs/data/gpt-episodes/', 'docs/data/gpt-attempts/', 'docs/data/robolab-gpt-prefix-audit.json',
              'docs/downloads/infrastructure_bundle_', 'docs/data/infrastructure-bundle.json', 'docs/media/gpt-episodes/', 'docs/assets/gpt.css', 'docs/assets/gpt.js')
@@ -66,9 +66,9 @@ def verify_online(repo, source):
     files = ('scenes.html', 'gpt-methods.html', 'data/gpt-methods-progress.json', 'assets/gpt.js', 'assets/gpt.css')
     commit = git(repo, 'rev-parse', 'HEAD')
     files=list(files)
-    optional=git(repo,'ls-tree','-r','--name-only',commit,'--','docs/data/robolab-gpt-prefix-audit.json','docs/data/infrastructure-bundle.json').splitlines()
+    optional=git(repo,'ls-tree','-r','--name-only',commit,'--','docs/data/robolab-gpt-prefix-audit.json','docs/data/infrastructure-bundle.json','docs/robolab-methods.html','docs/data/robolab-methods-progress.json').splitlines()
     for path in optional:
-        if path in ('docs/data/robolab-gpt-prefix-audit.json','docs/data/infrastructure-bundle.json'):files.append(path.removeprefix('docs/'))
+        if path in ('docs/data/robolab-gpt-prefix-audit.json','docs/data/infrastructure-bundle.json','docs/robolab-methods.html','docs/data/robolab-methods-progress.json'):files.append(path.removeprefix('docs/'))
     if 'data/infrastructure-bundle.json' in files:
         bundle=json.loads(subprocess.check_output(['git','-C',str(repo),'show',commit+':docs/data/infrastructure-bundle.json'],timeout=180))
         assert owned('docs/'+bundle['archive'])

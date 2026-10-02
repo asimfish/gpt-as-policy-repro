@@ -41,12 +41,17 @@ def robolab_html(data):
                   controller_running='持久控制器运行中',
                   controller_finished='回合收尾，待完整审计',
                   infrastructure_interrupted='基础设施中断，待排查')
+    summary=value.get('summary',{})
+    overview='' if not summary else f'<p>补充组已审计 {summary["complete_method_runs"]} / 100 个完整回合，配齐 {summary["completed_pairs"]} / 50 个案例。<a href="robolab-methods.html">查看补充矩阵、结果与完整回放 ↗</a></p>'
     case = '' if value['task'] is None else f' · {E(value["task"])} / seed {value["seed"]}'
     method = METHODS.get(value['method'],'Hybrid')
     steps = value['observed_control_steps']
+    state='完整原生回合已审计' if value['action_audit_status']=='complete_native_episode' else states[value['status']]
+    audit_note='完整动作审计通过，已计入补充分母' if value['action_audit_status']=='complete_native_episode' else '完整动作审计待完成，暂不计分'
+    direct_note='已通过完整原生回合审计' if value['direct_implementation_status']=='native_episode_audited' else '已通过接口测试，正在进行原生回合验证'
     prefix=value.get('last_prefix_audit')
     evidence='' if not prefix else f'<p>此前 Hybrid 中断尝试已有 {prefix["decisions"]} 轮 / {prefix["native_actions"]} 步通过前缀动作核对；不是完整回合，不计分。<a href="{prefix["evidence"]}">下载前缀审计 ↗</a></p>'
-    return f'<div class="panel" id="robolab-methods-progress"><h3>RoboLab · 两方法补充进度</h3><p>冻结计划：50 个案例 × 两种方法，共 100 条轨迹。当前 {method}：{states[value["status"]]}{case}；当前尝试已记录 {steps} 个控制步，完整动作审计待完成，暂不计分。</p>{evidence}<p>公开仓库的 RoboLab 入口仅提供 Hybrid。自有 Direct EEF 适配器已通过接口测试，正在进行原生回合验证；历史 Direct 源码与 prompt 未提供。采用新的固定种子组，历史原始初态尚未恢复，环境等价性仍有限制。</p></div>'
+    return f'<div class="panel" id="robolab-methods-progress"><h3>RoboLab · 两方法补充进度</h3>{overview}<p>冻结计划：50 个案例 × 两种方法，共 100 条轨迹。当前 {method}：{state}{case}；当前尝试已记录 {steps} 个控制步，{audit_note}。</p>{evidence}<p>公开仓库的 RoboLab 入口仅提供 Hybrid。自有 Direct EEF 适配器{direct_note}；历史 Direct 源码与 prompt 未提供。采用新的固定种子组，历史原始初态尚未恢复，环境等价性仍有限制。</p></div>'
 
 
 def render(out):

@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-02T10:50:48.540117+00:00",
+  "snapshot": "2026-10-02T11:14:15.204151+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -4065,8 +4065,8 @@
       "supervisor_status": "running",
       "eligible": false,
       "status": "running",
-      "control_steps": 700,
-      "decisions": 68
+      "control_steps": 1022,
+      "decisions": 119
     }
   ],
   "interruptions": {
@@ -4105,11 +4105,11 @@
     "robolab": {
       "planned_pairs": 50,
       "planned_method_runs": 100,
-      "status": "controller_running",
+      "status": "starting",
       "task": "BlocksInBinTask",
       "seed": 0,
       "method": "gpt_only",
-      "started_utc": "2026-10-02T10:45:14.441110+00:00",
+      "started_utc": "2026-10-02T11:11:56.241761+00:00",
       "results_eligible": false,
       "action_audit_status": "pending",
       "direct_implementation_status": "implemented_pending_native_validation",
@@ -4121,7 +4121,44 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 0
+      "observed_control_steps": 0,
+      "summary": {
+        "planned_pairs": 50,
+        "planned_method_runs": 100,
+        "completed_pairs": 0,
+        "complete_method_runs": 0,
+        "methods": {
+          "gpt_only": {
+            "all_completed": {
+              "evaluated": 0,
+              "successes": 0,
+              "failures": 0,
+              "success_rate": null
+            },
+            "paired_completed": {
+              "evaluated": 0,
+              "successes": 0,
+              "failures": 0,
+              "success_rate": null
+            }
+          },
+          "pi05_plus_gpt": {
+            "all_completed": {
+              "evaluated": 0,
+              "successes": 0,
+              "failures": 0,
+              "success_rate": null
+            },
+            "paired_completed": {
+              "evaluated": 0,
+              "successes": 0,
+              "failures": 0,
+              "success_rate": null
+            }
+          }
+        }
+      },
+      "report": "robolab-methods.html"
     }
   }
 }

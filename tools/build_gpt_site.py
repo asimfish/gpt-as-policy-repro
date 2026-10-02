@@ -172,11 +172,11 @@ def task_summaries(cases, episodes):
     return result
 
 
-def media(run, uid, out, old):
-    source = run / 'sim/sensors.mp4'
+def media(run, uid, out, old, *, source_file=None, prefix='media/gpt-episodes'):
+    source = source_file or run / 'sim/sensors.mp4'
     assert source.is_file() and source.stat().st_size > 1000
-    video = 'media/gpt-episodes/' + uid + '.mp4'
-    poster = 'media/gpt-episodes/' + uid + '.jpg'
+    video = prefix+'/' + uid + '.mp4'
+    poster = prefix+'/' + uid + '.jpg'
     dest = out / video
     dest.parent.mkdir(parents=True, exist_ok=True)
     source_hash = digest(source)
@@ -338,8 +338,18 @@ def build(source, out):
     from export_infra_bundle import export_bundle
     bundle=export_bundle(source,out)
     if bundle:data['infrastructure']=bundle
+    from build_robolab_methods import build as build_robolab
+    robolab=build_robolab(source,out)
     supplementary = robolab_status(source)
     if supplementary:
+        supplementary['summary']=robolab['summary']
+        supplementary['report']='robolab-methods.html'
+        supplementary['results_eligible']=robolab['summary']['complete_method_runs']>0
+        active=read(source/'robolab_gpt_active.json',{})
+        current=next((e for e in robolab['episodes'] if e['run_id']==active.get('attempt')),None)
+        supplementary['action_audit_status']='complete_native_episode' if current else 'pending'
+        if robolab['summary']['methods']['gpt_only']['all_completed']['evaluated']:
+            supplementary['direct_implementation_status']='native_episode_audited'
         data['supplementary'] = dict(robolab=supplementary)
         prefix=read(source/'robolab_gpt_latest_prefix_audit.json')
         if prefix:

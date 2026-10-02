@@ -1,0 +1,901 @@
+{
+  "schema": "gpt_policy_robolab_methods.v1",
+  "frozen_sha256": "760894e9bc19bd2affe8d83a735936037c1317fe869dce1e10377d637e7beb72",
+  "cohort": "new fixed-seed cohort; historical raw initial states unavailable",
+  "direct_implementation": "owned EEF adapter; historical Direct source and prompt unavailable",
+  "cases": [
+    {
+      "case_id": "BlockStackingSpecifiedOrderTask__seed0",
+      "task": "BlockStackingSpecifiedOrderTask",
+      "seed": 0,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "BlockStackingSpecifiedOrderTask__seed1",
+      "task": "BlockStackingSpecifiedOrderTask",
+      "seed": 1,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "BlockStackingSpecifiedOrderTask__seed2",
+      "task": "BlockStackingSpecifiedOrderTask",
+      "seed": 2,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "BlockStackingSpecifiedOrderTask__seed3",
+      "task": "BlockStackingSpecifiedOrderTask",
+      "seed": 3,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "BlockStackingSpecifiedOrderTask__seed4",
+      "task": "BlockStackingSpecifiedOrderTask",
+      "seed": 4,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "BlocksInBinTask__seed0",
+      "task": "BlocksInBinTask",
+      "seed": 0,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "BlocksInBinTask__seed1",
+      "task": "BlocksInBinTask",
+      "seed": 1,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "BlocksInBinTask__seed2",
+      "task": "BlocksInBinTask",
+      "seed": 2,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "BlocksInBinTask__seed3",
+      "task": "BlocksInBinTask",
+      "seed": 3,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "BlocksInBinTask__seed4",
+      "task": "BlocksInBinTask",
+      "seed": 4,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "ButterAboveRaisinTask__seed0",
+      "task": "ButterAboveRaisinTask",
+      "seed": 0,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "ButterAboveRaisinTask__seed1",
+      "task": "ButterAboveRaisinTask",
+      "seed": 1,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "ButterAboveRaisinTask__seed2",
+      "task": "ButterAboveRaisinTask",
+      "seed": 2,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "ButterAboveRaisinTask__seed3",
+      "task": "ButterAboveRaisinTask",
+      "seed": 3,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "ButterAboveRaisinTask__seed4",
+      "task": "ButterAboveRaisinTask",
+      "seed": 4,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "CannedFoodInBinTask__seed0",
+      "task": "CannedFoodInBinTask",
+      "seed": 0,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "CannedFoodInBinTask__seed1",
+      "task": "CannedFoodInBinTask",
+      "seed": 1,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "CannedFoodInBinTask__seed2",
+      "task": "CannedFoodInBinTask",
+      "seed": 2,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "CannedFoodInBinTask__seed3",
+      "task": "CannedFoodInBinTask",
+      "seed": 3,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "CannedFoodInBinTask__seed4",
+      "task": "CannedFoodInBinTask",
+      "seed": 4,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "ClutterPumpkinTask__seed0",
+      "task": "ClutterPumpkinTask",
+      "seed": 0,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "ClutterPumpkinTask__seed1",
+      "task": "ClutterPumpkinTask",
+      "seed": 1,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "ClutterPumpkinTask__seed2",
+      "task": "ClutterPumpkinTask",
+      "seed": 2,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "ClutterPumpkinTask__seed3",
+      "task": "ClutterPumpkinTask",
+      "seed": 3,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "ClutterPumpkinTask__seed4",
+      "task": "ClutterPumpkinTask",
+      "seed": 4,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "LargerObjectRaisinBoxInBinTask__seed0",
+      "task": "LargerObjectRaisinBoxInBinTask",
+      "seed": 0,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "LargerObjectRaisinBoxInBinTask__seed1",
+      "task": "LargerObjectRaisinBoxInBinTask",
+      "seed": 1,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "LargerObjectRaisinBoxInBinTask__seed2",
+      "task": "LargerObjectRaisinBoxInBinTask",
+      "seed": 2,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "LargerObjectRaisinBoxInBinTask__seed3",
+      "task": "LargerObjectRaisinBoxInBinTask",
+      "seed": 3,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "LargerObjectRaisinBoxInBinTask__seed4",
+      "task": "LargerObjectRaisinBoxInBinTask",
+      "seed": 4,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "ReorientRedMugTask__seed0",
+      "task": "ReorientRedMugTask",
+      "seed": 0,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "ReorientRedMugTask__seed1",
+      "task": "ReorientRedMugTask",
+      "seed": 1,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "ReorientRedMugTask__seed2",
+      "task": "ReorientRedMugTask",
+      "seed": 2,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "ReorientRedMugTask__seed3",
+      "task": "ReorientRedMugTask",
+      "seed": 3,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "ReorientRedMugTask__seed4",
+      "task": "ReorientRedMugTask",
+      "seed": 4,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "RubiksCubeTask__seed0",
+      "task": "RubiksCubeTask",
+      "seed": 0,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "RubiksCubeTask__seed1",
+      "task": "RubiksCubeTask",
+      "seed": 1,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "RubiksCubeTask__seed2",
+      "task": "RubiksCubeTask",
+      "seed": 2,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "RubiksCubeTask__seed3",
+      "task": "RubiksCubeTask",
+      "seed": 3,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "RubiksCubeTask__seed4",
+      "task": "RubiksCubeTask",
+      "seed": 4,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "SauceBottlesCrateTask__seed0",
+      "task": "SauceBottlesCrateTask",
+      "seed": 0,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "SauceBottlesCrateTask__seed1",
+      "task": "SauceBottlesCrateTask",
+      "seed": 1,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "SauceBottlesCrateTask__seed2",
+      "task": "SauceBottlesCrateTask",
+      "seed": 2,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "SauceBottlesCrateTask__seed3",
+      "task": "SauceBottlesCrateTask",
+      "seed": 3,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "SauceBottlesCrateTask__seed4",
+      "task": "SauceBottlesCrateTask",
+      "seed": 4,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "YogurtInBowlTask__seed0",
+      "task": "YogurtInBowlTask",
+      "seed": 0,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "YogurtInBowlTask__seed1",
+      "task": "YogurtInBowlTask",
+      "seed": 1,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "YogurtInBowlTask__seed2",
+      "task": "YogurtInBowlTask",
+      "seed": 2,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "YogurtInBowlTask__seed3",
+      "task": "YogurtInBowlTask",
+      "seed": 3,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    },
+    {
+      "case_id": "YogurtInBowlTask__seed4",
+      "task": "YogurtInBowlTask",
+      "seed": 4,
+      "methods": {
+        "gpt_only": {
+          "status": "pending",
+          "episode_id": null
+        },
+        "pi05_plus_gpt": {
+          "status": "pending",
+          "episode_id": null
+        }
+      },
+      "paired_complete": false
+    }
+  ],
+  "episodes": [],
+  "attempts": [
+    {
+      "run_id": "direct_20261002T094218Z_BlocksInBinTask_seed0",
+      "task": "BlocksInBinTask",
+      "seed": 0,
+      "method": "gpt_only",
+      "status": "infrastructure_interrupted",
+      "started_utc": "2026-10-02T09:42:18.651247+00:00",
+      "eligible": false
+    },
+    {
+      "run_id": "direct_20261002T095735Z_BlocksInBinTask_seed0",
+      "task": "BlocksInBinTask",
+      "seed": 0,
+      "method": "gpt_only",
+      "status": "infrastructure_interrupted",
+      "started_utc": "2026-10-02T09:57:35.766374+00:00",
+      "eligible": false
+    },
+    {
+      "run_id": "direct_20261002T104514Z_BlocksInBinTask_seed0",
+      "task": "BlocksInBinTask",
+      "seed": 0,
+      "method": "gpt_only",
+      "status": "infrastructure_interrupted",
+      "started_utc": "2026-10-02T10:45:14.441110+00:00",
+      "eligible": false
+    },
+    {
+      "run_id": "direct_20261002T105509Z_BlocksInBinTask_seed0",
+      "task": "BlocksInBinTask",
+      "seed": 0,
+      "method": "gpt_only",
+      "status": "infrastructure_interrupted",
+      "started_utc": "2026-10-02T10:55:09.571084+00:00",
+      "eligible": false
+    },
+    {
+      "run_id": "direct_20261002T111156Z_BlocksInBinTask_seed0",
+      "task": "BlocksInBinTask",
+      "seed": 0,
+      "method": "gpt_only",
+      "status": "starting",
+      "started_utc": "2026-10-02T11:11:56.241761+00:00",
+      "eligible": false
+    },
+    {
+      "run_id": "hybrid_20261002T090455Z_BlocksInBinTask_seed0",
+      "task": "BlocksInBinTask",
+      "seed": 0,
+      "method": "pi05_plus_gpt",
+      "status": "infrastructure_interrupted",
+      "started_utc": "2026-10-02T09:04:55.931106+00:00",
+      "eligible": false
+    }
+  ],
+  "summary": {
+    "planned_pairs": 50,
+    "planned_method_runs": 100,
+    "completed_pairs": 0,
+    "complete_method_runs": 0,
+    "methods": {
+      "gpt_only": {
+        "all_completed": {
+          "evaluated": 0,
+          "successes": 0,
+          "failures": 0,
+          "success_rate": null
+        },
+        "paired_completed": {
+          "evaluated": 0,
+          "successes": 0,
+          "failures": 0,
+          "success_rate": null
+        }
+      },
+      "pi05_plus_gpt": {
+        "all_completed": {
+          "evaluated": 0,
+          "successes": 0,
+          "failures": 0,
+          "success_rate": null
+        },
+        "paired_completed": {
+          "evaluated": 0,
+          "successes": 0,
+          "failures": 0,
+          "success_rate": null
+        }
+      }
+    }
+  }
+}
