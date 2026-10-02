@@ -70,7 +70,8 @@ def render(out):
         cells = ''.join(f'<td>{v["successes"]} / {v["evaluated"]}<small>平均 score {v["mean_score"]:.3f}</small></td>' if v['evaluated'] else '<td>待完成</td>' for v in values)
         task_rows.append(f'<tr><td>{E(task["task_label"])}</td>{cells}<td>{task["completed_pairs"]} / {task["planned_pairs"]}</td></tr>')
     task_table = '<section class="report-section"><div class="section-heading"><h2>逐任务独立结果</h2><a href="#gpt-rollouts">跳转到完整回放 ↓</a></div><p class="section-intro">每格为成功数 / 已审计完整回合数；平均 score 使用同一分母。未运行案例不能当作零分失败。</p><div class="panel table-wrap"><table><thead><tr><th>任务</th><th>GPT Direct</th><th>Hybrid</th><th>已配齐案例</th></tr></thead><tbody>' + ''.join(task_rows) + '</tbody></table></div></section>'
-    intro = '<p class="section-intro">计划为 RoboDojo 50 个冻结案例 × 两种方法，共 100 条完整轨迹。当前是部分样本，任务覆盖尚不均衡，不能视为全量成功率或原报告数值的复现结论。</p>'
+    coverage='50个配对案例的100条轨迹均已完整执行和审计；这是本项目全量主实验结果，历史环境和模型服务等价性仍有限制。' if s['complete_method_runs']==100 and s['completed_pairs']==50 else '当前是部分样本，任务覆盖尚不均衡，不能视为全量成功率或原报告数值的复现结论。'
+    intro = '<p class="section-intro">计划为 RoboDojo 50 个冻结案例 × 两种方法，共 100 条完整轨迹。'+coverage+'</p>'
     block = f'''{START}<section class="report-section" id="main-methods"><div class="section-heading"><div><span class="eyebrow">PRIMARY REPRODUCTION / 两种主方法</span><h2>我们复现的 GPT Direct 与 Hybrid</h2></div><a class="text-link" href="gpt-methods.html">全部回放、50 案例矩阵与审计 ↗</a></div>{intro}{stats}{active_html(data)}<p class="updated">主方法状态快照（UTC） · {snapshot}</p><p class="table-note">仅完整原生终止且通过完整动作审计的回合计分；容量不足、网络与基础设施中断另列。<a href="data/gpt-methods-progress.json">下载主方法结果 ↗</a></p></section>{END}'''
     block = block.replace('<p class="updated">主方法状态快照', supplement + '<p class="updated">主方法状态快照', 1)
     for name in ('index.html', 'scenes.html'):
@@ -95,8 +96,9 @@ def render(out):
         document = document.replace('<td>RoboLab · GPT Direct / hybrid</td><td>各 50 案例</td><td>未运行</td>',
                                     '<td>RoboLab · GPT Direct / hybrid</td><td>各 50 案例</td><td><span id="robolab-infra-progress"></span></td>')
         if supplement:
+            supplemental_summary=data['supplementary']['robolab']['summary']
             document = re.sub(r'<span id="robolab-infra-progress">.*?</span>',
-                              '<span id="robolab-infra-progress">两方法接入与原生验证推进中，完整审计待完成。<a href="#robolab-methods-progress">本快照详情 ↗</a></span>', document)
+                              f'<span id="robolab-infra-progress">{supplemental_summary["complete_method_runs"]} / {supplemental_summary["planned_method_runs"]} 条已完整审计，{supplemental_summary["completed_pairs"]} / {supplemental_summary["planned_pairs"]} 对已完成。<a href="robolab-methods.html">补充结果与完整回放 ↗</a></span>', document)
         document=re.sub(r'<div class="panel" id="infra-bundle-download">.*?</div>',bundle_html,document,flags=re.S)
         # Do not leave a historical baseline date beside current primary counts.
         document = re.sub(r'(<p class="updated">)(?:数据快照|主方法快照) · [^<]*(</p>)',

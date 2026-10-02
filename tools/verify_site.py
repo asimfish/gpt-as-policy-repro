@@ -93,6 +93,11 @@ def verify(root):
     assert len(supplemental['cases'])==50 and len({c['case_id'] for c in supplemental['cases']})==50
     assert supplemental['summary']==summarize_robolab(supplemental['cases'],supplemental['episodes'])
     assert supplemental['summary']==progress['supplementary']['robolab']['summary']
+    infrastructure=Links();infrastructure.feed((root/'scenes.html').read_text())
+    assert 'robolab-infra-progress' in infrastructure.ids
+    count=supplemental['summary']['complete_method_runs']
+    pairs=supplemental['summary']['completed_pairs']
+    assert f'{count} / 100 条已完整审计，{pairs} / 50 对已完成' in (root/'scenes.html').read_text()
     for episode in supplemental['episodes']:
         audit=json.loads((root/episode['audit']).read_text())
         assert episode==json.loads((root/episode['evidence']).read_text())

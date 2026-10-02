@@ -37,6 +37,8 @@ await page.setViewportSize({width:390,height:844});await page.goto(base+'/gpt-me
 const gw=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth}));if(gw.scroll>gw.viewport)throw Error('GPT mobile overflow '+JSON.stringify(gw));
 await page.screenshot({path:'.artifacts/gpt-methods-mobile.png'});await page.locator('#gpt-rollouts').scrollIntoViewIfNeeded();await page.screenshot({path:'.artifacts/gpt-methods-mobile-rollouts.png'});
 await page.goto(base+'/scenes.html',{waitUntil:'networkidle'});const primary=await page.locator('#main-methods').innerText();if(!primary.includes(gd.summary.complete_method_runs+'')||primary.includes('完整可计分主方法回合：0'))throw Error('Primary report counts');
+const supplementalCounts=gd.supplementary.robolab.summary;const supplementalStatus=await page.locator('#robolab-infra-progress').innerText();
+if(!supplementalStatus.includes(supplementalCounts.complete_method_runs+' / 100 条已完整审计，'+supplementalCounts.completed_pairs+' / 50 对已完成'))throw Error('Infrastructure supplemental counts');
 const bounds=await page.evaluate(()=>({primary:document.querySelector('#main-methods').offsetTop,baseline:document.querySelector('[aria-label="前缀基线关键指标"]').offsetTop}));if(!(bounds.primary<bounds.baseline))throw Error('Primary results must precede historical baseline');
 await page.goto(base+'/robolab-methods.html',{waitUntil:'networkidle'});
 const supplemental=await page.evaluate(async()=>await (await fetch('data/robolab-methods-progress.json')).json());
