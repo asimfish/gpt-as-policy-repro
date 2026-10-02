@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-02T10:36:42.460790+00:00",
+  "snapshot": "2026-10-02T10:38:34.363119+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -4065,8 +4065,8 @@
       "supervisor_status": "running",
       "eligible": false,
       "status": "running",
-      "control_steps": 510,
-      "decisions": 36
+      "control_steps": 530,
+      "decisions": 40
     }
   ],
   "interruptions": {
