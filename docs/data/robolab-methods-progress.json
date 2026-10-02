@@ -848,7 +848,7 @@
       "task": "BlocksInBinTask",
       "seed": 0,
       "method": "gpt_only",
-      "status": "starting",
+      "status": "controller_running",
       "started_utc": "2026-10-02T11:11:56.241761+00:00",
       "eligible": false
     },
