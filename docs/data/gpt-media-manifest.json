@@ -349,5 +349,14 @@
     "duration_seconds": 11.6,
     "video_sha256": "549a4cdcaac47c6ba8c683ae3528281e600452dd4f6d20dbec37d752398969eb",
     "source_video_sha256": "402484a5a8156cb7b6ece46018d6ef28a3d6c543721105b69d275176a410ca9d"
+  },
+  {
+    "id": "pi05_plus_gpt__fold_clothes__random__g0__l0",
+    "run_id": "queue_20261003T064123Z_pi05_plus_gpt_fold_clothes_random_g0_l0",
+    "video": "media/gpt-episodes/pi05_plus_gpt__fold_clothes__random__g0__l0.mp4",
+    "video_bytes": 1564849,
+    "duration_seconds": 20.067,
+    "video_sha256": "a365c14a1b31c20dda0070ab4a24d6df3951559f0cbc80730bdb1182dade5414",
+    "source_video_sha256": "7187f45da4d092315e372e2d36c540b1c6b14f9cadd0743c10b84be1b0c3a34f"
   }
 ]
