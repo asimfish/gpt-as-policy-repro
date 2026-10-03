@@ -126,7 +126,7 @@
           "episode_id": null
         },
         "pi05_plus_gpt": {
-          "status": "pending",
+          "status": "audit_pending",
           "episode_id": null
         }
       },
@@ -950,6 +950,15 @@
       "eligible": true
     },
     {
+      "run_id": "direct_20261003T023502Z_BlocksInBinTask_seed1",
+      "task": "BlocksInBinTask",
+      "seed": 1,
+      "method": "gpt_only",
+      "status": "starting",
+      "started_utc": "2026-10-03T02:35:02.496919+00:00",
+      "eligible": false
+    },
+    {
       "run_id": "hybrid_20261002T090455Z_BlocksInBinTask_seed0",
       "task": "BlocksInBinTask",
       "seed": 0,
@@ -981,8 +990,26 @@
       "task": "BlocksInBinTask",
       "seed": 2,
       "method": "pi05_plus_gpt",
-      "status": "controller_running",
+      "status": "controller_finished",
       "started_utc": "2026-10-02T19:46:44.550325+00:00",
+      "eligible": false
+    },
+    {
+      "run_id": "hybrid_20261003T023218Z_BlocksInBinTask_seed3",
+      "task": "BlocksInBinTask",
+      "seed": 3,
+      "method": "pi05_plus_gpt",
+      "status": "infrastructure_interrupted",
+      "started_utc": "2026-10-03T02:32:18.468295+00:00",
+      "eligible": false
+    },
+    {
+      "run_id": "hybrid_20261003T023344Z_BlocksInBinTask_seed4",
+      "task": "BlocksInBinTask",
+      "seed": 4,
+      "method": "pi05_plus_gpt",
+      "status": "infrastructure_interrupted",
+      "started_utc": "2026-10-03T02:33:44.259468+00:00",
       "eligible": false
     }
   ],
