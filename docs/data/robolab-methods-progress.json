@@ -106,7 +106,7 @@
       "seed": 1,
       "methods": {
         "gpt_only": {
-          "status": "pending",
+          "status": "audit_pending",
           "episode_id": null
         },
         "pi05_plus_gpt": {
@@ -954,8 +954,17 @@
       "task": "BlocksInBinTask",
       "seed": 1,
       "method": "gpt_only",
-      "status": "controller_running",
+      "status": "controller_finished",
       "started_utc": "2026-10-03T02:35:02.496919+00:00",
+      "eligible": false
+    },
+    {
+      "run_id": "direct_20261003T061741Z_BlocksInBinTask_seed2",
+      "task": "BlocksInBinTask",
+      "seed": 2,
+      "method": "gpt_only",
+      "status": "starting",
+      "started_utc": "2026-10-03T06:17:42.246165+00:00",
       "eligible": false
     },
     {
