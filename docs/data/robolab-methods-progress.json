@@ -58,8 +58,8 @@
       "seed": 3,
       "methods": {
         "gpt_only": {
-          "status": "audit_pending",
-          "episode_id": null
+          "status": "complete",
+          "episode_id": "robolab_BlockStackingSpecifiedOrderTask__seed3__gpt_only"
         },
         "pi05_plus_gpt": {
           "status": "pending",
@@ -903,6 +903,38 @@
       "evidence": "data/robolab-method-episodes/robolab_BlockStackingSpecifiedOrderTask__seed2__gpt_only.json"
     },
     {
+      "id": "robolab_BlockStackingSpecifiedOrderTask__seed3__gpt_only",
+      "run_id": "direct_20261004T004729Z_BlockStackingSpecifiedOrderTask_seed3",
+      "case_id": "BlockStackingSpecifiedOrderTask__seed3",
+      "task": "BlockStackingSpecifiedOrderTask",
+      "seed": 3,
+      "method": "gpt_only",
+      "success": true,
+      "complete": true,
+      "eligible": true,
+      "control_steps": 572,
+      "decisions": 115,
+      "terminated": true,
+      "truncated": false,
+      "actions_by_mode": {
+        "student": 0,
+        "edit": 0,
+        "eef": 572
+      },
+      "pi05_inference_calls": 0,
+      "initial_state_hash": "ff5d686214526511fbb62eea687633572f6d9a9c341f02a0835fb2b0bac4d7d9",
+      "native_horizon": 1350,
+      "audit": "data/robolab-method-episodes/robolab_BlockStackingSpecifiedOrderTask__seed3__gpt_only-audit.json",
+      "audit_sha256": "c9a9e594c4734dfdbdabfeea48b979d51aff3228caf6cb6fbef228178b073901",
+      "video": "media/robolab-methods/robolab_BlockStackingSpecifiedOrderTask__seed3__gpt_only.mp4",
+      "poster": "media/robolab-methods/robolab_BlockStackingSpecifiedOrderTask__seed3__gpt_only.jpg",
+      "video_sha256": "8941e0c44ec14d57cb3e184d055f953c99206d588890f6379a827ca89b7f2237",
+      "source_video_sha256": "806d096f8092056789f8b77d08041416df26348df42a5f6795488104373073fe",
+      "video_bytes": 2549429,
+      "duration_seconds": 38.2,
+      "evidence": "data/robolab-method-episodes/robolab_BlockStackingSpecifiedOrderTask__seed3__gpt_only.json"
+    },
+    {
       "id": "robolab_BlocksInBinTask__seed0__gpt_only",
       "run_id": "direct_20261002T111156Z_BlocksInBinTask_seed0",
       "case_id": "BlocksInBinTask__seed0",
@@ -1363,9 +1395,9 @@
       "task": "BlockStackingSpecifiedOrderTask",
       "seed": 3,
       "method": "gpt_only",
-      "status": "controller_finished",
+      "status": "complete",
       "started_utc": "2026-10-04T00:47:29.117456+00:00",
-      "eligible": false
+      "eligible": true
     },
     {
       "run_id": "direct_20261004T025432Z_BlockStackingSpecifiedOrderTask_seed4",
@@ -2380,12 +2412,12 @@
     "planned_pairs": 50,
     "planned_method_runs": 100,
     "completed_pairs": 3,
-    "complete_method_runs": 11,
+    "complete_method_runs": 12,
     "methods": {
       "gpt_only": {
         "all_completed": {
-          "evaluated": 8,
-          "successes": 8,
+          "evaluated": 9,
+          "successes": 9,
           "failures": 0,
           "success_rate": 1.0
         },

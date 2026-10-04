@@ -1,0 +1,32 @@
+{
+  "id": "robolab_BlockStackingSpecifiedOrderTask__seed3__gpt_only",
+  "run_id": "direct_20261004T004729Z_BlockStackingSpecifiedOrderTask_seed3",
+  "case_id": "BlockStackingSpecifiedOrderTask__seed3",
+  "task": "BlockStackingSpecifiedOrderTask",
+  "seed": 3,
+  "method": "gpt_only",
+  "success": true,
+  "complete": true,
+  "eligible": true,
+  "control_steps": 572,
+  "decisions": 115,
+  "terminated": true,
+  "truncated": false,
+  "actions_by_mode": {
+    "student": 0,
+    "edit": 0,
+    "eef": 572
+  },
+  "pi05_inference_calls": 0,
+  "initial_state_hash": "ff5d686214526511fbb62eea687633572f6d9a9c341f02a0835fb2b0bac4d7d9",
+  "native_horizon": 1350,
+  "audit": "data/robolab-method-episodes/robolab_BlockStackingSpecifiedOrderTask__seed3__gpt_only-audit.json",
+  "audit_sha256": "c9a9e594c4734dfdbdabfeea48b979d51aff3228caf6cb6fbef228178b073901",
+  "video": "media/robolab-methods/robolab_BlockStackingSpecifiedOrderTask__seed3__gpt_only.mp4",
+  "poster": "media/robolab-methods/robolab_BlockStackingSpecifiedOrderTask__seed3__gpt_only.jpg",
+  "video_sha256": "8941e0c44ec14d57cb3e184d055f953c99206d588890f6379a827ca89b7f2237",
+  "source_video_sha256": "806d096f8092056789f8b77d08041416df26348df42a5f6795488104373073fe",
+  "video_bytes": 2549429,
+  "duration_seconds": 38.2,
+  "evidence": "data/robolab-method-episodes/robolab_BlockStackingSpecifiedOrderTask__seed3__gpt_only.json"
+}
