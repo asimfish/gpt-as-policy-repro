@@ -42,7 +42,7 @@
       "seed": 2,
       "methods": {
         "gpt_only": {
-          "status": "pending",
+          "status": "audit_pending",
           "episode_id": null
         },
         "pi05_plus_gpt": {
@@ -1558,7 +1558,7 @@
       "task": "BlockStackingSpecifiedOrderTask",
       "seed": 2,
       "method": "gpt_only",
-      "status": "controller_running",
+      "status": "controller_finished",
       "started_utc": "2026-10-04T15:34:15.751305+00:00",
       "eligible": false
     },
@@ -2172,6 +2172,15 @@
       "method": "pi05_plus_gpt",
       "status": "infrastructure_interrupted",
       "started_utc": "2026-10-04T15:32:56.202104+00:00",
+      "eligible": false
+    },
+    {
+      "run_id": "hybrid_20261004T174026Z_BlocksInBinTask_seed3",
+      "task": "BlocksInBinTask",
+      "seed": 3,
+      "method": "pi05_plus_gpt",
+      "status": "starting",
+      "started_utc": "2026-10-04T17:40:26.255443+00:00",
       "eligible": false
     }
   ],
