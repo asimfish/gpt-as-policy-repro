@@ -2179,7 +2179,7 @@
       "task": "BlocksInBinTask",
       "seed": 3,
       "method": "pi05_plus_gpt",
-      "status": "starting",
+      "status": "controller_running",
       "started_utc": "2026-10-04T17:40:26.255443+00:00",
       "eligible": false
     }
