@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-04T17:50:36.257346+00:00",
+  "snapshot": "2026-10-04T18:00:36.606931+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -7940,8 +7940,8 @@
       "supervisor_status": "running",
       "eligible": false,
       "status": "running",
-      "control_steps": 1025,
-      "decisions": 205
+      "control_steps": 1105,
+      "decisions": 221
     }
   ],
   "interruptions": {
@@ -7996,23 +7996,23 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 0,
+      "observed_control_steps": 60,
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
-        "completed_pairs": 2,
-        "complete_method_runs": 5,
+        "completed_pairs": 3,
+        "complete_method_runs": 6,
         "methods": {
           "gpt_only": {
             "all_completed": {
-              "evaluated": 2,
-              "successes": 2,
+              "evaluated": 3,
+              "successes": 3,
               "failures": 0,
               "success_rate": 1.0
             },
             "paired_completed": {
-              "evaluated": 2,
-              "successes": 2,
+              "evaluated": 3,
+              "successes": 3,
               "failures": 0,
               "success_rate": 1.0
             }
@@ -8025,8 +8025,8 @@
               "success_rate": 1.0
             },
             "paired_completed": {
-              "evaluated": 2,
-              "successes": 2,
+              "evaluated": 3,
+              "successes": 3,
               "failures": 0,
               "success_rate": 1.0
             }
