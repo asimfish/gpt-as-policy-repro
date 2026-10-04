@@ -20,8 +20,8 @@ GENERATED = ('docs/index.html', 'docs/scenes.html', 'docs/gpt-methods.html', 'do
 
 
 def git(repo, *args, env=None, stdin=None):
-    result = subprocess.run(['git', '-C', str(repo), *args], input=stdin, text=True,
-                            stdout=subprocess.PIPE, stderr=subprocess.PIPE, env=env, timeout=180)
+    result = subprocess.run(['git', '-C', str(repo), '-c', 'status.showUntrackedFiles=no', *args], input=stdin, text=True,
+                            stdout=subprocess.PIPE, stderr=subprocess.PIPE, env=env, timeout=600 if args[0]=='commit' else 180)
     if result.returncode:
         # Credential-helper or transport errors could contain sensitive headers.
         raise RuntimeError('Git operation failed: ' + args[0] + '; exit ' + str(result.returncode))
@@ -58,6 +58,38 @@ def credential_env(credentials_repo):
     env.update(GIT_CONFIG_COUNT='1', GIT_CONFIG_KEY_0='http.https://github.com/.extraheader',
                GIT_CONFIG_VALUE_0='Authorization: Basic ' + auth)
     return env
+
+
+def record_transaction(repo, source, paths, message):
+    """Bind retry authority to the exact index staged by this publication pulse."""
+    paths=sorted(paths)
+    assert paths and all(owned(path) for path in paths)
+    assert sorted(git(repo,'diff','--cached','--name-only').splitlines())==paths, 'Concurrent staging detected'
+    receipt=dict(schema='gpt_policy_publication_transaction.v1',head=git(repo,'rev-parse','HEAD'),
+                 tree=git(repo,'write-tree'),paths=paths,message=message)
+    destination=source/'report_publication_transaction.json'
+    temp=destination.with_suffix('.tmp');temp.write_text(json.dumps(receipt,indent=2)+'\n');temp.replace(destination)
+
+
+def resume_transaction(repo, source):
+    path=source/'report_publication_transaction.json'
+    if not path.exists():
+        return
+    receipt=json.loads(path.read_text())
+    assert receipt['schema']=='gpt_policy_publication_transaction.v1'
+    assert git(repo,'branch','--show-current')=='docs/site'
+    assert git(repo,'remote','get-url','origin')=='https://github.com/asimfish/gpt-as-policy-repro.git'
+    head=git(repo,'rev-parse','HEAD')
+    if head!=receipt['head']:
+        # Commit completed before the worker lost its acknowledgement.
+        assert git(repo,'rev-parse','HEAD^{tree}')==receipt['tree'], 'Publication HEAD changed unexpectedly'
+        assert git(repo,'rev-parse','HEAD^')==receipt['head'], 'Publication parent changed unexpectedly'
+    else:
+        assert all(owned(p) for p in receipt['paths'])
+        assert sorted(git(repo,'diff','--cached','--name-only').splitlines())==receipt['paths'], 'User staging must be preserved'
+        assert git(repo,'write-tree')==receipt['tree'], 'User staging must be preserved'
+        git(repo,'commit','-m',receipt['message'])
+    path.unlink()
 
 
 def verify_online(repo, source):
@@ -127,6 +159,7 @@ def await_online(repo, source, timeout=300, interval=15):
 
 
 def publish(repo, source, credentials_repo, proxy):
+    resume_transaction(repo, source)
     check_worktree(repo)
     tools = repo / 'tools'
     old = json.loads((repo / 'docs/data/gpt-methods-progress.json').read_text())
@@ -140,7 +173,8 @@ def publish(repo, source, credentials_repo, proxy):
     if changed:
         git(repo, 'add', '--', *changed)
         assert set(git(repo, 'diff', '--cached', '--name-only').splitlines()) == set(changed), 'Concurrent staging detected; refuse commit'
-        git(repo, 'commit', '-m', f'[report/build]: refresh {current["summary"]["complete_method_runs"]} audited method runs')
+        record_transaction(repo,source,changed,f'[report/build]: refresh {current["summary"]["complete_method_runs"]} audited method runs')
+        resume_transaction(repo,source)
     env = credential_env(credentials_repo)
     # Also retries an earlier successful commit whose push failed. Normal push only.
     git(repo, '-c', 'http.proxy=' + proxy, 'push', 'origin', 'docs/site', env=env)

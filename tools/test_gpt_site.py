@@ -166,6 +166,32 @@ class PublicationBoundaryTests(unittest.TestCase):
         (self.repo / 'docs/gpt-methods.html').write_text('generated output\n')
         check_worktree(self.repo)
 
+    def staged_pulse(self):
+        publisher.git(self.repo,'config','user.name','Report test')
+        publisher.git(self.repo,'config','user.email','report-test@example.invalid')
+        (self.repo/'docs').mkdir()
+        (self.repo/'docs/scenes.html').write_text('previous report')
+        publisher.git(self.repo,'add','--','docs/scenes.html')
+        publisher.git(self.repo,'commit','-m','[report/test]: create previous report')
+        (self.repo/'docs/scenes.html').write_text('next report')
+        publisher.git(self.repo,'add','--','docs/scenes.html')
+        publisher.record_transaction(self.repo,self.repo,['docs/scenes.html'],'[report/build]: retry report')
+
+    def test_interrupted_owned_staging_resumes_without_rebuilding_or_erasing_it(self):
+        self.staged_pulse()
+        publisher.resume_transaction(self.repo,self.repo)
+        self.assertEqual(publisher.git(self.repo,'show','HEAD:docs/scenes.html'),'next report')
+        self.assertEqual(publisher.git(self.repo,'diff','--cached','--name-only'),'')
+        self.assertFalse((self.repo/'report_publication_transaction.json').exists())
+
+    def test_concurrent_user_staging_blocks_transaction_recovery(self):
+        self.staged_pulse()
+        (self.repo/'user.py').write_text('preserved user work')
+        publisher.git(self.repo,'add','--','user.py')
+        with self.assertRaisesRegex(AssertionError,'staging'):
+            publisher.resume_transaction(self.repo,self.repo)
+        self.assertIn('user.py',publisher.git(self.repo,'diff','--cached','--name-only'))
+
     def test_publication_waits_for_deployment_instead_of_abandoning_proof(self):
         write(self.repo / 'docs/data/gpt-methods-progress.json', dict(episodes=[], summary=dict(complete_method_runs=0)))
         with patch.object(publisher, 'check_worktree'), patch.object(publisher.subprocess, 'run'), \
