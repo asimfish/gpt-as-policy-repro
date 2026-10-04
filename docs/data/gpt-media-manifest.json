@@ -772,5 +772,14 @@
     "duration_seconds": 28.067,
     "video_sha256": "2f7104f889bcbeea32204df3636bdaabd8038cbe42a3340ce27688e1daa2001c",
     "source_video_sha256": "90c72bfcb8990d88f1c7540de51de6f890dd03c7f87c880f418cc0f45e910e88"
+  },
+  {
+    "id": "pi05_plus_gpt__put_bottles_into_dustbin__standard__g0__l2",
+    "run_id": "queue_20261004T215722Z_pi05_plus_gpt_put_bottles_into_dustbin_standard_g0_l2",
+    "video": "media/gpt-episodes/pi05_plus_gpt__put_bottles_into_dustbin__standard__g0__l2.mp4",
+    "video_bytes": 1183789,
+    "duration_seconds": 17.867,
+    "video_sha256": "cd63eccd4700cdd33604d434840e5e3b2bd31d628ed5173596df6725e1ebb843",
+    "source_video_sha256": "68ba4a741aee858e15a56057ed9b8aa5690965b7197af859efc82535e1cb15c4"
   }
 ]
