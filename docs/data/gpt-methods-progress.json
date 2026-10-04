@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-04T21:11:02.690668+00:00",
+  "snapshot": "2026-10-04T21:20:42.365728+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -2034,8 +2034,8 @@
       "task_label": "瓶子放入垃圾桶",
       "methods": {
         "gpt_only": {
-          "status": "pending",
-          "attempts": 0,
+          "status": "running",
+          "attempts": 1,
           "episode_id": null
         },
         "pi05_plus_gpt": {
@@ -8302,6 +8302,18 @@
       "status": "complete",
       "control_steps": 319,
       "decisions": 24
+    },
+    {
+      "run_id": "queue_20261004T211039Z_gpt_only_put_bottles_into_dustbin_standard_g0_l2",
+      "case_id": "put_bottles_into_dustbin__standard__g0__l2",
+      "method": "gpt_only",
+      "started_utc": "2026-10-04T21:10:40.385165+00:00",
+      "finished_utc": null,
+      "supervisor_status": "running",
+      "eligible": false,
+      "status": "running",
+      "control_steps": 160,
+      "decisions": 32
     }
   ],
   "interruptions": {
@@ -8356,7 +8368,7 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 1113,
+      "observed_control_steps": 1143,
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
