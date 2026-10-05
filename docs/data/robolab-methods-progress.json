@@ -330,7 +330,7 @@
       "seed": 0,
       "methods": {
         "gpt_only": {
-          "status": "pending",
+          "status": "audit_pending",
           "episode_id": null
         },
         "pi05_plus_gpt": {
@@ -2047,7 +2047,7 @@
       "task": "ClutterPumpkinTask",
       "seed": 0,
       "method": "gpt_only",
-      "status": "controller_running",
+      "status": "controller_finished",
       "started_utc": "2026-10-05T19:06:02.830934+00:00",
       "eligible": false
     },
