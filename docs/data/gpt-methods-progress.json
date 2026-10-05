@@ -1,11 +1,11 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-05T02:41:05.746825+00:00",
+  "snapshot": "2026-10-05T02:50:36.359750+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
-    "completed_pairs": 45,
-    "complete_method_runs": 93,
+    "completed_pairs": 46,
+    "complete_method_runs": 94,
     "methods": {
       "gpt_only": {
         "all_completed": {
@@ -16,27 +16,27 @@
           "mean_score": 0.3670212765957447
         },
         "paired_completed": {
-          "evaluated": 45,
+          "evaluated": 46,
           "successes": 11,
-          "failures": 34,
-          "success_rate": 0.24444444444444444,
-          "mean_score": 0.38333333333333336
+          "failures": 35,
+          "success_rate": 0.2391304347826087,
+          "mean_score": 0.375
         }
       },
       "pi05_plus_gpt": {
         "all_completed": {
-          "evaluated": 46,
-          "successes": 19,
+          "evaluated": 47,
+          "successes": 20,
           "failures": 27,
-          "success_rate": 0.41304347826086957,
-          "mean_score": 0.548913043478261
+          "success_rate": 0.425531914893617,
+          "mean_score": 0.5585106382978724
         },
         "paired_completed": {
-          "evaluated": 45,
-          "successes": 19,
+          "evaluated": 46,
+          "successes": 20,
           "failures": 26,
-          "success_rate": 0.4222222222222222,
-          "mean_score": 0.5544444444444445
+          "success_rate": 0.43478260869565216,
+          "mean_score": 0.5641304347826087
         }
       }
     }
@@ -215,8 +215,8 @@
       "task_label": "折叠衣物",
       "planned_pairs": 5,
       "planned_method_runs": 10,
-      "completed_pairs": 4,
-      "complete_method_runs": 9,
+      "completed_pairs": 5,
+      "complete_method_runs": 10,
       "methods": {
         "gpt_only": {
           "all_completed": {
@@ -227,27 +227,27 @@
             "mean_score": 0.04
           },
           "paired_completed": {
-            "evaluated": 4,
+            "evaluated": 5,
             "successes": 0,
-            "failures": 4,
+            "failures": 5,
             "success_rate": 0.0,
-            "mean_score": 0.05
+            "mean_score": 0.04
           }
         },
         "pi05_plus_gpt": {
           "all_completed": {
-            "evaluated": 4,
-            "successes": 3,
+            "evaluated": 5,
+            "successes": 4,
             "failures": 1,
-            "success_rate": 0.75,
-            "mean_score": 0.8
+            "success_rate": 0.8,
+            "mean_score": 0.8400000000000001
           },
           "paired_completed": {
-            "evaluated": 4,
-            "successes": 3,
+            "evaluated": 5,
+            "successes": 4,
             "failures": 1,
-            "success_rate": 0.75,
-            "mean_score": 0.8
+            "success_rate": 0.8,
+            "mean_score": 0.8400000000000001
           }
         }
       }
@@ -1280,14 +1280,14 @@
           "episode_id": "gpt_only__fold_clothes__standard__g0__l1"
         },
         "pi05_plus_gpt": {
-          "status": "running",
+          "status": "complete",
           "attempts": 2,
-          "episode_id": null
+          "episode_id": "pi05_plus_gpt__fold_clothes__standard__g0__l1"
         }
       },
-      "paired_complete": false,
-      "robot_joint_states_equal": null,
-      "scene_layout_records_equal": null
+      "paired_complete": true,
+      "robot_joint_states_equal": true,
+      "scene_layout_records_equal": true
     },
     {
       "case_id": "imitate_sorting_sequence__standard__g0__l0",
@@ -1308,8 +1308,8 @@
       "task_label": "模仿排序序列",
       "methods": {
         "gpt_only": {
-          "status": "interrupted",
-          "attempts": 1,
+          "status": "running",
+          "attempts": 2,
           "episode_id": null
         },
         "pi05_plus_gpt": {
@@ -4563,6 +4563,58 @@
       "source_video_sha256": "f32fafdeca14448c1fa363de28b35f52dbe872b4aea11ba36183506f872f3687",
       "video_bytes": 1898435,
       "duration_seconds": 20.067
+    },
+    {
+      "id": "pi05_plus_gpt__fold_clothes__standard__g0__l1",
+      "case_id": "fold_clothes__standard__g0__l1",
+      "method": "pi05_plus_gpt",
+      "method_label": "π0.5 + GPT Hybrid",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "fold_clothes__standard__g0__l1",
+        "task": "fold_clothes",
+        "runtime_task": "fold_clothes",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 1,
+        "reset_seed": 1,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "c43d694499bdb86c1ec3b8c6f2362893e0cfbbb5d00921378fc8c6fec2f79583"
+      },
+      "task_label": "折叠衣物",
+      "run_id": "queue_20261005T023550Z_pi05_plus_gpt_fold_clothes_standard_g0_l1",
+      "started_utc": "2026-10-05T02:35:50.907335+00:00",
+      "finished_utc": "2026-10-05T02:49:54.986258+00:00",
+      "supervisor_status": "complete",
+      "complete": true,
+      "eligible": true,
+      "success": true,
+      "score": 1.0,
+      "control_steps": 304,
+      "decisions": 21,
+      "terminated": true,
+      "truncated": false,
+      "native_horizon": 500,
+      "model": "gpt-6-astra",
+      "reasoning_effort": "xhigh",
+      "initial_robot_state_sha256": "8c62f70519b7db4dafc2cd5a9fe091b657b468b137828d7f75de43b5e404a26e",
+      "scene_layout_record_sha256": "c43d694499bdb86c1ec3b8c6f2362893e0cfbbb5d00921378fc8c6fec2f79583",
+      "actions_by_mode": {
+        "student": 304,
+        "edit": 0,
+        "eef": 0
+      },
+      "audit": "data/gpt-episodes/pi05_plus_gpt__fold_clothes__standard__g0__l1-audit.json",
+      "evidence": "data/gpt-episodes/pi05_plus_gpt__fold_clothes__standard__g0__l1.json",
+      "audit_sha256": "91f76e80a625e150d53c3ddc88dfd91200902a52765c4e1eb1937a0b333ef761",
+      "video": "media/gpt-episodes/pi05_plus_gpt__fold_clothes__standard__g0__l1.mp4",
+      "poster": "media/gpt-episodes/pi05_plus_gpt__fold_clothes__standard__g0__l1.jpg",
+      "video_sha256": "99c17852b6da07d660cfb2fb6ca815eb1cb095eae23cd5b2be8058e07486286d",
+      "source_video_sha256": "49780b4afb629c8396c9c65bba01aa5c2e8540de1ac138109b88ed17a0cfb271",
+      "video_bytes": 996605,
+      "duration_seconds": 12.2
     },
     {
       "id": "pi05_plus_gpt__imitate_sorting_sequence__standard__g0__l2",
@@ -8813,8 +8865,20 @@
       "case_id": "fold_clothes__standard__g0__l1",
       "method": "pi05_plus_gpt",
       "started_utc": "2026-10-05T02:35:50.907335+00:00",
+      "finished_utc": "2026-10-05T02:49:54.986258+00:00",
+      "supervisor_status": "complete",
+      "eligible": true,
+      "status": "complete",
+      "control_steps": 304,
+      "decisions": 21
+    },
+    {
+      "run_id": "queue_20261005T025002Z_gpt_only_imitate_sorting_sequence_standard_g0_l0",
+      "case_id": "imitate_sorting_sequence__standard__g0__l0",
+      "method": "gpt_only",
+      "started_utc": "2026-10-05T02:50:03.072960+00:00",
       "finished_utc": null,
-      "supervisor_status": "running",
+      "supervisor_status": "starting",
       "eligible": false,
       "status": "running",
       "control_steps": 0,
@@ -8874,7 +8938,7 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 0,
+      "observed_control_steps": 95,
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
