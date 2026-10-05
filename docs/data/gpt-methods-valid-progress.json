@@ -1,19 +1,19 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-05T22:51:10.557172+00:00",
+  "snapshot": "2026-10-05T22:51:22.200245+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
     "completed_pairs": 49,
-    "complete_method_runs": 99,
+    "complete_method_runs": 98,
     "methods": {
       "gpt_only": {
         "all_completed": {
-          "evaluated": 50,
+          "evaluated": 49,
           "successes": 12,
-          "failures": 38,
-          "success_rate": 0.24,
-          "mean_score": 0.375
+          "failures": 37,
+          "success_rate": 0.24489795918367346,
+          "mean_score": 0.3826530612244898
         },
         "paired_completed": {
           "evaluated": 49,
@@ -258,15 +258,15 @@
       "planned_pairs": 5,
       "planned_method_runs": 10,
       "completed_pairs": 4,
-      "complete_method_runs": 9,
+      "complete_method_runs": 8,
       "methods": {
         "gpt_only": {
           "all_completed": {
-            "evaluated": 5,
+            "evaluated": 4,
             "successes": 1,
-            "failures": 4,
-            "success_rate": 0.2,
-            "mean_score": 0.3
+            "failures": 3,
+            "success_rate": 0.25,
+            "mean_score": 0.375
           },
           "paired_completed": {
             "evaluated": 4,
@@ -1422,31 +1422,31 @@
       "scene_layout_records_equal": true
     },
     {
-      "case_id": "imitate_sorting_sequence__standard__g0__l4",
+      "case_id": "imitate_sorting_sequence__standard__g0__l5",
       "identity": {
         "panel_id": "gpt_policy_repro_panel_v1",
         "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
-        "case_id": "imitate_sorting_sequence__standard__g0__l4",
+        "case_id": "imitate_sorting_sequence__standard__g0__l5",
         "task": "imitate_sorting_sequence",
         "runtime_task": "imitate_sorting_sequence",
         "variant": "standard",
         "eval_seed": 0,
-        "layout_id": 4,
-        "reset_seed": 4,
+        "layout_id": 5,
+        "reset_seed": 5,
         "simulator_initial_seed": 0,
         "policy_rng_seed": 0,
-        "layout_sha256": "822665f497405d86cd25fb43d18abb2d51a3335dc049339d1bd303d70546f4a1"
+        "layout_sha256": "3f8f849ceced13527bfd31c342ea3c88d036b40b16d04c32d53c683beb7b2e91"
       },
       "task_label": "模仿排序序列",
       "methods": {
         "gpt_only": {
-          "status": "complete",
+          "status": "running",
           "attempts": 1,
-          "episode_id": "gpt_only__imitate_sorting_sequence__standard__g0__l4"
+          "episode_id": null
         },
         "pi05_plus_gpt": {
-          "status": "interrupted",
-          "attempts": 5,
+          "status": "pending",
+          "attempts": 0,
           "episode_id": null
         }
       },
@@ -5017,54 +5017,6 @@
       "duration_seconds": 15.4
     },
     {
-      "id": "gpt_only__imitate_sorting_sequence__standard__g0__l4",
-      "case_id": "imitate_sorting_sequence__standard__g0__l4",
-      "method": "gpt_only",
-      "method_label": "GPT Direct",
-      "identity": {
-        "panel_id": "gpt_policy_repro_panel_v1",
-        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
-        "case_id": "imitate_sorting_sequence__standard__g0__l4",
-        "task": "imitate_sorting_sequence",
-        "runtime_task": "imitate_sorting_sequence",
-        "variant": "standard",
-        "eval_seed": 0,
-        "layout_id": 4,
-        "reset_seed": 4,
-        "simulator_initial_seed": 0,
-        "policy_rng_seed": 0,
-        "layout_sha256": "822665f497405d86cd25fb43d18abb2d51a3335dc049339d1bd303d70546f4a1"
-      },
-      "task_label": "模仿排序序列",
-      "run_id": "queue_20261003T125423Z_gpt_only_imitate_sorting_sequence_standard_g0_l4",
-      "started_utc": "2026-10-03T12:54:24.133811+00:00",
-      "finished_utc": "2026-10-03T13:09:49.382769+00:00",
-      "supervisor_status": "complete",
-      "complete": true,
-      "eligible": true,
-      "success": false,
-      "score": 0.0,
-      "control_steps": 300,
-      "decisions": 60,
-      "terminated": true,
-      "truncated": false,
-      "native_horizon": 1600,
-      "model": "gpt-6-astra",
-      "reasoning_effort": "xhigh",
-      "initial_robot_state_sha256": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
-      "scene_layout_record_sha256": "822665f497405d86cd25fb43d18abb2d51a3335dc049339d1bd303d70546f4a1",
-      "actions_by_mode": null,
-      "audit": "data/gpt-episodes/gpt_only__imitate_sorting_sequence__standard__g0__l4-audit.json",
-      "evidence": "data/gpt-episodes/gpt_only__imitate_sorting_sequence__standard__g0__l4.json",
-      "audit_sha256": "1bcac58e06c314d52eb3090b7da997afce065825d85beea45a6667193fbaca98",
-      "video": "media/gpt-episodes/gpt_only__imitate_sorting_sequence__standard__g0__l4.mp4",
-      "poster": "media/gpt-episodes/gpt_only__imitate_sorting_sequence__standard__g0__l4.jpg",
-      "video_sha256": "b02dde48c030e941ecf67e5907bd868f02a162fb58d5ae7ce15e3d6b077ca712",
-      "source_video_sha256": "ca39e17192a880987ff7c4d804b795f8d31a6a2e5d7941b89c78b7d0e69061e9",
-      "video_bytes": 273913,
-      "duration_seconds": 12.067
-    },
-    {
       "id": "gpt_only__make_kong__standard__g0__l0",
       "case_id": "make_kong__standard__g0__l0",
       "method": "gpt_only",
@@ -8571,40 +8523,6 @@
       "decisions": 27
     },
     {
-      "run_id": "queue_20261003T125423Z_gpt_only_imitate_sorting_sequence_standard_g0_l4",
-      "case_id": "imitate_sorting_sequence__standard__g0__l4",
-      "method": "gpt_only",
-      "started_utc": "2026-10-03T12:54:24.133811+00:00",
-      "finished_utc": "2026-10-03T13:09:49.382769+00:00",
-      "supervisor_status": "complete",
-      "eligible": true,
-      "status": "complete",
-      "control_steps": 300,
-      "decisions": 60
-    },
-    {
-      "run_id": "queue_20261003T131011Z_pi05_plus_gpt_imitate_sorting_sequence_standard_g0_l4",
-      "case_id": "imitate_sorting_sequence__standard__g0__l4",
-      "method": "pi05_plus_gpt",
-      "started_utc": "2026-10-03T13:10:12.801481+00:00",
-      "finished_utc": "2026-10-03T14:19:50.895334+00:00",
-      "supervisor_status": "complete",
-      "eligible": false,
-      "status": "interrupted",
-      "control_steps": 1600,
-      "decisions": 144,
-      "reason_class": "invalid_native_layout",
-      "audit": "data/gpt-attempts/pi05_plus_gpt__queue_20261003T131011Z_pi05_plus_gpt_imitate_sorting_sequence_standard_g0_l4-audit.json",
-      "audited_control_steps": 1600,
-      "audited_decisions": 144,
-      "video": "media/gpt-episodes/attempt__pi05_plus_gpt__queue_20261003T131011Z_pi05_plus_gpt_imitate_sorting_sequence_standard_g0_l4.mp4",
-      "poster": "media/gpt-episodes/attempt__pi05_plus_gpt__queue_20261003T131011Z_pi05_plus_gpt_imitate_sorting_sequence_standard_g0_l4.jpg",
-      "video_sha256": "ff7400476c987593273e0ae25f9f7af1e1be83db269cbeb11cc768bc8ac6ded7",
-      "source_video_sha256": "d3db0db5ca2067929444dae6bcb9faabe88fa1235067879be40da0f6ff56907b",
-      "video_bytes": 3465162,
-      "duration_seconds": 64.067
-    },
-    {
       "run_id": "queue_20261003T142208Z_gpt_only_make_kong_standard_g0_l0",
       "case_id": "make_kong__standard__g0__l0",
       "method": "gpt_only",
@@ -9181,93 +9099,25 @@
       "decisions": 313
     },
     {
-      "run_id": "queue_20261005T094226Z_pi05_plus_gpt_imitate_sorting_sequence_standard_g0_l4",
-      "case_id": "imitate_sorting_sequence__standard__g0__l4",
-      "method": "pi05_plus_gpt",
-      "started_utc": "2026-10-05T09:42:26.585233+00:00",
-      "finished_utc": "2026-10-05T10:42:14.768739+00:00",
-      "supervisor_status": "complete",
+      "run_id": "valid2_20261005T224320Z_gpt_only_imitate_sorting_sequence__standard__g0__l5",
+      "case_id": "imitate_sorting_sequence__standard__g0__l5",
+      "method": "gpt_only",
+      "started_utc": "2026-10-05T22:43:21.809513+00:00",
+      "finished_utc": null,
+      "supervisor_status": "running",
       "eligible": false,
-      "status": "interrupted",
-      "control_steps": 1600,
-      "decisions": 171,
-      "reason_class": "invalid_native_layout",
-      "audit": "data/gpt-attempts/pi05_plus_gpt__queue_20261005T094226Z_pi05_plus_gpt_imitate_sorting_sequence_standard_g0_l4-audit.json",
-      "audited_control_steps": 1600,
-      "audited_decisions": 171,
-      "video": "media/gpt-episodes/attempt__pi05_plus_gpt__queue_20261005T094226Z_pi05_plus_gpt_imitate_sorting_sequence_standard_g0_l4.mp4",
-      "poster": "media/gpt-episodes/attempt__pi05_plus_gpt__queue_20261005T094226Z_pi05_plus_gpt_imitate_sorting_sequence_standard_g0_l4.jpg",
-      "video_sha256": "6ce5fb1981a28e882757c168634cb80e441f5e256f249af44d6855c7e5c34cd2",
-      "source_video_sha256": "cb1b2ead6f0d11dd103e4f8c417b365386579943999445fc94239b0fba599a7c",
-      "video_bytes": 3429197,
-      "duration_seconds": 64.067
-    },
-    {
-      "run_id": "queue_20261005T104411Z_pi05_plus_gpt_imitate_sorting_sequence_standard_g0_l4",
-      "case_id": "imitate_sorting_sequence__standard__g0__l4",
-      "method": "pi05_plus_gpt",
-      "started_utc": "2026-10-05T10:44:11.210599+00:00",
-      "finished_utc": "2026-10-05T11:31:11.760711+00:00",
-      "supervisor_status": "complete",
-      "eligible": false,
-      "status": "interrupted",
-      "control_steps": 1600,
-      "decisions": 132,
-      "reason_class": "invalid_native_layout",
-      "audit": "data/gpt-attempts/pi05_plus_gpt__queue_20261005T104411Z_pi05_plus_gpt_imitate_sorting_sequence_standard_g0_l4-audit.json",
-      "audited_control_steps": 1600,
-      "audited_decisions": 132,
-      "video": "media/gpt-episodes/attempt__pi05_plus_gpt__queue_20261005T104411Z_pi05_plus_gpt_imitate_sorting_sequence_standard_g0_l4.mp4",
-      "poster": "media/gpt-episodes/attempt__pi05_plus_gpt__queue_20261005T104411Z_pi05_plus_gpt_imitate_sorting_sequence_standard_g0_l4.jpg",
-      "video_sha256": "b068bf0a15c4621bf2aba3cbeb7052b6f209c9443e5b8a0564bdfb2222b192bd",
-      "source_video_sha256": "7f29058fe2e31cd05cbd38cc1b221f431e3ba8c20a0c349e66732ee38f3254f8",
-      "video_bytes": 3209275,
-      "duration_seconds": 64.067
-    },
-    {
-      "run_id": "queue_20261005T113309Z_pi05_plus_gpt_imitate_sorting_sequence_standard_g0_l4",
-      "case_id": "imitate_sorting_sequence__standard__g0__l4",
-      "method": "pi05_plus_gpt",
-      "started_utc": "2026-10-05T11:33:09.563208+00:00",
-      "finished_utc": "2026-10-05T13:01:50.835712+00:00",
-      "supervisor_status": "complete",
-      "eligible": false,
-      "status": "interrupted",
-      "control_steps": 1600,
-      "decisions": 185,
-      "reason_class": "invalid_native_layout",
-      "audit": "data/gpt-attempts/pi05_plus_gpt__queue_20261005T113309Z_pi05_plus_gpt_imitate_sorting_sequence_standard_g0_l4-audit.json",
-      "audited_control_steps": 1600,
-      "audited_decisions": 185,
-      "video": "media/gpt-episodes/attempt__pi05_plus_gpt__queue_20261005T113309Z_pi05_plus_gpt_imitate_sorting_sequence_standard_g0_l4.mp4",
-      "poster": "media/gpt-episodes/attempt__pi05_plus_gpt__queue_20261005T113309Z_pi05_plus_gpt_imitate_sorting_sequence_standard_g0_l4.jpg",
-      "video_sha256": "46b631661910512ac86d031ede6fe7e968aecc093b0f5e53b46d3ef70743d484",
-      "source_video_sha256": "c10d50607fbc87901d87af2103f5dc2642d936eee43bfbef39218643cd308442",
-      "video_bytes": 3374708,
-      "duration_seconds": 64.067
-    },
-    {
-      "run_id": "queue_20261005T130406Z_pi05_plus_gpt_imitate_sorting_sequence_standard_g0_l4",
-      "case_id": "imitate_sorting_sequence__standard__g0__l4",
-      "method": "pi05_plus_gpt",
-      "started_utc": "2026-10-05T13:04:06.791458+00:00",
-      "finished_utc": "2026-10-05T14:28:01.180872+00:00",
-      "supervisor_status": "complete",
-      "eligible": false,
-      "status": "interrupted",
-      "control_steps": 1600,
-      "decisions": 174,
-      "reason_class": "invalid_native_layout"
+      "status": "running",
+      "control_steps": 160,
+      "decisions": 32
     }
   ],
   "interruptions": {
-    "count": 69,
+    "count": 64,
     "by_reason": {
       "supervisor_interrupted": 1,
       "model_response_timeout": 1,
       "model_capacity": 7,
-      "infrastructure": 55,
-      "invalid_native_layout": 5
+      "infrastructure": 55
     }
   },
   "protocol": {
@@ -9352,5 +9202,63 @@
       },
       "report": "robolab-methods.html"
     }
+  },
+  "cohort": {
+    "cohort_id": "robodojo_valid50_v2",
+    "manifest_sha256": "d0b76047a1f570f964b6987550538982f49182ba321a07c568f7ba1d2c7473cd",
+    "parent_panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+    "replacement": {
+      "removed": "imitate_sorting_sequence__standard__g0__l4",
+      "added": "imitate_sorting_sequence__standard__g0__l5",
+      "methods": [
+        "gpt_only",
+        "pi05_plus_gpt"
+      ],
+      "reason": "invalid_original_native_demonstration"
+    },
+    "original_report": "gpt-methods.html",
+    "original_summary": {
+      "planned_pairs": 50,
+      "planned_method_runs": 100,
+      "completed_pairs": 49,
+      "complete_method_runs": 99,
+      "methods": {
+        "gpt_only": {
+          "all_completed": {
+            "evaluated": 50,
+            "successes": 12,
+            "failures": 38,
+            "success_rate": 0.24,
+            "mean_score": 0.375
+          },
+          "paired_completed": {
+            "evaluated": 49,
+            "successes": 12,
+            "failures": 37,
+            "success_rate": 0.24489795918367346,
+            "mean_score": 0.3826530612244898
+          }
+        },
+        "pi05_plus_gpt": {
+          "all_completed": {
+            "evaluated": 49,
+            "successes": 21,
+            "failures": 28,
+            "success_rate": 0.42857142857142855,
+            "mean_score": 0.5591836734693879
+          },
+          "paired_completed": {
+            "evaluated": 49,
+            "successes": 21,
+            "failures": 28,
+            "success_rate": 0.42857142857142855,
+            "mean_score": 0.5591836734693879
+          }
+        }
+      }
+    },
+    "selection": "Next numerical layout prefrozen in the original panel; both methods selected together",
+    "diagnostic_episodes_in_denominator": false,
+    "overlapping_cohorts": true
   }
 }
