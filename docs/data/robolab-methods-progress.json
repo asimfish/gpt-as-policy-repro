@@ -398,7 +398,7 @@
           "episode_id": null
         },
         "pi05_plus_gpt": {
-          "status": "pending",
+          "status": "audit_pending",
           "episode_id": null
         }
       },
@@ -2011,6 +2011,15 @@
       "eligible": true
     },
     {
+      "run_id": "direct_20261005T190602Z_ClutterPumpkinTask_seed0",
+      "task": "ClutterPumpkinTask",
+      "seed": 0,
+      "method": "gpt_only",
+      "status": "controller_running",
+      "started_utc": "2026-10-05T19:06:02.830934+00:00",
+      "eligible": false
+    },
+    {
       "run_id": "hybrid_20261002T090455Z_BlocksInBinTask_seed0",
       "task": "BlocksInBinTask",
       "seed": 0,
@@ -2681,7 +2690,7 @@
       "task": "ClutterPumpkinTask",
       "seed": 4,
       "method": "pi05_plus_gpt",
-      "status": "controller_running",
+      "status": "controller_finished",
       "started_utc": "2026-10-05T17:11:41.902746+00:00",
       "eligible": false
     }
