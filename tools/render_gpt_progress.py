@@ -11,6 +11,7 @@ STATES = {'pending': '待运行', 'running': '运行中', 'interrupted': '中断
 REASONS = {'model_capacity': '模型服务容量不足', 'network': '网络中断',
            'model_response_timeout': '模型响应超时',
            'supervisor_interrupted': '监督进程中断', 'infrastructure': '基础设施错误',
+           'invalid_native_layout': '原生布局无效 · 排除',
            'missing_or_inconsistent_complete_audit': '完整审计缺失或不一致'}
 
 

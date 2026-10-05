@@ -102,6 +102,23 @@ class SelectionTests(unittest.TestCase):
 
 
 class RenderTests(unittest.TestCase):
+    def test_native_invalid_layout_is_rendered_as_an_exclusion(self):
+        data = dict(schema='gpt_policy_progress.v2', snapshot='2026-01-01T00:00:00Z',
+            cases=[], episodes=[], attempts=[dict(case_id='frozen_case', run_id='invalid_attempt',
+                method='gpt_only', status='interrupted', eligible=False, control_steps=3, decisions=1,
+                reason_class='invalid_native_layout')],
+            interruptions=dict(count=1, by_reason={'invalid_native_layout': 1}))
+        data['summary'] = summarize([], [])
+        with tempfile.TemporaryDirectory() as directory:
+            out = Path(directory)
+            for name in ('index.html', 'scenes.html'):
+                (out/name).write_text('<html><head></head><body><!-- GPT_PROGRESS_START --><!-- GPT_PROGRESS_END --></body></html>')
+            write(out/'data/gpt-methods-progress.json', data)
+            render(out)
+            text = (out/'gpt-methods.html').read_text()
+            self.assertIn('原生布局无效', text)
+            self.assertIn('invalid_attempt', text)
+
     def test_rerender_is_idempotent_and_old_zero_is_removed(self):
         data = dict(schema='gpt_policy_progress.v2', snapshot='2026-01-01T00:00:00Z',
                     cases=[], episodes=[], attempts=[], interruptions=dict(by_reason={}))
