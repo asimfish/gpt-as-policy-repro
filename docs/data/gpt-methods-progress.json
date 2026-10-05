@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-05T13:00:42.216683+00:00",
+  "snapshot": "2026-10-05T13:10:53.990242+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -1446,7 +1446,7 @@
         },
         "pi05_plus_gpt": {
           "status": "running",
-          "attempts": 4,
+          "attempts": 5,
           "episode_id": null
         }
       },
@@ -9229,13 +9229,34 @@
       "case_id": "imitate_sorting_sequence__standard__g0__l4",
       "method": "pi05_plus_gpt",
       "started_utc": "2026-10-05T11:33:09.563208+00:00",
-      "finished_utc": null,
-      "supervisor_status": "running",
+      "finished_utc": "2026-10-05T13:01:50.835712+00:00",
+      "supervisor_status": "complete",
       "eligible": false,
       "status": "interrupted",
       "control_steps": 1600,
       "decisions": 185,
-      "reason_class": "invalid_native_layout"
+      "reason_class": "invalid_native_layout",
+      "audit": "data/gpt-attempts/pi05_plus_gpt__queue_20261005T113309Z_pi05_plus_gpt_imitate_sorting_sequence_standard_g0_l4-audit.json",
+      "audited_control_steps": 1600,
+      "audited_decisions": 185,
+      "video": "media/gpt-episodes/attempt__pi05_plus_gpt__queue_20261005T113309Z_pi05_plus_gpt_imitate_sorting_sequence_standard_g0_l4.mp4",
+      "poster": "media/gpt-episodes/attempt__pi05_plus_gpt__queue_20261005T113309Z_pi05_plus_gpt_imitate_sorting_sequence_standard_g0_l4.jpg",
+      "video_sha256": "46b631661910512ac86d031ede6fe7e968aecc093b0f5e53b46d3ef70743d484",
+      "source_video_sha256": "c10d50607fbc87901d87af2103f5dc2642d936eee43bfbef39218643cd308442",
+      "video_bytes": 3374708,
+      "duration_seconds": 64.067
+    },
+    {
+      "run_id": "queue_20261005T130406Z_pi05_plus_gpt_imitate_sorting_sequence_standard_g0_l4",
+      "case_id": "imitate_sorting_sequence__standard__g0__l4",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-05T13:04:06.791458+00:00",
+      "finished_utc": null,
+      "supervisor_status": "running",
+      "eligible": false,
+      "status": "running",
+      "control_steps": 0,
+      "decisions": 0
     }
   ],
   "interruptions": {
@@ -9291,7 +9312,7 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 347,
+      "observed_control_steps": 397,
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
