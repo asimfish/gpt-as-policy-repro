@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-05T20:50:37.030361+00:00",
+  "snapshot": "2026-10-05T21:10:58.538633+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9297,11 +9297,11 @@
     "robolab": {
       "planned_pairs": 50,
       "planned_method_runs": 100,
-      "status": "controller_finished",
+      "status": "controller_running",
       "task": "ClutterPumpkinTask",
-      "seed": 0,
+      "seed": 1,
       "method": "gpt_only",
-      "started_utc": "2026-10-05T19:06:02.830934+00:00",
+      "started_utc": "2026-10-05T21:06:50.770378+00:00",
       "results_eligible": true,
       "action_audit_status": "pending",
       "direct_implementation_status": "native_episode_audited",
@@ -9313,23 +9313,23 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 766,
+      "observed_control_steps": 0,
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
-        "completed_pairs": 5,
-        "complete_method_runs": 20,
+        "completed_pairs": 6,
+        "complete_method_runs": 21,
         "methods": {
           "gpt_only": {
             "all_completed": {
-              "evaluated": 10,
-              "successes": 10,
+              "evaluated": 11,
+              "successes": 11,
               "failures": 0,
               "success_rate": 1.0
             },
             "paired_completed": {
-              "evaluated": 5,
-              "successes": 5,
+              "evaluated": 6,
+              "successes": 6,
               "failures": 0,
               "success_rate": 1.0
             }
@@ -9342,8 +9342,8 @@
               "success_rate": 0.8
             },
             "paired_completed": {
-              "evaluated": 5,
-              "successes": 5,
+              "evaluated": 6,
+              "successes": 6,
               "failures": 0,
               "success_rate": 1.0
             }

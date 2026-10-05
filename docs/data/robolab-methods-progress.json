@@ -330,15 +330,15 @@
       "seed": 0,
       "methods": {
         "gpt_only": {
-          "status": "audit_pending",
-          "episode_id": null
+          "status": "complete",
+          "episode_id": "robolab_ClutterPumpkinTask__seed0__gpt_only"
         },
         "pi05_plus_gpt": {
           "status": "complete",
           "episode_id": "robolab_ClutterPumpkinTask__seed0__pi05_plus_gpt"
         }
       },
-      "paired_complete": false
+      "paired_complete": true
     },
     {
       "case_id": "ClutterPumpkinTask__seed1",
@@ -1287,6 +1287,38 @@
       "evidence": "data/robolab-method-episodes/robolab_BlocksInBinTask__seed4__pi05_plus_gpt.json"
     },
     {
+      "id": "robolab_ClutterPumpkinTask__seed0__gpt_only",
+      "run_id": "direct_20261005T190602Z_ClutterPumpkinTask_seed0",
+      "case_id": "ClutterPumpkinTask__seed0",
+      "task": "ClutterPumpkinTask",
+      "seed": 0,
+      "method": "gpt_only",
+      "success": true,
+      "complete": true,
+      "eligible": true,
+      "control_steps": 766,
+      "decisions": 154,
+      "terminated": true,
+      "truncated": false,
+      "actions_by_mode": {
+        "student": 0,
+        "edit": 0,
+        "eef": 766
+      },
+      "pi05_inference_calls": 0,
+      "initial_state_hash": "d1968ec0125d2db0d27303dd3646955dcb5eea4e1ce5b272994b88a4d4400706",
+      "native_horizon": 1350,
+      "audit": "data/robolab-method-episodes/robolab_ClutterPumpkinTask__seed0__gpt_only-audit.json",
+      "audit_sha256": "099793bda8def73c6e659bdc110eed748529035dfbb28f053f7eb62bdc41ca99",
+      "video": "media/robolab-methods/robolab_ClutterPumpkinTask__seed0__gpt_only.mp4",
+      "poster": "media/robolab-methods/robolab_ClutterPumpkinTask__seed0__gpt_only.jpg",
+      "video_sha256": "4f734741e0b7b15f5d136e80371ae5affe6908571fb2a403a2116de0023fac3c",
+      "source_video_sha256": "9f94a23179e4ee0bc69c7907a5d1e43b11ff9f7918e07b743882f44e56ac8c6c",
+      "video_bytes": 3637074,
+      "duration_seconds": 51.134,
+      "evidence": "data/robolab-method-episodes/robolab_ClutterPumpkinTask__seed0__gpt_only.json"
+    },
+    {
       "id": "robolab_ClutterPumpkinTask__seed0__pi05_plus_gpt",
       "run_id": "hybrid_20261005T023455Z_ClutterPumpkinTask_seed0",
       "case_id": "ClutterPumpkinTask__seed0",
@@ -2047,8 +2079,17 @@
       "task": "ClutterPumpkinTask",
       "seed": 0,
       "method": "gpt_only",
-      "status": "controller_finished",
+      "status": "complete",
       "started_utc": "2026-10-05T19:06:02.830934+00:00",
+      "eligible": true
+    },
+    {
+      "run_id": "direct_20261005T210650Z_ClutterPumpkinTask_seed1",
+      "task": "ClutterPumpkinTask",
+      "seed": 1,
+      "method": "gpt_only",
+      "status": "controller_running",
+      "started_utc": "2026-10-05T21:06:50.770378+00:00",
       "eligible": false
     },
     {
@@ -2730,19 +2771,19 @@
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
-    "completed_pairs": 5,
-    "complete_method_runs": 20,
+    "completed_pairs": 6,
+    "complete_method_runs": 21,
     "methods": {
       "gpt_only": {
         "all_completed": {
-          "evaluated": 10,
-          "successes": 10,
+          "evaluated": 11,
+          "successes": 11,
           "failures": 0,
           "success_rate": 1.0
         },
         "paired_completed": {
-          "evaluated": 5,
-          "successes": 5,
+          "evaluated": 6,
+          "successes": 6,
           "failures": 0,
           "success_rate": 1.0
         }
@@ -2755,8 +2796,8 @@
           "success_rate": 0.8
         },
         "paired_completed": {
-          "evaluated": 5,
-          "successes": 5,
+          "evaluated": 6,
+          "successes": 6,
           "failures": 0,
           "success_rate": 1.0
         }
