@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-05T21:40:45.761051+00:00",
+  "snapshot": "2026-10-05T21:50:31.646017+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9313,7 +9313,7 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 125,
+      "observed_control_steps": 155,
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
