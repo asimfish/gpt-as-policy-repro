@@ -1,26 +1,26 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-05T09:40:49.705058+00:00",
+  "snapshot": "2026-10-05T09:50:58.553920+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
-    "completed_pairs": 48,
-    "complete_method_runs": 98,
+    "completed_pairs": 49,
+    "complete_method_runs": 99,
     "methods": {
       "gpt_only": {
         "all_completed": {
-          "evaluated": 49,
-          "successes": 11,
+          "evaluated": 50,
+          "successes": 12,
           "failures": 38,
-          "success_rate": 0.22448979591836735,
-          "mean_score": 0.3622448979591837
+          "success_rate": 0.24,
+          "mean_score": 0.375
         },
         "paired_completed": {
-          "evaluated": 48,
-          "successes": 11,
+          "evaluated": 49,
+          "successes": 12,
           "failures": 37,
-          "success_rate": 0.22916666666666666,
-          "mean_score": 0.3697916666666667
+          "success_rate": 0.24489795918367346,
+          "mean_score": 0.3826530612244898
         }
       },
       "pi05_plus_gpt": {
@@ -32,11 +32,11 @@
           "mean_score": 0.5591836734693879
         },
         "paired_completed": {
-          "evaluated": 48,
+          "evaluated": 49,
           "successes": 21,
-          "failures": 27,
-          "success_rate": 0.4375,
-          "mean_score": 0.5645833333333333
+          "failures": 28,
+          "success_rate": 0.42857142857142855,
+          "mean_score": 0.5591836734693879
         }
       }
     }
@@ -257,23 +257,23 @@
       "task_label": "模仿排序序列",
       "planned_pairs": 5,
       "planned_method_runs": 10,
-      "completed_pairs": 3,
-      "complete_method_runs": 8,
+      "completed_pairs": 4,
+      "complete_method_runs": 9,
       "methods": {
         "gpt_only": {
           "all_completed": {
-            "evaluated": 4,
-            "successes": 0,
+            "evaluated": 5,
+            "successes": 1,
             "failures": 4,
-            "success_rate": 0.0,
-            "mean_score": 0.125
+            "success_rate": 0.2,
+            "mean_score": 0.3
           },
           "paired_completed": {
-            "evaluated": 3,
-            "successes": 0,
+            "evaluated": 4,
+            "successes": 1,
             "failures": 3,
-            "success_rate": 0.0,
-            "mean_score": 0.16666666666666666
+            "success_rate": 0.25,
+            "mean_score": 0.375
           }
         },
         "pi05_plus_gpt": {
@@ -285,11 +285,11 @@
             "mean_score": 0.3625
           },
           "paired_completed": {
-            "evaluated": 3,
+            "evaluated": 4,
             "successes": 1,
-            "failures": 2,
-            "success_rate": 0.3333333333333333,
-            "mean_score": 0.3833333333333333
+            "failures": 3,
+            "success_rate": 0.25,
+            "mean_score": 0.3625
           }
         }
       }
@@ -1374,9 +1374,9 @@
       "task_label": "模仿排序序列",
       "methods": {
         "gpt_only": {
-          "status": "running",
+          "status": "complete",
           "attempts": 2,
-          "episode_id": null
+          "episode_id": "gpt_only__imitate_sorting_sequence__standard__g0__l2"
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -1384,9 +1384,9 @@
           "episode_id": "pi05_plus_gpt__imitate_sorting_sequence__standard__g0__l2"
         }
       },
-      "paired_complete": false,
-      "robot_joint_states_equal": null,
-      "scene_layout_records_equal": null
+      "paired_complete": true,
+      "robot_joint_states_equal": true,
+      "scene_layout_records_equal": true
     },
     {
       "case_id": "imitate_sorting_sequence__standard__g0__l3",
@@ -1445,8 +1445,8 @@
           "episode_id": "gpt_only__imitate_sorting_sequence__standard__g0__l4"
         },
         "pi05_plus_gpt": {
-          "status": "interrupted",
-          "attempts": 1,
+          "status": "running",
+          "attempts": 2,
           "episode_id": null
         }
       },
@@ -4815,6 +4815,54 @@
       "source_video_sha256": "b2d3f2356d3c52a436a06886a28fd3f3caf59bfcccbeca12de679d0eb3da2119",
       "video_bytes": 3231188,
       "duration_seconds": 56.467
+    },
+    {
+      "id": "gpt_only__imitate_sorting_sequence__standard__g0__l2",
+      "case_id": "imitate_sorting_sequence__standard__g0__l2",
+      "method": "gpt_only",
+      "method_label": "GPT Direct",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "imitate_sorting_sequence__standard__g0__l2",
+        "task": "imitate_sorting_sequence",
+        "runtime_task": "imitate_sorting_sequence",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 2,
+        "reset_seed": 2,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "1b0fc859dbc088411be7eee6ee1985f07384fdce11dd903ae59a5af1d0a3834a"
+      },
+      "task_label": "模仿排序序列",
+      "run_id": "queue_20261005T071112Z_gpt_only_imitate_sorting_sequence_standard_g0_l2",
+      "started_utc": "2026-10-05T07:11:13.025260+00:00",
+      "finished_utc": "2026-10-05T09:41:52.635167+00:00",
+      "supervisor_status": "complete",
+      "complete": true,
+      "eligible": true,
+      "success": true,
+      "score": 1.0,
+      "control_steps": 1537,
+      "decisions": 313,
+      "terminated": true,
+      "truncated": false,
+      "native_horizon": 1600,
+      "model": "gpt-6-astra",
+      "reasoning_effort": "xhigh",
+      "initial_robot_state_sha256": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
+      "scene_layout_record_sha256": "1b0fc859dbc088411be7eee6ee1985f07384fdce11dd903ae59a5af1d0a3834a",
+      "actions_by_mode": null,
+      "audit": "data/gpt-episodes/gpt_only__imitate_sorting_sequence__standard__g0__l2-audit.json",
+      "evidence": "data/gpt-episodes/gpt_only__imitate_sorting_sequence__standard__g0__l2.json",
+      "audit_sha256": "29cfc482d2965fe25818be2560c135a1d34884db82d83b52eefeb80f02bae561",
+      "video": "media/gpt-episodes/gpt_only__imitate_sorting_sequence__standard__g0__l2.mp4",
+      "poster": "media/gpt-episodes/gpt_only__imitate_sorting_sequence__standard__g0__l2.jpg",
+      "video_sha256": "6745029222d4fede012d06b41c78857fb58a855406838aa91b3e40fbf86a065b",
+      "source_video_sha256": "fdb0724836bae0383af1e34c732ab80830ace85a7675465f04d0d638e71eed23",
+      "video_bytes": 3299925,
+      "duration_seconds": 61.534
     },
     {
       "id": "pi05_plus_gpt__imitate_sorting_sequence__standard__g0__l2",
@@ -9125,12 +9173,24 @@
       "case_id": "imitate_sorting_sequence__standard__g0__l2",
       "method": "gpt_only",
       "started_utc": "2026-10-05T07:11:13.025260+00:00",
+      "finished_utc": "2026-10-05T09:41:52.635167+00:00",
+      "supervisor_status": "complete",
+      "eligible": true,
+      "status": "complete",
+      "control_steps": 1537,
+      "decisions": 313
+    },
+    {
+      "run_id": "queue_20261005T094226Z_pi05_plus_gpt_imitate_sorting_sequence_standard_g0_l4",
+      "case_id": "imitate_sorting_sequence__standard__g0__l4",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-05T09:42:26.585233+00:00",
       "finished_utc": null,
       "supervisor_status": "running",
       "eligible": false,
       "status": "running",
-      "control_steps": 1534,
-      "decisions": 312
+      "control_steps": 135,
+      "decisions": 9
     }
   ],
   "interruptions": {
@@ -9186,7 +9246,7 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 812,
+      "observed_control_steps": 860,
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
