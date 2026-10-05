@@ -1,19 +1,19 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-05T00:00:42.678153+00:00",
+  "snapshot": "2026-10-05T00:11:21.736374+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
     "completed_pairs": 42,
-    "complete_method_runs": 89,
+    "complete_method_runs": 90,
     "methods": {
       "gpt_only": {
         "all_completed": {
-          "evaluated": 45,
-          "successes": 10,
+          "evaluated": 46,
+          "successes": 11,
           "failures": 35,
-          "success_rate": 0.2222222222222222,
-          "mean_score": 0.3611111111111111
+          "success_rate": 0.2391304347826087,
+          "mean_score": 0.375
         },
         "paired_completed": {
           "evaluated": 42,
@@ -426,15 +426,15 @@
       "planned_pairs": 5,
       "planned_method_runs": 10,
       "completed_pairs": 4,
-      "complete_method_runs": 8,
+      "complete_method_runs": 9,
       "methods": {
         "gpt_only": {
           "all_completed": {
-            "evaluated": 4,
-            "successes": 1,
+            "evaluated": 5,
+            "successes": 2,
             "failures": 3,
-            "success_rate": 0.25,
-            "mean_score": 0.4125
+            "success_rate": 0.4,
+            "mean_score": 0.53
           },
           "paired_completed": {
             "evaluated": 4,
@@ -2100,13 +2100,13 @@
       "task_label": "瓶子放入垃圾桶",
       "methods": {
         "gpt_only": {
-          "status": "running",
+          "status": "complete",
           "attempts": 1,
-          "episode_id": null
+          "episode_id": "gpt_only__put_bottles_into_dustbin__standard__g0__l4"
         },
         "pi05_plus_gpt": {
-          "status": "pending",
-          "attempts": 0,
+          "status": "running",
+          "attempts": 1,
           "episode_id": null
         }
       },
@@ -6563,6 +6563,54 @@
       "source_video_sha256": "98d99d4691a03230109aec4eef4e63a107c0d13160d9b2eb7684e6bbe4213fac",
       "video_bytes": 1112110,
       "duration_seconds": 16.534
+    },
+    {
+      "id": "gpt_only__put_bottles_into_dustbin__standard__g0__l4",
+      "case_id": "put_bottles_into_dustbin__standard__g0__l4",
+      "method": "gpt_only",
+      "method_label": "GPT Direct",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "put_bottles_into_dustbin__standard__g0__l4",
+        "task": "put_bottles_into_dustbin",
+        "runtime_task": "put_bottles_into_dustbin",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 4,
+        "reset_seed": 4,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "79fdd9de9ace106330d3a338380beb9fde98ee37ad87e7ee76a0b08684f2c695"
+      },
+      "task_label": "瓶子放入垃圾桶",
+      "run_id": "queue_20261004T232355Z_gpt_only_put_bottles_into_dustbin_standard_g0_l4",
+      "started_utc": "2026-10-04T23:23:56.133671+00:00",
+      "finished_utc": "2026-10-05T00:09:26.798862+00:00",
+      "supervisor_status": "complete",
+      "complete": true,
+      "eligible": true,
+      "success": true,
+      "score": 1.0,
+      "control_steps": 661,
+      "decisions": 133,
+      "terminated": true,
+      "truncated": false,
+      "native_horizon": 700,
+      "model": "gpt-6-astra",
+      "reasoning_effort": "xhigh",
+      "initial_robot_state_sha256": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
+      "scene_layout_record_sha256": "79fdd9de9ace106330d3a338380beb9fde98ee37ad87e7ee76a0b08684f2c695",
+      "actions_by_mode": null,
+      "audit": "data/gpt-episodes/gpt_only__put_bottles_into_dustbin__standard__g0__l4-audit.json",
+      "evidence": "data/gpt-episodes/gpt_only__put_bottles_into_dustbin__standard__g0__l4.json",
+      "audit_sha256": "bf7e8d30ea20bcd7730b00f082b8b0925159488eca71c9c5a0a766ffccfdb6e2",
+      "video": "media/gpt-episodes/gpt_only__put_bottles_into_dustbin__standard__g0__l4.mp4",
+      "poster": "media/gpt-episodes/gpt_only__put_bottles_into_dustbin__standard__g0__l4.jpg",
+      "video_sha256": "a5a14da076eae202a82001ae4d402335fd36f282005ab1b9ba476281bb7c1784",
+      "source_video_sha256": "127f3ea56902af6f8cacb386cf29f6e79617d690b28fd4bd09091f28dc0ee58a",
+      "video_bytes": 1698510,
+      "duration_seconds": 26.467
     }
   ],
   "attempts": [
@@ -8556,12 +8604,24 @@
       "case_id": "put_bottles_into_dustbin__standard__g0__l4",
       "method": "gpt_only",
       "started_utc": "2026-10-04T23:23:56.133671+00:00",
+      "finished_utc": "2026-10-05T00:09:26.798862+00:00",
+      "supervisor_status": "complete",
+      "eligible": true,
+      "status": "complete",
+      "control_steps": 661,
+      "decisions": 133
+    },
+    {
+      "run_id": "queue_20261005T001013Z_pi05_plus_gpt_put_bottles_into_dustbin_standard_g0_l4",
+      "case_id": "put_bottles_into_dustbin__standard__g0__l4",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-05T00:10:13.846387+00:00",
       "finished_utc": null,
-      "supervisor_status": "running",
+      "supervisor_status": "starting",
       "eligible": false,
       "status": "running",
-      "control_steps": 605,
-      "decisions": 121
+      "control_steps": 0,
+      "decisions": 0
     }
   ],
   "interruptions": {
@@ -8600,7 +8660,7 @@
     "robolab": {
       "planned_pairs": 50,
       "planned_method_runs": 100,
-      "status": "starting",
+      "status": "controller_running",
       "task": "BlocksInBinTask",
       "seed": 4,
       "method": "pi05_plus_gpt",
@@ -8616,12 +8676,12 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 0,
+      "observed_control_steps": 30,
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
-        "completed_pairs": 3,
-        "complete_method_runs": 13,
+        "completed_pairs": 4,
+        "complete_method_runs": 14,
         "methods": {
           "gpt_only": {
             "all_completed": {
@@ -8631,22 +8691,22 @@
               "success_rate": 1.0
             },
             "paired_completed": {
-              "evaluated": 3,
-              "successes": 3,
+              "evaluated": 4,
+              "successes": 4,
               "failures": 0,
               "success_rate": 1.0
             }
           },
           "pi05_plus_gpt": {
             "all_completed": {
-              "evaluated": 3,
-              "successes": 3,
+              "evaluated": 4,
+              "successes": 4,
               "failures": 0,
               "success_rate": 1.0
             },
             "paired_completed": {
-              "evaluated": 3,
-              "successes": 3,
+              "evaluated": 4,
+              "successes": 4,
               "failures": 0,
               "success_rate": 1.0
             }
