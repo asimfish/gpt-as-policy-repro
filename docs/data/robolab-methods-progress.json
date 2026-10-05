@@ -142,7 +142,7 @@
           "episode_id": "robolab_BlocksInBinTask__seed3__gpt_only"
         },
         "pi05_plus_gpt": {
-          "status": "pending",
+          "status": "audit_pending",
           "episode_id": null
         }
       },
@@ -2435,8 +2435,17 @@
       "task": "BlocksInBinTask",
       "seed": 3,
       "method": "pi05_plus_gpt",
-      "status": "controller_running",
+      "status": "controller_finished",
       "started_utc": "2026-10-04T17:40:26.255443+00:00",
+      "eligible": false
+    },
+    {
+      "run_id": "hybrid_20261004T235405Z_BlocksInBinTask_seed4",
+      "task": "BlocksInBinTask",
+      "seed": 4,
+      "method": "pi05_plus_gpt",
+      "status": "starting",
+      "started_utc": "2026-10-04T23:54:05.116333+00:00",
       "eligible": false
     }
   ],
