@@ -366,8 +366,8 @@
           "episode_id": null
         },
         "pi05_plus_gpt": {
-          "status": "audit_pending",
-          "episode_id": null
+          "status": "complete",
+          "episode_id": "robolab_ClutterPumpkinTask__seed2__pi05_plus_gpt"
         }
       },
       "paired_complete": false
@@ -1349,6 +1349,38 @@
       "video_bytes": 3204629,
       "duration_seconds": 42.2,
       "evidence": "data/robolab-method-episodes/robolab_ClutterPumpkinTask__seed1__pi05_plus_gpt.json"
+    },
+    {
+      "id": "robolab_ClutterPumpkinTask__seed2__pi05_plus_gpt",
+      "run_id": "hybrid_20261005T064113Z_ClutterPumpkinTask_seed2",
+      "case_id": "ClutterPumpkinTask__seed2",
+      "task": "ClutterPumpkinTask",
+      "seed": 2,
+      "method": "pi05_plus_gpt",
+      "success": false,
+      "complete": true,
+      "eligible": true,
+      "control_steps": 1350,
+      "decisions": 129,
+      "terminated": false,
+      "truncated": true,
+      "actions_by_mode": {
+        "student": 1080,
+        "edit": 75,
+        "eef": 195
+      },
+      "pi05_inference_calls": 129,
+      "initial_state_hash": "d1968ec0125d2db0d27303dd3646955dcb5eea4e1ce5b272994b88a4d4400706",
+      "native_horizon": 1350,
+      "audit": "data/robolab-method-episodes/robolab_ClutterPumpkinTask__seed2__pi05_plus_gpt-audit.json",
+      "audit_sha256": "10ac388e17976315f38d17e85b6ee6e8337e00786376e5d1c55f03300a84a19d",
+      "video": "media/robolab-methods/robolab_ClutterPumpkinTask__seed2__pi05_plus_gpt.mp4",
+      "poster": "media/robolab-methods/robolab_ClutterPumpkinTask__seed2__pi05_plus_gpt.jpg",
+      "video_sha256": "1ed9ce7be0909a78ccb1beddd8fca2269fda9304639adcce667ed28a963c9f00",
+      "source_video_sha256": "93ea1cad0270f73991593c13cb73e1465f0219540da3c6c5f5b7ab0d9de45e75",
+      "video_bytes": 5889533,
+      "duration_seconds": 90.067,
+      "evidence": "data/robolab-method-episodes/robolab_ClutterPumpkinTask__seed2__pi05_plus_gpt.json"
     }
   ],
   "attempts": [
@@ -2599,8 +2631,17 @@
       "task": "ClutterPumpkinTask",
       "seed": 2,
       "method": "pi05_plus_gpt",
-      "status": "controller_finished",
+      "status": "complete",
       "started_utc": "2026-10-05T06:41:15.150055+00:00",
+      "eligible": true
+    },
+    {
+      "run_id": "hybrid_20261005T115551Z_ClutterPumpkinTask_seed3",
+      "task": "ClutterPumpkinTask",
+      "seed": 3,
+      "method": "pi05_plus_gpt",
+      "status": "controller_running",
+      "started_utc": "2026-10-05T11:55:51.160493+00:00",
       "eligible": false
     }
   ],
@@ -2608,7 +2649,7 @@
     "planned_pairs": 50,
     "planned_method_runs": 100,
     "completed_pairs": 5,
-    "complete_method_runs": 17,
+    "complete_method_runs": 18,
     "methods": {
       "gpt_only": {
         "all_completed": {
@@ -2626,10 +2667,10 @@
       },
       "pi05_plus_gpt": {
         "all_completed": {
-          "evaluated": 7,
+          "evaluated": 8,
           "successes": 7,
-          "failures": 0,
-          "success_rate": 1.0
+          "failures": 1,
+          "success_rate": 0.875
         },
         "paired_completed": {
           "evaluated": 5,
