@@ -1,11 +1,11 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-05T00:30:33.709009+00:00",
+  "snapshot": "2026-10-05T00:40:46.527625+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
-    "completed_pairs": 42,
-    "complete_method_runs": 90,
+    "completed_pairs": 43,
+    "complete_method_runs": 91,
     "methods": {
       "gpt_only": {
         "all_completed": {
@@ -16,27 +16,27 @@
           "mean_score": 0.375
         },
         "paired_completed": {
-          "evaluated": 42,
-          "successes": 10,
+          "evaluated": 43,
+          "successes": 11,
           "failures": 32,
-          "success_rate": 0.23809523809523808,
-          "mean_score": 0.3845238095238095
+          "success_rate": 0.2558139534883721,
+          "mean_score": 0.3988372093023255
         }
       },
       "pi05_plus_gpt": {
         "all_completed": {
-          "evaluated": 44,
-          "successes": 17,
+          "evaluated": 45,
+          "successes": 18,
           "failures": 27,
-          "success_rate": 0.38636363636363635,
-          "mean_score": 0.5284090909090909
+          "success_rate": 0.4,
+          "mean_score": 0.538888888888889
         },
         "paired_completed": {
-          "evaluated": 42,
-          "successes": 16,
+          "evaluated": 43,
+          "successes": 17,
           "failures": 26,
-          "success_rate": 0.38095238095238093,
-          "mean_score": 0.5226190476190476
+          "success_rate": 0.3953488372093023,
+          "mean_score": 0.5337209302325582
         }
       }
     }
@@ -425,8 +425,8 @@
       "task_label": "瓶子放入垃圾桶",
       "planned_pairs": 5,
       "planned_method_runs": 10,
-      "completed_pairs": 4,
-      "complete_method_runs": 9,
+      "completed_pairs": 5,
+      "complete_method_runs": 10,
       "methods": {
         "gpt_only": {
           "all_completed": {
@@ -437,24 +437,24 @@
             "mean_score": 0.53
           },
           "paired_completed": {
-            "evaluated": 4,
-            "successes": 1,
+            "evaluated": 5,
+            "successes": 2,
             "failures": 3,
-            "success_rate": 0.25,
-            "mean_score": 0.4125
+            "success_rate": 0.4,
+            "mean_score": 0.53
           }
         },
         "pi05_plus_gpt": {
           "all_completed": {
-            "evaluated": 4,
-            "successes": 4,
+            "evaluated": 5,
+            "successes": 5,
             "failures": 0,
             "success_rate": 1.0,
             "mean_score": 1.0
           },
           "paired_completed": {
-            "evaluated": 4,
-            "successes": 4,
+            "evaluated": 5,
+            "successes": 5,
             "failures": 0,
             "success_rate": 1.0,
             "mean_score": 1.0
@@ -719,8 +719,8 @@
           "episode_id": "gpt_only__build_tower__standard__g0__l2"
         },
         "pi05_plus_gpt": {
-          "status": "interrupted",
-          "attempts": 1,
+          "status": "running",
+          "attempts": 2,
           "episode_id": null
         }
       },
@@ -2105,14 +2105,14 @@
           "episode_id": "gpt_only__put_bottles_into_dustbin__standard__g0__l4"
         },
         "pi05_plus_gpt": {
-          "status": "running",
+          "status": "complete",
           "attempts": 1,
-          "episode_id": null
+          "episode_id": "pi05_plus_gpt__put_bottles_into_dustbin__standard__g0__l4"
         }
       },
-      "paired_complete": false,
-      "robot_joint_states_equal": null,
-      "scene_layout_records_equal": null
+      "paired_complete": true,
+      "robot_joint_states_equal": true,
+      "scene_layout_records_equal": true
     }
   ],
   "episodes": [
@@ -6611,6 +6611,58 @@
       "source_video_sha256": "127f3ea56902af6f8cacb386cf29f6e79617d690b28fd4bd09091f28dc0ee58a",
       "video_bytes": 1698510,
       "duration_seconds": 26.467
+    },
+    {
+      "id": "pi05_plus_gpt__put_bottles_into_dustbin__standard__g0__l4",
+      "case_id": "put_bottles_into_dustbin__standard__g0__l4",
+      "method": "pi05_plus_gpt",
+      "method_label": "π0.5 + GPT Hybrid",
+      "identity": {
+        "panel_id": "gpt_policy_repro_panel_v1",
+        "panel_sha256": "08ea9b62fda97e4f34984be8a4f9c1aff021ce6e72f0e61e8b3ff5a625ff05f9",
+        "case_id": "put_bottles_into_dustbin__standard__g0__l4",
+        "task": "put_bottles_into_dustbin",
+        "runtime_task": "put_bottles_into_dustbin",
+        "variant": "standard",
+        "eval_seed": 0,
+        "layout_id": 4,
+        "reset_seed": 4,
+        "simulator_initial_seed": 0,
+        "policy_rng_seed": 0,
+        "layout_sha256": "79fdd9de9ace106330d3a338380beb9fde98ee37ad87e7ee76a0b08684f2c695"
+      },
+      "task_label": "瓶子放入垃圾桶",
+      "run_id": "queue_20261005T001013Z_pi05_plus_gpt_put_bottles_into_dustbin_standard_g0_l4",
+      "started_utc": "2026-10-05T00:10:13.846387+00:00",
+      "finished_utc": "2026-10-05T00:38:10.512098+00:00",
+      "supervisor_status": "complete",
+      "complete": true,
+      "eligible": true,
+      "success": true,
+      "score": 1.0,
+      "control_steps": 638,
+      "decisions": 44,
+      "terminated": true,
+      "truncated": false,
+      "native_horizon": 700,
+      "model": "gpt-6-astra",
+      "reasoning_effort": "xhigh",
+      "initial_robot_state_sha256": "ddfcc0b5d73e70d6e59d8a55e360cc1973e22ac06e59c3b280c89b285dfaea40",
+      "scene_layout_record_sha256": "79fdd9de9ace106330d3a338380beb9fde98ee37ad87e7ee76a0b08684f2c695",
+      "actions_by_mode": {
+        "student": 633,
+        "edit": 0,
+        "eef": 5
+      },
+      "audit": "data/gpt-episodes/pi05_plus_gpt__put_bottles_into_dustbin__standard__g0__l4-audit.json",
+      "evidence": "data/gpt-episodes/pi05_plus_gpt__put_bottles_into_dustbin__standard__g0__l4.json",
+      "audit_sha256": "7bbea52c788f4bc68c9b66213cfb18655ef98846807a6445c7faa045d44243fd",
+      "video": "media/gpt-episodes/pi05_plus_gpt__put_bottles_into_dustbin__standard__g0__l4.mp4",
+      "poster": "media/gpt-episodes/pi05_plus_gpt__put_bottles_into_dustbin__standard__g0__l4.jpg",
+      "video_sha256": "56b28be1fe2798023038c724195abd1b4c6b562c94b16566d5e0fa02e8210c91",
+      "source_video_sha256": "c0291c94304915cff29864ceb7c037ceb191ca29ecda3dfec97f4621f62eeb7e",
+      "video_bytes": 1696255,
+      "duration_seconds": 25.534
     }
   ],
   "attempts": [
@@ -8616,12 +8668,24 @@
       "case_id": "put_bottles_into_dustbin__standard__g0__l4",
       "method": "pi05_plus_gpt",
       "started_utc": "2026-10-05T00:10:13.846387+00:00",
+      "finished_utc": "2026-10-05T00:38:10.512098+00:00",
+      "supervisor_status": "complete",
+      "eligible": true,
+      "status": "complete",
+      "control_steps": 638,
+      "decisions": 44
+    },
+    {
+      "run_id": "queue_20261005T003819Z_pi05_plus_gpt_build_tower_standard_g0_l2",
+      "case_id": "build_tower__standard__g0__l2",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-05T00:38:20.101314+00:00",
       "finished_utc": null,
       "supervisor_status": "running",
       "eligible": false,
       "status": "running",
-      "control_steps": 435,
-      "decisions": 30
+      "control_steps": 0,
+      "decisions": 0
     }
   ],
   "interruptions": {
@@ -8676,7 +8740,7 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 173,
+      "observed_control_steps": 261,
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
