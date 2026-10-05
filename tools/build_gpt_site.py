@@ -8,6 +8,7 @@ from pathlib import Path
 import re
 import shutil
 import subprocess
+import sys
 
 from build_site import TASKS
 
@@ -197,12 +198,14 @@ def media(run, uid, out, old, *, source_file=None, prefix='media/gpt-episodes'):
                 video_bytes=dest.stat().st_size, duration_seconds=float(info['format']['duration']))
 
 
-def build(source, out):
+def build_cohort(source, out, selection=None, base=None):
     for name in ('gpt.css', 'gpt.js'):
         destination = out / 'assets' / name
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(Path(__file__).resolve().parents[1] / 'web/assets' / name, destination)
-    fixture_dir = source / 'fixtures/cases'
+    fixture_dir = source / (selection['fixture_dir'] if selection else 'fixtures/cases')
+    data_name = 'gpt-methods-valid-progress.json' if selection else 'gpt-methods-progress.json'
+    media_name = 'gpt-valid-media-manifest.json' if selection else 'gpt-media-manifest.json'
     fixtures = {}
     for path in sorted(fixture_dir.glob('gpt__*.json')):
         raw = read(path)
@@ -212,8 +215,9 @@ def build(source, out):
         assert identity == {k: read(fixture_dir / ('mix__' + cid + '.json'))['identity'][k] for k in IDENTITY_KEYS}
         fixtures[cid] = identity
     assert len(fixtures) == 50
-    queue = read(source / 'gpt_queue_state.json', {})
-    attempts, candidates = [], {}
+    queue = read(source / ('robodojo_valid_queue_state.json' if selection else 'gpt_queue_state.json'), {})
+    attempts = [a for a in base['attempts'] if a['case_id'] in fixtures] if base else []
+    candidates = {}
     for parent in sorted((source / 'gpt_pair_campaign').iterdir()):
         if not parent.is_dir():
             continue
@@ -221,6 +225,8 @@ def build(source, out):
             run = parent / method
             attempt = read(run / 'attempt.json')
             if not attempt:
+                continue
+            if base and attempt.get('case', '').removeprefix('gpt__').removeprefix('mix__') != selection['replacement']['added']:
                 continue
             cid = attempt.get('case', '').removeprefix('gpt__').removeprefix('mix__')
             if cid not in fixtures:
@@ -264,10 +270,12 @@ def build(source, out):
             else:
                 row['reason_class'] = failure_class(attempt, failure)
             attempts.append(row)
-    old = {e['id']: e for e in read(out / 'data/gpt-methods-progress.json', {}).get('episodes', [])}
+    old = {e['id']: e for e in read(out / ('data/' + data_name), {}).get('episodes', [])}
     old_attempts = {a['method'] + '__' + a['run_id']: a for a in
-                    read(out / 'data/gpt-methods-progress.json', {}).get('attempts', [])}
+                    read(out / ('data/' + data_name), {}).get('attempts', [])}
     for attempt in attempts:
+        if base and attempt['case_id'] != selection['replacement']['added']:
+            continue
         if attempt['status'] != 'interrupted' or not attempt['control_steps']:
             continue
         run = source / 'gpt_pair_campaign' / attempt['run_id'] / attempt['method']
@@ -286,7 +294,7 @@ def build(source, out):
         if (run / 'sim/sensors.mp4').is_file():
             attempt.update(media(run, 'attempt__' + uid, out,
                                  {'attempt__' + uid: old_attempts.get(uid, {})}))
-    episodes = []
+    episodes = [e for e in base['episodes'] if e['case_id'] in fixtures] if base else []
     for (cid, method), runs in sorted(candidates.items()):
         # Keep the first eligible attempt, including native failures. Never select
         # a later success over an earlier valid failure.
@@ -350,8 +358,10 @@ def build(source, out):
     bundle=export_bundle(source,out)
     if bundle:data['infrastructure']=bundle
     from build_robolab_methods import build as build_robolab
-    robolab=build_robolab(source,out)
-    supplementary = robolab_status(source)
+    robolab=build_robolab(source,out) if not base else None
+    supplementary = robolab_status(source) if not base else None
+    if base and 'supplementary' in base:
+        data['supplementary'] = base['supplementary']
     if supplementary:
         supplementary['summary']=robolab['summary']
         supplementary['report']='robolab-methods.html'
@@ -369,17 +379,39 @@ def build(source, out):
             public_prefix.update(method=prefix['method'],terminal=prefix['terminal'])
             write(out/'data/robolab-gpt-prefix-audit.json',public_prefix)
     # An unchanged poll must not create a new publication merely for a timestamp.
-    previous = read(out / 'data/gpt-methods-progress.json', {})
+    if selection:
+        pointer = read(source/'fixtures/robodojo_active_cohort.json')
+        data['cohort'] = dict(cohort_id=selection['cohort_id'], manifest_sha256=pointer['manifest_sha256'],
+            parent_panel_sha256=selection['parent_panel_sha256'], replacement=selection['replacement'],
+            original_report='gpt-methods.html', original_summary=base['summary'],
+            selection='Next numerical layout prefrozen in the original panel; both methods selected together',
+            diagnostic_episodes_in_denominator=False, overlapping_cohorts=True)
+        write(out/'data/gpt-valid-cohort.json', dict(data['cohort'], cases=selection['cases']))
+    previous = read(out / ('data/' + data_name), {})
     compare = lambda d: {k: v for k, v in d.items() if k != 'snapshot'}
     if compare(previous) == compare(data):
         data['snapshot'] = previous['snapshot']
-    write(out / 'data/gpt-methods-progress.json', data)
-    write(out / 'data/gpt-media-manifest.json', [{k: e[k] for k in
+    write(out / ('data/' + data_name), data)
+    write(out / ('data/' + media_name), [{k: e[k] for k in
           ('id', 'run_id', 'video', 'video_bytes', 'duration_seconds', 'video_sha256', 'source_video_sha256')} for e in episodes])
     from render_gpt_progress import render
-    render(out)
+    render(out, valid=bool(selection), update_board=not selection)
     print(json.dumps(data['summary'], ensure_ascii=False), flush=True)
     return data
+
+
+def build(source, out):
+    selection = None
+    if (source/'fixtures/robodojo_active_cohort.json').is_file():
+        sys.path.insert(0, str(source/'infra'))
+        from robodojo_valid_cohort import validate
+        selection = validate(source)
+    original = build_cohort(source, out)
+    if selection:
+        build_cohort(source, out, selection, original)
+        from render_gpt_progress import render
+        render(out)  # Add the explicit comparison link after both documents exist.
+    return original
 
 
 if __name__ == '__main__':

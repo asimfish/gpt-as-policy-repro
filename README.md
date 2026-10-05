@@ -54,6 +54,15 @@ python3 tools/verify_site.py docs
 不独立重算 IK；关节状态哈希也不代表完整物理初态。公开字段不含凭据、机器路径或模型内部推理。
 完整构建会调用同一主方法生成器；`data/gpt-media-manifest.json` 保存每条完整视频的来源与发布 SHA256。
 
+原面板保留在 `gpt-methods.html`。实验源存在已校验的
+`fixtures/robodojo_active_cohort.json` 时，生成器还发布独立的
+`gpt-methods-valid.html`、`data/gpt-methods-valid-progress.json` 和
+`data/gpt-valid-cohort.json`。该有效50对清单只将原生演示失效的
+imitate_sorting_sequence layout4整对改为原60案例面板中预冻结的下一编号layout5；
+两方法分别执行新回合，其余49对沿用原结果。原失败与全部尝试不删除，诊断回合不计分。
+两个面板重叠，分母和成功率分别展示，不能相加为独立样本；补齐也不代表历史配置等价。
+有效清单校验器与补齐队列随可下载基建包提供，原冻结调度器和原清单保持不变。
+
 ## 定时发布
 
 `tools/publish_gpt_progress.py` 每次执行一个发布周期：加锁、检查分支和工作区、生成报告、

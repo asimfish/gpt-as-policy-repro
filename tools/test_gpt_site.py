@@ -8,7 +8,7 @@ from urllib.parse import urlsplit
 
 import publish_gpt_progress as publisher
 
-from build_gpt_site import build, check_episode, digest, first_complete, summarize, write, robolab_status
+from build_gpt_site import build, build_cohort, check_episode, digest, first_complete, summarize, write, robolab_status
 from render_gpt_progress import render
 from publish_gpt_progress import check_worktree
 
@@ -102,6 +102,24 @@ class SelectionTests(unittest.TestCase):
 
 
 class RenderTests(unittest.TestCase):
+    def test_separate_valid_page_preserves_original_page_and_board(self):
+        data = dict(schema='gpt_policy_progress.v2', snapshot='2026-01-01T00:00:00Z',
+            cases=[], episodes=[], attempts=[], interruptions=dict(by_reason={}))
+        data['summary'] = summarize([], [])
+        with tempfile.TemporaryDirectory() as directory:
+            out = Path(directory)
+            for name in ('index.html', 'scenes.html', 'gpt-methods.html'):
+                (out/name).write_text('original retained ' + name)
+            write(out/'data/gpt-methods-valid-progress.json', data)
+            render(out, valid=True, update_board=False)
+            page = (out/'gpt-methods-valid.html').read_text()
+            self.assertIn('独立补齐面板', page)
+            self.assertIn('data/gpt-methods-valid-progress.json', page)
+            self.assertIn('data/gpt-valid-media-manifest.json', page)
+            self.assertIn('href="gpt-methods.html"', page)
+            for name in ('index.html', 'scenes.html', 'gpt-methods.html'):
+                self.assertEqual((out/name).read_text(), 'original retained ' + name)
+
     def test_native_invalid_layout_is_rendered_as_an_exclusion(self):
         data = dict(schema='gpt_policy_progress.v2', snapshot='2026-01-01T00:00:00Z',
             cases=[], episodes=[], attempts=[dict(case_id='frozen_case', run_id='invalid_attempt',
@@ -213,6 +231,37 @@ class ReportSelectionTests(unittest.TestCase):
         data = self.report()
         self.assertEqual(data['episodes'], [])
         self.assertEqual(data['cases'][0]['methods']['gpt_only']['status'], 'audit_pending')
+
+    def test_additive_cohort_keeps_original_failure_and_new_first_failure(self):
+        import shutil
+        self.attempt('original_failure', '2026-01-01T00:00:00Z', False)
+        original = self.report()
+        original_bytes = (self.out/'data/gpt-methods-progress.json').read_bytes()
+        removed = self.cid
+        folder = self.source/'fixtures/cases_valid_v2'
+        shutil.copytree(self.source/'fixtures/cases', folder)
+        self.cid = 'arrange_largest_number__standard__g0__l50'
+        self.identity = dict(self.identity, case_id=self.cid, layout_id=50, reset_seed=50)
+        for prefix in ('gpt', 'mix'):
+            (folder/f'{prefix}__{removed}.json').unlink()
+            write(folder/f'{prefix}__{self.cid}.json', dict(identity=self.identity))
+        self.attempt('new_failure', '2026-01-02T00:00:00Z', False)
+        self.attempt('later_success', '2026-01-03T00:00:00Z', True)
+        write(self.source/'fixtures/robodojo_active_cohort.json', dict(manifest_sha256='f'*64))
+        selection = dict(fixture_dir='fixtures/cases_valid_v2', cohort_id='test_valid50',
+            parent_panel_sha256='a'*64, cases=[publisher.json.loads(p.read_text())['identity']
+                for p in folder.glob('gpt__*.json')], replacement=dict(removed=removed, added=self.cid))
+        movie = dict(video='movie.mp4', poster='poster.jpg', video_bytes=1234,
+            duration_seconds=1, video_sha256='d'*64, source_video_sha256='e'*64)
+        with patch('build_gpt_site.media', return_value=movie), patch('render_gpt_progress.render'):
+            selected = build_cohort(self.source, self.out, selection, original)
+        self.assertEqual((self.out/'data/gpt-methods-progress.json').read_bytes(), original_bytes)
+        self.assertEqual(original['episodes'][0]['run_id'], 'original_failure')
+        self.assertEqual(selected['episodes'][0]['run_id'], 'new_failure')
+        self.assertEqual(selected['summary']['methods']['gpt_only']['all_completed']['failures'], 1)
+        self.assertEqual(selected['cohort']['original_summary'], original['summary'])
+        self.assertFalse(selected['cohort']['diagnostic_episodes_in_denominator'])
+        self.assertEqual(set(selected['cases'][0]['methods']), {'gpt_only', 'pi05_plus_gpt'})
 
 
 class SupplementaryStatusTests(unittest.TestCase):

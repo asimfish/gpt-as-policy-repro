@@ -54,4 +54,28 @@ const supplementalMedia=[];for(const method of ['gpt_only','pi05_plus_gpt']){
 }
 const sw=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth}));if(sw.scroll>sw.viewport)throw Error('Supplemental mobile overflow');
 await page.screenshot({path:'.artifacts/robolab-methods-mobile.png'});await page.setViewportSize({width:1440,height:1000});await page.screenshot({path:'.artifacts/robolab-methods-desktop.png'});
-if(errors.length)throw Error(errors.join('\n'));const result={passed:true,cases:expected,filters:['task','result','protocol','search','empty','reset'],deep_links:true,theme_persistence:true,video:media,mobile:dimensions,robolab:{episodes:rd.episodes.length,video:rm,mobile:rw},robolab_methods:{complete_method_runs:supplemental.summary.complete_method_runs,completed_pairs:supplemental.summary.completed_pairs,matrix_cases:50,video:supplementalMedia,mobile:sw},gpt:{complete_method_runs:gd.episodes.length,completed_pairs:gd.summary.completed_pairs,matrix_cases:50,filters:true,deep_links:true,video:gm,mobile:gw},errors};fs.writeFileSync('.artifacts/gpt-policy-browser-results.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result));await browser.close()})().catch(e=>{console.error(e);process.exit(1)});
+let selectedResult=null;
+await page.goto(base+'/scenes.html',{waitUntil:'networkidle'});
+if(await page.locator('a[href="gpt-methods-valid.html"]').count()){
+ await page.goto(base+'/gpt-methods-valid.html',{waitUntil:'networkidle'});
+ const selected=await page.evaluate(async()=>await (await fetch('data/gpt-methods-valid-progress.json')).json());
+ if(await page.locator('#gpt-case-matrix tbody tr').count()!==50||await page.locator('.gpt-episode').count()!==selected.episodes.length)throw Error('Selected cohort matrix or videos');
+ if(JSON.stringify(selected.cohort.original_summary)!==JSON.stringify(gd.summary)||selected.cohort.diagnostic_episodes_in_denominator!==false)throw Error('Original and selected denominators');
+ await page.selectOption('#gpt-method','gpt_only');await page.selectOption('#gpt-status','failure');
+ if(await page.locator('.gpt-episode:visible').count()!==selected.episodes.filter(e=>e.method==='gpt_only'&&!e.success).length)throw Error('Selected native failure filter');
+ const chosen=selected.episodes.find(e=>e.method==='pi05_plus_gpt');
+ if(chosen){
+  await page.locator('#gpt-case-matrix a[href="#'+chosen.id+'"]').click();
+  await page.waitForFunction(n=>[...document.querySelectorAll('.gpt-episode')].filter(e=>!e.hidden).length===n,selected.episodes.length);
+  const movie=page.locator('#'+chosen.id+' video');await movie.evaluate(async v=>{v.muted=true;await v.play()});await page.waitForTimeout(1000);
+  const played=await movie.evaluate(v=>({time:v.currentTime,width:v.videoWidth,duration:v.duration}));
+  if(!(played.time>0&&played.width===1440&&Math.abs(played.duration-chosen.duration_seconds)<.1))throw Error('Selected full playback');
+  await movie.evaluate(v=>v.pause());
+ }
+ await page.screenshot({path:'.artifacts/gpt-methods-valid-desktop.png'});await page.setViewportSize({width:390,height:844});
+ const width=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth}));if(width.scroll>width.viewport)throw Error('Selected mobile overflow');
+ await page.screenshot({path:'.artifacts/gpt-methods-valid-mobile.png'});
+ if(!(await page.locator('a[href="gpt-methods.html"]').count()))throw Error('Original cohort comparison link');
+ selectedResult={complete_method_runs:selected.episodes.length,completed_pairs:selected.summary.completed_pairs,matrix_cases:50,original_preserved:true,filters:true,deep_links:true,mobile:width};
+}
+if(errors.length)throw Error(errors.join('\n'));const result={passed:true,gpt_valid:selectedResult,cases:expected,filters:['task','result','protocol','search','empty','reset'],deep_links:true,theme_persistence:true,video:media,mobile:dimensions,robolab:{episodes:rd.episodes.length,video:rm,mobile:rw},robolab_methods:{complete_method_runs:supplemental.summary.complete_method_runs,completed_pairs:supplemental.summary.completed_pairs,matrix_cases:50,video:supplementalMedia,mobile:sw},gpt:{complete_method_runs:gd.episodes.length,completed_pairs:gd.summary.completed_pairs,matrix_cases:50,filters:true,deep_links:true,video:gm,mobile:gw},errors};fs.writeFileSync('.artifacts/gpt-policy-browser-results.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result));await browser.close()})().catch(e=>{console.error(e);process.exit(1)});

@@ -15,6 +15,8 @@ import urllib.request
 
 GENERATED = ('docs/index.html', 'docs/scenes.html', 'docs/gpt-methods.html', 'docs/robolab-methods.html', 'docs/data/robolab-methods-progress.json', 'docs/data/robolab-method-episodes/', 'docs/media/robolab-methods/',
              'docs/data/gpt-methods-progress.json', 'docs/data/gpt-media-manifest.json',
+             'docs/gpt-methods-valid.html', 'docs/data/gpt-methods-valid-progress.json',
+             'docs/data/gpt-valid-media-manifest.json', 'docs/data/gpt-valid-cohort.json',
              'docs/data/gpt-episodes/', 'docs/data/gpt-attempts/', 'docs/data/robolab-gpt-prefix-audit.json',
              'docs/downloads/infrastructure_bundle_', 'docs/data/infrastructure-bundle.json', 'docs/media/gpt-episodes/', 'docs/assets/gpt.css', 'docs/assets/gpt.js')
 
@@ -98,9 +100,13 @@ def verify_online(repo, source):
     files = ('scenes.html', 'gpt-methods.html', 'data/gpt-methods-progress.json', 'assets/gpt.js', 'assets/gpt.css')
     commit = git(repo, 'rev-parse', 'HEAD')
     files=list(files)
-    optional=git(repo,'ls-tree','-r','--name-only',commit,'--','docs/data/robolab-gpt-prefix-audit.json','docs/data/infrastructure-bundle.json','docs/robolab-methods.html','docs/data/robolab-methods-progress.json').splitlines()
+    optional_names = ('docs/data/robolab-gpt-prefix-audit.json', 'docs/data/infrastructure-bundle.json',
+        'docs/robolab-methods.html', 'docs/data/robolab-methods-progress.json',
+        'docs/gpt-methods-valid.html', 'docs/data/gpt-methods-valid-progress.json',
+        'docs/data/gpt-valid-cohort.json', 'docs/data/gpt-valid-media-manifest.json')
+    optional=git(repo,'ls-tree','-r','--name-only',commit,'--',*optional_names).splitlines()
     for path in optional:
-        if path in ('docs/data/robolab-gpt-prefix-audit.json','docs/data/infrastructure-bundle.json','docs/robolab-methods.html','docs/data/robolab-methods-progress.json'):files.append(path.removeprefix('docs/'))
+        if path in optional_names:files.append(path.removeprefix('docs/'))
     if 'data/infrastructure-bundle.json' in files:
         bundle=json.loads(subprocess.check_output(['git','-C',str(repo),'show',commit+':docs/data/infrastructure-bundle.json'],timeout=180))
         assert owned('docs/'+bundle['archive'])
@@ -124,6 +130,10 @@ def verify_online(repo, source):
                  gpt_summary=data['summary'], snapshot=data['snapshot'])
     if 'data/robolab-methods-progress.json' in committed:
         proof['robolab_summary'] = json.loads(committed['data/robolab-methods-progress.json'])['summary']
+    if 'data/gpt-methods-valid-progress.json' in committed:
+        selected = json.loads(committed['data/gpt-methods-valid-progress.json'])
+        proof['gpt_valid_summary'] = selected['summary']
+        proof['robodojo_selection'] = selected['cohort']
     destination = source / 'online_publication.json'
     temp = destination.with_suffix('.tmp')
     temp.write_text(json.dumps(proof, ensure_ascii=False, indent=2) + '\n')
