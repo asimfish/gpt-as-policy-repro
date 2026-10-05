@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-05T14:20:42.288540+00:00",
+  "snapshot": "2026-10-05T14:30:34.947662+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -1445,7 +1445,7 @@
           "episode_id": "gpt_only__imitate_sorting_sequence__standard__g0__l4"
         },
         "pi05_plus_gpt": {
-          "status": "running",
+          "status": "interrupted",
           "attempts": 5,
           "episode_id": null
         }
@@ -9251,22 +9251,23 @@
       "case_id": "imitate_sorting_sequence__standard__g0__l4",
       "method": "pi05_plus_gpt",
       "started_utc": "2026-10-05T13:04:06.791458+00:00",
-      "finished_utc": null,
-      "supervisor_status": "running",
+      "finished_utc": "2026-10-05T14:28:01.180872+00:00",
+      "supervisor_status": "complete",
       "eligible": false,
-      "status": "running",
-      "control_steps": 1479,
-      "decisions": 165
+      "status": "interrupted",
+      "control_steps": 1600,
+      "decisions": 174,
+      "reason_class": "invalid_native_layout"
     }
   ],
   "interruptions": {
-    "count": 68,
+    "count": 69,
     "by_reason": {
       "supervisor_interrupted": 1,
       "model_response_timeout": 1,
       "model_capacity": 7,
       "infrastructure": 55,
-      "invalid_native_layout": 4
+      "invalid_native_layout": 5
     }
   },
   "protocol": {
@@ -9312,7 +9313,7 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 637,
+      "observed_control_steps": 677,
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
