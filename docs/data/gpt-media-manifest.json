@@ -450,6 +450,15 @@
     "source_video_sha256": "49780b4afb629c8396c9c65bba01aa5c2e8540de1ac138109b88ed17a0cfb271"
   },
   {
+    "id": "gpt_only__imitate_sorting_sequence__standard__g0__l0",
+    "run_id": "queue_20261005T025002Z_gpt_only_imitate_sorting_sequence_standard_g0_l0",
+    "video": "media/gpt-episodes/gpt_only__imitate_sorting_sequence__standard__g0__l0.mp4",
+    "video_bytes": 295853,
+    "duration_seconds": 14.334,
+    "video_sha256": "298745575a675ead651a081dedbe6b0b70db67314ea7030d18c652a44f62566b",
+    "source_video_sha256": "1df78b1b3dccc5e826cc60a56639d6dd9f2f46824cdfcc1f5d72de9aa245994f"
+  },
+  {
     "id": "pi05_plus_gpt__imitate_sorting_sequence__standard__g0__l2",
     "run_id": "queue_20261003T113011Z_pi05_plus_gpt_imitate_sorting_sequence_standard_g0_l2",
     "video": "media/gpt-episodes/pi05_plus_gpt__imitate_sorting_sequence__standard__g0__l2.mp4",
