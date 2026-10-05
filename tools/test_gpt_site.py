@@ -8,7 +8,7 @@ from urllib.parse import urlsplit
 
 import publish_gpt_progress as publisher
 
-from build_gpt_site import check_episode, digest, first_complete, summarize, write, robolab_status
+from build_gpt_site import build, check_episode, digest, first_complete, summarize, write, robolab_status
 from render_gpt_progress import render
 from publish_gpt_progress import check_worktree
 
@@ -116,6 +116,86 @@ class RenderTests(unittest.TestCase):
             render(out)
             self.assertEqual(first, [(out / name).read_bytes() for name in ('index.html', 'scenes.html', 'gpt-methods.html')])
             self.assertEqual(first[0], first[1])
+
+
+class ReportSelectionTests(unittest.TestCase):
+    """Exercise attempt collection as well as selection, without transcoding video."""
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.source = Path(self.temp.name) / 'source'
+        self.out = Path(self.temp.name) / 'public'
+        for layout in range(50):
+            cid = f'arrange_largest_number__standard__g0__l{layout}'
+            identity = dict(panel_id='p', panel_sha256='a'*64, case_id=cid,
+                task='arrange_largest_number', runtime_task='arrange_largest_number',
+                variant='standard', eval_seed=0, layout_id=layout, reset_seed=layout,
+                simulator_initial_seed=0, policy_rng_seed=0, layout_sha256='b'*64)
+            for prefix in ('gpt', 'mix'):
+                write(self.source / 'fixtures/cases' / f'{prefix}__{cid}.json', dict(identity=identity))
+            if layout == 0:
+                self.cid, self.identity = cid, identity
+
+    def attempt(self, name, started, success, *, invalid=False, missing_audit=False):
+        run = self.source / 'gpt_pair_campaign' / name / 'gpt_only'
+        write(run/'attempt.json', dict(case='gpt__'+self.cid, status='complete',
+            started_utc=started, finished_utc=started))
+        result = dict(complete=True, success=success, terminated=success, truncated=not success,
+            step_id=3, decisions=1, evaluation_case=self.identity)
+        outcome = dict(complete=True, valid_for_success_rate=not invalid,
+            native_success=None if invalid else success, native_score=None if invalid else float(success),
+            native_control_steps=3, native_step_limit=3, evaluation_case=self.identity,
+            status='invalid_native_layout' if invalid else 'native_completed')
+        for path, data in (('rollout/result.json', result), ('sim/evaluation_outcome.json', outcome),
+            ('rollout/run.json', dict(model='gpt-6-astra')),
+            ('rollout/codex_workspace/worker.json', dict(model='gpt-6-astra')),
+            ('sim/scene_layout.json', dict(case_id=self.cid))):
+            write(run/path, data)
+        if not missing_audit:
+            proof = dict(verified=True, complete_episode=True, scope='complete_native_episode',
+                model='gpt-6-astra', reasoning_effort='xhigh', pi05_inference_calls=0,
+                native_actions=3, decisions=1, max_absolute_action_error=0, initial_state_hash='c'*64,
+                files_sha256={path: digest(run/path) for path in ('rollout/result.json',
+                    'sim/evaluation_outcome.json', 'rollout/run.json', 'rollout/codex_workspace/worker.json')})
+            write(run/'complete_action_audit.json', proof)
+        return run
+
+    def report(self):
+        movie = dict(video='movie.mp4', poster='poster.jpg', video_bytes=1234,
+            duration_seconds=1, video_sha256='d'*64, source_video_sha256='e'*64)
+        with patch('build_gpt_site.media', return_value=movie), patch('render_gpt_progress.render'):
+            return build(self.source, self.out)
+
+    def test_invalid_layout_does_not_block_later_valid_native_failure(self):
+        self.attempt('invalid', '2026-01-01T00:00:00Z', False, invalid=True)
+        self.attempt('valid_failure', '2026-01-02T00:00:00Z', False)
+        data = self.report()
+        self.assertEqual([e['run_id'] for e in data['episodes']], ['valid_failure'])
+        self.assertEqual(data['summary']['methods']['gpt_only']['all_completed']['failures'], 1)
+        invalid = next(a for a in data['attempts'] if a['run_id'] == 'invalid')
+        self.assertFalse(invalid['eligible'])
+        self.assertEqual(invalid['reason_class'], 'invalid_native_layout')
+
+    def test_valid_audit_gap_blocks_later_success_after_invalid_layout(self):
+        self.attempt('invalid', '2026-01-01T00:00:00Z', False, invalid=True)
+        self.attempt('missing_audit', '2026-01-02T00:00:00Z', False, missing_audit=True)
+        self.attempt('later_success', '2026-01-03T00:00:00Z', True)
+        data = self.report()
+        self.assertEqual(data['episodes'], [])
+        self.assertEqual(data['cases'][0]['methods']['gpt_only']['status'], 'audit_pending')
+        invalid = next(a for a in data['attempts'] if a['run_id'] == 'invalid')
+        self.assertEqual(invalid['reason_class'], 'invalid_native_layout')
+
+    def test_invalid_label_cannot_discard_a_valid_native_failure(self):
+        run = self.attempt('first_failure', '2026-01-01T00:00:00Z', False)
+        outcome = publisher.json.loads((run/'sim/evaluation_outcome.json').read_text())
+        outcome['status'] = 'invalid_native_layout'
+        write(run/'sim/evaluation_outcome.json', outcome)
+        # This contradictory result is an audit gap, never an exclusion license.
+        self.attempt('later_success', '2026-01-02T00:00:00Z', True)
+        data = self.report()
+        self.assertEqual(data['episodes'], [])
+        self.assertEqual(data['cases'][0]['methods']['gpt_only']['status'], 'audit_pending')
 
 
 class SupplementaryStatusTests(unittest.TestCase):

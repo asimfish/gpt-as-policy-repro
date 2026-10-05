@@ -238,7 +238,18 @@ def build(source, out):
             if history:
                 row['control_steps'] = max(row['control_steps'], history[-1]['end_tick'])
             native_complete = result.get('complete') is True and outcome.get('complete') is True
-            if native_complete:
+            invalid_layout = (native_complete
+                and outcome.get('status') == 'invalid_native_layout'
+                and outcome.get('valid_for_success_rate') is False
+                and outcome.get('native_success') is None and outcome.get('native_score') is None
+                and all({k: value.get(k) for k in IDENTITY_KEYS} == fixtures[cid]
+                    for value in (result.get('evaluation_case', {}), outcome.get('evaluation_case', {}))))
+            if invalid_layout:
+                # Match the frozen queue's native eligibility boundary. An invalid
+                # layout is excluded, while a valid unaudited terminal must still
+                # block selecting any later native success or failure.
+                row['reason_class'] = 'invalid_native_layout'
+            elif native_complete:
                 try:
                     values = check_episode(run, fixtures[cid])
                 except (AssertionError, KeyError, FileNotFoundError, TypeError, ValueError):
