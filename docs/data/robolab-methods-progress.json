@@ -158,11 +158,11 @@
           "episode_id": "robolab_BlocksInBinTask__seed4__gpt_only"
         },
         "pi05_plus_gpt": {
-          "status": "pending",
-          "episode_id": null
+          "status": "complete",
+          "episode_id": "robolab_BlocksInBinTask__seed4__pi05_plus_gpt"
         }
       },
-      "paired_complete": false
+      "paired_complete": true
     },
     {
       "case_id": "ButterAboveRaisinTask__seed0",
@@ -1253,6 +1253,38 @@
       "video_bytes": 6172983,
       "duration_seconds": 87.467,
       "evidence": "data/robolab-method-episodes/robolab_BlocksInBinTask__seed4__gpt_only.json"
+    },
+    {
+      "id": "robolab_BlocksInBinTask__seed4__pi05_plus_gpt",
+      "run_id": "hybrid_20261004T235405Z_BlocksInBinTask_seed4",
+      "case_id": "BlocksInBinTask__seed4",
+      "task": "BlocksInBinTask",
+      "seed": 4,
+      "method": "pi05_plus_gpt",
+      "success": true,
+      "complete": true,
+      "eligible": true,
+      "control_steps": 1041,
+      "decisions": 103,
+      "terminated": true,
+      "truncated": false,
+      "actions_by_mode": {
+        "student": 806,
+        "edit": 5,
+        "eef": 230
+      },
+      "pi05_inference_calls": 103,
+      "initial_state_hash": "9d86ea97e1749e1c4383b0b2cce1adaeaf599cbcdf654aff399776010c08ec4d",
+      "native_horizon": 2250,
+      "audit": "data/robolab-method-episodes/robolab_BlocksInBinTask__seed4__pi05_plus_gpt-audit.json",
+      "audit_sha256": "07c61e2aad86c1f8298f402a0876aea7fe35753f87f64d975bf94d17acde27b4",
+      "video": "media/robolab-methods/robolab_BlocksInBinTask__seed4__pi05_plus_gpt.mp4",
+      "poster": "media/robolab-methods/robolab_BlocksInBinTask__seed4__pi05_plus_gpt.jpg",
+      "video_sha256": "5c9480a07d6c6c5f0bac2af3cb574b9b62b3895ae66beac0156fa6710337d226",
+      "source_video_sha256": "82f3af57a508bb5f548302670bd025ff50ec7fb46be8a725a1d08ea11c09a2fa",
+      "video_bytes": 5300045,
+      "duration_seconds": 69.467,
+      "evidence": "data/robolab-method-episodes/robolab_BlocksInBinTask__seed4__pi05_plus_gpt.json"
     }
   ],
   "attempts": [
@@ -2476,16 +2508,25 @@
       "task": "BlocksInBinTask",
       "seed": 4,
       "method": "pi05_plus_gpt",
-      "status": "controller_running",
+      "status": "complete",
       "started_utc": "2026-10-04T23:54:05.116333+00:00",
+      "eligible": true
+    },
+    {
+      "run_id": "hybrid_20261005T023455Z_ClutterPumpkinTask_seed0",
+      "task": "ClutterPumpkinTask",
+      "seed": 0,
+      "method": "pi05_plus_gpt",
+      "status": "starting",
+      "started_utc": "2026-10-05T02:34:55.395287+00:00",
       "eligible": false
     }
   ],
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
-    "completed_pairs": 4,
-    "complete_method_runs": 14,
+    "completed_pairs": 5,
+    "complete_method_runs": 15,
     "methods": {
       "gpt_only": {
         "all_completed": {
@@ -2495,22 +2536,22 @@
           "success_rate": 1.0
         },
         "paired_completed": {
-          "evaluated": 4,
-          "successes": 4,
+          "evaluated": 5,
+          "successes": 5,
           "failures": 0,
           "success_rate": 1.0
         }
       },
       "pi05_plus_gpt": {
         "all_completed": {
-          "evaluated": 4,
-          "successes": 4,
+          "evaluated": 5,
+          "successes": 5,
           "failures": 0,
           "success_rate": 1.0
         },
         "paired_completed": {
-          "evaluated": 4,
-          "successes": 4,
+          "evaluated": 5,
+          "successes": 5,
           "failures": 0,
           "success_rate": 1.0
         }

@@ -1,0 +1,32 @@
+{
+  "id": "robolab_BlocksInBinTask__seed4__pi05_plus_gpt",
+  "run_id": "hybrid_20261004T235405Z_BlocksInBinTask_seed4",
+  "case_id": "BlocksInBinTask__seed4",
+  "task": "BlocksInBinTask",
+  "seed": 4,
+  "method": "pi05_plus_gpt",
+  "success": true,
+  "complete": true,
+  "eligible": true,
+  "control_steps": 1041,
+  "decisions": 103,
+  "terminated": true,
+  "truncated": false,
+  "actions_by_mode": {
+    "student": 806,
+    "edit": 5,
+    "eef": 230
+  },
+  "pi05_inference_calls": 103,
+  "initial_state_hash": "9d86ea97e1749e1c4383b0b2cce1adaeaf599cbcdf654aff399776010c08ec4d",
+  "native_horizon": 2250,
+  "audit": "data/robolab-method-episodes/robolab_BlocksInBinTask__seed4__pi05_plus_gpt-audit.json",
+  "audit_sha256": "07c61e2aad86c1f8298f402a0876aea7fe35753f87f64d975bf94d17acde27b4",
+  "video": "media/robolab-methods/robolab_BlocksInBinTask__seed4__pi05_plus_gpt.mp4",
+  "poster": "media/robolab-methods/robolab_BlocksInBinTask__seed4__pi05_plus_gpt.jpg",
+  "video_sha256": "5c9480a07d6c6c5f0bac2af3cb574b9b62b3895ae66beac0156fa6710337d226",
+  "source_video_sha256": "82f3af57a508bb5f548302670bd025ff50ec7fb46be8a725a1d08ea11c09a2fa",
+  "video_bytes": 5300045,
+  "duration_seconds": 69.467,
+  "evidence": "data/robolab-method-episodes/robolab_BlocksInBinTask__seed4__pi05_plus_gpt.json"
+}
