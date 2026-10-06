@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-06T12:20:32.774014+00:00",
+  "snapshot": "2026-10-06T12:30:53.839860+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9285,11 +9285,11 @@
     "robolab": {
       "planned_pairs": 50,
       "planned_method_runs": 100,
-      "status": "controller_running",
+      "status": "starting",
       "task": "SauceBottlesCrateTask",
-      "seed": 4,
-      "method": "pi05_plus_gpt",
-      "started_utc": "2026-10-06T11:58:33.020850+00:00",
+      "seed": 1,
+      "method": "gpt_only",
+      "started_utc": "2026-10-06T12:24:20.740173+00:00",
       "results_eligible": true,
       "action_audit_status": "pending",
       "direct_implementation_status": "native_episode_audited",
@@ -9301,57 +9301,57 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 275,
+      "observed_control_steps": 0,
       "active_runs": [
         {
           "task": "SauceBottlesCrateTask",
-          "seed": 4,
-          "method": "pi05_plus_gpt",
-          "status": "controller_running",
-          "started_utc": "2026-10-06T11:58:33.020850+00:00",
-          "observed_control_steps": 275
+          "seed": 1,
+          "method": "gpt_only",
+          "status": "starting",
+          "started_utc": "2026-10-06T12:24:20.740173+00:00",
+          "observed_control_steps": 0
         },
         {
           "task": "SauceBottlesCrateTask",
-          "seed": 0,
+          "seed": 2,
           "method": "gpt_only",
-          "status": "controller_running",
-          "started_utc": "2026-10-06T12:05:35.212471+00:00",
-          "observed_control_steps": 140
+          "status": "starting",
+          "started_utc": "2026-10-06T12:29:23.586647+00:00",
+          "observed_control_steps": 0
         }
       ],
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
-        "completed_pairs": 30,
-        "complete_method_runs": 64,
+        "completed_pairs": 31,
+        "complete_method_runs": 66,
         "methods": {
           "gpt_only": {
             "all_completed": {
-              "evaluated": 30,
-              "successes": 29,
+              "evaluated": 31,
+              "successes": 30,
               "failures": 1,
-              "success_rate": 0.9666666666666667
+              "success_rate": 0.967741935483871
             },
             "paired_completed": {
-              "evaluated": 30,
-              "successes": 29,
+              "evaluated": 31,
+              "successes": 30,
               "failures": 1,
-              "success_rate": 0.9666666666666667
+              "success_rate": 0.967741935483871
             }
           },
           "pi05_plus_gpt": {
             "all_completed": {
-              "evaluated": 34,
-              "successes": 31,
+              "evaluated": 35,
+              "successes": 32,
               "failures": 3,
-              "success_rate": 0.9117647058823529
+              "success_rate": 0.9142857142857143
             },
             "paired_completed": {
-              "evaluated": 30,
-              "successes": 27,
+              "evaluated": 31,
+              "successes": 28,
               "failures": 3,
-              "success_rate": 0.9
+              "success_rate": 0.9032258064516129
             }
           }
         }
