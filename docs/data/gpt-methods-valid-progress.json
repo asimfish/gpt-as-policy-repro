@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-06T15:41:46.798255+00:00",
+  "snapshot": "2026-10-06T15:51:20.106857+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9287,9 +9287,9 @@
       "planned_method_runs": 100,
       "status": "controller_running",
       "task": "CannedFoodInBinTask",
-      "seed": 2,
+      "seed": 4,
       "method": "gpt_only",
-      "started_utc": "2026-10-06T15:37:57.397164+00:00",
+      "started_utc": "2026-10-06T15:44:51.088791+00:00",
       "results_eligible": true,
       "action_audit_status": "pending",
       "direct_implementation_status": "native_episode_audited",
@@ -9305,10 +9305,26 @@
       "active_runs": [
         {
           "task": "CannedFoodInBinTask",
-          "seed": 2,
+          "seed": 4,
           "method": "gpt_only",
           "status": "controller_running",
-          "started_utc": "2026-10-06T15:37:57.397164+00:00",
+          "started_utc": "2026-10-06T15:44:51.088791+00:00",
+          "observed_control_steps": 0
+        },
+        {
+          "task": "YogurtInBowlTask",
+          "seed": 0,
+          "method": "pi05_plus_gpt",
+          "status": "controller_running",
+          "started_utc": "2026-10-06T15:45:45.864124+00:00",
+          "observed_control_steps": 0
+        },
+        {
+          "task": "YogurtInBowlTask",
+          "seed": 1,
+          "method": "pi05_plus_gpt",
+          "status": "starting",
+          "started_utc": "2026-10-06T15:49:52.241453+00:00",
           "observed_control_steps": 0
         }
       ],
