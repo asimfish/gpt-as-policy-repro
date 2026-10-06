@@ -656,7 +656,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 60
+          "observed_control_steps": 224
         }
       },
       "paired_complete": false
@@ -673,7 +673,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 0
+          "observed_control_steps": 120
         }
       },
       "paired_complete": false
@@ -4373,7 +4373,7 @@
       "task": "SauceBottlesCrateTask",
       "seed": 1,
       "method": "pi05_plus_gpt",
-      "status": "starting",
+      "status": "controller_running",
       "started_utc": "2026-10-06T11:10:42.756705+00:00",
       "eligible": false
     }
@@ -4385,15 +4385,15 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-06T10:59:39.821167+00:00",
-      "observed_control_steps": 60
+      "observed_control_steps": 224
     },
     {
       "task": "SauceBottlesCrateTask",
       "seed": 1,
       "method": "pi05_plus_gpt",
-      "status": "starting",
+      "status": "controller_running",
       "started_utc": "2026-10-06T11:10:42.756705+00:00",
-      "observed_control_steps": 0
+      "observed_control_steps": 120
     }
   ],
   "summary": {
