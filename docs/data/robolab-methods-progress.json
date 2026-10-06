@@ -416,7 +416,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 63
+          "observed_control_steps": 233
         }
       },
       "paired_complete": false
@@ -541,7 +541,7 @@
         "gpt_only": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 420
+          "observed_control_steps": 460
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -558,7 +558,7 @@
         "gpt_only": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 390
+          "observed_control_steps": 435
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -3903,7 +3903,7 @@
       "method": "gpt_only",
       "status": "controller_running",
       "started_utc": "2026-10-06T07:15:58.955951+00:00",
-      "observed_control_steps": 420
+      "observed_control_steps": 460
     },
     {
       "task": "ReorientRedMugTask",
@@ -3911,7 +3911,7 @@
       "method": "gpt_only",
       "status": "controller_running",
       "started_utc": "2026-10-06T07:24:40.910668+00:00",
-      "observed_control_steps": 390
+      "observed_control_steps": 435
     },
     {
       "task": "LargerObjectRaisinBoxInBinTask",
@@ -3919,7 +3919,7 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-06T08:00:41.295977+00:00",
-      "observed_control_steps": 63
+      "observed_control_steps": 233
     }
   ],
   "summary": {

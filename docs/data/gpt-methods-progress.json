@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-06T08:10:51.394581+00:00",
+  "snapshot": "2026-10-06T08:19:15.896494+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9281,11 +9281,11 @@
   },
   "infrastructure": {
     "schema": "gpt_policy_infrastructure_bundle.v1",
-    "archive": "downloads/infrastructure_bundle_20261006T081000Z.tar.gz",
-    "bytes": 938483,
-    "sha256": "26fe9bd81285ff00db5e3b2e3a8513845e5306d6d233053f2b3596156f897cb8",
-    "files": 844,
-    "created_utc": "2026-10-06T00:08:59.213359+00:00",
+    "archive": "downloads/infrastructure_bundle_20261006T082000Z.tar.gz",
+    "bytes": 983162,
+    "sha256": "0917f686b2a08c3d0fbfb546beff00ebe3e2b9a806966b886b911df315bc0fd6",
+    "files": 851,
+    "created_utc": "2026-10-06T08:18:37.426342+00:00",
     "active_methods": [
       "gpt_only",
       "pi05_plus_gpt"
@@ -9313,7 +9313,7 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 425,
+      "observed_control_steps": 460,
       "active_runs": [
         {
           "task": "ReorientRedMugTask",
@@ -9321,7 +9321,7 @@
           "method": "gpt_only",
           "status": "controller_running",
           "started_utc": "2026-10-06T07:15:58.955951+00:00",
-          "observed_control_steps": 425
+          "observed_control_steps": 460
         },
         {
           "task": "ReorientRedMugTask",
@@ -9329,7 +9329,7 @@
           "method": "gpt_only",
           "status": "controller_running",
           "started_utc": "2026-10-06T07:24:40.910668+00:00",
-          "observed_control_steps": 395
+          "observed_control_steps": 435
         },
         {
           "task": "LargerObjectRaisinBoxInBinTask",
@@ -9337,7 +9337,7 @@
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-06T08:00:41.295977+00:00",
-          "observed_control_steps": 63
+          "observed_control_steps": 233
         }
       ],
       "summary": {
