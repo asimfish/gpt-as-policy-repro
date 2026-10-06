@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-06T02:40:27.298249+00:00",
+  "snapshot": "2026-10-06T02:50:47.422580+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9313,7 +9313,7 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 495,
+      "observed_control_steps": 540,
       "active_runs": [
         {
           "task": "ClutterPumpkinTask",
@@ -9321,15 +9321,7 @@
           "method": "gpt_only",
           "status": "controller_running",
           "started_utc": "2026-10-06T01:18:15.979586+00:00",
-          "observed_control_steps": 495
-        },
-        {
-          "task": "ClutterPumpkinTask",
-          "seed": 3,
-          "method": "gpt_only",
-          "status": "controller_running",
-          "started_utc": "2026-10-06T01:18:15.952718+00:00",
-          "observed_control_steps": 630
+          "observed_control_steps": 540
         },
         {
           "task": "ButterAboveRaisinTask",
@@ -9337,25 +9329,33 @@
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-06T02:33:27.578750+00:00",
-          "observed_control_steps": 90
+          "observed_control_steps": 245
+        },
+        {
+          "task": "ButterAboveRaisinTask",
+          "seed": 1,
+          "method": "pi05_plus_gpt",
+          "status": "controller_running",
+          "started_utc": "2026-10-06T02:46:55.165880+00:00",
+          "observed_control_steps": 0
         }
       ],
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
-        "completed_pairs": 8,
-        "complete_method_runs": 23,
+        "completed_pairs": 9,
+        "complete_method_runs": 24,
         "methods": {
           "gpt_only": {
             "all_completed": {
-              "evaluated": 13,
-              "successes": 13,
+              "evaluated": 14,
+              "successes": 14,
               "failures": 0,
               "success_rate": 1.0
             },
             "paired_completed": {
-              "evaluated": 8,
-              "successes": 8,
+              "evaluated": 9,
+              "successes": 9,
               "failures": 0,
               "success_rate": 1.0
             }
@@ -9368,10 +9368,10 @@
               "success_rate": 0.8
             },
             "paired_completed": {
-              "evaluated": 8,
+              "evaluated": 9,
               "successes": 8,
-              "failures": 0,
-              "success_rate": 1.0
+              "failures": 1,
+              "success_rate": 0.8888888888888888
             }
           }
         }
