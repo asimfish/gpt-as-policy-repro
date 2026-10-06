@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-06T02:50:59.037811+00:00",
+  "snapshot": "2026-10-06T03:01:01.115330+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9301,7 +9301,7 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 540,
+      "observed_control_steps": 580,
       "active_runs": [
         {
           "task": "ClutterPumpkinTask",
@@ -9309,7 +9309,7 @@
           "method": "gpt_only",
           "status": "controller_running",
           "started_utc": "2026-10-06T01:18:15.979586+00:00",
-          "observed_control_steps": 540
+          "observed_control_steps": 580
         },
         {
           "task": "ButterAboveRaisinTask",
@@ -9317,14 +9317,14 @@
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-06T02:33:27.578750+00:00",
-          "observed_control_steps": 245
+          "observed_control_steps": 365
         },
         {
           "task": "ButterAboveRaisinTask",
-          "seed": 1,
+          "seed": 2,
           "method": "pi05_plus_gpt",
-          "status": "controller_running",
-          "started_utc": "2026-10-06T02:46:55.165880+00:00",
+          "status": "starting",
+          "started_utc": "2026-10-06T02:59:11.813747+00:00",
           "observed_control_steps": 0
         }
       ],
@@ -9332,7 +9332,7 @@
         "planned_pairs": 50,
         "planned_method_runs": 100,
         "completed_pairs": 9,
-        "complete_method_runs": 24,
+        "complete_method_runs": 25,
         "methods": {
           "gpt_only": {
             "all_completed": {
@@ -9350,10 +9350,10 @@
           },
           "pi05_plus_gpt": {
             "all_completed": {
-              "evaluated": 10,
-              "successes": 8,
+              "evaluated": 11,
+              "successes": 9,
               "failures": 2,
-              "success_rate": 0.8
+              "success_rate": 0.8181818181818182
             },
             "paired_completed": {
               "evaluated": 9,
