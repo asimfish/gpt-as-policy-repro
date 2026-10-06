@@ -666,16 +666,15 @@
       "seed": 1,
       "methods": {
         "gpt_only": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 150
+          "status": "complete",
+          "episode_id": "robolab_SauceBottlesCrateTask__seed1__gpt_only"
         },
         "pi05_plus_gpt": {
           "status": "complete",
           "episode_id": "robolab_SauceBottlesCrateTask__seed1__pi05_plus_gpt"
         }
       },
-      "paired_complete": false
+      "paired_complete": true
     },
     {
       "case_id": "SauceBottlesCrateTask__seed2",
@@ -683,16 +682,15 @@
       "seed": 2,
       "methods": {
         "gpt_only": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 161
+          "status": "complete",
+          "episode_id": "robolab_SauceBottlesCrateTask__seed2__gpt_only"
         },
         "pi05_plus_gpt": {
           "status": "complete",
           "episode_id": "robolab_SauceBottlesCrateTask__seed2__pi05_plus_gpt"
         }
       },
-      "paired_complete": false
+      "paired_complete": true
     },
     {
       "case_id": "SauceBottlesCrateTask__seed3",
@@ -700,8 +698,9 @@
       "seed": 3,
       "methods": {
         "gpt_only": {
-          "status": "pending",
-          "episode_id": null
+          "status": "running",
+          "episode_id": null,
+          "observed_control_steps": 40
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -716,8 +715,9 @@
       "seed": 4,
       "methods": {
         "gpt_only": {
-          "status": "pending",
-          "episode_id": null
+          "status": "running",
+          "episode_id": null,
+          "observed_control_steps": 0
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -2793,6 +2793,38 @@
       "evidence": "data/robolab-method-episodes/robolab_SauceBottlesCrateTask__seed0__pi05_plus_gpt.json"
     },
     {
+      "id": "robolab_SauceBottlesCrateTask__seed1__gpt_only",
+      "run_id": "direct_20261006T122420Z_SauceBottlesCrateTask_seed1",
+      "case_id": "SauceBottlesCrateTask__seed1",
+      "task": "SauceBottlesCrateTask",
+      "seed": 1,
+      "method": "gpt_only",
+      "success": true,
+      "complete": true,
+      "eligible": true,
+      "control_steps": 166,
+      "decisions": 34,
+      "terminated": true,
+      "truncated": false,
+      "actions_by_mode": {
+        "student": 0,
+        "edit": 0,
+        "eef": 166
+      },
+      "pi05_inference_calls": 0,
+      "initial_state_hash": "706e2d901aa78e5f08eca0c85162f02438fd7e5e731bb05a6a94bf97a08533e4",
+      "native_horizon": 600,
+      "audit": "data/robolab-method-episodes/robolab_SauceBottlesCrateTask__seed1__gpt_only-audit.json",
+      "audit_sha256": "cdb288ab0fd9b7a859e013b3cff8a581ccbedf4c56afd9631b19f9482949b20c",
+      "video": "media/robolab-methods/robolab_SauceBottlesCrateTask__seed1__gpt_only.mp4",
+      "poster": "media/robolab-methods/robolab_SauceBottlesCrateTask__seed1__gpt_only.jpg",
+      "video_sha256": "198bc4ce6817214dc5055e0ce9845b57386855300516b7fb3c6c95694eadd1f8",
+      "source_video_sha256": "763a106d2008e44135809cb3b84b47618fe7ada22efd80c6b28f5eea984ac1d8",
+      "video_bytes": 667723,
+      "duration_seconds": 11.134,
+      "evidence": "data/robolab-method-episodes/robolab_SauceBottlesCrateTask__seed1__gpt_only.json"
+    },
+    {
       "id": "robolab_SauceBottlesCrateTask__seed1__pi05_plus_gpt",
       "run_id": "hybrid_20261006T111042Z_SauceBottlesCrateTask_seed1",
       "case_id": "SauceBottlesCrateTask__seed1",
@@ -2823,6 +2855,38 @@
       "video_bytes": 1617894,
       "duration_seconds": 24.8,
       "evidence": "data/robolab-method-episodes/robolab_SauceBottlesCrateTask__seed1__pi05_plus_gpt.json"
+    },
+    {
+      "id": "robolab_SauceBottlesCrateTask__seed2__gpt_only",
+      "run_id": "direct_20261006T122923Z_SauceBottlesCrateTask_seed2",
+      "case_id": "SauceBottlesCrateTask__seed2",
+      "task": "SauceBottlesCrateTask",
+      "seed": 2,
+      "method": "gpt_only",
+      "success": true,
+      "complete": true,
+      "eligible": true,
+      "control_steps": 161,
+      "decisions": 33,
+      "terminated": true,
+      "truncated": false,
+      "actions_by_mode": {
+        "student": 0,
+        "edit": 0,
+        "eef": 161
+      },
+      "pi05_inference_calls": 0,
+      "initial_state_hash": "706e2d901aa78e5f08eca0c85162f02438fd7e5e731bb05a6a94bf97a08533e4",
+      "native_horizon": 600,
+      "audit": "data/robolab-method-episodes/robolab_SauceBottlesCrateTask__seed2__gpt_only-audit.json",
+      "audit_sha256": "71f887a50aa0ae122f0df4314aeee61e87f2490c3bf99ef3596f23715494eb73",
+      "video": "media/robolab-methods/robolab_SauceBottlesCrateTask__seed2__gpt_only.mp4",
+      "poster": "media/robolab-methods/robolab_SauceBottlesCrateTask__seed2__gpt_only.jpg",
+      "video_sha256": "91e7ba29639e70d90067b34b0b267ba5fe53686a4786a8284318a3a0bb10448f",
+      "source_video_sha256": "e5456eb92f9092612bd5072c9933b60c178ec88d3e2033091562ffea4a2ed492",
+      "video_bytes": 641457,
+      "duration_seconds": 10.8,
+      "evidence": "data/robolab-method-episodes/robolab_SauceBottlesCrateTask__seed2__gpt_only.json"
     },
     {
       "id": "robolab_SauceBottlesCrateTask__seed2__pi05_plus_gpt",
@@ -3710,17 +3774,35 @@
       "task": "SauceBottlesCrateTask",
       "seed": 1,
       "method": "gpt_only",
-      "status": "controller_running",
+      "status": "complete",
       "started_utc": "2026-10-06T12:24:20.740173+00:00",
-      "eligible": false
+      "eligible": true
     },
     {
       "run_id": "direct_20261006T122923Z_SauceBottlesCrateTask_seed2",
       "task": "SauceBottlesCrateTask",
       "seed": 2,
       "method": "gpt_only",
-      "status": "controller_running",
+      "status": "complete",
       "started_utc": "2026-10-06T12:29:23.586647+00:00",
+      "eligible": true
+    },
+    {
+      "run_id": "direct_20261006T125253Z_SauceBottlesCrateTask_seed3",
+      "task": "SauceBottlesCrateTask",
+      "seed": 3,
+      "method": "gpt_only",
+      "status": "controller_running",
+      "started_utc": "2026-10-06T12:52:54.384090+00:00",
+      "eligible": false
+    },
+    {
+      "run_id": "direct_20261006T125625Z_SauceBottlesCrateTask_seed4",
+      "task": "SauceBottlesCrateTask",
+      "seed": 4,
+      "method": "gpt_only",
+      "status": "controller_running",
+      "started_utc": "2026-10-06T12:56:25.961067+00:00",
       "eligible": false
     },
     {
@@ -4627,39 +4709,39 @@
   "active_runs": [
     {
       "task": "SauceBottlesCrateTask",
-      "seed": 1,
+      "seed": 3,
       "method": "gpt_only",
       "status": "controller_running",
-      "started_utc": "2026-10-06T12:24:20.740173+00:00",
-      "observed_control_steps": 150
+      "started_utc": "2026-10-06T12:52:54.384090+00:00",
+      "observed_control_steps": 40
     },
     {
       "task": "SauceBottlesCrateTask",
-      "seed": 2,
+      "seed": 4,
       "method": "gpt_only",
       "status": "controller_running",
-      "started_utc": "2026-10-06T12:29:23.586647+00:00",
-      "observed_control_steps": 161
+      "started_utc": "2026-10-06T12:56:25.961067+00:00",
+      "observed_control_steps": 0
     }
   ],
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
-    "completed_pairs": 31,
-    "complete_method_runs": 66,
+    "completed_pairs": 33,
+    "complete_method_runs": 68,
     "methods": {
       "gpt_only": {
         "all_completed": {
-          "evaluated": 31,
-          "successes": 30,
+          "evaluated": 33,
+          "successes": 32,
           "failures": 1,
-          "success_rate": 0.967741935483871
+          "success_rate": 0.9696969696969697
         },
         "paired_completed": {
-          "evaluated": 31,
-          "successes": 30,
+          "evaluated": 33,
+          "successes": 32,
           "failures": 1,
-          "success_rate": 0.967741935483871
+          "success_rate": 0.9696969696969697
         }
       },
       "pi05_plus_gpt": {
@@ -4670,10 +4752,10 @@
           "success_rate": 0.9142857142857143
         },
         "paired_completed": {
-          "evaluated": 31,
-          "successes": 28,
+          "evaluated": 33,
+          "successes": 30,
           "failures": 3,
-          "success_rate": 0.9032258064516129
+          "success_rate": 0.9090909090909091
         }
       }
     }
