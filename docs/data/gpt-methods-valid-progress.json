@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-06T15:01:12.321206+00:00",
+  "snapshot": "2026-10-06T15:06:50.638769+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9269,11 +9269,11 @@
   },
   "infrastructure": {
     "schema": "gpt_policy_infrastructure_bundle.v1",
-    "archive": "downloads/infrastructure_bundle_20261006T144112Z.tar.gz",
-    "bytes": 1009129,
-    "sha256": "f841e429598f5f75b8ae01ebc73185fedd876751fa4df0b8f5d98bace900c055",
-    "files": 860,
-    "created_utc": "2026-10-06T14:41:18.491242+00:00",
+    "archive": "downloads/infrastructure_bundle_20261006T150154Z.tar.gz",
+    "bytes": 1016908,
+    "sha256": "7996f09c46ad8f0246c686efb2f82f6e060b85ce50b4a2ae8432050fd702b855",
+    "files": 869,
+    "created_utc": "2026-10-06T15:01:58.964027+00:00",
     "active_methods": [
       "gpt_only",
       "pi05_plus_gpt"
@@ -9301,7 +9301,7 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 462,
+      "observed_control_steps": 482,
       "active_runs": [
         {
           "task": "CannedFoodInBinTask",
@@ -9309,7 +9309,7 @@
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-06T14:01:28.663581+00:00",
-          "observed_control_steps": 462
+          "observed_control_steps": 482
         },
         {
           "task": "CannedFoodInBinTask",
@@ -9317,7 +9317,7 @@
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-06T14:21:11.326567+00:00",
-          "observed_control_steps": 351
+          "observed_control_steps": 376
         },
         {
           "task": "CannedFoodInBinTask",
@@ -9325,7 +9325,7 @@
           "method": "gpt_only",
           "status": "controller_running",
           "started_utc": "2026-10-06T14:34:31.289874+00:00",
-          "observed_control_steps": 100
+          "observed_control_steps": 120
         }
       ],
       "summary": {
