@@ -172,7 +172,7 @@
         "gpt_only": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 0
+          "observed_control_steps": 125
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -223,9 +223,8 @@
           "episode_id": null
         },
         "pi05_plus_gpt": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 178
+          "status": "audit_pending",
+          "episode_id": null
         }
       },
       "paired_complete": false
@@ -242,7 +241,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 0
+          "observed_control_steps": 185
         }
       },
       "paired_complete": false
@@ -2351,7 +2350,7 @@
       "task": "ButterAboveRaisinTask",
       "seed": 0,
       "method": "gpt_only",
-      "status": "starting",
+      "status": "controller_running",
       "started_utc": "2026-10-06T03:19:20.595959+00:00",
       "eligible": false
     },
@@ -3062,7 +3061,7 @@
       "task": "ButterAboveRaisinTask",
       "seed": 3,
       "method": "pi05_plus_gpt",
-      "status": "controller_running",
+      "status": "controller_finished",
       "started_utc": "2026-10-06T03:07:30.817734+00:00",
       "eligible": false
     },
@@ -3071,7 +3070,7 @@
       "task": "ButterAboveRaisinTask",
       "seed": 4,
       "method": "pi05_plus_gpt",
-      "status": "starting",
+      "status": "controller_running",
       "started_utc": "2026-10-06T03:19:20.527819+00:00",
       "eligible": false
     }
@@ -3081,25 +3080,25 @@
       "task": "ButterAboveRaisinTask",
       "seed": 3,
       "method": "pi05_plus_gpt",
-      "status": "controller_running",
+      "status": "controller_finished",
       "started_utc": "2026-10-06T03:07:30.817734+00:00",
-      "observed_control_steps": 178
+      "observed_control_steps": 310
     },
     {
       "task": "ButterAboveRaisinTask",
       "seed": 4,
       "method": "pi05_plus_gpt",
-      "status": "starting",
+      "status": "controller_running",
       "started_utc": "2026-10-06T03:19:20.527819+00:00",
-      "observed_control_steps": 0
+      "observed_control_steps": 185
     },
     {
       "task": "ButterAboveRaisinTask",
       "seed": 0,
       "method": "gpt_only",
-      "status": "starting",
+      "status": "controller_running",
       "started_utc": "2026-10-06T03:19:20.595959+00:00",
-      "observed_control_steps": 0
+      "observed_control_steps": 125
     }
   ],
   "summary": {
