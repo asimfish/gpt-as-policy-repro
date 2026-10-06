@@ -364,7 +364,7 @@
         "gpt_only": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 155
+          "observed_control_steps": 235
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -381,7 +381,7 @@
         "gpt_only": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 255
+          "observed_control_steps": 355
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -398,7 +398,7 @@
         "gpt_only": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 250
+          "observed_control_steps": 380
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -2837,7 +2837,7 @@
       "method": "gpt_only",
       "status": "controller_running",
       "started_utc": "2026-10-06T01:18:15.979586+00:00",
-      "observed_control_steps": 155
+      "observed_control_steps": 235
     },
     {
       "task": "ClutterPumpkinTask",
@@ -2845,7 +2845,7 @@
       "method": "gpt_only",
       "status": "controller_running",
       "started_utc": "2026-10-06T01:18:15.952718+00:00",
-      "observed_control_steps": 255
+      "observed_control_steps": 355
     },
     {
       "task": "ClutterPumpkinTask",
@@ -2853,7 +2853,7 @@
       "method": "gpt_only",
       "status": "controller_running",
       "started_utc": "2026-10-06T01:18:16.154025+00:00",
-      "observed_control_steps": 250
+      "observed_control_steps": 380
     }
   ],
   "summary": {
