@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-06T09:20:52.000214+00:00",
+  "snapshot": "2026-10-06T09:30:52.524906+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9298,10 +9298,10 @@
       "planned_pairs": 50,
       "planned_method_runs": 100,
       "status": "controller_running",
-      "task": "ReorientRedMugTask",
-      "seed": 3,
-      "method": "gpt_only",
-      "started_utc": "2026-10-06T07:15:58.955951+00:00",
+      "task": "LargerObjectRaisinBoxInBinTask",
+      "seed": 2,
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-06T09:15:03.115716+00:00",
       "results_eligible": true,
       "action_audit_status": "pending",
       "direct_implementation_status": "native_episode_audited",
@@ -9313,23 +9313,15 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 885,
+      "observed_control_steps": 205,
       "active_runs": [
-        {
-          "task": "ReorientRedMugTask",
-          "seed": 3,
-          "method": "gpt_only",
-          "status": "controller_running",
-          "started_utc": "2026-10-06T07:15:58.955951+00:00",
-          "observed_control_steps": 885
-        },
         {
           "task": "LargerObjectRaisinBoxInBinTask",
           "seed": 2,
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-06T09:15:03.115716+00:00",
-          "observed_control_steps": 15
+          "observed_control_steps": 205
         }
       ],
       "summary": {
