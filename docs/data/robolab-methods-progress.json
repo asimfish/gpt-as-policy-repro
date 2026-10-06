@@ -250,8 +250,9 @@
       "seed": 0,
       "methods": {
         "gpt_only": {
-          "status": "pending",
-          "episode_id": null
+          "status": "running",
+          "episode_id": null,
+          "observed_control_steps": 0
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -304,7 +305,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 258
+          "observed_control_steps": 358
         }
       },
       "paired_complete": false
@@ -321,7 +322,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 75
+          "observed_control_steps": 170
         }
       },
       "paired_complete": false
@@ -3966,6 +3967,15 @@
       "eligible": true
     },
     {
+      "run_id": "direct_20261006T143431Z_CannedFoodInBinTask_seed0",
+      "task": "CannedFoodInBinTask",
+      "seed": 0,
+      "method": "gpt_only",
+      "status": "controller_running",
+      "started_utc": "2026-10-06T14:34:31.289874+00:00",
+      "eligible": false
+    },
+    {
       "run_id": "hybrid_20261002T090455Z_BlocksInBinTask_seed0",
       "task": "BlocksInBinTask",
       "seed": 0,
@@ -4918,7 +4928,7 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-06T14:01:28.663581+00:00",
-      "observed_control_steps": 258
+      "observed_control_steps": 358
     },
     {
       "task": "CannedFoodInBinTask",
@@ -4926,7 +4936,15 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-06T14:21:11.326567+00:00",
-      "observed_control_steps": 75
+      "observed_control_steps": 170
+    },
+    {
+      "task": "CannedFoodInBinTask",
+      "seed": 0,
+      "method": "gpt_only",
+      "status": "controller_running",
+      "started_utc": "2026-10-06T14:34:31.289874+00:00",
+      "observed_control_steps": 0
     }
   ],
   "summary": {
