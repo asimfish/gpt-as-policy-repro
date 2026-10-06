@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-06T09:10:39.883682+00:00",
+  "snapshot": "2026-10-06T09:21:32.896011+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9301,7 +9301,7 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 815,
+      "observed_control_steps": 885,
       "active_runs": [
         {
           "task": "ReorientRedMugTask",
@@ -9309,57 +9309,49 @@
           "method": "gpt_only",
           "status": "controller_running",
           "started_utc": "2026-10-06T07:15:58.955951+00:00",
-          "observed_control_steps": 815
-        },
-        {
-          "task": "ReorientRedMugTask",
-          "seed": 4,
-          "method": "gpt_only",
-          "status": "controller_running",
-          "started_utc": "2026-10-06T07:24:40.910668+00:00",
-          "observed_control_steps": 755
+          "observed_control_steps": 885
         },
         {
           "task": "LargerObjectRaisinBoxInBinTask",
-          "seed": 1,
+          "seed": 2,
           "method": "pi05_plus_gpt",
           "status": "controller_running",
-          "started_utc": "2026-10-06T08:35:35.700439+00:00",
-          "observed_control_steps": 357
+          "started_utc": "2026-10-06T09:15:03.115716+00:00",
+          "observed_control_steps": 15
         }
       ],
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
-        "completed_pairs": 23,
-        "complete_method_runs": 49,
+        "completed_pairs": 24,
+        "complete_method_runs": 51,
         "methods": {
           "gpt_only": {
             "all_completed": {
-              "evaluated": 23,
-              "successes": 23,
+              "evaluated": 24,
+              "successes": 24,
               "failures": 0,
               "success_rate": 1.0
             },
             "paired_completed": {
-              "evaluated": 23,
-              "successes": 23,
+              "evaluated": 24,
+              "successes": 24,
               "failures": 0,
               "success_rate": 1.0
             }
           },
           "pi05_plus_gpt": {
             "all_completed": {
-              "evaluated": 26,
-              "successes": 23,
+              "evaluated": 27,
+              "successes": 24,
               "failures": 3,
-              "success_rate": 0.8846153846153846
+              "success_rate": 0.8888888888888888
             },
             "paired_completed": {
-              "evaluated": 23,
-              "successes": 20,
+              "evaluated": 24,
+              "successes": 21,
               "failures": 3,
-              "success_rate": 0.8695652173913043
+              "success_rate": 0.875
             }
           }
         }

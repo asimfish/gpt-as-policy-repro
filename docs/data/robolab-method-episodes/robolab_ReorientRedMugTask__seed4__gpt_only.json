@@ -1,0 +1,32 @@
+{
+  "id": "robolab_ReorientRedMugTask__seed4__gpt_only",
+  "run_id": "direct_20261006T072440Z_ReorientRedMugTask_seed4",
+  "case_id": "ReorientRedMugTask__seed4",
+  "task": "ReorientRedMugTask",
+  "seed": 4,
+  "method": "gpt_only",
+  "success": true,
+  "complete": true,
+  "eligible": true,
+  "control_steps": 793,
+  "decisions": 159,
+  "terminated": true,
+  "truncated": false,
+  "actions_by_mode": {
+    "student": 0,
+    "edit": 0,
+    "eef": 793
+  },
+  "pi05_inference_calls": 0,
+  "initial_state_hash": "9d961f919c67b564a962333ab341e5f6a8b60fddaee7200ce84991bcadb9fbcd",
+  "native_horizon": 900,
+  "audit": "data/robolab-method-episodes/robolab_ReorientRedMugTask__seed4__gpt_only-audit.json",
+  "audit_sha256": "b436d2da9d11e17c7c4b0f7e9433fdfca3c0aef12a50180bb496014e530f40d8",
+  "video": "media/robolab-methods/robolab_ReorientRedMugTask__seed4__gpt_only.mp4",
+  "poster": "media/robolab-methods/robolab_ReorientRedMugTask__seed4__gpt_only.jpg",
+  "video_sha256": "4477a3038a57b5dbdf8389d47d97cebe71c2a1fbf41d54230bfe7e2b0f73feaa",
+  "source_video_sha256": "500d519750590d74d833503a255c5dcd30f12ce4fbb9a90903c19790e0797762",
+  "video_bytes": 3674693,
+  "duration_seconds": 52.934,
+  "evidence": "data/robolab-method-episodes/robolab_ReorientRedMugTask__seed4__gpt_only.json"
+}
