@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-06T07:20:58.777062+00:00",
+  "snapshot": "2026-10-06T07:31:19.184003+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9301,7 +9301,7 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 545,
+      "observed_control_steps": 605,
       "active_runs": [
         {
           "task": "ReorientRedMugTask",
@@ -9309,15 +9309,7 @@
           "method": "gpt_only",
           "status": "controller_running",
           "started_utc": "2026-10-06T05:50:41.003077+00:00",
-          "observed_control_steps": 545
-        },
-        {
-          "task": "ReorientRedMugTask",
-          "seed": 2,
-          "method": "gpt_only",
-          "status": "controller_running",
-          "started_utc": "2026-10-06T07:10:57.779748+00:00",
-          "observed_control_steps": 65
+          "observed_control_steps": 605
         },
         {
           "task": "ReorientRedMugTask",
@@ -9325,25 +9317,33 @@
           "method": "gpt_only",
           "status": "controller_running",
           "started_utc": "2026-10-06T07:15:58.955951+00:00",
-          "observed_control_steps": 5
+          "observed_control_steps": 115
+        },
+        {
+          "task": "ReorientRedMugTask",
+          "seed": 4,
+          "method": "gpt_only",
+          "status": "controller_running",
+          "started_utc": "2026-10-06T07:24:40.910668+00:00",
+          "observed_control_steps": 15
         }
       ],
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
-        "completed_pairs": 21,
-        "complete_method_runs": 46,
+        "completed_pairs": 22,
+        "complete_method_runs": 47,
         "methods": {
           "gpt_only": {
             "all_completed": {
-              "evaluated": 21,
-              "successes": 21,
+              "evaluated": 22,
+              "successes": 22,
               "failures": 0,
               "success_rate": 1.0
             },
             "paired_completed": {
-              "evaluated": 21,
-              "successes": 21,
+              "evaluated": 22,
+              "successes": 22,
               "failures": 0,
               "success_rate": 1.0
             }
@@ -9356,10 +9356,10 @@
               "success_rate": 0.88
             },
             "paired_completed": {
-              "evaluated": 21,
-              "successes": 18,
+              "evaluated": 22,
+              "successes": 19,
               "failures": 3,
-              "success_rate": 0.8571428571428571
+              "success_rate": 0.8636363636363636
             }
           }
         }
