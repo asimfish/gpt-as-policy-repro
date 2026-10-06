@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-06T16:00:41.063554+00:00",
+  "snapshot": "2026-10-06T16:10:59.040159+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9297,11 +9297,11 @@
     "robolab": {
       "planned_pairs": 50,
       "planned_method_runs": 100,
-      "status": "controller_running",
+      "status": "starting",
       "task": "YogurtInBowlTask",
-      "seed": 0,
+      "seed": 2,
       "method": "gpt_only",
-      "started_utc": "2026-10-06T15:58:37.813934+00:00",
+      "started_utc": "2026-10-06T16:10:00.080808+00:00",
       "results_eligible": true,
       "action_audit_status": "pending",
       "direct_implementation_status": "native_episode_audited",
@@ -9317,10 +9317,10 @@
       "active_runs": [
         {
           "task": "YogurtInBowlTask",
-          "seed": 0,
+          "seed": 2,
           "method": "gpt_only",
-          "status": "controller_running",
-          "started_utc": "2026-10-06T15:58:37.813934+00:00",
+          "status": "starting",
+          "started_utc": "2026-10-06T16:10:00.080808+00:00",
           "observed_control_steps": 0
         }
       ],

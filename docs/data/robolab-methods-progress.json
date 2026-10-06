@@ -730,9 +730,8 @@
       "seed": 0,
       "methods": {
         "gpt_only": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 0
+          "status": "pending",
+          "episode_id": null
         },
         "pi05_plus_gpt": {
           "status": "pending",
@@ -763,8 +762,9 @@
       "seed": 2,
       "methods": {
         "gpt_only": {
-          "status": "pending",
-          "episode_id": null
+          "status": "running",
+          "episode_id": null,
+          "observed_control_steps": 0
         },
         "pi05_plus_gpt": {
           "status": "pending",
@@ -4046,8 +4046,26 @@
       "task": "YogurtInBowlTask",
       "seed": 0,
       "method": "gpt_only",
-      "status": "controller_running",
+      "status": "infrastructure_interrupted",
       "started_utc": "2026-10-06T15:58:37.813934+00:00",
+      "eligible": false
+    },
+    {
+      "run_id": "direct_20261006T160345Z_YogurtInBowlTask_seed1",
+      "task": "YogurtInBowlTask",
+      "seed": 1,
+      "method": "gpt_only",
+      "status": "infrastructure_interrupted",
+      "started_utc": "2026-10-06T16:03:47.670163+00:00",
+      "eligible": false
+    },
+    {
+      "run_id": "direct_20261006T160959Z_YogurtInBowlTask_seed2",
+      "task": "YogurtInBowlTask",
+      "seed": 2,
+      "method": "gpt_only",
+      "status": "starting",
+      "started_utc": "2026-10-06T16:10:00.080808+00:00",
       "eligible": false
     },
     {
@@ -5026,10 +5044,10 @@
   "active_runs": [
     {
       "task": "YogurtInBowlTask",
-      "seed": 0,
+      "seed": 2,
       "method": "gpt_only",
-      "status": "controller_running",
-      "started_utc": "2026-10-06T15:58:37.813934+00:00",
+      "status": "starting",
+      "started_utc": "2026-10-06T16:10:00.080808+00:00",
       "observed_control_steps": 0
     }
   ],
