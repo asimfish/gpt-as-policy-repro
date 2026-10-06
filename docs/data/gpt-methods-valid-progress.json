@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-06T04:31:01.898237+00:00",
+  "snapshot": "2026-10-06T04:40:50.876599+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9301,7 +9301,7 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 544,
+      "observed_control_steps": 815,
       "active_runs": [
         {
           "task": "BlockStackingSpecifiedOrderTask",
@@ -9309,7 +9309,7 @@
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-06T04:00:25.285700+00:00",
-          "observed_control_steps": 544
+          "observed_control_steps": 815
         },
         {
           "task": "BlockStackingSpecifiedOrderTask",
@@ -9317,22 +9317,22 @@
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-06T04:02:02.872577+00:00",
-          "observed_control_steps": 355
+          "observed_control_steps": 533
         },
         {
           "task": "BlockStackingSpecifiedOrderTask",
-          "seed": 2,
+          "seed": 3,
           "method": "pi05_plus_gpt",
-          "status": "controller_finished",
-          "started_utc": "2026-10-06T04:08:03.012141+00:00",
-          "observed_control_steps": 598
+          "status": "controller_running",
+          "started_utc": "2026-10-06T04:32:36.113743+00:00",
+          "observed_control_steps": 85
         }
       ],
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
-        "completed_pairs": 15,
-        "complete_method_runs": 35,
+        "completed_pairs": 16,
+        "complete_method_runs": 36,
         "methods": {
           "gpt_only": {
             "all_completed": {
@@ -9342,24 +9342,24 @@
               "success_rate": 1.0
             },
             "paired_completed": {
-              "evaluated": 15,
-              "successes": 15,
+              "evaluated": 16,
+              "successes": 16,
               "failures": 0,
               "success_rate": 1.0
             }
           },
           "pi05_plus_gpt": {
             "all_completed": {
-              "evaluated": 15,
-              "successes": 13,
+              "evaluated": 16,
+              "successes": 14,
               "failures": 2,
-              "success_rate": 0.8666666666666667
+              "success_rate": 0.875
             },
             "paired_completed": {
-              "evaluated": 15,
-              "successes": 13,
+              "evaluated": 16,
+              "successes": 14,
               "failures": 2,
-              "success_rate": 0.8666666666666667
+              "success_rate": 0.875
             }
           }
         }
