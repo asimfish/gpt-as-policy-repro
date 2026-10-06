@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-06T13:41:14.831275+00:00",
+  "snapshot": "2026-10-06T13:50:51.360823+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9287,9 +9287,9 @@
       "planned_method_runs": 100,
       "status": "controller_running",
       "task": "CannedFoodInBinTask",
-      "seed": 0,
+      "seed": 1,
       "method": "pi05_plus_gpt",
-      "started_utc": "2026-10-06T13:11:30.341796+00:00",
+      "started_utc": "2026-10-06T13:24:34.284330+00:00",
       "results_eligible": true,
       "action_audit_status": "pending",
       "direct_implementation_status": "native_episode_audited",
@@ -9301,30 +9301,30 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 360,
+      "observed_control_steps": 335,
       "active_runs": [
-        {
-          "task": "CannedFoodInBinTask",
-          "seed": 0,
-          "method": "pi05_plus_gpt",
-          "status": "controller_running",
-          "started_utc": "2026-10-06T13:11:30.341796+00:00",
-          "observed_control_steps": 360
-        },
         {
           "task": "CannedFoodInBinTask",
           "seed": 1,
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-06T13:24:34.284330+00:00",
-          "observed_control_steps": 188
+          "observed_control_steps": 335
+        },
+        {
+          "task": "CannedFoodInBinTask",
+          "seed": 2,
+          "method": "pi05_plus_gpt",
+          "status": "controller_running",
+          "started_utc": "2026-10-06T13:43:34.633510+00:00",
+          "observed_control_steps": 0
         }
       ],
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
         "completed_pairs": 35,
-        "complete_method_runs": 70,
+        "complete_method_runs": 71,
         "methods": {
           "gpt_only": {
             "all_completed": {
@@ -9342,10 +9342,10 @@
           },
           "pi05_plus_gpt": {
             "all_completed": {
-              "evaluated": 35,
-              "successes": 32,
+              "evaluated": 36,
+              "successes": 33,
               "failures": 3,
-              "success_rate": 0.9142857142857143
+              "success_rate": 0.9166666666666666
             },
             "paired_completed": {
               "evaluated": 35,
