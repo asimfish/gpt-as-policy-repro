@@ -426,16 +426,15 @@
       "seed": 1,
       "methods": {
         "gpt_only": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 211
+          "status": "complete",
+          "episode_id": "robolab_LargerObjectRaisinBoxInBinTask__seed1__gpt_only"
         },
         "pi05_plus_gpt": {
           "status": "complete",
           "episode_id": "robolab_LargerObjectRaisinBoxInBinTask__seed1__pi05_plus_gpt"
         }
       },
-      "paired_complete": false
+      "paired_complete": true
     },
     {
       "case_id": "LargerObjectRaisinBoxInBinTask__seed2",
@@ -443,16 +442,15 @@
       "seed": 2,
       "methods": {
         "gpt_only": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 224
+          "status": "complete",
+          "episode_id": "robolab_LargerObjectRaisinBoxInBinTask__seed2__gpt_only"
         },
         "pi05_plus_gpt": {
           "status": "complete",
           "episode_id": "robolab_LargerObjectRaisinBoxInBinTask__seed2__pi05_plus_gpt"
         }
       },
-      "paired_complete": false
+      "paired_complete": true
     },
     {
       "case_id": "LargerObjectRaisinBoxInBinTask__seed3",
@@ -460,8 +458,9 @@
       "seed": 3,
       "methods": {
         "gpt_only": {
-          "status": "pending",
-          "episode_id": null
+          "status": "running",
+          "episode_id": null,
+          "observed_control_steps": 75
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -476,8 +475,9 @@
       "seed": 4,
       "methods": {
         "gpt_only": {
-          "status": "pending",
-          "episode_id": null
+          "status": "running",
+          "episode_id": null,
+          "observed_control_steps": 0
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -2153,6 +2153,38 @@
       "evidence": "data/robolab-method-episodes/robolab_LargerObjectRaisinBoxInBinTask__seed0__pi05_plus_gpt.json"
     },
     {
+      "id": "robolab_LargerObjectRaisinBoxInBinTask__seed1__gpt_only",
+      "run_id": "direct_20261006T101749Z_LargerObjectRaisinBoxInBinTask_seed1",
+      "case_id": "LargerObjectRaisinBoxInBinTask__seed1",
+      "task": "LargerObjectRaisinBoxInBinTask",
+      "seed": 1,
+      "method": "gpt_only",
+      "success": true,
+      "complete": true,
+      "eligible": true,
+      "control_steps": 211,
+      "decisions": 43,
+      "terminated": true,
+      "truncated": false,
+      "actions_by_mode": {
+        "student": 0,
+        "edit": 0,
+        "eef": 211
+      },
+      "pi05_inference_calls": 0,
+      "initial_state_hash": "cfa778e37848f51ea4b1191e401fc0269a40e8fa3a2d9b2ef0dd9a57e614c154",
+      "native_horizon": 450,
+      "audit": "data/robolab-method-episodes/robolab_LargerObjectRaisinBoxInBinTask__seed1__gpt_only-audit.json",
+      "audit_sha256": "5d515789d79260bb52d0558d26dcedb411b6f52b3435e9d6f7cc74cdad7d4bd4",
+      "video": "media/robolab-methods/robolab_LargerObjectRaisinBoxInBinTask__seed1__gpt_only.mp4",
+      "poster": "media/robolab-methods/robolab_LargerObjectRaisinBoxInBinTask__seed1__gpt_only.jpg",
+      "video_sha256": "63eb56f722d5ae98b007a1b826cfd61e2fd6e77ddee2c2747b76044a22600a26",
+      "source_video_sha256": "14e27028c9992e4ec22a17f7211a0926a7346c7fa36bfa3fe6aa2c78aaa0ca28",
+      "video_bytes": 981371,
+      "duration_seconds": 14.134,
+      "evidence": "data/robolab-method-episodes/robolab_LargerObjectRaisinBoxInBinTask__seed1__gpt_only.json"
+    },
+    {
       "id": "robolab_LargerObjectRaisinBoxInBinTask__seed1__pi05_plus_gpt",
       "run_id": "hybrid_20261006T083535Z_LargerObjectRaisinBoxInBinTask_seed1",
       "case_id": "LargerObjectRaisinBoxInBinTask__seed1",
@@ -2183,6 +2215,38 @@
       "video_bytes": 1965075,
       "duration_seconds": 25.334,
       "evidence": "data/robolab-method-episodes/robolab_LargerObjectRaisinBoxInBinTask__seed1__pi05_plus_gpt.json"
+    },
+    {
+      "id": "robolab_LargerObjectRaisinBoxInBinTask__seed2__gpt_only",
+      "run_id": "direct_20261006T101926Z_LargerObjectRaisinBoxInBinTask_seed2",
+      "case_id": "LargerObjectRaisinBoxInBinTask__seed2",
+      "task": "LargerObjectRaisinBoxInBinTask",
+      "seed": 2,
+      "method": "gpt_only",
+      "success": true,
+      "complete": true,
+      "eligible": true,
+      "control_steps": 274,
+      "decisions": 55,
+      "terminated": true,
+      "truncated": false,
+      "actions_by_mode": {
+        "student": 0,
+        "edit": 0,
+        "eef": 274
+      },
+      "pi05_inference_calls": 0,
+      "initial_state_hash": "cfa778e37848f51ea4b1191e401fc0269a40e8fa3a2d9b2ef0dd9a57e614c154",
+      "native_horizon": 450,
+      "audit": "data/robolab-method-episodes/robolab_LargerObjectRaisinBoxInBinTask__seed2__gpt_only-audit.json",
+      "audit_sha256": "1b4ce5939cf5aebddaf627d20b14108fb9d6373dc5a721dedf9382de660a5ce2",
+      "video": "media/robolab-methods/robolab_LargerObjectRaisinBoxInBinTask__seed2__gpt_only.mp4",
+      "poster": "media/robolab-methods/robolab_LargerObjectRaisinBoxInBinTask__seed2__gpt_only.jpg",
+      "video_sha256": "7659f5e2332e6716cb8bd48ebf7ffc510b7c01a6812bd48c76ee2bf1e10ed303",
+      "source_video_sha256": "794b14ab8a4f5785285808dfa2a895daa4ad00ec609b51475981fd823a3e1e0f",
+      "video_bytes": 1215718,
+      "duration_seconds": 18.334,
+      "evidence": "data/robolab-method-episodes/robolab_LargerObjectRaisinBoxInBinTask__seed2__gpt_only.json"
     },
     {
       "id": "robolab_LargerObjectRaisinBoxInBinTask__seed2__pi05_plus_gpt",
@@ -3345,17 +3409,35 @@
       "task": "LargerObjectRaisinBoxInBinTask",
       "seed": 1,
       "method": "gpt_only",
-      "status": "controller_running",
+      "status": "complete",
       "started_utc": "2026-10-06T10:17:49.882353+00:00",
-      "eligible": false
+      "eligible": true
     },
     {
       "run_id": "direct_20261006T101926Z_LargerObjectRaisinBoxInBinTask_seed2",
       "task": "LargerObjectRaisinBoxInBinTask",
       "seed": 2,
       "method": "gpt_only",
-      "status": "controller_running",
+      "status": "complete",
       "started_utc": "2026-10-06T10:19:26.835682+00:00",
+      "eligible": true
+    },
+    {
+      "run_id": "direct_20261006T104207Z_LargerObjectRaisinBoxInBinTask_seed3",
+      "task": "LargerObjectRaisinBoxInBinTask",
+      "seed": 3,
+      "method": "gpt_only",
+      "status": "controller_running",
+      "started_utc": "2026-10-06T10:42:08.020961+00:00",
+      "eligible": false
+    },
+    {
+      "run_id": "direct_20261006T105012Z_LargerObjectRaisinBoxInBinTask_seed4",
+      "task": "LargerObjectRaisinBoxInBinTask",
+      "seed": 4,
+      "method": "gpt_only",
+      "status": "starting",
+      "started_utc": "2026-10-06T10:50:12.878783+00:00",
       "eligible": false
     },
     {
@@ -4217,39 +4299,39 @@
   "active_runs": [
     {
       "task": "LargerObjectRaisinBoxInBinTask",
-      "seed": 1,
+      "seed": 3,
       "method": "gpt_only",
       "status": "controller_running",
-      "started_utc": "2026-10-06T10:17:49.882353+00:00",
-      "observed_control_steps": 211
+      "started_utc": "2026-10-06T10:42:08.020961+00:00",
+      "observed_control_steps": 75
     },
     {
       "task": "LargerObjectRaisinBoxInBinTask",
-      "seed": 2,
+      "seed": 4,
       "method": "gpt_only",
-      "status": "controller_running",
-      "started_utc": "2026-10-06T10:19:26.835682+00:00",
-      "observed_control_steps": 224
+      "status": "starting",
+      "started_utc": "2026-10-06T10:50:12.878783+00:00",
+      "observed_control_steps": 0
     }
   ],
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
-    "completed_pairs": 26,
-    "complete_method_runs": 56,
+    "completed_pairs": 28,
+    "complete_method_runs": 58,
     "methods": {
       "gpt_only": {
         "all_completed": {
-          "evaluated": 26,
-          "successes": 25,
+          "evaluated": 28,
+          "successes": 27,
           "failures": 1,
-          "success_rate": 0.9615384615384616
+          "success_rate": 0.9642857142857143
         },
         "paired_completed": {
-          "evaluated": 26,
-          "successes": 25,
+          "evaluated": 28,
+          "successes": 27,
           "failures": 1,
-          "success_rate": 0.9615384615384616
+          "success_rate": 0.9642857142857143
         }
       },
       "pi05_plus_gpt": {
@@ -4260,10 +4342,10 @@
           "success_rate": 0.9
         },
         "paired_completed": {
-          "evaluated": 26,
-          "successes": 23,
+          "evaluated": 28,
+          "successes": 25,
           "failures": 3,
-          "success_rate": 0.8846153846153846
+          "success_rate": 0.8928571428571429
         }
       }
     }
