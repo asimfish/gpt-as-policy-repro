@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-06T15:30:57.848674+00:00",
+  "snapshot": "2026-10-06T15:41:46.798255+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9287,9 +9287,9 @@
       "planned_method_runs": 100,
       "status": "controller_running",
       "task": "CannedFoodInBinTask",
-      "seed": 4,
-      "method": "pi05_plus_gpt",
-      "started_utc": "2026-10-06T14:21:11.326567+00:00",
+      "seed": 2,
+      "method": "gpt_only",
+      "started_utc": "2026-10-06T15:37:57.397164+00:00",
       "results_eligible": true,
       "action_audit_status": "pending",
       "direct_implementation_status": "native_episode_audited",
@@ -9301,30 +9301,14 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 439,
+      "observed_control_steps": 0,
       "active_runs": [
         {
           "task": "CannedFoodInBinTask",
-          "seed": 4,
-          "method": "pi05_plus_gpt",
-          "status": "controller_running",
-          "started_utc": "2026-10-06T14:21:11.326567+00:00",
-          "observed_control_steps": 439
-        },
-        {
-          "task": "CannedFoodInBinTask",
-          "seed": 0,
+          "seed": 2,
           "method": "gpt_only",
           "status": "controller_running",
-          "started_utc": "2026-10-06T14:34:31.289874+00:00",
-          "observed_control_steps": 180
-        },
-        {
-          "task": "CannedFoodInBinTask",
-          "seed": 1,
-          "method": "gpt_only",
-          "status": "starting",
-          "started_utc": "2026-10-06T15:30:44.351055+00:00",
+          "started_utc": "2026-10-06T15:37:57.397164+00:00",
           "observed_control_steps": 0
         }
       ],

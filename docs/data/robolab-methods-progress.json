@@ -250,9 +250,8 @@
       "seed": 0,
       "methods": {
         "gpt_only": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 180
+          "status": "pending",
+          "episode_id": null
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -283,8 +282,9 @@
       "seed": 2,
       "methods": {
         "gpt_only": {
-          "status": "pending",
-          "episode_id": null
+          "status": "running",
+          "episode_id": null,
+          "observed_control_steps": 0
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -319,9 +319,8 @@
           "episode_id": null
         },
         "pi05_plus_gpt": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 439
+          "status": "pending",
+          "episode_id": null
         }
       },
       "paired_complete": false
@@ -4002,8 +4001,26 @@
       "task": "CannedFoodInBinTask",
       "seed": 0,
       "method": "gpt_only",
-      "status": "controller_running",
+      "status": "infrastructure_interrupted",
       "started_utc": "2026-10-06T14:34:31.289874+00:00",
+      "eligible": false
+    },
+    {
+      "run_id": "direct_20261006T153043Z_CannedFoodInBinTask_seed1",
+      "task": "CannedFoodInBinTask",
+      "seed": 1,
+      "method": "gpt_only",
+      "status": "infrastructure_interrupted",
+      "started_utc": "2026-10-06T15:30:44.351055+00:00",
+      "eligible": false
+    },
+    {
+      "run_id": "direct_20261006T153756Z_CannedFoodInBinTask_seed2",
+      "task": "CannedFoodInBinTask",
+      "seed": 2,
+      "method": "gpt_only",
+      "status": "controller_running",
+      "started_utc": "2026-10-06T15:37:57.397164+00:00",
       "eligible": false
     },
     {
@@ -4947,7 +4964,7 @@
       "task": "CannedFoodInBinTask",
       "seed": 4,
       "method": "pi05_plus_gpt",
-      "status": "controller_running",
+      "status": "infrastructure_interrupted",
       "started_utc": "2026-10-06T14:21:11.326567+00:00",
       "eligible": false
     }
@@ -4955,19 +4972,11 @@
   "active_runs": [
     {
       "task": "CannedFoodInBinTask",
-      "seed": 4,
-      "method": "pi05_plus_gpt",
-      "status": "controller_running",
-      "started_utc": "2026-10-06T14:21:11.326567+00:00",
-      "observed_control_steps": 439
-    },
-    {
-      "task": "CannedFoodInBinTask",
-      "seed": 0,
+      "seed": 2,
       "method": "gpt_only",
       "status": "controller_running",
-      "started_utc": "2026-10-06T14:34:31.289874+00:00",
-      "observed_control_steps": 180
+      "started_utc": "2026-10-06T15:37:57.397164+00:00",
+      "observed_control_steps": 0
     }
   ],
   "summary": {
