@@ -174,9 +174,8 @@
           "episode_id": null
         },
         "pi05_plus_gpt": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 365
+          "status": "complete",
+          "episode_id": "robolab_ButterAboveRaisinTask__seed0__pi05_plus_gpt"
         }
       },
       "paired_complete": false
@@ -209,7 +208,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 0
+          "observed_control_steps": 125
         }
       },
       "paired_complete": false
@@ -224,8 +223,9 @@
           "episode_id": null
         },
         "pi05_plus_gpt": {
-          "status": "pending",
-          "episode_id": null
+          "status": "running",
+          "episode_id": null,
+          "observed_control_steps": 0
         }
       },
       "paired_complete": false
@@ -366,7 +366,7 @@
         "gpt_only": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 580
+          "observed_control_steps": 615
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -1288,6 +1288,38 @@
       "video_bytes": 5300045,
       "duration_seconds": 69.467,
       "evidence": "data/robolab-method-episodes/robolab_BlocksInBinTask__seed4__pi05_plus_gpt.json"
+    },
+    {
+      "id": "robolab_ButterAboveRaisinTask__seed0__pi05_plus_gpt",
+      "run_id": "hybrid_20261006T023327Z_ButterAboveRaisinTask_seed0",
+      "case_id": "ButterAboveRaisinTask__seed0",
+      "task": "ButterAboveRaisinTask",
+      "seed": 0,
+      "method": "pi05_plus_gpt",
+      "success": true,
+      "complete": true,
+      "eligible": true,
+      "control_steps": 389,
+      "decisions": 43,
+      "terminated": true,
+      "truncated": false,
+      "actions_by_mode": {
+        "student": 282,
+        "edit": 10,
+        "eef": 97
+      },
+      "pi05_inference_calls": 43,
+      "initial_state_hash": "60f0179101232119323f4fe8fb64031a3550268ef8dca6e111a7efb7a4239ddd",
+      "native_horizon": 600,
+      "audit": "data/robolab-method-episodes/robolab_ButterAboveRaisinTask__seed0__pi05_plus_gpt-audit.json",
+      "audit_sha256": "b4832e023914a1471033dcd8d5121ff43ee82c1a3ef48075a730df6d53cf3cd3",
+      "video": "media/robolab-methods/robolab_ButterAboveRaisinTask__seed0__pi05_plus_gpt.mp4",
+      "poster": "media/robolab-methods/robolab_ButterAboveRaisinTask__seed0__pi05_plus_gpt.jpg",
+      "video_sha256": "316e0157903eb93c4be2185d0f6035acac5ca83e033602ba023e51bfa425db90",
+      "source_video_sha256": "a07524446683dba81945b819daaed3be5d30495e1c31120bdcad2539b9125810",
+      "video_bytes": 1909245,
+      "duration_seconds": 26.0,
+      "evidence": "data/robolab-method-episodes/robolab_ButterAboveRaisinTask__seed0__pi05_plus_gpt.json"
     },
     {
       "id": "robolab_ButterAboveRaisinTask__seed1__pi05_plus_gpt",
@@ -2930,9 +2962,9 @@
       "task": "ButterAboveRaisinTask",
       "seed": 0,
       "method": "pi05_plus_gpt",
-      "status": "controller_running",
+      "status": "complete",
       "started_utc": "2026-10-06T02:33:27.578750+00:00",
-      "eligible": false
+      "eligible": true
     },
     {
       "run_id": "hybrid_20261006T024654Z_ButterAboveRaisinTask_seed1",
@@ -2948,8 +2980,17 @@
       "task": "ButterAboveRaisinTask",
       "seed": 2,
       "method": "pi05_plus_gpt",
-      "status": "starting",
+      "status": "controller_running",
       "started_utc": "2026-10-06T02:59:11.813747+00:00",
+      "eligible": false
+    },
+    {
+      "run_id": "hybrid_20261006T030730Z_ButterAboveRaisinTask_seed3",
+      "task": "ButterAboveRaisinTask",
+      "seed": 3,
+      "method": "pi05_plus_gpt",
+      "status": "controller_running",
+      "started_utc": "2026-10-06T03:07:30.817734+00:00",
       "eligible": false
     }
   ],
@@ -2960,22 +3001,22 @@
       "method": "gpt_only",
       "status": "controller_running",
       "started_utc": "2026-10-06T01:18:15.979586+00:00",
-      "observed_control_steps": 580
-    },
-    {
-      "task": "ButterAboveRaisinTask",
-      "seed": 0,
-      "method": "pi05_plus_gpt",
-      "status": "controller_running",
-      "started_utc": "2026-10-06T02:33:27.578750+00:00",
-      "observed_control_steps": 365
+      "observed_control_steps": 615
     },
     {
       "task": "ButterAboveRaisinTask",
       "seed": 2,
       "method": "pi05_plus_gpt",
-      "status": "starting",
+      "status": "controller_running",
       "started_utc": "2026-10-06T02:59:11.813747+00:00",
+      "observed_control_steps": 125
+    },
+    {
+      "task": "ButterAboveRaisinTask",
+      "seed": 3,
+      "method": "pi05_plus_gpt",
+      "status": "controller_running",
+      "started_utc": "2026-10-06T03:07:30.817734+00:00",
       "observed_control_steps": 0
     }
   ],
@@ -2983,7 +3024,7 @@
     "planned_pairs": 50,
     "planned_method_runs": 100,
     "completed_pairs": 9,
-    "complete_method_runs": 25,
+    "complete_method_runs": 26,
     "methods": {
       "gpt_only": {
         "all_completed": {
@@ -3001,10 +3042,10 @@
       },
       "pi05_plus_gpt": {
         "all_completed": {
-          "evaluated": 11,
-          "successes": 9,
+          "evaluated": 12,
+          "successes": 10,
           "failures": 2,
-          "success_rate": 0.8181818181818182
+          "success_rate": 0.8333333333333334
         },
         "paired_completed": {
           "evaluated": 9,
