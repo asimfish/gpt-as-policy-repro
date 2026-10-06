@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-06T14:40:40.849057+00:00",
+  "snapshot": "2026-10-06T14:45:48.909018+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9281,11 +9281,11 @@
   },
   "infrastructure": {
     "schema": "gpt_policy_infrastructure_bundle.v1",
-    "archive": "downloads/infrastructure_bundle_20261006T082000Z.tar.gz",
-    "bytes": 983162,
-    "sha256": "0917f686b2a08c3d0fbfb546beff00ebe3e2b9a806966b886b911df315bc0fd6",
-    "files": 851,
-    "created_utc": "2026-10-06T08:18:37.426342+00:00",
+    "archive": "downloads/infrastructure_bundle_20261006T144112Z.tar.gz",
+    "bytes": 1009129,
+    "sha256": "f841e429598f5f75b8ae01ebc73185fedd876751fa4df0b8f5d98bace900c055",
+    "files": 860,
+    "created_utc": "2026-10-06T14:41:18.491242+00:00",
     "active_methods": [
       "gpt_only",
       "pi05_plus_gpt"
@@ -9313,7 +9313,7 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 358,
+      "observed_control_steps": 377,
       "active_runs": [
         {
           "task": "CannedFoodInBinTask",
@@ -9321,7 +9321,7 @@
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-06T14:01:28.663581+00:00",
-          "observed_control_steps": 358
+          "observed_control_steps": 377
         },
         {
           "task": "CannedFoodInBinTask",
@@ -9329,7 +9329,7 @@
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-06T14:21:11.326567+00:00",
-          "observed_control_steps": 170
+          "observed_control_steps": 223
         },
         {
           "task": "CannedFoodInBinTask",
@@ -9337,7 +9337,7 @@
           "method": "gpt_only",
           "status": "controller_running",
           "started_utc": "2026-10-06T14:34:31.289874+00:00",
-          "observed_control_steps": 0
+          "observed_control_steps": 25
         }
       ],
       "summary": {
