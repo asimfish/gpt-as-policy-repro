@@ -1,0 +1,32 @@
+{
+  "id": "robolab_CannedFoodInBinTask__seed3__pi05_plus_gpt",
+  "run_id": "hybrid_20261006T140128Z_CannedFoodInBinTask_seed3",
+  "case_id": "CannedFoodInBinTask__seed3",
+  "task": "CannedFoodInBinTask",
+  "seed": 3,
+  "method": "pi05_plus_gpt",
+  "success": true,
+  "complete": true,
+  "eligible": true,
+  "control_steps": 529,
+  "decisions": 53,
+  "terminated": true,
+  "truncated": false,
+  "actions_by_mode": {
+    "student": 414,
+    "edit": 10,
+    "eef": 105
+  },
+  "pi05_inference_calls": 53,
+  "initial_state_hash": "41a7c5b56c567fd4862da0c0aa3e5d921c934bdcfb275cb4d8957992f3e52e36",
+  "native_horizon": 900,
+  "audit": "data/robolab-method-episodes/robolab_CannedFoodInBinTask__seed3__pi05_plus_gpt-audit.json",
+  "audit_sha256": "9aa03163bd1e21ce1552e5d5cb606591f4c7657bdc2de5d3ffb4852fa1cf1723",
+  "video": "media/robolab-methods/robolab_CannedFoodInBinTask__seed3__pi05_plus_gpt.mp4",
+  "poster": "media/robolab-methods/robolab_CannedFoodInBinTask__seed3__pi05_plus_gpt.jpg",
+  "video_sha256": "3bd1a085bb6850d53fc83cb2c5ae97294533b5c97d23201391031cb9d1f9926b",
+  "source_video_sha256": "67087edaf77e0185cd1440ee54281c15e5d2180b08ec7913c09479c9a95eaf7b",
+  "video_bytes": 1616232,
+  "duration_seconds": 35.334,
+  "evidence": "data/robolab-method-episodes/robolab_CannedFoodInBinTask__seed3__pi05_plus_gpt.json"
+}
