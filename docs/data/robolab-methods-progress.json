@@ -574,8 +574,9 @@
           "episode_id": null
         },
         "pi05_plus_gpt": {
-          "status": "pending",
-          "episode_id": null
+          "status": "running",
+          "episode_id": null,
+          "observed_control_steps": 0
         }
       },
       "paired_complete": false
@@ -778,9 +779,8 @@
       "seed": 3,
       "methods": {
         "gpt_only": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 0
+          "status": "pending",
+          "episode_id": null
         },
         "pi05_plus_gpt": {
           "status": "pending",
@@ -4073,8 +4073,17 @@
       "task": "YogurtInBowlTask",
       "seed": 3,
       "method": "gpt_only",
-      "status": "controller_running",
+      "status": "infrastructure_interrupted",
       "started_utc": "2026-10-06T16:16:05.698343+00:00",
+      "eligible": false
+    },
+    {
+      "run_id": "direct_20261006T162153Z_YogurtInBowlTask_seed4",
+      "task": "YogurtInBowlTask",
+      "seed": 4,
+      "method": "gpt_only",
+      "status": "infrastructure_interrupted",
+      "started_utc": "2026-10-06T16:21:53.728638+00:00",
       "eligible": false
     },
     {
@@ -5048,15 +5057,24 @@
       "status": "infrastructure_interrupted",
       "started_utc": "2026-10-06T15:52:53.551388+00:00",
       "eligible": false
+    },
+    {
+      "run_id": "hybrid_20261006T162816Z_RubiksCubeTask_seed0",
+      "task": "RubiksCubeTask",
+      "seed": 0,
+      "method": "pi05_plus_gpt",
+      "status": "controller_running",
+      "started_utc": "2026-10-06T16:28:17.369994+00:00",
+      "eligible": false
     }
   ],
   "active_runs": [
     {
-      "task": "YogurtInBowlTask",
-      "seed": 3,
-      "method": "gpt_only",
+      "task": "RubiksCubeTask",
+      "seed": 0,
+      "method": "pi05_plus_gpt",
       "status": "controller_running",
-      "started_utc": "2026-10-06T16:16:05.698343+00:00",
+      "started_utc": "2026-10-06T16:28:17.369994+00:00",
       "observed_control_steps": 0
     }
   ],
