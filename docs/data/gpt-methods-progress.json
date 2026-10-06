@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-06T03:50:52.553356+00:00",
+  "snapshot": "2026-10-06T04:00:55.374995+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9297,11 +9297,11 @@
     "robolab": {
       "planned_pairs": 50,
       "planned_method_runs": 100,
-      "status": "controller_running",
+      "status": "controller_finished",
       "task": "ButterAboveRaisinTask",
-      "seed": 2,
+      "seed": 3,
       "method": "gpt_only",
-      "started_utc": "2026-10-06T03:38:58.293733+00:00",
+      "started_utc": "2026-10-06T03:42:20.776501+00:00",
       "results_eligible": true,
       "action_audit_status": "pending",
       "direct_implementation_status": "native_episode_audited",
@@ -9313,23 +9313,15 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 90,
+      "observed_control_steps": 156,
       "active_runs": [
-        {
-          "task": "ButterAboveRaisinTask",
-          "seed": 2,
-          "method": "gpt_only",
-          "status": "controller_running",
-          "started_utc": "2026-10-06T03:38:58.293733+00:00",
-          "observed_control_steps": 90
-        },
         {
           "task": "ButterAboveRaisinTask",
           "seed": 3,
           "method": "gpt_only",
-          "status": "controller_running",
+          "status": "controller_finished",
           "started_utc": "2026-10-06T03:42:20.776501+00:00",
-          "observed_control_steps": 50
+          "observed_control_steps": 156
         },
         {
           "task": "ButterAboveRaisinTask",
@@ -9337,25 +9329,33 @@
           "method": "gpt_only",
           "status": "controller_running",
           "started_utc": "2026-10-06T03:46:16.832865+00:00",
-          "observed_control_steps": 10
+          "observed_control_steps": 110
+        },
+        {
+          "task": "BlockStackingSpecifiedOrderTask",
+          "seed": 0,
+          "method": "pi05_plus_gpt",
+          "status": "starting",
+          "started_utc": "2026-10-06T04:00:25.285700+00:00",
+          "observed_control_steps": 0
         }
       ],
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
-        "completed_pairs": 12,
-        "complete_method_runs": 32,
+        "completed_pairs": 13,
+        "complete_method_runs": 33,
         "methods": {
           "gpt_only": {
             "all_completed": {
-              "evaluated": 17,
-              "successes": 17,
+              "evaluated": 18,
+              "successes": 18,
               "failures": 0,
               "success_rate": 1.0
             },
             "paired_completed": {
-              "evaluated": 12,
-              "successes": 12,
+              "evaluated": 13,
+              "successes": 13,
               "failures": 0,
               "success_rate": 1.0
             }
@@ -9368,10 +9368,10 @@
               "success_rate": 0.8666666666666667
             },
             "paired_completed": {
-              "evaluated": 12,
-              "successes": 10,
+              "evaluated": 13,
+              "successes": 11,
               "failures": 2,
-              "success_rate": 0.8333333333333334
+              "success_rate": 0.8461538461538461
             }
           }
         }
