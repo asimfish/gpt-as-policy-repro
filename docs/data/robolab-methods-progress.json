@@ -492,7 +492,7 @@
         "gpt_only": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 50
+          "observed_control_steps": 150
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -507,8 +507,9 @@
       "seed": 1,
       "methods": {
         "gpt_only": {
-          "status": "pending",
-          "episode_id": null
+          "status": "running",
+          "episode_id": null,
+          "observed_control_steps": 30
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -545,7 +546,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 185
+          "observed_control_steps": 266
         }
       },
       "paired_complete": false
@@ -560,9 +561,8 @@
           "episode_id": null
         },
         "pi05_plus_gpt": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 261
+          "status": "complete",
+          "episode_id": "robolab_ReorientRedMugTask__seed4__pi05_plus_gpt"
         }
       },
       "paired_complete": false
@@ -2184,6 +2184,38 @@
       "video_bytes": 644130,
       "duration_seconds": 11.334,
       "evidence": "data/robolab-method-episodes/robolab_ReorientRedMugTask__seed2__pi05_plus_gpt.json"
+    },
+    {
+      "id": "robolab_ReorientRedMugTask__seed4__pi05_plus_gpt",
+      "run_id": "hybrid_20261006T054739Z_ReorientRedMugTask_seed4",
+      "case_id": "ReorientRedMugTask__seed4",
+      "task": "ReorientRedMugTask",
+      "seed": 4,
+      "method": "pi05_plus_gpt",
+      "success": true,
+      "complete": true,
+      "eligible": true,
+      "control_steps": 280,
+      "decisions": 23,
+      "terminated": true,
+      "truncated": false,
+      "actions_by_mode": {
+        "student": 265,
+        "edit": 5,
+        "eef": 10
+      },
+      "pi05_inference_calls": 23,
+      "initial_state_hash": "9d961f919c67b564a962333ab341e5f6a8b60fddaee7200ce84991bcadb9fbcd",
+      "native_horizon": 900,
+      "audit": "data/robolab-method-episodes/robolab_ReorientRedMugTask__seed4__pi05_plus_gpt-audit.json",
+      "audit_sha256": "220eda8e0dd149250ff5bdcee70b5f6fd5802a351374e1888da5f5c1bc01af4e",
+      "video": "media/robolab-methods/robolab_ReorientRedMugTask__seed4__pi05_plus_gpt.mp4",
+      "poster": "media/robolab-methods/robolab_ReorientRedMugTask__seed4__pi05_plus_gpt.jpg",
+      "video_sha256": "b0c377666ce1145bd49eb6fefb2851985c3b9441a1df358000226feee2373d6f",
+      "source_video_sha256": "75b294c1f57db37b2cfa75c2185645702e7f7d9aa3fe834f15a3ccdbbee491d1",
+      "video_bytes": 1220673,
+      "duration_seconds": 18.734,
+      "evidence": "data/robolab-method-episodes/robolab_ReorientRedMugTask__seed4__pi05_plus_gpt.json"
     }
   ],
   "attempts": [
@@ -2878,6 +2910,15 @@
       "method": "gpt_only",
       "status": "controller_running",
       "started_utc": "2026-10-06T05:50:41.003077+00:00",
+      "eligible": false
+    },
+    {
+      "run_id": "direct_20261006T060414Z_ReorientRedMugTask_seed1",
+      "task": "ReorientRedMugTask",
+      "seed": 1,
+      "method": "gpt_only",
+      "status": "controller_running",
+      "started_utc": "2026-10-06T06:04:14.955369+00:00",
       "eligible": false
     },
     {
@@ -3686,9 +3727,9 @@
       "task": "ReorientRedMugTask",
       "seed": 4,
       "method": "pi05_plus_gpt",
-      "status": "controller_running",
+      "status": "complete",
       "started_utc": "2026-10-06T05:47:39.833218+00:00",
-      "eligible": false
+      "eligible": true
     }
   ],
   "active_runs": [
@@ -3698,15 +3739,7 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-06T05:44:34.227422+00:00",
-      "observed_control_steps": 185
-    },
-    {
-      "task": "ReorientRedMugTask",
-      "seed": 4,
-      "method": "pi05_plus_gpt",
-      "status": "controller_running",
-      "started_utc": "2026-10-06T05:47:39.833218+00:00",
-      "observed_control_steps": 261
+      "observed_control_steps": 266
     },
     {
       "task": "ReorientRedMugTask",
@@ -3714,14 +3747,22 @@
       "method": "gpt_only",
       "status": "controller_running",
       "started_utc": "2026-10-06T05:50:41.003077+00:00",
-      "observed_control_steps": 50
+      "observed_control_steps": 150
+    },
+    {
+      "task": "ReorientRedMugTask",
+      "seed": 1,
+      "method": "gpt_only",
+      "status": "controller_running",
+      "started_utc": "2026-10-06T06:04:14.955369+00:00",
+      "observed_control_steps": 30
     }
   ],
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
     "completed_pairs": 20,
-    "complete_method_runs": 43,
+    "complete_method_runs": 44,
     "methods": {
       "gpt_only": {
         "all_completed": {
@@ -3739,10 +3780,10 @@
       },
       "pi05_plus_gpt": {
         "all_completed": {
-          "evaluated": 23,
-          "successes": 20,
+          "evaluated": 24,
+          "successes": 21,
           "failures": 3,
-          "success_rate": 0.8695652173913043
+          "success_rate": 0.875
         },
         "paired_completed": {
           "evaluated": 20,
