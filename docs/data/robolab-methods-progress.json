@@ -252,7 +252,7 @@
         "gpt_only": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 25
+          "observed_control_steps": 50
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -305,7 +305,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 377
+          "observed_control_steps": 412
         }
       },
       "paired_complete": false
@@ -322,7 +322,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 223
+          "observed_control_steps": 273
         }
       },
       "paired_complete": false
@@ -4928,7 +4928,7 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-06T14:01:28.663581+00:00",
-      "observed_control_steps": 377
+      "observed_control_steps": 412
     },
     {
       "task": "CannedFoodInBinTask",
@@ -4936,7 +4936,7 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-06T14:21:11.326567+00:00",
-      "observed_control_steps": 223
+      "observed_control_steps": 273
     },
     {
       "task": "CannedFoodInBinTask",
@@ -4944,7 +4944,7 @@
       "method": "gpt_only",
       "status": "controller_running",
       "started_utc": "2026-10-06T14:34:31.289874+00:00",
-      "observed_control_steps": 25
+      "observed_control_steps": 50
     }
   ],
   "summary": {
