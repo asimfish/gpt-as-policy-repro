@@ -14,12 +14,11 @@
           "episode_id": "robolab_BlockStackingSpecifiedOrderTask__seed0__gpt_only"
         },
         "pi05_plus_gpt": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 815
+          "status": "complete",
+          "episode_id": "robolab_BlockStackingSpecifiedOrderTask__seed0__pi05_plus_gpt"
         }
       },
-      "paired_complete": false
+      "paired_complete": true
     },
     {
       "case_id": "BlockStackingSpecifiedOrderTask__seed1",
@@ -31,9 +30,8 @@
           "episode_id": "robolab_BlockStackingSpecifiedOrderTask__seed1__gpt_only"
         },
         "pi05_plus_gpt": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 518
+          "status": "audit_pending",
+          "episode_id": null
         }
       },
       "paired_complete": false
@@ -66,7 +64,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 85
+          "observed_control_steps": 302
         }
       },
       "paired_complete": false
@@ -81,8 +79,9 @@
           "episode_id": "robolab_BlockStackingSpecifiedOrderTask__seed4__gpt_only"
         },
         "pi05_plus_gpt": {
-          "status": "pending",
-          "episode_id": null
+          "status": "running",
+          "episode_id": null,
+          "observed_control_steps": 0
         }
       },
       "paired_complete": false
@@ -840,6 +839,38 @@
       "video_bytes": 2465468,
       "duration_seconds": 37.134,
       "evidence": "data/robolab-method-episodes/robolab_BlockStackingSpecifiedOrderTask__seed0__gpt_only.json"
+    },
+    {
+      "id": "robolab_BlockStackingSpecifiedOrderTask__seed0__pi05_plus_gpt",
+      "run_id": "hybrid_20261006T040025Z_BlockStackingSpecifiedOrderTask_seed0",
+      "case_id": "BlockStackingSpecifiedOrderTask__seed0",
+      "task": "BlockStackingSpecifiedOrderTask",
+      "seed": 0,
+      "method": "pi05_plus_gpt",
+      "success": true,
+      "complete": true,
+      "eligible": true,
+      "control_steps": 907,
+      "decisions": 101,
+      "terminated": true,
+      "truncated": false,
+      "actions_by_mode": {
+        "student": 657,
+        "edit": 10,
+        "eef": 240
+      },
+      "pi05_inference_calls": 101,
+      "initial_state_hash": "ff5d686214526511fbb62eea687633572f6d9a9c341f02a0835fb2b0bac4d7d9",
+      "native_horizon": 1350,
+      "audit": "data/robolab-method-episodes/robolab_BlockStackingSpecifiedOrderTask__seed0__pi05_plus_gpt-audit.json",
+      "audit_sha256": "9fd1121eb7bf61b79ffc5cab4e6557e8dd17070fc8258a6935654a1359494d5d",
+      "video": "media/robolab-methods/robolab_BlockStackingSpecifiedOrderTask__seed0__pi05_plus_gpt.mp4",
+      "poster": "media/robolab-methods/robolab_BlockStackingSpecifiedOrderTask__seed0__pi05_plus_gpt.jpg",
+      "video_sha256": "54e19ebff0827e9816defe15547de1236fd927e9b03477b556428982607371c6",
+      "source_video_sha256": "a68e62fc8bf08d96aaeb32b4b32ba1a72ae71772e987fc09913d56daa435d131",
+      "video_bytes": 4198044,
+      "duration_seconds": 60.534,
+      "evidence": "data/robolab-method-episodes/robolab_BlockStackingSpecifiedOrderTask__seed0__pi05_plus_gpt.json"
     },
     {
       "id": "robolab_BlockStackingSpecifiedOrderTask__seed1__gpt_only",
@@ -3372,16 +3403,16 @@
       "task": "BlockStackingSpecifiedOrderTask",
       "seed": 0,
       "method": "pi05_plus_gpt",
-      "status": "controller_running",
+      "status": "complete",
       "started_utc": "2026-10-06T04:00:25.285700+00:00",
-      "eligible": false
+      "eligible": true
     },
     {
       "run_id": "hybrid_20261006T040202Z_BlockStackingSpecifiedOrderTask_seed1",
       "task": "BlockStackingSpecifiedOrderTask",
       "seed": 1,
       "method": "pi05_plus_gpt",
-      "status": "controller_running",
+      "status": "controller_finished",
       "started_utc": "2026-10-06T04:02:02.872577+00:00",
       "eligible": false
     },
@@ -3402,39 +3433,40 @@
       "status": "controller_running",
       "started_utc": "2026-10-06T04:32:36.113743+00:00",
       "eligible": false
+    },
+    {
+      "run_id": "hybrid_20261006T044731Z_BlockStackingSpecifiedOrderTask_seed4",
+      "task": "BlockStackingSpecifiedOrderTask",
+      "seed": 4,
+      "method": "pi05_plus_gpt",
+      "status": "controller_running",
+      "started_utc": "2026-10-06T04:47:32.211707+00:00",
+      "eligible": false
     }
   ],
   "active_runs": [
-    {
-      "task": "BlockStackingSpecifiedOrderTask",
-      "seed": 0,
-      "method": "pi05_plus_gpt",
-      "status": "controller_running",
-      "started_utc": "2026-10-06T04:00:25.285700+00:00",
-      "observed_control_steps": 815
-    },
-    {
-      "task": "BlockStackingSpecifiedOrderTask",
-      "seed": 1,
-      "method": "pi05_plus_gpt",
-      "status": "controller_running",
-      "started_utc": "2026-10-06T04:02:02.872577+00:00",
-      "observed_control_steps": 518
-    },
     {
       "task": "BlockStackingSpecifiedOrderTask",
       "seed": 3,
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-06T04:32:36.113743+00:00",
-      "observed_control_steps": 85
+      "observed_control_steps": 302
+    },
+    {
+      "task": "BlockStackingSpecifiedOrderTask",
+      "seed": 4,
+      "method": "pi05_plus_gpt",
+      "status": "controller_running",
+      "started_utc": "2026-10-06T04:47:32.211707+00:00",
+      "observed_control_steps": 0
     }
   ],
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
-    "completed_pairs": 16,
-    "complete_method_runs": 36,
+    "completed_pairs": 17,
+    "complete_method_runs": 37,
     "methods": {
       "gpt_only": {
         "all_completed": {
@@ -3444,24 +3476,24 @@
           "success_rate": 1.0
         },
         "paired_completed": {
-          "evaluated": 16,
-          "successes": 16,
+          "evaluated": 17,
+          "successes": 17,
           "failures": 0,
           "success_rate": 1.0
         }
       },
       "pi05_plus_gpt": {
         "all_completed": {
-          "evaluated": 16,
-          "successes": 14,
+          "evaluated": 17,
+          "successes": 15,
           "failures": 2,
-          "success_rate": 0.875
+          "success_rate": 0.8823529411764706
         },
         "paired_completed": {
-          "evaluated": 16,
-          "successes": 14,
+          "evaluated": 17,
+          "successes": 15,
           "failures": 2,
-          "success_rate": 0.875
+          "success_rate": 0.8823529411764706
         }
       }
     }
