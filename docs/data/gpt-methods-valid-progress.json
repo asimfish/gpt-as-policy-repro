@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-06T05:00:41.467189+00:00",
+  "snapshot": "2026-10-06T05:11:09.320378+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9287,9 +9287,9 @@
       "planned_method_runs": 100,
       "status": "controller_running",
       "task": "BlockStackingSpecifiedOrderTask",
-      "seed": 3,
+      "seed": 4,
       "method": "pi05_plus_gpt",
-      "started_utc": "2026-10-06T04:32:36.113743+00:00",
+      "started_utc": "2026-10-06T04:47:32.211707+00:00",
       "results_eligible": true,
       "action_audit_status": "pending",
       "direct_implementation_status": "native_episode_audited",
@@ -9301,23 +9301,15 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 548,
+      "observed_control_steps": 586,
       "active_runs": [
-        {
-          "task": "BlockStackingSpecifiedOrderTask",
-          "seed": 3,
-          "method": "pi05_plus_gpt",
-          "status": "controller_running",
-          "started_utc": "2026-10-06T04:32:36.113743+00:00",
-          "observed_control_steps": 548
-        },
         {
           "task": "BlockStackingSpecifiedOrderTask",
           "seed": 4,
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-06T04:47:32.211707+00:00",
-          "observed_control_steps": 290
+          "observed_control_steps": 586
         },
         {
           "task": "ReorientRedMugTask",
@@ -9325,14 +9317,22 @@
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-06T04:51:05.477617+00:00",
-          "observed_control_steps": 113
+          "observed_control_steps": 261
+        },
+        {
+          "task": "ReorientRedMugTask",
+          "seed": 1,
+          "method": "pi05_plus_gpt",
+          "status": "controller_running",
+          "started_utc": "2026-10-06T05:03:01.984658+00:00",
+          "observed_control_steps": 75
         }
       ],
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
-        "completed_pairs": 18,
-        "complete_method_runs": 38,
+        "completed_pairs": 19,
+        "complete_method_runs": 39,
         "methods": {
           "gpt_only": {
             "all_completed": {
@@ -9342,24 +9342,24 @@
               "success_rate": 1.0
             },
             "paired_completed": {
-              "evaluated": 18,
-              "successes": 18,
+              "evaluated": 19,
+              "successes": 19,
               "failures": 0,
               "success_rate": 1.0
             }
           },
           "pi05_plus_gpt": {
             "all_completed": {
-              "evaluated": 18,
-              "successes": 16,
+              "evaluated": 19,
+              "successes": 17,
               "failures": 2,
-              "success_rate": 0.8888888888888888
+              "success_rate": 0.8947368421052632
             },
             "paired_completed": {
-              "evaluated": 18,
-              "successes": 16,
+              "evaluated": 19,
+              "successes": 17,
               "failures": 2,
-              "success_rate": 0.8888888888888888
+              "success_rate": 0.8947368421052632
             }
           }
         }

@@ -62,12 +62,11 @@
           "episode_id": "robolab_BlockStackingSpecifiedOrderTask__seed3__gpt_only"
         },
         "pi05_plus_gpt": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 548
+          "status": "complete",
+          "episode_id": "robolab_BlockStackingSpecifiedOrderTask__seed3__pi05_plus_gpt"
         }
       },
-      "paired_complete": false
+      "paired_complete": true
     },
     {
       "case_id": "BlockStackingSpecifiedOrderTask__seed4",
@@ -81,7 +80,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 275
+          "observed_control_steps": 571
         }
       },
       "paired_complete": false
@@ -498,7 +497,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 113
+          "observed_control_steps": 261
         }
       },
       "paired_complete": false
@@ -513,8 +512,9 @@
           "episode_id": null
         },
         "pi05_plus_gpt": {
-          "status": "pending",
-          "episode_id": null
+          "status": "running",
+          "episode_id": null,
+          "observed_control_steps": 75
         }
       },
       "paired_complete": false
@@ -1032,6 +1032,38 @@
       "video_bytes": 2549429,
       "duration_seconds": 38.2,
       "evidence": "data/robolab-method-episodes/robolab_BlockStackingSpecifiedOrderTask__seed3__gpt_only.json"
+    },
+    {
+      "id": "robolab_BlockStackingSpecifiedOrderTask__seed3__pi05_plus_gpt",
+      "run_id": "hybrid_20261006T043235Z_BlockStackingSpecifiedOrderTask_seed3",
+      "case_id": "BlockStackingSpecifiedOrderTask__seed3",
+      "task": "BlockStackingSpecifiedOrderTask",
+      "seed": 3,
+      "method": "pi05_plus_gpt",
+      "success": true,
+      "complete": true,
+      "eligible": true,
+      "control_steps": 548,
+      "decisions": 47,
+      "terminated": true,
+      "truncated": false,
+      "actions_by_mode": {
+        "student": 483,
+        "edit": 0,
+        "eef": 65
+      },
+      "pi05_inference_calls": 47,
+      "initial_state_hash": "ff5d686214526511fbb62eea687633572f6d9a9c341f02a0835fb2b0bac4d7d9",
+      "native_horizon": 1350,
+      "audit": "data/robolab-method-episodes/robolab_BlockStackingSpecifiedOrderTask__seed3__pi05_plus_gpt-audit.json",
+      "audit_sha256": "156b7f60dcdcfa7d8340f3020f9a638925a802a71fe8b2647e9dc5b91063e078",
+      "video": "media/robolab-methods/robolab_BlockStackingSpecifiedOrderTask__seed3__pi05_plus_gpt.mp4",
+      "poster": "media/robolab-methods/robolab_BlockStackingSpecifiedOrderTask__seed3__pi05_plus_gpt.jpg",
+      "video_sha256": "c2b144b8d9db32713a94a05eb19d9cb17e3741475d1ff302023ad21acfee912f",
+      "source_video_sha256": "304b21c0b972f4c7d7dcfdfba07a5a66a33d82897a99099ceac555ecdba8600b",
+      "video_bytes": 2715220,
+      "duration_seconds": 36.6,
+      "evidence": "data/robolab-method-episodes/robolab_BlockStackingSpecifiedOrderTask__seed3__pi05_plus_gpt.json"
     },
     {
       "id": "robolab_BlockStackingSpecifiedOrderTask__seed4__gpt_only",
@@ -3463,9 +3495,9 @@
       "task": "BlockStackingSpecifiedOrderTask",
       "seed": 3,
       "method": "pi05_plus_gpt",
-      "status": "controller_running",
+      "status": "complete",
       "started_utc": "2026-10-06T04:32:36.113743+00:00",
-      "eligible": false
+      "eligible": true
     },
     {
       "run_id": "hybrid_20261006T044731Z_BlockStackingSpecifiedOrderTask_seed4",
@@ -3484,24 +3516,25 @@
       "status": "controller_running",
       "started_utc": "2026-10-06T04:51:05.477617+00:00",
       "eligible": false
+    },
+    {
+      "run_id": "hybrid_20261006T050301Z_ReorientRedMugTask_seed1",
+      "task": "ReorientRedMugTask",
+      "seed": 1,
+      "method": "pi05_plus_gpt",
+      "status": "controller_running",
+      "started_utc": "2026-10-06T05:03:01.984658+00:00",
+      "eligible": false
     }
   ],
   "active_runs": [
-    {
-      "task": "BlockStackingSpecifiedOrderTask",
-      "seed": 3,
-      "method": "pi05_plus_gpt",
-      "status": "controller_running",
-      "started_utc": "2026-10-06T04:32:36.113743+00:00",
-      "observed_control_steps": 548
-    },
     {
       "task": "BlockStackingSpecifiedOrderTask",
       "seed": 4,
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-06T04:47:32.211707+00:00",
-      "observed_control_steps": 275
+      "observed_control_steps": 571
     },
     {
       "task": "ReorientRedMugTask",
@@ -3509,14 +3542,22 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-06T04:51:05.477617+00:00",
-      "observed_control_steps": 113
+      "observed_control_steps": 261
+    },
+    {
+      "task": "ReorientRedMugTask",
+      "seed": 1,
+      "method": "pi05_plus_gpt",
+      "status": "controller_running",
+      "started_utc": "2026-10-06T05:03:01.984658+00:00",
+      "observed_control_steps": 75
     }
   ],
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
-    "completed_pairs": 18,
-    "complete_method_runs": 38,
+    "completed_pairs": 19,
+    "complete_method_runs": 39,
     "methods": {
       "gpt_only": {
         "all_completed": {
@@ -3526,24 +3567,24 @@
           "success_rate": 1.0
         },
         "paired_completed": {
-          "evaluated": 18,
-          "successes": 18,
+          "evaluated": 19,
+          "successes": 19,
           "failures": 0,
           "success_rate": 1.0
         }
       },
       "pi05_plus_gpt": {
         "all_completed": {
-          "evaluated": 18,
-          "successes": 16,
+          "evaluated": 19,
+          "successes": 17,
           "failures": 2,
-          "success_rate": 0.8888888888888888
+          "success_rate": 0.8947368421052632
         },
         "paired_completed": {
-          "evaluated": 18,
-          "successes": 16,
+          "evaluated": 19,
+          "successes": 17,
           "failures": 2,
-          "success_rate": 0.8888888888888888
+          "success_rate": 0.8947368421052632
         }
       }
     }
