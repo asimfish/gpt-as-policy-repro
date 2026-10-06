@@ -16,7 +16,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 160
+          "observed_control_steps": 346
         }
       },
       "paired_complete": false
@@ -33,7 +33,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 60
+          "observed_control_steps": 195
         }
       },
       "paired_complete": false
@@ -50,7 +50,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 0
+          "observed_control_steps": 247
         }
       },
       "paired_complete": false
@@ -3370,7 +3370,7 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-06T04:00:25.285700+00:00",
-      "observed_control_steps": 160
+      "observed_control_steps": 346
     },
     {
       "task": "BlockStackingSpecifiedOrderTask",
@@ -3378,7 +3378,7 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-06T04:02:02.872577+00:00",
-      "observed_control_steps": 60
+      "observed_control_steps": 195
     },
     {
       "task": "BlockStackingSpecifiedOrderTask",
@@ -3386,7 +3386,7 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-06T04:08:03.012141+00:00",
-      "observed_control_steps": 0
+      "observed_control_steps": 247
     }
   ],
   "summary": {
