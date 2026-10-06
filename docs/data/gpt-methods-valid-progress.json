@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-06T11:41:08.331125+00:00",
+  "snapshot": "2026-10-06T11:50:35.258701+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9301,7 +9301,7 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 115,
+      "observed_control_steps": 231,
       "active_runs": [
         {
           "task": "SauceBottlesCrateTask",
@@ -9309,15 +9309,15 @@
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-06T11:29:10.630403+00:00",
-          "observed_control_steps": 115
+          "observed_control_steps": 231
         },
         {
           "task": "SauceBottlesCrateTask",
           "seed": 3,
           "method": "pi05_plus_gpt",
-          "status": "starting",
+          "status": "controller_running",
           "started_utc": "2026-10-06T11:39:37.865048+00:00",
-          "observed_control_steps": 0
+          "observed_control_steps": 115
         }
       ],
       "summary": {
