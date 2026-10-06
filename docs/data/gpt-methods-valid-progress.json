@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-06T01:17:06.038716+00:00",
+  "snapshot": "2026-10-06T01:22:31.002161+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -1446,7 +1446,7 @@
         },
         "pi05_plus_gpt": {
           "status": "running",
-          "attempts": 1,
+          "attempts": 3,
           "episode_id": null
         }
       },
@@ -9170,15 +9170,40 @@
       "control_steps": 0,
       "decisions": 0,
       "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "valid2_20261006T011716Z_pi05_plus_gpt_imitate_sorting_sequence__standard__g0__l5",
+      "case_id": "imitate_sorting_sequence__standard__g0__l5",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-06T01:17:21.233918+00:00",
+      "finished_utc": "2026-10-06T01:18:38.375232+00:00",
+      "supervisor_status": "infrastructure_failed",
+      "eligible": false,
+      "status": "interrupted",
+      "control_steps": 0,
+      "decisions": 0,
+      "reason_class": "infrastructure"
+    },
+    {
+      "run_id": "valid2_20261006T012036Z_pi05_plus_gpt_imitate_sorting_sequence__standard__g0__l5",
+      "case_id": "imitate_sorting_sequence__standard__g0__l5",
+      "method": "pi05_plus_gpt",
+      "started_utc": "2026-10-06T01:20:43.832252+00:00",
+      "finished_utc": null,
+      "supervisor_status": "starting",
+      "eligible": false,
+      "status": "running",
+      "control_steps": 0,
+      "decisions": 0
     }
   ],
   "interruptions": {
-    "count": 65,
+    "count": 66,
     "by_reason": {
       "supervisor_interrupted": 1,
       "model_response_timeout": 1,
       "model_capacity": 7,
-      "infrastructure": 56
+      "infrastructure": 57
     }
   },
   "protocol": {
@@ -9208,11 +9233,11 @@
     "robolab": {
       "planned_pairs": 50,
       "planned_method_runs": 100,
-      "status": "controller_finished",
+      "status": "controller_running",
       "task": "ClutterPumpkinTask",
-      "seed": 1,
+      "seed": 2,
       "method": "gpt_only",
-      "started_utc": "2026-10-05T21:06:50.770378+00:00",
+      "started_utc": "2026-10-06T01:18:15.979586+00:00",
       "results_eligible": true,
       "action_audit_status": "pending",
       "direct_implementation_status": "native_episode_audited",
@@ -9224,24 +9249,49 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 866,
-      "active_runs": [],
+      "observed_control_steps": 0,
+      "active_runs": [
+        {
+          "task": "ClutterPumpkinTask",
+          "seed": 2,
+          "method": "gpt_only",
+          "status": "controller_running",
+          "started_utc": "2026-10-06T01:18:15.979586+00:00",
+          "observed_control_steps": 0
+        },
+        {
+          "task": "ClutterPumpkinTask",
+          "seed": 3,
+          "method": "gpt_only",
+          "status": "controller_running",
+          "started_utc": "2026-10-06T01:18:15.952718+00:00",
+          "observed_control_steps": 0
+        },
+        {
+          "task": "ClutterPumpkinTask",
+          "seed": 4,
+          "method": "gpt_only",
+          "status": "controller_running",
+          "started_utc": "2026-10-06T01:18:16.154025+00:00",
+          "observed_control_steps": 0
+        }
+      ],
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
-        "completed_pairs": 6,
-        "complete_method_runs": 21,
+        "completed_pairs": 7,
+        "complete_method_runs": 22,
         "methods": {
           "gpt_only": {
             "all_completed": {
-              "evaluated": 11,
-              "successes": 11,
+              "evaluated": 12,
+              "successes": 12,
               "failures": 0,
               "success_rate": 1.0
             },
             "paired_completed": {
-              "evaluated": 6,
-              "successes": 6,
+              "evaluated": 7,
+              "successes": 7,
               "failures": 0,
               "success_rate": 1.0
             }
@@ -9254,8 +9304,8 @@
               "success_rate": 0.8
             },
             "paired_completed": {
-              "evaluated": 6,
-              "successes": 6,
+              "evaluated": 7,
+              "successes": 7,
               "failures": 0,
               "success_rate": 1.0
             }

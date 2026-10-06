@@ -1,0 +1,32 @@
+{
+  "id": "robolab_ClutterPumpkinTask__seed1__gpt_only",
+  "run_id": "direct_20261005T210650Z_ClutterPumpkinTask_seed1",
+  "case_id": "ClutterPumpkinTask__seed1",
+  "task": "ClutterPumpkinTask",
+  "seed": 1,
+  "method": "gpt_only",
+  "success": true,
+  "complete": true,
+  "eligible": true,
+  "control_steps": 866,
+  "decisions": 174,
+  "terminated": true,
+  "truncated": false,
+  "actions_by_mode": {
+    "student": 0,
+    "edit": 0,
+    "eef": 866
+  },
+  "pi05_inference_calls": 0,
+  "initial_state_hash": "d1968ec0125d2db0d27303dd3646955dcb5eea4e1ce5b272994b88a4d4400706",
+  "native_horizon": 1350,
+  "audit": "data/robolab-method-episodes/robolab_ClutterPumpkinTask__seed1__gpt_only-audit.json",
+  "audit_sha256": "2aee2b1727ee1c64ded1cc0ddabf79cbcfadcf923c6ec3203f268f01b0faa3d0",
+  "video": "media/robolab-methods/robolab_ClutterPumpkinTask__seed1__gpt_only.mp4",
+  "poster": "media/robolab-methods/robolab_ClutterPumpkinTask__seed1__gpt_only.jpg",
+  "video_sha256": "4f3b79c7178ae6d3ba1616c80beafb273283542a8b6c072069e004addf3aa3c4",
+  "source_video_sha256": "0e45d5e7b3accbc4282ce916e23b17d962994466a4231637cc38a9c81eaabc70",
+  "video_bytes": 3547672,
+  "duration_seconds": 57.8,
+  "evidence": "data/robolab-method-episodes/robolab_ClutterPumpkinTask__seed1__gpt_only.json"
+}

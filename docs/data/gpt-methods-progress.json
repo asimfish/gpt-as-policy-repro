@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-06T01:16:46.951122+00:00",
+  "snapshot": "2026-10-06T01:21:48.999745+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9297,11 +9297,11 @@
     "robolab": {
       "planned_pairs": 50,
       "planned_method_runs": 100,
-      "status": "controller_finished",
+      "status": "controller_running",
       "task": "ClutterPumpkinTask",
-      "seed": 1,
+      "seed": 2,
       "method": "gpt_only",
-      "started_utc": "2026-10-05T21:06:50.770378+00:00",
+      "started_utc": "2026-10-06T01:18:15.979586+00:00",
       "results_eligible": true,
       "action_audit_status": "pending",
       "direct_implementation_status": "native_episode_audited",
@@ -9313,24 +9313,49 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 866,
-      "active_runs": [],
+      "observed_control_steps": 0,
+      "active_runs": [
+        {
+          "task": "ClutterPumpkinTask",
+          "seed": 2,
+          "method": "gpt_only",
+          "status": "controller_running",
+          "started_utc": "2026-10-06T01:18:15.979586+00:00",
+          "observed_control_steps": 0
+        },
+        {
+          "task": "ClutterPumpkinTask",
+          "seed": 3,
+          "method": "gpt_only",
+          "status": "controller_running",
+          "started_utc": "2026-10-06T01:18:15.952718+00:00",
+          "observed_control_steps": 0
+        },
+        {
+          "task": "ClutterPumpkinTask",
+          "seed": 4,
+          "method": "gpt_only",
+          "status": "controller_running",
+          "started_utc": "2026-10-06T01:18:16.154025+00:00",
+          "observed_control_steps": 0
+        }
+      ],
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
-        "completed_pairs": 6,
-        "complete_method_runs": 21,
+        "completed_pairs": 7,
+        "complete_method_runs": 22,
         "methods": {
           "gpt_only": {
             "all_completed": {
-              "evaluated": 11,
-              "successes": 11,
+              "evaluated": 12,
+              "successes": 12,
               "failures": 0,
               "success_rate": 1.0
             },
             "paired_completed": {
-              "evaluated": 6,
-              "successes": 6,
+              "evaluated": 7,
+              "successes": 7,
               "failures": 0,
               "success_rate": 1.0
             }
@@ -9343,8 +9368,8 @@
               "success_rate": 0.8
             },
             "paired_completed": {
-              "evaluated": 6,
-              "successes": 6,
+              "evaluated": 7,
+              "successes": 7,
               "failures": 0,
               "success_rate": 1.0
             }
