@@ -170,8 +170,9 @@
       "seed": 0,
       "methods": {
         "gpt_only": {
-          "status": "pending",
-          "episode_id": null
+          "status": "running",
+          "episode_id": null,
+          "observed_control_steps": 0
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -206,9 +207,8 @@
           "episode_id": null
         },
         "pi05_plus_gpt": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 125
+          "status": "complete",
+          "episode_id": "robolab_ButterAboveRaisinTask__seed2__pi05_plus_gpt"
         }
       },
       "paired_complete": false
@@ -225,7 +225,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 0
+          "observed_control_steps": 178
         }
       },
       "paired_complete": false
@@ -240,8 +240,9 @@
           "episode_id": null
         },
         "pi05_plus_gpt": {
-          "status": "pending",
-          "episode_id": null
+          "status": "running",
+          "episode_id": null,
+          "observed_control_steps": 0
         }
       },
       "paired_complete": false
@@ -364,16 +365,15 @@
       "seed": 2,
       "methods": {
         "gpt_only": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 615
+          "status": "complete",
+          "episode_id": "robolab_ClutterPumpkinTask__seed2__gpt_only"
         },
         "pi05_plus_gpt": {
           "status": "complete",
           "episode_id": "robolab_ClutterPumpkinTask__seed2__pi05_plus_gpt"
         }
       },
-      "paired_complete": false
+      "paired_complete": true
     },
     {
       "case_id": "ClutterPumpkinTask__seed3",
@@ -1354,6 +1354,38 @@
       "evidence": "data/robolab-method-episodes/robolab_ButterAboveRaisinTask__seed1__pi05_plus_gpt.json"
     },
     {
+      "id": "robolab_ButterAboveRaisinTask__seed2__pi05_plus_gpt",
+      "run_id": "hybrid_20261006T025911Z_ButterAboveRaisinTask_seed2",
+      "case_id": "ButterAboveRaisinTask__seed2",
+      "task": "ButterAboveRaisinTask",
+      "seed": 2,
+      "method": "pi05_plus_gpt",
+      "success": true,
+      "complete": true,
+      "eligible": true,
+      "control_steps": 201,
+      "decisions": 19,
+      "terminated": true,
+      "truncated": false,
+      "actions_by_mode": {
+        "student": 161,
+        "edit": 5,
+        "eef": 35
+      },
+      "pi05_inference_calls": 19,
+      "initial_state_hash": "60f0179101232119323f4fe8fb64031a3550268ef8dca6e111a7efb7a4239ddd",
+      "native_horizon": 600,
+      "audit": "data/robolab-method-episodes/robolab_ButterAboveRaisinTask__seed2__pi05_plus_gpt-audit.json",
+      "audit_sha256": "aa43d01307af24a7309f51b778d4019146a21b7d00ecd7833639b529576cd7ee",
+      "video": "media/robolab-methods/robolab_ButterAboveRaisinTask__seed2__pi05_plus_gpt.mp4",
+      "poster": "media/robolab-methods/robolab_ButterAboveRaisinTask__seed2__pi05_plus_gpt.jpg",
+      "video_sha256": "7b74546a59527ef2f5c6e4a532689fbfa9a3694a2469defa5bc6e0260af360a7",
+      "source_video_sha256": "1ba3bbc9b1dd152891cb62d5e51eeb3213bd3778276f3b80cfdeca43e54509d0",
+      "video_bytes": 882131,
+      "duration_seconds": 13.467,
+      "evidence": "data/robolab-method-episodes/robolab_ButterAboveRaisinTask__seed2__pi05_plus_gpt.json"
+    },
+    {
       "id": "robolab_ClutterPumpkinTask__seed0__gpt_only",
       "run_id": "direct_20261005T190602Z_ClutterPumpkinTask_seed0",
       "case_id": "ClutterPumpkinTask__seed0",
@@ -1480,6 +1512,38 @@
       "video_bytes": 3204629,
       "duration_seconds": 42.2,
       "evidence": "data/robolab-method-episodes/robolab_ClutterPumpkinTask__seed1__pi05_plus_gpt.json"
+    },
+    {
+      "id": "robolab_ClutterPumpkinTask__seed2__gpt_only",
+      "run_id": "direct_20261006T011812Z_ClutterPumpkinTask_seed2",
+      "case_id": "ClutterPumpkinTask__seed2",
+      "task": "ClutterPumpkinTask",
+      "seed": 2,
+      "method": "gpt_only",
+      "success": true,
+      "complete": true,
+      "eligible": true,
+      "control_steps": 636,
+      "decisions": 128,
+      "terminated": true,
+      "truncated": false,
+      "actions_by_mode": {
+        "student": 0,
+        "edit": 0,
+        "eef": 636
+      },
+      "pi05_inference_calls": 0,
+      "initial_state_hash": "d1968ec0125d2db0d27303dd3646955dcb5eea4e1ce5b272994b88a4d4400706",
+      "native_horizon": 1350,
+      "audit": "data/robolab-method-episodes/robolab_ClutterPumpkinTask__seed2__gpt_only-audit.json",
+      "audit_sha256": "a8db9afea89df70d04c82726af1c99e376aa12ddc25f52e7e48523507068139c",
+      "video": "media/robolab-methods/robolab_ClutterPumpkinTask__seed2__gpt_only.mp4",
+      "poster": "media/robolab-methods/robolab_ClutterPumpkinTask__seed2__gpt_only.jpg",
+      "video_sha256": "6ac1acb86047c66f7945c7a5a66a593a46475481b7c470d965cc7c1850742223",
+      "source_video_sha256": "5bace8f8084a7cb5cc07aeff69506fe378a2ed243917842ef5333523a3c7a407",
+      "video_bytes": 2996075,
+      "duration_seconds": 42.467,
+      "evidence": "data/robolab-method-episodes/robolab_ClutterPumpkinTask__seed2__gpt_only.json"
     },
     {
       "id": "robolab_ClutterPumpkinTask__seed2__pi05_plus_gpt",
@@ -2260,9 +2324,9 @@
       "task": "ClutterPumpkinTask",
       "seed": 2,
       "method": "gpt_only",
-      "status": "controller_running",
+      "status": "complete",
       "started_utc": "2026-10-06T01:18:15.979586+00:00",
-      "eligible": false
+      "eligible": true
     },
     {
       "run_id": "direct_20261006T011813Z_ClutterPumpkinTask_seed3",
@@ -2281,6 +2345,15 @@
       "status": "complete",
       "started_utc": "2026-10-06T01:18:16.154025+00:00",
       "eligible": true
+    },
+    {
+      "run_id": "direct_20261006T031919Z_ButterAboveRaisinTask_seed0",
+      "task": "ButterAboveRaisinTask",
+      "seed": 0,
+      "method": "gpt_only",
+      "status": "starting",
+      "started_utc": "2026-10-06T03:19:20.595959+00:00",
+      "eligible": false
     },
     {
       "run_id": "hybrid_20261002T090455Z_BlocksInBinTask_seed0",
@@ -2980,9 +3053,9 @@
       "task": "ButterAboveRaisinTask",
       "seed": 2,
       "method": "pi05_plus_gpt",
-      "status": "controller_running",
+      "status": "complete",
       "started_utc": "2026-10-06T02:59:11.813747+00:00",
-      "eligible": false
+      "eligible": true
     },
     {
       "run_id": "hybrid_20261006T030730Z_ButterAboveRaisinTask_seed3",
@@ -2992,66 +3065,75 @@
       "status": "controller_running",
       "started_utc": "2026-10-06T03:07:30.817734+00:00",
       "eligible": false
+    },
+    {
+      "run_id": "hybrid_20261006T031919Z_ButterAboveRaisinTask_seed4",
+      "task": "ButterAboveRaisinTask",
+      "seed": 4,
+      "method": "pi05_plus_gpt",
+      "status": "starting",
+      "started_utc": "2026-10-06T03:19:20.527819+00:00",
+      "eligible": false
     }
   ],
   "active_runs": [
-    {
-      "task": "ClutterPumpkinTask",
-      "seed": 2,
-      "method": "gpt_only",
-      "status": "controller_running",
-      "started_utc": "2026-10-06T01:18:15.979586+00:00",
-      "observed_control_steps": 615
-    },
-    {
-      "task": "ButterAboveRaisinTask",
-      "seed": 2,
-      "method": "pi05_plus_gpt",
-      "status": "controller_running",
-      "started_utc": "2026-10-06T02:59:11.813747+00:00",
-      "observed_control_steps": 125
-    },
     {
       "task": "ButterAboveRaisinTask",
       "seed": 3,
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-06T03:07:30.817734+00:00",
+      "observed_control_steps": 178
+    },
+    {
+      "task": "ButterAboveRaisinTask",
+      "seed": 4,
+      "method": "pi05_plus_gpt",
+      "status": "starting",
+      "started_utc": "2026-10-06T03:19:20.527819+00:00",
+      "observed_control_steps": 0
+    },
+    {
+      "task": "ButterAboveRaisinTask",
+      "seed": 0,
+      "method": "gpt_only",
+      "status": "starting",
+      "started_utc": "2026-10-06T03:19:20.595959+00:00",
       "observed_control_steps": 0
     }
   ],
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
-    "completed_pairs": 9,
-    "complete_method_runs": 26,
+    "completed_pairs": 10,
+    "complete_method_runs": 28,
     "methods": {
       "gpt_only": {
         "all_completed": {
-          "evaluated": 14,
-          "successes": 14,
+          "evaluated": 15,
+          "successes": 15,
           "failures": 0,
           "success_rate": 1.0
         },
         "paired_completed": {
-          "evaluated": 9,
-          "successes": 9,
+          "evaluated": 10,
+          "successes": 10,
           "failures": 0,
           "success_rate": 1.0
         }
       },
       "pi05_plus_gpt": {
         "all_completed": {
-          "evaluated": 12,
-          "successes": 10,
+          "evaluated": 13,
+          "successes": 11,
           "failures": 2,
-          "success_rate": 0.8333333333333334
+          "success_rate": 0.8461538461538461
         },
         "paired_completed": {
-          "evaluated": 9,
+          "evaluated": 10,
           "successes": 8,
-          "failures": 1,
-          "success_rate": 0.8888888888888888
+          "failures": 2,
+          "success_rate": 0.8
         }
       }
     }
