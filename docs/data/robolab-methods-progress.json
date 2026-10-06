@@ -30,11 +30,11 @@
           "episode_id": "robolab_BlockStackingSpecifiedOrderTask__seed1__gpt_only"
         },
         "pi05_plus_gpt": {
-          "status": "audit_pending",
-          "episode_id": null
+          "status": "complete",
+          "episode_id": "robolab_BlockStackingSpecifiedOrderTask__seed1__pi05_plus_gpt"
         }
       },
-      "paired_complete": false
+      "paired_complete": true
     },
     {
       "case_id": "BlockStackingSpecifiedOrderTask__seed2",
@@ -64,7 +64,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 302
+          "observed_control_steps": 548
         }
       },
       "paired_complete": false
@@ -81,7 +81,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 0
+          "observed_control_steps": 275
         }
       },
       "paired_complete": false
@@ -496,8 +496,9 @@
           "episode_id": null
         },
         "pi05_plus_gpt": {
-          "status": "pending",
-          "episode_id": null
+          "status": "running",
+          "episode_id": null,
+          "observed_control_steps": 113
         }
       },
       "paired_complete": false
@@ -903,6 +904,38 @@
       "video_bytes": 2563082,
       "duration_seconds": 38.134,
       "evidence": "data/robolab-method-episodes/robolab_BlockStackingSpecifiedOrderTask__seed1__gpt_only.json"
+    },
+    {
+      "id": "robolab_BlockStackingSpecifiedOrderTask__seed1__pi05_plus_gpt",
+      "run_id": "hybrid_20261006T040202Z_BlockStackingSpecifiedOrderTask_seed1",
+      "case_id": "BlockStackingSpecifiedOrderTask__seed1",
+      "task": "BlockStackingSpecifiedOrderTask",
+      "seed": 1,
+      "method": "pi05_plus_gpt",
+      "success": true,
+      "complete": true,
+      "eligible": true,
+      "control_steps": 639,
+      "decisions": 58,
+      "terminated": true,
+      "truncated": false,
+      "actions_by_mode": {
+        "student": 529,
+        "edit": 0,
+        "eef": 110
+      },
+      "pi05_inference_calls": 58,
+      "initial_state_hash": "ff5d686214526511fbb62eea687633572f6d9a9c341f02a0835fb2b0bac4d7d9",
+      "native_horizon": 1350,
+      "audit": "data/robolab-method-episodes/robolab_BlockStackingSpecifiedOrderTask__seed1__pi05_plus_gpt-audit.json",
+      "audit_sha256": "6d90a9dba49c6f38ba47f0198d0ac65a09ef8de81dc7adbf95e86d75e0b945d9",
+      "video": "media/robolab-methods/robolab_BlockStackingSpecifiedOrderTask__seed1__pi05_plus_gpt.mp4",
+      "poster": "media/robolab-methods/robolab_BlockStackingSpecifiedOrderTask__seed1__pi05_plus_gpt.jpg",
+      "video_sha256": "720734bb7951aca6b4a2df68b21fd10ef04e52758626bd36f73b0e6fb8dd6a42",
+      "source_video_sha256": "fdd3e8276209beeff586f6788a6a9e796e9205d46805ce04d940140675c64e60",
+      "video_bytes": 3039273,
+      "duration_seconds": 42.667,
+      "evidence": "data/robolab-method-episodes/robolab_BlockStackingSpecifiedOrderTask__seed1__pi05_plus_gpt.json"
     },
     {
       "id": "robolab_BlockStackingSpecifiedOrderTask__seed2__gpt_only",
@@ -3412,9 +3445,9 @@
       "task": "BlockStackingSpecifiedOrderTask",
       "seed": 1,
       "method": "pi05_plus_gpt",
-      "status": "controller_finished",
+      "status": "complete",
       "started_utc": "2026-10-06T04:02:02.872577+00:00",
-      "eligible": false
+      "eligible": true
     },
     {
       "run_id": "hybrid_20261006T040802Z_BlockStackingSpecifiedOrderTask_seed2",
@@ -3442,6 +3475,15 @@
       "status": "controller_running",
       "started_utc": "2026-10-06T04:47:32.211707+00:00",
       "eligible": false
+    },
+    {
+      "run_id": "hybrid_20261006T045105Z_ReorientRedMugTask_seed0",
+      "task": "ReorientRedMugTask",
+      "seed": 0,
+      "method": "pi05_plus_gpt",
+      "status": "controller_running",
+      "started_utc": "2026-10-06T04:51:05.477617+00:00",
+      "eligible": false
     }
   ],
   "active_runs": [
@@ -3451,7 +3493,7 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-06T04:32:36.113743+00:00",
-      "observed_control_steps": 302
+      "observed_control_steps": 548
     },
     {
       "task": "BlockStackingSpecifiedOrderTask",
@@ -3459,14 +3501,22 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-06T04:47:32.211707+00:00",
-      "observed_control_steps": 0
+      "observed_control_steps": 275
+    },
+    {
+      "task": "ReorientRedMugTask",
+      "seed": 0,
+      "method": "pi05_plus_gpt",
+      "status": "controller_running",
+      "started_utc": "2026-10-06T04:51:05.477617+00:00",
+      "observed_control_steps": 113
     }
   ],
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
-    "completed_pairs": 17,
-    "complete_method_runs": 37,
+    "completed_pairs": 18,
+    "complete_method_runs": 38,
     "methods": {
       "gpt_only": {
         "all_completed": {
@@ -3476,24 +3526,24 @@
           "success_rate": 1.0
         },
         "paired_completed": {
-          "evaluated": 17,
-          "successes": 17,
+          "evaluated": 18,
+          "successes": 18,
           "failures": 0,
           "success_rate": 1.0
         }
       },
       "pi05_plus_gpt": {
         "all_completed": {
-          "evaluated": 17,
-          "successes": 15,
+          "evaluated": 18,
+          "successes": 16,
           "failures": 2,
-          "success_rate": 0.8823529411764706
+          "success_rate": 0.8888888888888888
         },
         "paired_completed": {
-          "evaluated": 17,
-          "successes": 15,
+          "evaluated": 18,
+          "successes": 16,
           "failures": 2,
-          "success_rate": 0.8823529411764706
+          "success_rate": 0.8888888888888888
         }
       }
     }
