@@ -1,0 +1,32 @@
+{
+  "id": "robolab_LargerObjectRaisinBoxInBinTask__seed3__pi05_plus_gpt",
+  "run_id": "hybrid_20261006T093137Z_LargerObjectRaisinBoxInBinTask_seed3",
+  "case_id": "LargerObjectRaisinBoxInBinTask__seed3",
+  "task": "LargerObjectRaisinBoxInBinTask",
+  "seed": 3,
+  "method": "pi05_plus_gpt",
+  "success": true,
+  "complete": true,
+  "eligible": true,
+  "control_steps": 167,
+  "decisions": 19,
+  "terminated": true,
+  "truncated": false,
+  "actions_by_mode": {
+    "student": 122,
+    "edit": 15,
+    "eef": 30
+  },
+  "pi05_inference_calls": 19,
+  "initial_state_hash": "cfa778e37848f51ea4b1191e401fc0269a40e8fa3a2d9b2ef0dd9a57e614c154",
+  "native_horizon": 450,
+  "audit": "data/robolab-method-episodes/robolab_LargerObjectRaisinBoxInBinTask__seed3__pi05_plus_gpt-audit.json",
+  "audit_sha256": "6c198dce8e9cb2c92ecdc13bd0cc4ec90b1d077993481d3f571776c3c03f5175",
+  "video": "media/robolab-methods/robolab_LargerObjectRaisinBoxInBinTask__seed3__pi05_plus_gpt.mp4",
+  "poster": "media/robolab-methods/robolab_LargerObjectRaisinBoxInBinTask__seed3__pi05_plus_gpt.jpg",
+  "video_sha256": "0799e037b820d28fd009a0f95655cdac7e226cce714e3ecd8ce78b11db99a7b7",
+  "source_video_sha256": "00819ceeb3c1675d57cd22f7b3ebcb8af19f7c06de95b65f3ab7f9a3aa452f7a",
+  "video_bytes": 828339,
+  "duration_seconds": 11.2,
+  "evidence": "data/robolab-method-episodes/robolab_LargerObjectRaisinBoxInBinTask__seed3__pi05_plus_gpt.json"
+}

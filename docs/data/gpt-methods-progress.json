@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-06T09:50:30.346203+00:00",
+  "snapshot": "2026-10-06T10:00:50.709703+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9299,9 +9299,9 @@
       "planned_method_runs": 100,
       "status": "controller_running",
       "task": "LargerObjectRaisinBoxInBinTask",
-      "seed": 2,
+      "seed": 4,
       "method": "pi05_plus_gpt",
-      "started_utc": "2026-10-06T09:15:03.115716+00:00",
+      "started_utc": "2026-10-06T09:53:38.587683+00:00",
       "results_eligible": true,
       "action_audit_status": "pending",
       "direct_implementation_status": "native_episode_audited",
@@ -9313,30 +9313,30 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 366,
+      "observed_control_steps": 0,
       "active_runs": [
         {
           "task": "LargerObjectRaisinBoxInBinTask",
-          "seed": 2,
+          "seed": 4,
           "method": "pi05_plus_gpt",
           "status": "controller_running",
-          "started_utc": "2026-10-06T09:15:03.115716+00:00",
-          "observed_control_steps": 366
+          "started_utc": "2026-10-06T09:53:38.587683+00:00",
+          "observed_control_steps": 0
         },
         {
           "task": "LargerObjectRaisinBoxInBinTask",
-          "seed": 3,
-          "method": "pi05_plus_gpt",
+          "seed": 0,
+          "method": "gpt_only",
           "status": "controller_running",
-          "started_utc": "2026-10-06T09:31:38.005049+00:00",
-          "observed_control_steps": 151
+          "started_utc": "2026-10-06T09:54:53.790202+00:00",
+          "observed_control_steps": 0
         }
       ],
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
         "completed_pairs": 25,
-        "complete_method_runs": 52,
+        "complete_method_runs": 54,
         "methods": {
           "gpt_only": {
             "all_completed": {
@@ -9354,10 +9354,10 @@
           },
           "pi05_plus_gpt": {
             "all_completed": {
-              "evaluated": 27,
-              "successes": 24,
+              "evaluated": 29,
+              "successes": 26,
               "failures": 3,
-              "success_rate": 0.8888888888888888
+              "success_rate": 0.896551724137931
             },
             "paired_completed": {
               "evaluated": 25,
