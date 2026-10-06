@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-06T05:30:51.379990+00:00",
+  "snapshot": "2026-10-06T05:40:55.601145+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9285,7 +9285,7 @@
     "robolab": {
       "planned_pairs": 50,
       "planned_method_runs": 100,
-      "status": "controller_running",
+      "status": "controller_finished",
       "task": "BlockStackingSpecifiedOrderTask",
       "seed": 4,
       "method": "pi05_plus_gpt",
@@ -9301,23 +9301,15 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 1117,
+      "observed_control_steps": 1350,
       "active_runs": [
         {
           "task": "BlockStackingSpecifiedOrderTask",
           "seed": 4,
           "method": "pi05_plus_gpt",
-          "status": "controller_running",
+          "status": "controller_finished",
           "started_utc": "2026-10-06T04:47:32.211707+00:00",
-          "observed_control_steps": 1117
-        },
-        {
-          "task": "ReorientRedMugTask",
-          "seed": 0,
-          "method": "pi05_plus_gpt",
-          "status": "controller_running",
-          "started_utc": "2026-10-06T04:51:05.477617+00:00",
-          "observed_control_steps": 452
+          "observed_control_steps": 1350
         },
         {
           "task": "ReorientRedMugTask",
@@ -9325,14 +9317,22 @@
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-06T05:03:01.984658+00:00",
-          "observed_control_steps": 289
+          "observed_control_steps": 384
+        },
+        {
+          "task": "ReorientRedMugTask",
+          "seed": 2,
+          "method": "pi05_plus_gpt",
+          "status": "controller_running",
+          "started_utc": "2026-10-06T05:33:49.421152+00:00",
+          "observed_control_steps": 75
         }
       ],
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
         "completed_pairs": 19,
-        "complete_method_runs": 39,
+        "complete_method_runs": 40,
         "methods": {
           "gpt_only": {
             "all_completed": {
@@ -9350,10 +9350,10 @@
           },
           "pi05_plus_gpt": {
             "all_completed": {
-              "evaluated": 19,
-              "successes": 17,
+              "evaluated": 20,
+              "successes": 18,
               "failures": 2,
-              "success_rate": 0.8947368421052632
+              "success_rate": 0.9
             },
             "paired_completed": {
               "evaluated": 19,
