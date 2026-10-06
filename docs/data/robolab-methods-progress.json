@@ -80,7 +80,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 571
+          "observed_control_steps": 844
         }
       },
       "paired_complete": false
@@ -497,7 +497,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 261
+          "observed_control_steps": 321
         }
       },
       "paired_complete": false
@@ -514,7 +514,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 75
+          "observed_control_steps": 195
         }
       },
       "paired_complete": false
@@ -3534,7 +3534,7 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-06T04:47:32.211707+00:00",
-      "observed_control_steps": 571
+      "observed_control_steps": 844
     },
     {
       "task": "ReorientRedMugTask",
@@ -3542,7 +3542,7 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-06T04:51:05.477617+00:00",
-      "observed_control_steps": 261
+      "observed_control_steps": 321
     },
     {
       "task": "ReorientRedMugTask",
@@ -3550,7 +3550,7 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-06T05:03:01.984658+00:00",
-      "observed_control_steps": 75
+      "observed_control_steps": 195
     }
   ],
   "summary": {
