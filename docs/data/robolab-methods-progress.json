@@ -698,9 +698,8 @@
       "seed": 3,
       "methods": {
         "gpt_only": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 40
+          "status": "audit_pending",
+          "episode_id": null
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -717,7 +716,7 @@
         "gpt_only": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 0
+          "observed_control_steps": 80
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -3792,7 +3791,7 @@
       "task": "SauceBottlesCrateTask",
       "seed": 3,
       "method": "gpt_only",
-      "status": "controller_running",
+      "status": "controller_finished",
       "started_utc": "2026-10-06T12:52:54.384090+00:00",
       "eligible": false
     },
@@ -4711,9 +4710,9 @@
       "task": "SauceBottlesCrateTask",
       "seed": 3,
       "method": "gpt_only",
-      "status": "controller_running",
+      "status": "controller_finished",
       "started_utc": "2026-10-06T12:52:54.384090+00:00",
-      "observed_control_steps": 40
+      "observed_control_steps": 181
     },
     {
       "task": "SauceBottlesCrateTask",
@@ -4721,7 +4720,7 @@
       "method": "gpt_only",
       "status": "controller_running",
       "started_utc": "2026-10-06T12:56:25.961067+00:00",
-      "observed_control_steps": 0
+      "observed_control_steps": 80
     }
   ],
   "summary": {
