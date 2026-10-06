@@ -16,7 +16,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 346
+          "observed_control_steps": 544
         }
       },
       "paired_complete": false
@@ -33,7 +33,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 195
+          "observed_control_steps": 355
         }
       },
       "paired_complete": false
@@ -48,9 +48,8 @@
           "episode_id": "robolab_BlockStackingSpecifiedOrderTask__seed2__gpt_only"
         },
         "pi05_plus_gpt": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 247
+          "status": "audit_pending",
+          "episode_id": null
         }
       },
       "paired_complete": false
@@ -3358,7 +3357,7 @@
       "task": "BlockStackingSpecifiedOrderTask",
       "seed": 2,
       "method": "pi05_plus_gpt",
-      "status": "controller_running",
+      "status": "controller_finished",
       "started_utc": "2026-10-06T04:08:03.012141+00:00",
       "eligible": false
     }
@@ -3370,7 +3369,7 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-06T04:00:25.285700+00:00",
-      "observed_control_steps": 346
+      "observed_control_steps": 544
     },
     {
       "task": "BlockStackingSpecifiedOrderTask",
@@ -3378,15 +3377,15 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-06T04:02:02.872577+00:00",
-      "observed_control_steps": 195
+      "observed_control_steps": 355
     },
     {
       "task": "BlockStackingSpecifiedOrderTask",
       "seed": 2,
       "method": "pi05_plus_gpt",
-      "status": "controller_running",
+      "status": "controller_finished",
       "started_utc": "2026-10-06T04:08:03.012141+00:00",
-      "observed_control_steps": 247
+      "observed_control_steps": 598
     }
   ],
   "summary": {

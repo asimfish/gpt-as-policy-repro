@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-06T04:20:59.384727+00:00",
+  "snapshot": "2026-10-06T04:31:01.898237+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9301,7 +9301,7 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 346,
+      "observed_control_steps": 544,
       "active_runs": [
         {
           "task": "BlockStackingSpecifiedOrderTask",
@@ -9309,7 +9309,7 @@
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-06T04:00:25.285700+00:00",
-          "observed_control_steps": 346
+          "observed_control_steps": 544
         },
         {
           "task": "BlockStackingSpecifiedOrderTask",
@@ -9317,15 +9317,15 @@
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-06T04:02:02.872577+00:00",
-          "observed_control_steps": 195
+          "observed_control_steps": 355
         },
         {
           "task": "BlockStackingSpecifiedOrderTask",
           "seed": 2,
           "method": "pi05_plus_gpt",
-          "status": "controller_running",
+          "status": "controller_finished",
           "started_utc": "2026-10-06T04:08:03.012141+00:00",
-          "observed_control_steps": 252
+          "observed_control_steps": 598
         }
       ],
       "summary": {
