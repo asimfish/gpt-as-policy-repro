@@ -348,7 +348,7 @@
         "gpt_only": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 720
+          "observed_control_steps": 795
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -2776,7 +2776,7 @@
       "method": "gpt_only",
       "status": "controller_running",
       "started_utc": "2026-10-05T21:06:50.770378+00:00",
-      "observed_control_steps": 720
+      "observed_control_steps": 795
     }
   ],
   "summary": {

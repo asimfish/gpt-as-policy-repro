@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-06T00:42:21.884195+00:00",
+  "snapshot": "2026-10-06T00:56:44.673706+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9103,12 +9103,13 @@
       "case_id": "imitate_sorting_sequence__standard__g0__l5",
       "method": "gpt_only",
       "started_utc": "2026-10-05T22:43:21.809513+00:00",
-      "finished_utc": null,
-      "supervisor_status": "running",
+      "finished_utc": "2026-10-06T00:49:53.766815+00:00",
+      "supervisor_status": "complete",
       "eligible": false,
-      "status": "running",
-      "control_steps": 1565,
-      "decisions": 313
+      "status": "audit_pending",
+      "control_steps": 1578,
+      "decisions": 316,
+      "reason_class": "missing_or_inconsistent_complete_audit"
     }
   ],
   "interruptions": {
@@ -9163,7 +9164,7 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 725,
+      "observed_control_steps": 805,
       "active_runs": [
         {
           "task": "ClutterPumpkinTask",
@@ -9171,7 +9172,7 @@
           "method": "gpt_only",
           "status": "controller_running",
           "started_utc": "2026-10-05T21:06:50.770378+00:00",
-          "observed_control_steps": 725
+          "observed_control_steps": 805
         }
       ],
       "summary": {
