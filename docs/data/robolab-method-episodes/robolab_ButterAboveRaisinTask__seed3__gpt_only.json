@@ -1,0 +1,32 @@
+{
+  "id": "robolab_ButterAboveRaisinTask__seed3__gpt_only",
+  "run_id": "direct_20261006T034220Z_ButterAboveRaisinTask_seed3",
+  "case_id": "ButterAboveRaisinTask__seed3",
+  "task": "ButterAboveRaisinTask",
+  "seed": 3,
+  "method": "gpt_only",
+  "success": true,
+  "complete": true,
+  "eligible": true,
+  "control_steps": 156,
+  "decisions": 32,
+  "terminated": true,
+  "truncated": false,
+  "actions_by_mode": {
+    "student": 0,
+    "edit": 0,
+    "eef": 156
+  },
+  "pi05_inference_calls": 0,
+  "initial_state_hash": "60f0179101232119323f4fe8fb64031a3550268ef8dca6e111a7efb7a4239ddd",
+  "native_horizon": 600,
+  "audit": "data/robolab-method-episodes/robolab_ButterAboveRaisinTask__seed3__gpt_only-audit.json",
+  "audit_sha256": "122fd1a57aaeee139085176a4a3bbcd0992f05c8f384562f3b7bda5573bbaaaf",
+  "video": "media/robolab-methods/robolab_ButterAboveRaisinTask__seed3__gpt_only.mp4",
+  "poster": "media/robolab-methods/robolab_ButterAboveRaisinTask__seed3__gpt_only.jpg",
+  "video_sha256": "30fe258e8f311a7d1c5dac4d246f3b723500474f6ac794f3867ad7a1ea384f85",
+  "source_video_sha256": "ff073f91e99e9d10493768de4ae1aa44717fff863ba6fac800ad95ca1ceff4ad",
+  "video_bytes": 724421,
+  "duration_seconds": 10.467,
+  "evidence": "data/robolab-method-episodes/robolab_ButterAboveRaisinTask__seed3__gpt_only.json"
+}
