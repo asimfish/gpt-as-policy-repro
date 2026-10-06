@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-06T11:50:24.132637+00:00",
+  "snapshot": "2026-10-06T12:01:18.371173+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9299,9 +9299,9 @@
       "planned_method_runs": 100,
       "status": "controller_running",
       "task": "SauceBottlesCrateTask",
-      "seed": 2,
+      "seed": 3,
       "method": "pi05_plus_gpt",
-      "started_utc": "2026-10-06T11:29:10.630403+00:00",
+      "started_utc": "2026-10-06T11:39:37.865048+00:00",
       "results_eligible": true,
       "action_audit_status": "pending",
       "direct_implementation_status": "native_episode_audited",
@@ -9313,30 +9313,30 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 231,
+      "observed_control_steps": 338,
       "active_runs": [
-        {
-          "task": "SauceBottlesCrateTask",
-          "seed": 2,
-          "method": "pi05_plus_gpt",
-          "status": "controller_running",
-          "started_utc": "2026-10-06T11:29:10.630403+00:00",
-          "observed_control_steps": 231
-        },
         {
           "task": "SauceBottlesCrateTask",
           "seed": 3,
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-06T11:39:37.865048+00:00",
-          "observed_control_steps": 115
+          "observed_control_steps": 338
+        },
+        {
+          "task": "SauceBottlesCrateTask",
+          "seed": 4,
+          "method": "pi05_plus_gpt",
+          "status": "starting",
+          "started_utc": "2026-10-06T11:58:33.020850+00:00",
+          "observed_control_steps": 0
         }
       ],
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
         "completed_pairs": 30,
-        "complete_method_runs": 62,
+        "complete_method_runs": 63,
         "methods": {
           "gpt_only": {
             "all_completed": {
@@ -9354,10 +9354,10 @@
           },
           "pi05_plus_gpt": {
             "all_completed": {
-              "evaluated": 32,
-              "successes": 29,
+              "evaluated": 33,
+              "successes": 30,
               "failures": 3,
-              "success_rate": 0.90625
+              "success_rate": 0.9090909090909091
             },
             "paired_completed": {
               "evaluated": 30,

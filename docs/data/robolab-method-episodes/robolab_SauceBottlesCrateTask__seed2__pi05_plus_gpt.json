@@ -1,0 +1,32 @@
+{
+  "id": "robolab_SauceBottlesCrateTask__seed2__pi05_plus_gpt",
+  "run_id": "hybrid_20261006T112910Z_SauceBottlesCrateTask_seed2",
+  "case_id": "SauceBottlesCrateTask__seed2",
+  "task": "SauceBottlesCrateTask",
+  "seed": 2,
+  "method": "pi05_plus_gpt",
+  "success": true,
+  "complete": true,
+  "eligible": true,
+  "control_steps": 343,
+  "decisions": 29,
+  "terminated": true,
+  "truncated": false,
+  "actions_by_mode": {
+    "student": 308,
+    "edit": 15,
+    "eef": 20
+  },
+  "pi05_inference_calls": 29,
+  "initial_state_hash": "706e2d901aa78e5f08eca0c85162f02438fd7e5e731bb05a6a94bf97a08533e4",
+  "native_horizon": 600,
+  "audit": "data/robolab-method-episodes/robolab_SauceBottlesCrateTask__seed2__pi05_plus_gpt-audit.json",
+  "audit_sha256": "9972aa04a8f2ae5d6c07ba85bce07bee1523dd8fe51af3b2c2f75ef734212b7d",
+  "video": "media/robolab-methods/robolab_SauceBottlesCrateTask__seed2__pi05_plus_gpt.mp4",
+  "poster": "media/robolab-methods/robolab_SauceBottlesCrateTask__seed2__pi05_plus_gpt.jpg",
+  "video_sha256": "c4777512cf1575f90709f1aac7b1014277b80abee16af2770318c011d2d4f1e7",
+  "source_video_sha256": "13e16d9085438226d2663688e5a11e8e4511d0df9e44e0185e34dfdfcfec7a8c",
+  "video_bytes": 1603491,
+  "duration_seconds": 22.934,
+  "evidence": "data/robolab-method-episodes/robolab_SauceBottlesCrateTask__seed2__pi05_plus_gpt.json"
+}
