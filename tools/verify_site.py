@@ -123,7 +123,13 @@ def verify(root):
     supplementary = progress.get('supplementary', {}).get('robolab')
     if supplementary:
         assert set(supplementary) == {'planned_pairs','planned_method_runs','status','task','seed','method',
-            'started_utc','results_eligible','action_audit_status','direct_implementation_status','cohort','observed_control_steps','last_prefix_audit','summary','report'}
+            'started_utc','results_eligible','action_audit_status','direct_implementation_status','cohort','observed_control_steps','last_prefix_audit','summary','report','active_runs'}
+        assert 0<=len(supplementary['active_runs'])<=3
+        for row in supplementary['active_runs']:
+            assert set(row)=={'task','seed','method','status','started_utc','observed_control_steps'}
+            assert type(row['seed']) is int and row['seed'] in range(5)
+            assert row['method'] in ('gpt_only','pi05_plus_gpt')
+            assert type(row['observed_control_steps']) is int and row['observed_control_steps']>=0
         assert supplementary['results_eligible'] is (supplementary['summary']['complete_method_runs']>0)
         assert supplementary['planned_pairs']==50 and supplementary['planned_method_runs']==100
         assert 'robolab-methods-progress' in (root/'scenes.html').read_text()

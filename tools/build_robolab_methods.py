@@ -3,6 +3,7 @@ from html import escape as E
 import json
 from pathlib import Path
 from build_gpt_site import read,write,digest,media,METHODS,PROOF_KEYS
+from robolab_activity import activity
 
 
 def eligible(run,entry):
@@ -72,6 +73,8 @@ def build(source,out):
                     status=record['status'],started_utc=record['started_utc'],eligible=False))
     previous=read(out/'data/robolab-methods-progress.json',{})
     old={e['id']:e for e in previous.get('episodes',[])}
+    active=activity(source)
+    active_keys={(r['task'],r['seed'],r['method']):r for r in active}
     episodes=[];cases=[]
     pairs=sorted({(e['task'],e['seed']) for e in entries});assert len(pairs)==50
     for task,seed in pairs:
@@ -79,6 +82,8 @@ def build(source,out):
         for method in METHODS:
             entry=dict(task=task,seed=seed,method=method);run,values,status=select(grouped[(task,seed,method)],entry)
             item=dict(status=status,episode_id=None)
+            if status=='pending' and (task,seed,method) in active_keys:
+                item.update(status='running',observed_control_steps=active_keys[(task,seed,method)]['observed_control_steps'])
             if values:
                 result,identity,proof=values;uid='robolab_'+cid+'__'+method
                 public_proof={k:proof[k] for k in PROOF_KEYS if k in proof}
@@ -100,7 +105,7 @@ def build(source,out):
     data=dict(schema='gpt_policy_robolab_methods.v1',frozen_sha256=digest(source/'fixtures/robolab_two_methods_frozen.json'),
         cohort='new fixed-seed cohort; historical raw initial states unavailable',
         direct_implementation='owned EEF adapter; historical Direct source and prompt unavailable',
-        cases=cases,episodes=episodes,attempts=attempts,summary=summarize(cases,episodes))
+        cases=cases,episodes=episodes,attempts=attempts,active_runs=active,summary=summarize(cases,episodes))
     write(out/'data/robolab-methods-progress.json',data);render(out,data)
     return data
 
@@ -116,7 +121,7 @@ def render(out,data):
         cells=[]
         for method in METHODS:
             value=c['methods'][method];episode=episodes.get(value['episode_id'])
-            cells.append('<td>'+ (f'<a href="#{episode["id"]}">{"成功" if episode["success"] else "原生失败"} · {episode["control_steps"]} 步</a>' if episode else ('完整终止，待审计' if value['status']=='audit_pending' else '待完成'))+'</td>')
+            cells.append('<td>'+ (f'<a href="#{episode["id"]}">{"成功" if episode["success"] else "原生失败"} · {episode["control_steps"]} 步</a>' if episode else ('完整终止，待审计' if value['status']=='audit_pending' else f'运行中 · {value["observed_control_steps"]} 步' if value['status']=='running' else '待完成'))+'</td>')
         rows.append(f'<tr><td>{E(c["task"])} / seed {c["seed"]}</td>'+''.join(cells)+'</tr>')
     cards=[]
     for episode in episodes.values():

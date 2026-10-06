@@ -52,7 +52,11 @@ def robolab_html(data):
     direct_note='已通过完整原生回合审计' if value['direct_implementation_status']=='native_episode_audited' else '已通过接口测试，正在进行原生回合验证'
     prefix=value.get('last_prefix_audit')
     evidence='' if not prefix else f'<p>此前 Hybrid 中断尝试已有 {prefix["decisions"]} 轮 / {prefix["native_actions"]} 步通过前缀动作核对；不是完整回合，不计分。<a href="{prefix["evidence"]}">下载前缀审计 ↗</a></p>'
-    return f'<div class="panel" id="robolab-methods-progress"><h3>RoboLab · 两方法补充进度</h3>{overview}<p>冻结计划：50 个案例 × 两种方法，共 100 条轨迹。当前 {method}：{state}{case}；当前尝试已记录 {steps} 个控制步，{audit_note}。</p>{evidence}<p>公开仓库的 RoboLab 入口仅提供 Hybrid。自有 Direct EEF 适配器{direct_note}；历史 Direct 源码与 prompt 未提供。采用新的固定种子组，历史原始初态尚未恢复，环境等价性仍有限制。</p></div>'
+    runs=value.get('active_runs',[])
+    live=''
+    if len(runs)>1:
+        live=f'<p>当前并行推进 {len(runs)} 个独立原生回合；完成并通过完整审计后计分。</p><ul>'+''.join(f'<li>{E(r["task"])} / seed {r["seed"]} · {METHODS[r["method"]]}：{states[r["status"]]}，{r["observed_control_steps"]} 步</li>' for r in runs)+'</ul>'
+    return f'<div class="panel" id="robolab-methods-progress"><h3>RoboLab · 两方法补充进度</h3>{overview}<p>冻结计划：50 个案例 × 两种方法，共 100 条轨迹。当前 {method}：{state}{case}；当前尝试已记录 {steps} 个控制步，{audit_note}。</p>{live}{evidence}<p>公开仓库的 RoboLab 入口仅提供 Hybrid。自有 Direct EEF 适配器{direct_note}；历史 Direct 源码与 prompt 未提供。采用新的固定种子组，历史原始初态尚未恢复，环境等价性仍有限制。</p></div>'
 
 
 def render(out, valid=False, update_board=True):

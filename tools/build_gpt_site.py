@@ -58,7 +58,9 @@ def robolab_status(source):
     assert len(tasks) == 10 and len(pairs) == 50
     assert {(row['task'], row['seed'], row['method']) for row in frozen['entries']} == {
         (task, seed, method) for task in tasks for seed in range(5) for method in METHODS}
-    active = read(source/'robolab_gpt_active.json', {})
+    from robolab_activity import activity
+    runs=activity(source)
+    active = runs[0] if runs else read(source/'robolab_gpt_active.json', {})
     status = active.get('status', 'not_started')
     assert status in ('not_started', 'starting', 'controller_running',
                       'controller_finished', 'infrastructure_interrupted')
@@ -82,7 +84,8 @@ def robolab_status(source):
     progress = read(Path(workspace)/'rollout/progress.json', {}) if workspace else {}
     step = progress.get('step_id', 0)
     assert type(step) is int and step >= 0
-    result['observed_control_steps'] = step
+    result['observed_control_steps'] = active.get('observed_control_steps',step)
+    result['active_runs']=runs
     return result
 
 
@@ -367,7 +370,7 @@ def build_cohort(source, out, selection=None, base=None):
         supplementary['report']='robolab-methods.html'
         supplementary['results_eligible']=robolab['summary']['complete_method_runs']>0
         active=read(source/'robolab_gpt_active.json',{})
-        current=next((e for e in robolab['episodes'] if e['run_id']==active.get('attempt')),None)
+        current=next((e for e in robolab['episodes'] if e['run_id']==active.get('attempt')),None) if not supplementary['active_runs'] else None
         supplementary['action_audit_status']='complete_native_episode' if current else 'pending'
         if robolab['summary']['methods']['gpt_only']['all_completed']['evaluated']:
             supplementary['direct_implementation_status']='native_episode_audited'
