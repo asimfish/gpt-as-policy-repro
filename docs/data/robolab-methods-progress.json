@@ -448,7 +448,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 301
+          "observed_control_steps": 366
         }
       },
       "paired_complete": false
@@ -465,7 +465,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 30
+          "observed_control_steps": 151
         }
       },
       "paired_complete": false
@@ -4057,7 +4057,7 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-06T09:15:03.115716+00:00",
-      "observed_control_steps": 301
+      "observed_control_steps": 366
     },
     {
       "task": "LargerObjectRaisinBoxInBinTask",
@@ -4065,7 +4065,7 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-06T09:31:38.005049+00:00",
-      "observed_control_steps": 30
+      "observed_control_steps": 151
     }
   ],
   "summary": {
