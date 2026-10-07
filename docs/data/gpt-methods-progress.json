@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-07T08:00:52.127167+00:00",
+  "snapshot": "2026-10-07T08:11:06.820779+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9313,7 +9313,7 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 85,
+      "observed_control_steps": 175,
       "active_runs": [
         {
           "task": "YogurtInBowlTask",
@@ -9321,7 +9321,7 @@
           "method": "gpt_only",
           "status": "controller_running",
           "started_utc": "2026-10-07T07:44:22.606311+00:00",
-          "observed_control_steps": 85
+          "observed_control_steps": 175
         },
         {
           "task": "YogurtInBowlTask",
@@ -9329,22 +9329,22 @@
           "method": "gpt_only",
           "status": "controller_running",
           "started_utc": "2026-10-07T07:48:09.752571+00:00",
-          "observed_control_steps": 65
+          "observed_control_steps": 156
         },
         {
           "task": "RubiksCubeTask",
-          "seed": 0,
+          "seed": 1,
           "method": "pi05_plus_gpt",
           "status": "controller_running",
-          "started_utc": "2026-10-07T07:55:08.610178+00:00",
-          "observed_control_steps": 30
+          "started_utc": "2026-10-07T08:07:23.376247+00:00",
+          "observed_control_steps": 0
         }
       ],
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
-        "completed_pairs": 45,
-        "complete_method_runs": 95,
+        "completed_pairs": 46,
+        "complete_method_runs": 96,
         "methods": {
           "gpt_only": {
             "all_completed": {
@@ -9354,24 +9354,24 @@
               "success_rate": 0.9791666666666666
             },
             "paired_completed": {
-              "evaluated": 45,
-              "successes": 44,
+              "evaluated": 46,
+              "successes": 45,
               "failures": 1,
-              "success_rate": 0.9777777777777777
+              "success_rate": 0.9782608695652174
             }
           },
           "pi05_plus_gpt": {
             "all_completed": {
-              "evaluated": 47,
-              "successes": 43,
+              "evaluated": 48,
+              "successes": 44,
               "failures": 4,
-              "success_rate": 0.9148936170212766
+              "success_rate": 0.9166666666666666
             },
             "paired_completed": {
-              "evaluated": 45,
-              "successes": 42,
+              "evaluated": 46,
+              "successes": 43,
               "failures": 3,
-              "success_rate": 0.9333333333333333
+              "success_rate": 0.9347826086956522
             }
           }
         }
