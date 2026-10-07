@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-07T07:11:42.383010+00:00",
+  "snapshot": "2026-10-07T07:21:15.163243+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9301,7 +9301,7 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 369,
+      "observed_control_steps": 479,
       "active_runs": [
         {
           "task": "YogurtInBowlTask",
@@ -9309,15 +9309,7 @@
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-07T06:39:41.267916+00:00",
-          "observed_control_steps": 369
-        },
-        {
-          "task": "YogurtInBowlTask",
-          "seed": 4,
-          "method": "pi05_plus_gpt",
-          "status": "controller_running",
-          "started_utc": "2026-10-07T06:55:13.046982+00:00",
-          "observed_control_steps": 165
+          "observed_control_steps": 479
         },
         {
           "task": "YogurtInBowlTask",
@@ -9325,14 +9317,22 @@
           "method": "gpt_only",
           "status": "controller_running",
           "started_utc": "2026-10-07T06:56:17.990135+00:00",
-          "observed_control_steps": 105
+          "observed_control_steps": 186
+        },
+        {
+          "task": "YogurtInBowlTask",
+          "seed": 1,
+          "method": "gpt_only",
+          "status": "controller_running",
+          "started_utc": "2026-10-07T07:18:42.061601+00:00",
+          "observed_control_steps": 0
         }
       ],
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
         "completed_pairs": 42,
-        "complete_method_runs": 90,
+        "complete_method_runs": 91,
         "methods": {
           "gpt_only": {
             "all_completed": {
@@ -9350,10 +9350,10 @@
           },
           "pi05_plus_gpt": {
             "all_completed": {
-              "evaluated": 45,
-              "successes": 42,
+              "evaluated": 46,
+              "successes": 43,
               "failures": 3,
-              "success_rate": 0.9333333333333333
+              "success_rate": 0.9347826086956522
             },
             "paired_completed": {
               "evaluated": 42,

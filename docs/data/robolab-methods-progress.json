@@ -732,7 +732,7 @@
         "gpt_only": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 100
+          "observed_control_steps": 186
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -747,8 +747,9 @@
       "seed": 1,
       "methods": {
         "gpt_only": {
-          "status": "pending",
-          "episode_id": null
+          "status": "running",
+          "episode_id": null,
+          "observed_control_steps": 0
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -785,7 +786,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 364
+          "observed_control_steps": 479
         }
       },
       "paired_complete": false
@@ -800,9 +801,8 @@
           "episode_id": null
         },
         "pi05_plus_gpt": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 165
+          "status": "complete",
+          "episode_id": "robolab_YogurtInBowlTask__seed4__pi05_plus_gpt"
         }
       },
       "paired_complete": false
@@ -3688,6 +3688,38 @@
       "video_bytes": 1353141,
       "duration_seconds": 18.4,
       "evidence": "data/robolab-method-episodes/robolab_YogurtInBowlTask__seed2__pi05_plus_gpt.json"
+    },
+    {
+      "id": "robolab_YogurtInBowlTask__seed4__pi05_plus_gpt",
+      "run_id": "hybrid_20261007T065512Z_YogurtInBowlTask_seed4",
+      "case_id": "YogurtInBowlTask__seed4",
+      "task": "YogurtInBowlTask",
+      "seed": 4,
+      "method": "pi05_plus_gpt",
+      "success": true,
+      "complete": true,
+      "eligible": true,
+      "control_steps": 263,
+      "decisions": 23,
+      "terminated": true,
+      "truncated": false,
+      "actions_by_mode": {
+        "student": 233,
+        "edit": 0,
+        "eef": 30
+      },
+      "pi05_inference_calls": 23,
+      "initial_state_hash": "8e0ce91300596dbea8230a3357491951008073e6802be86cce6f3d0ea54519e1",
+      "native_horizon": 600,
+      "audit": "data/robolab-method-episodes/robolab_YogurtInBowlTask__seed4__pi05_plus_gpt-audit.json",
+      "audit_sha256": "d60039e91c12222cde4081a32e09c234e1a702ba5c02ba76c93a0415b1921429",
+      "video": "media/robolab-methods/robolab_YogurtInBowlTask__seed4__pi05_plus_gpt.mp4",
+      "poster": "media/robolab-methods/robolab_YogurtInBowlTask__seed4__pi05_plus_gpt.jpg",
+      "video_sha256": "6d47881e7433f2d0a80c63d480705e0bf780f5dbda1d1d3d2ac34466f3e873bb",
+      "source_video_sha256": "763f9984b33ffa2867603e41464eb47e426da05e16b983e92fe1d96bef5bcd85",
+      "video_bytes": 1326902,
+      "duration_seconds": 17.6,
+      "evidence": "data/robolab-method-episodes/robolab_YogurtInBowlTask__seed4__pi05_plus_gpt.json"
     }
   ],
   "attempts": [
@@ -4697,6 +4729,15 @@
       "method": "gpt_only",
       "status": "controller_running",
       "started_utc": "2026-10-07T06:56:17.990135+00:00",
+      "eligible": false
+    },
+    {
+      "run_id": "direct_20261007T071839Z_YogurtInBowlTask_seed1",
+      "task": "YogurtInBowlTask",
+      "seed": 1,
+      "method": "gpt_only",
+      "status": "controller_running",
+      "started_utc": "2026-10-07T07:18:42.061601+00:00",
       "eligible": false
     },
     {
@@ -5784,9 +5825,9 @@
       "task": "YogurtInBowlTask",
       "seed": 4,
       "method": "pi05_plus_gpt",
-      "status": "controller_running",
+      "status": "complete",
       "started_utc": "2026-10-07T06:55:13.046982+00:00",
-      "eligible": false
+      "eligible": true
     }
   ],
   "active_runs": [
@@ -5796,15 +5837,7 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-07T06:39:41.267916+00:00",
-      "observed_control_steps": 364
-    },
-    {
-      "task": "YogurtInBowlTask",
-      "seed": 4,
-      "method": "pi05_plus_gpt",
-      "status": "controller_running",
-      "started_utc": "2026-10-07T06:55:13.046982+00:00",
-      "observed_control_steps": 165
+      "observed_control_steps": 479
     },
     {
       "task": "YogurtInBowlTask",
@@ -5812,14 +5845,22 @@
       "method": "gpt_only",
       "status": "controller_running",
       "started_utc": "2026-10-07T06:56:17.990135+00:00",
-      "observed_control_steps": 100
+      "observed_control_steps": 186
+    },
+    {
+      "task": "YogurtInBowlTask",
+      "seed": 1,
+      "method": "gpt_only",
+      "status": "controller_running",
+      "started_utc": "2026-10-07T07:18:42.061601+00:00",
+      "observed_control_steps": 0
     }
   ],
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
     "completed_pairs": 42,
-    "complete_method_runs": 90,
+    "complete_method_runs": 91,
     "methods": {
       "gpt_only": {
         "all_completed": {
@@ -5837,10 +5878,10 @@
       },
       "pi05_plus_gpt": {
         "all_completed": {
-          "evaluated": 45,
-          "successes": 42,
+          "evaluated": 46,
+          "successes": 43,
           "failures": 3,
-          "success_rate": 0.9333333333333333
+          "success_rate": 0.9347826086956522
         },
         "paired_completed": {
           "evaluated": 42,
