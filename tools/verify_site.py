@@ -122,10 +122,10 @@ def verify(root):
             assert supplemental['summary']['complete_method_runs']==100 and supplemental['summary']['completed_pairs']==50
             selected=json.loads((root/'data/gpt-methods-valid-progress.json').read_text())
             assert selected['summary']['complete_method_runs']==100 and selected['summary']['completed_pairs']==50
-            rows={(e['cohort'],e['case_id'],e['method']):e for e in certificate['original_episodes']}
+            completion_rows={(e['cohort'],e['case_id'],e['method']):e for e in certificate['original_episodes']}
             for cohort,document in [('robodojo',selected),('robolab',supplemental)]:
                 for episode in document['episodes']:
-                    row=rows[(cohort,episode['case_id'],episode['method'])]
+                    row=completion_rows[(cohort,episode['case_id'],episode['method'])]
                     assert row['run_id']==episode['run_id'] and row['original_video_sha256']==episode['source_video_sha256']
             native_files=[r for r in certificate['public_files'] if r['path'].startswith(
                 ('data/gpt-episodes/','media/gpt-episodes/','data/robolab-method-episodes/','media/robolab-methods/'))]
