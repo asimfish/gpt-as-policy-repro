@@ -590,12 +590,11 @@
           "episode_id": "robolab_RubiksCubeTask__seed1__gpt_only"
         },
         "pi05_plus_gpt": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 129
+          "status": "complete",
+          "episode_id": "robolab_RubiksCubeTask__seed1__pi05_plus_gpt"
         }
       },
-      "paired_complete": false
+      "paired_complete": true
     },
     {
       "case_id": "RubiksCubeTask__seed2",
@@ -607,12 +606,11 @@
           "episode_id": "robolab_RubiksCubeTask__seed2__gpt_only"
         },
         "pi05_plus_gpt": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 45
+          "status": "complete",
+          "episode_id": "robolab_RubiksCubeTask__seed2__pi05_plus_gpt"
         }
       },
-      "paired_complete": false
+      "paired_complete": true
     },
     {
       "case_id": "RubiksCubeTask__seed3",
@@ -3145,6 +3143,38 @@
       "evidence": "data/robolab-method-episodes/robolab_RubiksCubeTask__seed1__gpt_only.json"
     },
     {
+      "id": "robolab_RubiksCubeTask__seed1__pi05_plus_gpt",
+      "run_id": "hybrid_20261007T080723Z_RubiksCubeTask_seed1",
+      "case_id": "RubiksCubeTask__seed1",
+      "task": "RubiksCubeTask",
+      "seed": 1,
+      "method": "pi05_plus_gpt",
+      "success": true,
+      "complete": true,
+      "eligible": true,
+      "control_steps": 129,
+      "decisions": 10,
+      "terminated": true,
+      "truncated": false,
+      "actions_by_mode": {
+        "student": 129,
+        "edit": 0,
+        "eef": 0
+      },
+      "pi05_inference_calls": 10,
+      "initial_state_hash": "48c56b26c5afcb2ce7fc7cfead2b1485787b6bb2f7280cef65877159fbac908a",
+      "native_horizon": 600,
+      "audit": "data/robolab-method-episodes/robolab_RubiksCubeTask__seed1__pi05_plus_gpt-audit.json",
+      "audit_sha256": "d6ecd171d05fc98cb682056b131db2a730a0079a52128fc1ae2e9198095089f2",
+      "video": "media/robolab-methods/robolab_RubiksCubeTask__seed1__pi05_plus_gpt.mp4",
+      "poster": "media/robolab-methods/robolab_RubiksCubeTask__seed1__pi05_plus_gpt.jpg",
+      "video_sha256": "1435ea050596c8d5af47af4fb3221f50a29964ee453aecb4f4fd60c0f1506fdc",
+      "source_video_sha256": "ef706085554f1741ecae6abd40e017a885220b3ad8d10e49a43c9496b0cc7137",
+      "video_bytes": 638752,
+      "duration_seconds": 8.667,
+      "evidence": "data/robolab-method-episodes/robolab_RubiksCubeTask__seed1__pi05_plus_gpt.json"
+    },
+    {
       "id": "robolab_RubiksCubeTask__seed2__gpt_only",
       "run_id": "direct_20261007T050324Z_RubiksCubeTask_seed2",
       "case_id": "RubiksCubeTask__seed2",
@@ -3175,6 +3205,38 @@
       "video_bytes": 711788,
       "duration_seconds": 11.2,
       "evidence": "data/robolab-method-episodes/robolab_RubiksCubeTask__seed2__gpt_only.json"
+    },
+    {
+      "id": "robolab_RubiksCubeTask__seed2__pi05_plus_gpt",
+      "run_id": "hybrid_20261007T081323Z_RubiksCubeTask_seed2",
+      "case_id": "RubiksCubeTask__seed2",
+      "task": "RubiksCubeTask",
+      "seed": 2,
+      "method": "pi05_plus_gpt",
+      "success": true,
+      "complete": true,
+      "eligible": true,
+      "control_steps": 129,
+      "decisions": 10,
+      "terminated": true,
+      "truncated": false,
+      "actions_by_mode": {
+        "student": 129,
+        "edit": 0,
+        "eef": 0
+      },
+      "pi05_inference_calls": 10,
+      "initial_state_hash": "48c56b26c5afcb2ce7fc7cfead2b1485787b6bb2f7280cef65877159fbac908a",
+      "native_horizon": 600,
+      "audit": "data/robolab-method-episodes/robolab_RubiksCubeTask__seed2__pi05_plus_gpt-audit.json",
+      "audit_sha256": "dda41f1b165d7b81975dead91004428b995565b7c4ab38046ed07e942d6a8b59",
+      "video": "media/robolab-methods/robolab_RubiksCubeTask__seed2__pi05_plus_gpt.mp4",
+      "poster": "media/robolab-methods/robolab_RubiksCubeTask__seed2__pi05_plus_gpt.jpg",
+      "video_sha256": "192ca34d97c992b2ab30972526cbb872c2fb1a1c77ea93899aeb64030d8b8ab5",
+      "source_video_sha256": "ef649251ed8bdee785a330b94b97c30cc1a5d0502fd701d8980a3a84db1b7983",
+      "video_bytes": 647390,
+      "duration_seconds": 8.667,
+      "evidence": "data/robolab-method-episodes/robolab_RubiksCubeTask__seed2__pi05_plus_gpt.json"
     },
     {
       "id": "robolab_RubiksCubeTask__seed3__gpt_only",
@@ -6093,43 +6155,26 @@
       "task": "RubiksCubeTask",
       "seed": 1,
       "method": "pi05_plus_gpt",
-      "status": "controller_running",
+      "status": "complete",
       "started_utc": "2026-10-07T08:07:23.376247+00:00",
-      "eligible": false
+      "eligible": true
     },
     {
       "run_id": "hybrid_20261007T081323Z_RubiksCubeTask_seed2",
       "task": "RubiksCubeTask",
       "seed": 2,
       "method": "pi05_plus_gpt",
-      "status": "controller_running",
+      "status": "complete",
       "started_utc": "2026-10-07T08:13:24.012213+00:00",
-      "eligible": false
+      "eligible": true
     }
   ],
-  "active_runs": [
-    {
-      "task": "RubiksCubeTask",
-      "seed": 1,
-      "method": "pi05_plus_gpt",
-      "status": "controller_running",
-      "started_utc": "2026-10-07T08:07:23.376247+00:00",
-      "observed_control_steps": 129
-    },
-    {
-      "task": "RubiksCubeTask",
-      "seed": 2,
-      "method": "pi05_plus_gpt",
-      "status": "controller_running",
-      "started_utc": "2026-10-07T08:13:24.012213+00:00",
-      "observed_control_steps": 45
-    }
-  ],
+  "active_runs": [],
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
-    "completed_pairs": 48,
-    "complete_method_runs": 98,
+    "completed_pairs": 50,
+    "complete_method_runs": 100,
     "methods": {
       "gpt_only": {
         "all_completed": {
@@ -6139,24 +6184,24 @@
           "success_rate": 0.98
         },
         "paired_completed": {
-          "evaluated": 48,
-          "successes": 47,
+          "evaluated": 50,
+          "successes": 49,
           "failures": 1,
-          "success_rate": 0.9791666666666666
+          "success_rate": 0.98
         }
       },
       "pi05_plus_gpt": {
         "all_completed": {
-          "evaluated": 48,
-          "successes": 44,
+          "evaluated": 50,
+          "successes": 46,
           "failures": 4,
-          "success_rate": 0.9166666666666666
+          "success_rate": 0.92
         },
         "paired_completed": {
-          "evaluated": 48,
-          "successes": 44,
+          "evaluated": 50,
+          "successes": 46,
           "failures": 4,
-          "success_rate": 0.9166666666666666
+          "success_rate": 0.92
         }
       }
     }
