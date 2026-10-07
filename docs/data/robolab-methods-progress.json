@@ -572,7 +572,7 @@
         "gpt_only": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 0
+          "observed_control_steps": 35
         },
         "pi05_plus_gpt": {
           "status": "pending",
@@ -625,7 +625,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 0
+          "observed_control_steps": 60
         }
       },
       "paired_complete": false
@@ -642,7 +642,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 0
+          "observed_control_steps": 75
         }
       },
       "paired_complete": false
@@ -5140,7 +5140,7 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-07T04:51:13.029692+00:00",
-      "observed_control_steps": 0
+      "observed_control_steps": 60
     },
     {
       "task": "RubiksCubeTask",
@@ -5148,7 +5148,7 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-07T04:51:13.029583+00:00",
-      "observed_control_steps": 0
+      "observed_control_steps": 75
     },
     {
       "task": "RubiksCubeTask",
@@ -5156,7 +5156,7 @@
       "method": "gpt_only",
       "status": "controller_running",
       "started_utc": "2026-10-07T04:51:13.096774+00:00",
-      "observed_control_steps": 0
+      "observed_control_steps": 35
     }
   ],
   "summary": {

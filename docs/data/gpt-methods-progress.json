@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-07T04:54:50.327074+00:00",
+  "snapshot": "2026-10-07T04:59:02.501803+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9281,11 +9281,11 @@
   },
   "infrastructure": {
     "schema": "gpt_policy_infrastructure_bundle.v1",
-    "archive": "downloads/infrastructure_bundle_20261007T045500Z.tar.gz",
-    "bytes": 1045593,
-    "sha256": "50834cbea0267c4db8d581cd96db09eca963f250c0d3869b057d2fab7b5a3b03",
-    "files": 895,
-    "created_utc": "2026-10-07T04:54:13.944515+00:00",
+    "archive": "downloads/infrastructure_bundle_20261007T045900Z.tar.gz",
+    "bytes": 1046598,
+    "sha256": "d482b1e934f08ff4836f57655429d09b95b606177e46ae783e874081c1fff31c",
+    "files": 896,
+    "created_utc": "2026-10-07T04:58:00.098542+00:00",
     "active_methods": [
       "gpt_only",
       "pi05_plus_gpt"
@@ -9313,7 +9313,7 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 0,
+      "observed_control_steps": 75,
       "active_runs": [
         {
           "task": "RubiksCubeTask",
@@ -9321,7 +9321,7 @@
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-07T04:51:13.029692+00:00",
-          "observed_control_steps": 0
+          "observed_control_steps": 75
         },
         {
           "task": "RubiksCubeTask",
@@ -9329,7 +9329,7 @@
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-07T04:51:13.029583+00:00",
-          "observed_control_steps": 0
+          "observed_control_steps": 90
         },
         {
           "task": "RubiksCubeTask",
@@ -9337,7 +9337,7 @@
           "method": "gpt_only",
           "status": "controller_running",
           "started_utc": "2026-10-07T04:51:13.096774+00:00",
-          "observed_control_steps": 0
+          "observed_control_steps": 45
         }
       ],
       "summary": {
