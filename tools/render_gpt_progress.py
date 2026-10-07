@@ -68,7 +68,8 @@ def render(out, valid=False, update_board=True):
     stats = summary_html(data)
     supplement = robolab_html(data)
     bundle=data.get('infrastructure')
-    bundle_html='' if not bundle else f'<div class="panel" id="infra-bundle-download"><h3>复现实验基建下载</h3><p>运行脚本、两方法队列、动作审计、冻结场景、Direct 接口、测试与 systemd 模板。已核对归档内全部文件；这是当前基建快照，全量实验仍在推进。</p><p><a href="{E(bundle["archive"])}" download>下载基建包 · {bundle["bytes"]/2**20:.2f} MiB ↓</a> · <a href="data/infrastructure-bundle.json">文件校验与版本 JSON ↓</a></p><details><summary>SHA256 校验</summary><code>{bundle["sha256"]}</code></details></div>'
+    bundle_status='所选 RoboDojo 与 RoboLab 各 100 回合、各 50 对均已通过完整终验；包内保留冻结清单、失败证据索引及终验凭据。<a href="data/reproduction-completion.json">查看完整验收证明 ↓</a>。RoboLab Direct 使用自有 EEF 适配器，历史源码与完整物理初态不可得，未独立重算 IK。' if bundle and bundle['full_reproduction_complete'] else '这是当前基建快照，全量实验仍在推进。'
+    bundle_html='' if not bundle else f'<div class="panel" id="infra-bundle-download"><h3>复现实验基建下载</h3><p>运行脚本、两方法队列、动作审计、冻结场景、Direct 接口、测试与 systemd 模板。已核对归档内全部文件；{bundle_status}</p><p><a href="{E(bundle["archive"])}" download>下载基建包 · {bundle["bytes"]/2**20:.2f} MiB ↓</a> · <a href="data/infrastructure-bundle.json">文件校验与版本 JSON ↓</a></p><details><summary>SHA256 校验</summary><code>{bundle["sha256"]}</code></details></div>'
 
     task_rows = []
     for task in data.get('task_summary', []):

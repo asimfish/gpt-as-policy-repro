@@ -114,7 +114,26 @@ def verify(root):
     bundle=progress.get('infrastructure')
     if bundle:
         assert bundle==json.loads((root/'data/infrastructure-bundle.json').read_text())
-        assert bundle['contents_verified'] is True and bundle['full_reproduction_complete'] is False
+        assert bundle['contents_verified'] is True and type(bundle['full_reproduction_complete']) is bool
+        if bundle['full_reproduction_complete']:
+            from export_infra_bundle import validate_completion_certificate
+            binding=bundle['completion_certificate']
+            certificate=validate_completion_certificate((root/binding['public_path']).read_bytes(),binding)
+            assert supplemental['summary']['complete_method_runs']==100 and supplemental['summary']['completed_pairs']==50
+            selected=json.loads((root/'data/gpt-methods-valid-progress.json').read_text())
+            assert selected['summary']['complete_method_runs']==100 and selected['summary']['completed_pairs']==50
+            rows={(e['cohort'],e['case_id'],e['method']):e for e in certificate['original_episodes']}
+            for cohort,document in [('robodojo',selected),('robolab',supplemental)]:
+                for episode in document['episodes']:
+                    row=rows[(cohort,episode['case_id'],episode['method'])]
+                    assert row['run_id']==episode['run_id'] and row['original_video_sha256']==episode['source_video_sha256']
+            native_files=[r for r in certificate['public_files'] if r['path'].startswith(
+                ('data/gpt-episodes/','media/gpt-episodes/','data/robolab-method-episodes/','media/robolab-methods/'))]
+            assert len(native_files)==804
+            for row in native_files:
+                data=(root/row['path']).read_bytes()
+                assert len(data)==row['bytes'] and hashlib.sha256(data).hexdigest()==row['sha256']
+            assert '全量实验仍在推进' not in (root/'scenes.html').read_text()
         archive=root/bundle['archive']
         assert archive.stat().st_size==bundle['bytes']
         assert hashlib.sha256(archive.read_bytes()).hexdigest()==bundle['sha256']

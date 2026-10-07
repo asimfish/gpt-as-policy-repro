@@ -18,7 +18,7 @@ GENERATED = ('docs/index.html', 'docs/scenes.html', 'docs/gpt-methods.html', 'do
              'docs/gpt-methods-valid.html', 'docs/data/gpt-methods-valid-progress.json',
              'docs/data/gpt-valid-media-manifest.json', 'docs/data/gpt-valid-cohort.json',
              'docs/data/gpt-episodes/', 'docs/data/gpt-attempts/', 'docs/data/robolab-gpt-prefix-audit.json',
-             'docs/downloads/infrastructure_bundle_', 'docs/data/infrastructure-bundle.json', 'docs/media/gpt-episodes/', 'docs/assets/gpt.css', 'docs/assets/gpt.js')
+             'docs/downloads/infrastructure_bundle_', 'docs/data/infrastructure-bundle.json', 'docs/data/reproduction-completion.json', 'docs/media/gpt-episodes/', 'docs/assets/gpt.css', 'docs/assets/gpt.js')
 
 
 def git(repo, *args, env=None, stdin=None):
@@ -100,7 +100,7 @@ def verify_online(repo, source):
     files = ('scenes.html', 'gpt-methods.html', 'data/gpt-methods-progress.json', 'assets/gpt.js', 'assets/gpt.css')
     commit = git(repo, 'rev-parse', 'HEAD')
     files=list(files)
-    optional_names = ('docs/data/robolab-gpt-prefix-audit.json', 'docs/data/infrastructure-bundle.json',
+    optional_names = ('docs/data/robolab-gpt-prefix-audit.json', 'docs/data/infrastructure-bundle.json', 'docs/data/reproduction-completion.json',
         'docs/robolab-methods.html', 'docs/data/robolab-methods-progress.json',
         'docs/gpt-methods-valid.html', 'docs/data/gpt-methods-valid-progress.json',
         'docs/data/gpt-valid-cohort.json', 'docs/data/gpt-valid-media-manifest.json')
