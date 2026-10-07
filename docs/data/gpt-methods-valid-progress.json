@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-07T06:40:54.829626+00:00",
+  "snapshot": "2026-10-07T06:51:07.560912+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9301,7 +9301,7 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 150,
+      "observed_control_steps": 319,
       "active_runs": [
         {
           "task": "YogurtInBowlTask",
@@ -9309,7 +9309,7 @@
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-07T06:25:32.170098+00:00",
-          "observed_control_steps": 150
+          "observed_control_steps": 319
         },
         {
           "task": "YogurtInBowlTask",
@@ -9317,15 +9317,15 @@
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-07T06:28:40.086255+00:00",
-          "observed_control_steps": 110
+          "observed_control_steps": 257
         },
         {
           "task": "YogurtInBowlTask",
           "seed": 3,
           "method": "pi05_plus_gpt",
-          "status": "starting",
+          "status": "controller_running",
           "started_utc": "2026-10-07T06:39:41.267916+00:00",
-          "observed_control_steps": 0
+          "observed_control_steps": 88
         }
       ],
       "summary": {

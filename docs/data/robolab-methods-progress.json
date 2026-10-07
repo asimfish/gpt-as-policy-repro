@@ -752,7 +752,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 135
+          "observed_control_steps": 319
         }
       },
       "paired_complete": false
@@ -769,7 +769,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 105
+          "observed_control_steps": 257
         }
       },
       "paired_complete": false
@@ -786,7 +786,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 0
+          "observed_control_steps": 88
         }
       },
       "paired_complete": false
@@ -5702,7 +5702,7 @@
       "task": "YogurtInBowlTask",
       "seed": 3,
       "method": "pi05_plus_gpt",
-      "status": "starting",
+      "status": "controller_running",
       "started_utc": "2026-10-07T06:39:41.267916+00:00",
       "eligible": false
     }
@@ -5714,7 +5714,7 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-07T06:25:32.170098+00:00",
-      "observed_control_steps": 135
+      "observed_control_steps": 319
     },
     {
       "task": "YogurtInBowlTask",
@@ -5722,15 +5722,15 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-07T06:28:40.086255+00:00",
-      "observed_control_steps": 105
+      "observed_control_steps": 257
     },
     {
       "task": "YogurtInBowlTask",
       "seed": 3,
       "method": "pi05_plus_gpt",
-      "status": "starting",
+      "status": "controller_running",
       "started_utc": "2026-10-07T06:39:41.267916+00:00",
-      "observed_control_steps": 0
+      "observed_control_steps": 88
     }
   ],
   "summary": {
