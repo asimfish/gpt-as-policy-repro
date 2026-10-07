@@ -1,0 +1,32 @@
+{
+  "id": "robolab_YogurtInBowlTask__seed3__gpt_only",
+  "run_id": "direct_20261007T074422Z_YogurtInBowlTask_seed3",
+  "case_id": "YogurtInBowlTask__seed3",
+  "task": "YogurtInBowlTask",
+  "seed": 3,
+  "method": "gpt_only",
+  "success": true,
+  "complete": true,
+  "eligible": true,
+  "control_steps": 201,
+  "decisions": 41,
+  "terminated": true,
+  "truncated": false,
+  "actions_by_mode": {
+    "student": 0,
+    "edit": 0,
+    "eef": 201
+  },
+  "pi05_inference_calls": 0,
+  "initial_state_hash": "8e0ce91300596dbea8230a3357491951008073e6802be86cce6f3d0ea54519e1",
+  "native_horizon": 600,
+  "audit": "data/robolab-method-episodes/robolab_YogurtInBowlTask__seed3__gpt_only-audit.json",
+  "audit_sha256": "0d0b58aa2a293c77a9db681b89264facfd914025128ee16e627473d83d116d6f",
+  "video": "media/robolab-methods/robolab_YogurtInBowlTask__seed3__gpt_only.mp4",
+  "poster": "media/robolab-methods/robolab_YogurtInBowlTask__seed3__gpt_only.jpg",
+  "video_sha256": "b127ffa265b370fc24f08866b510702332589b85ff4ded526aa86f6dc2264372",
+  "source_video_sha256": "d8e0278f727abe053def3ef8b410ff0cb03a9231257bd8e0b3da76288716d351",
+  "video_bytes": 894442,
+  "duration_seconds": 13.467,
+  "evidence": "data/robolab-method-episodes/robolab_YogurtInBowlTask__seed3__gpt_only.json"
+}
