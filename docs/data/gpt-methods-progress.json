@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-07T06:50:52.144556+00:00",
+  "snapshot": "2026-10-07T07:00:58.183079+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9299,9 +9299,9 @@
       "planned_method_runs": 100,
       "status": "controller_running",
       "task": "YogurtInBowlTask",
-      "seed": 1,
+      "seed": 3,
       "method": "pi05_plus_gpt",
-      "started_utc": "2026-10-07T06:25:32.170098+00:00",
+      "started_utc": "2026-10-07T06:39:41.267916+00:00",
       "results_eligible": true,
       "action_audit_status": "pending",
       "direct_implementation_status": "native_episode_audited",
@@ -9313,38 +9313,38 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 319,
+      "observed_control_steps": 216,
       "active_runs": [
-        {
-          "task": "YogurtInBowlTask",
-          "seed": 1,
-          "method": "pi05_plus_gpt",
-          "status": "controller_running",
-          "started_utc": "2026-10-07T06:25:32.170098+00:00",
-          "observed_control_steps": 319
-        },
-        {
-          "task": "YogurtInBowlTask",
-          "seed": 2,
-          "method": "pi05_plus_gpt",
-          "status": "controller_running",
-          "started_utc": "2026-10-07T06:28:40.086255+00:00",
-          "observed_control_steps": 257
-        },
         {
           "task": "YogurtInBowlTask",
           "seed": 3,
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-07T06:39:41.267916+00:00",
-          "observed_control_steps": 88
+          "observed_control_steps": 216
+        },
+        {
+          "task": "YogurtInBowlTask",
+          "seed": 4,
+          "method": "pi05_plus_gpt",
+          "status": "controller_running",
+          "started_utc": "2026-10-07T06:55:13.046982+00:00",
+          "observed_control_steps": 15
+        },
+        {
+          "task": "YogurtInBowlTask",
+          "seed": 0,
+          "method": "gpt_only",
+          "status": "controller_running",
+          "started_utc": "2026-10-07T06:56:17.990135+00:00",
+          "observed_control_steps": 0
         }
       ],
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
         "completed_pairs": 42,
-        "complete_method_runs": 88,
+        "complete_method_runs": 90,
         "methods": {
           "gpt_only": {
             "all_completed": {
@@ -9362,10 +9362,10 @@
           },
           "pi05_plus_gpt": {
             "all_completed": {
-              "evaluated": 43,
-              "successes": 40,
+              "evaluated": 45,
+              "successes": 42,
               "failures": 3,
-              "success_rate": 0.9302325581395349
+              "success_rate": 0.9333333333333333
             },
             "paired_completed": {
               "evaluated": 42,
