@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-07T06:30:49.560689+00:00",
+  "snapshot": "2026-10-07T06:40:54.829626+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9287,9 +9287,9 @@
       "planned_method_runs": 100,
       "status": "controller_running",
       "task": "YogurtInBowlTask",
-      "seed": 0,
+      "seed": 1,
       "method": "pi05_plus_gpt",
-      "started_utc": "2026-10-07T06:11:42.617562+00:00",
+      "started_utc": "2026-10-07T06:25:32.170098+00:00",
       "results_eligible": true,
       "action_audit_status": "pending",
       "direct_implementation_status": "native_episode_audited",
@@ -9301,23 +9301,15 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 158,
+      "observed_control_steps": 150,
       "active_runs": [
-        {
-          "task": "YogurtInBowlTask",
-          "seed": 0,
-          "method": "pi05_plus_gpt",
-          "status": "controller_running",
-          "started_utc": "2026-10-07T06:11:42.617562+00:00",
-          "observed_control_steps": 158
-        },
         {
           "task": "YogurtInBowlTask",
           "seed": 1,
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-07T06:25:32.170098+00:00",
-          "observed_control_steps": 0
+          "observed_control_steps": 150
         },
         {
           "task": "YogurtInBowlTask",
@@ -9325,6 +9317,14 @@
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-07T06:28:40.086255+00:00",
+          "observed_control_steps": 110
+        },
+        {
+          "task": "YogurtInBowlTask",
+          "seed": 3,
+          "method": "pi05_plus_gpt",
+          "status": "starting",
+          "started_utc": "2026-10-07T06:39:41.267916+00:00",
           "observed_control_steps": 0
         }
       ],
@@ -9332,7 +9332,7 @@
         "planned_pairs": 50,
         "planned_method_runs": 100,
         "completed_pairs": 42,
-        "complete_method_runs": 87,
+        "complete_method_runs": 88,
         "methods": {
           "gpt_only": {
             "all_completed": {
@@ -9350,10 +9350,10 @@
           },
           "pi05_plus_gpt": {
             "all_completed": {
-              "evaluated": 42,
-              "successes": 39,
+              "evaluated": 43,
+              "successes": 40,
               "failures": 3,
-              "success_rate": 0.9285714285714286
+              "success_rate": 0.9302325581395349
             },
             "paired_completed": {
               "evaluated": 42,
