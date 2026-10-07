@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-07T04:59:02.501803+00:00",
+  "snapshot": "2026-10-07T05:04:38.708078+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9299,9 +9299,9 @@
       "planned_method_runs": 100,
       "status": "controller_running",
       "task": "RubiksCubeTask",
-      "seed": 3,
-      "method": "pi05_plus_gpt",
-      "started_utc": "2026-10-07T04:51:13.029692+00:00",
+      "seed": 0,
+      "method": "gpt_only",
+      "started_utc": "2026-10-07T04:51:13.096774+00:00",
       "results_eligible": true,
       "action_audit_status": "pending",
       "direct_implementation_status": "native_episode_audited",
@@ -9313,38 +9313,38 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 75,
+      "observed_control_steps": 120,
       "active_runs": [
-        {
-          "task": "RubiksCubeTask",
-          "seed": 3,
-          "method": "pi05_plus_gpt",
-          "status": "controller_running",
-          "started_utc": "2026-10-07T04:51:13.029692+00:00",
-          "observed_control_steps": 75
-        },
-        {
-          "task": "RubiksCubeTask",
-          "seed": 4,
-          "method": "pi05_plus_gpt",
-          "status": "controller_running",
-          "started_utc": "2026-10-07T04:51:13.029583+00:00",
-          "observed_control_steps": 90
-        },
         {
           "task": "RubiksCubeTask",
           "seed": 0,
           "method": "gpt_only",
           "status": "controller_running",
           "started_utc": "2026-10-07T04:51:13.096774+00:00",
-          "observed_control_steps": 45
+          "observed_control_steps": 120
+        },
+        {
+          "task": "RubiksCubeTask",
+          "seed": 1,
+          "method": "gpt_only",
+          "status": "starting",
+          "started_utc": "2026-10-07T05:03:25.356356+00:00",
+          "observed_control_steps": 0
+        },
+        {
+          "task": "RubiksCubeTask",
+          "seed": 2,
+          "method": "gpt_only",
+          "status": "starting",
+          "started_utc": "2026-10-07T05:03:25.356354+00:00",
+          "observed_control_steps": 0
         }
       ],
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
         "completed_pairs": 35,
-        "complete_method_runs": 74,
+        "complete_method_runs": 76,
         "methods": {
           "gpt_only": {
             "all_completed": {
@@ -9362,10 +9362,10 @@
           },
           "pi05_plus_gpt": {
             "all_completed": {
-              "evaluated": 39,
-              "successes": 36,
+              "evaluated": 41,
+              "successes": 38,
               "failures": 3,
-              "success_rate": 0.9230769230769231
+              "success_rate": 0.926829268292683
             },
             "paired_completed": {
               "evaluated": 35,
