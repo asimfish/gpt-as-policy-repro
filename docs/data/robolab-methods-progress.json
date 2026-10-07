@@ -266,16 +266,15 @@
       "seed": 1,
       "methods": {
         "gpt_only": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 145
+          "status": "complete",
+          "episode_id": "robolab_CannedFoodInBinTask__seed1__gpt_only"
         },
         "pi05_plus_gpt": {
           "status": "complete",
           "episode_id": "robolab_CannedFoodInBinTask__seed1__pi05_plus_gpt"
         }
       },
-      "paired_complete": false
+      "paired_complete": true
     },
     {
       "case_id": "CannedFoodInBinTask__seed2",
@@ -283,9 +282,8 @@
       "seed": 2,
       "methods": {
         "gpt_only": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 45
+          "status": "audit_pending",
+          "episode_id": null
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -302,7 +300,7 @@
         "gpt_only": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 15
+          "observed_control_steps": 129
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -317,8 +315,9 @@
       "seed": 4,
       "methods": {
         "gpt_only": {
-          "status": "pending",
-          "episode_id": null
+          "status": "running",
+          "episode_id": null,
+          "observed_control_steps": 5
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -1832,6 +1831,38 @@
       "video_bytes": 1264056,
       "duration_seconds": 24.534,
       "evidence": "data/robolab-method-episodes/robolab_CannedFoodInBinTask__seed0__pi05_plus_gpt.json"
+    },
+    {
+      "id": "robolab_CannedFoodInBinTask__seed1__gpt_only",
+      "run_id": "direct_20261007T054219Z_CannedFoodInBinTask_seed1",
+      "case_id": "CannedFoodInBinTask__seed1",
+      "task": "CannedFoodInBinTask",
+      "seed": 1,
+      "method": "gpt_only",
+      "success": true,
+      "complete": true,
+      "eligible": true,
+      "control_steps": 181,
+      "decisions": 37,
+      "terminated": true,
+      "truncated": false,
+      "actions_by_mode": {
+        "student": 0,
+        "edit": 0,
+        "eef": 181
+      },
+      "pi05_inference_calls": 0,
+      "initial_state_hash": "41a7c5b56c567fd4862da0c0aa3e5d921c934bdcfb275cb4d8957992f3e52e36",
+      "native_horizon": 900,
+      "audit": "data/robolab-method-episodes/robolab_CannedFoodInBinTask__seed1__gpt_only-audit.json",
+      "audit_sha256": "ffdbead9bc249fba1f443ffa8e358849d58decb26c1781fdd8b229c120ffc9f5",
+      "video": "media/robolab-methods/robolab_CannedFoodInBinTask__seed1__gpt_only.mp4",
+      "poster": "media/robolab-methods/robolab_CannedFoodInBinTask__seed1__gpt_only.jpg",
+      "video_sha256": "719bce8df11863c0a9c0b7795a6f5a3f17d1f9aa7943ec96d89b24e14b712702",
+      "source_video_sha256": "3ddf116e1556cc7acb6022d1024e83f1d2a19df4d99b278f3a60eb0f683a2536",
+      "video_bytes": 556841,
+      "duration_seconds": 12.134,
+      "evidence": "data/robolab-method-episodes/robolab_CannedFoodInBinTask__seed1__gpt_only.json"
     },
     {
       "id": "robolab_CannedFoodInBinTask__seed1__pi05_plus_gpt",
@@ -4435,16 +4466,16 @@
       "task": "CannedFoodInBinTask",
       "seed": 1,
       "method": "gpt_only",
-      "status": "controller_running",
+      "status": "complete",
       "started_utc": "2026-10-07T05:42:20.133174+00:00",
-      "eligible": false
+      "eligible": true
     },
     {
       "run_id": "direct_20261007T055108Z_CannedFoodInBinTask_seed2",
       "task": "CannedFoodInBinTask",
       "seed": 2,
       "method": "gpt_only",
-      "status": "controller_running",
+      "status": "controller_finished",
       "started_utc": "2026-10-07T05:51:08.914539+00:00",
       "eligible": false
     },
@@ -4455,6 +4486,15 @@
       "method": "gpt_only",
       "status": "controller_running",
       "started_utc": "2026-10-07T05:54:24.151900+00:00",
+      "eligible": false
+    },
+    {
+      "run_id": "direct_20261007T060605Z_CannedFoodInBinTask_seed4",
+      "task": "CannedFoodInBinTask",
+      "seed": 4,
+      "method": "gpt_only",
+      "status": "controller_running",
+      "started_utc": "2026-10-07T06:06:06.138932+00:00",
       "eligible": false
     },
     {
@@ -5505,19 +5545,11 @@
   "active_runs": [
     {
       "task": "CannedFoodInBinTask",
-      "seed": 1,
-      "method": "gpt_only",
-      "status": "controller_running",
-      "started_utc": "2026-10-07T05:42:20.133174+00:00",
-      "observed_control_steps": 145
-    },
-    {
-      "task": "CannedFoodInBinTask",
       "seed": 2,
       "method": "gpt_only",
-      "status": "controller_running",
+      "status": "controller_finished",
       "started_utc": "2026-10-07T05:51:08.914539+00:00",
-      "observed_control_steps": 45
+      "observed_control_steps": 186
     },
     {
       "task": "CannedFoodInBinTask",
@@ -5525,27 +5557,35 @@
       "method": "gpt_only",
       "status": "controller_running",
       "started_utc": "2026-10-07T05:54:24.151900+00:00",
-      "observed_control_steps": 15
+      "observed_control_steps": 129
+    },
+    {
+      "task": "CannedFoodInBinTask",
+      "seed": 4,
+      "method": "gpt_only",
+      "status": "controller_running",
+      "started_utc": "2026-10-07T06:06:06.138932+00:00",
+      "observed_control_steps": 5
     }
   ],
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
-    "completed_pairs": 38,
-    "complete_method_runs": 83,
+    "completed_pairs": 39,
+    "complete_method_runs": 84,
     "methods": {
       "gpt_only": {
         "all_completed": {
-          "evaluated": 41,
-          "successes": 40,
+          "evaluated": 42,
+          "successes": 41,
           "failures": 1,
-          "success_rate": 0.975609756097561
+          "success_rate": 0.9761904761904762
         },
         "paired_completed": {
-          "evaluated": 38,
-          "successes": 37,
+          "evaluated": 39,
+          "successes": 38,
           "failures": 1,
-          "success_rate": 0.9736842105263158
+          "success_rate": 0.9743589743589743
         }
       },
       "pi05_plus_gpt": {
@@ -5556,10 +5596,10 @@
           "success_rate": 0.9285714285714286
         },
         "paired_completed": {
-          "evaluated": 38,
-          "successes": 35,
+          "evaluated": 39,
+          "successes": 36,
           "failures": 3,
-          "success_rate": 0.9210526315789473
+          "success_rate": 0.9230769230769231
         }
       }
     }

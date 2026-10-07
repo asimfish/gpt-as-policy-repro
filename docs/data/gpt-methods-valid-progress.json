@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-07T06:01:03.093455+00:00",
+  "snapshot": "2026-10-07T06:11:14.699466+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9285,11 +9285,11 @@
     "robolab": {
       "planned_pairs": 50,
       "planned_method_runs": 100,
-      "status": "controller_running",
+      "status": "controller_finished",
       "task": "CannedFoodInBinTask",
-      "seed": 1,
+      "seed": 2,
       "method": "gpt_only",
-      "started_utc": "2026-10-07T05:42:20.133174+00:00",
+      "started_utc": "2026-10-07T05:51:08.914539+00:00",
       "results_eligible": true,
       "action_audit_status": "pending",
       "direct_implementation_status": "native_episode_audited",
@@ -9301,23 +9301,15 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 145,
+      "observed_control_steps": 186,
       "active_runs": [
-        {
-          "task": "CannedFoodInBinTask",
-          "seed": 1,
-          "method": "gpt_only",
-          "status": "controller_running",
-          "started_utc": "2026-10-07T05:42:20.133174+00:00",
-          "observed_control_steps": 145
-        },
         {
           "task": "CannedFoodInBinTask",
           "seed": 2,
           "method": "gpt_only",
-          "status": "controller_running",
+          "status": "controller_finished",
           "started_utc": "2026-10-07T05:51:08.914539+00:00",
-          "observed_control_steps": 50
+          "observed_control_steps": 186
         },
         {
           "task": "CannedFoodInBinTask",
@@ -9325,27 +9317,35 @@
           "method": "gpt_only",
           "status": "controller_running",
           "started_utc": "2026-10-07T05:54:24.151900+00:00",
-          "observed_control_steps": 15
+          "observed_control_steps": 129
+        },
+        {
+          "task": "CannedFoodInBinTask",
+          "seed": 4,
+          "method": "gpt_only",
+          "status": "controller_running",
+          "started_utc": "2026-10-07T06:06:06.138932+00:00",
+          "observed_control_steps": 5
         }
       ],
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
-        "completed_pairs": 38,
-        "complete_method_runs": 83,
+        "completed_pairs": 39,
+        "complete_method_runs": 84,
         "methods": {
           "gpt_only": {
             "all_completed": {
-              "evaluated": 41,
-              "successes": 40,
+              "evaluated": 42,
+              "successes": 41,
               "failures": 1,
-              "success_rate": 0.975609756097561
+              "success_rate": 0.9761904761904762
             },
             "paired_completed": {
-              "evaluated": 38,
-              "successes": 37,
+              "evaluated": 39,
+              "successes": 38,
               "failures": 1,
-              "success_rate": 0.9736842105263158
+              "success_rate": 0.9743589743589743
             }
           },
           "pi05_plus_gpt": {
@@ -9356,10 +9356,10 @@
               "success_rate": 0.9285714285714286
             },
             "paired_completed": {
-              "evaluated": 38,
-              "successes": 35,
+              "evaluated": 39,
+              "successes": 36,
               "failures": 3,
-              "success_rate": 0.9210526315789473
+              "success_rate": 0.9230769230769231
             }
           }
         }
