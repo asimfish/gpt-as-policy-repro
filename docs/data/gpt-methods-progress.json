@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-07T05:30:38.381498+00:00",
+  "snapshot": "2026-10-07T05:40:31.098208+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9313,7 +9313,7 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 65,
+      "observed_control_steps": 152,
       "active_runs": [
         {
           "task": "RubiksCubeTask",
@@ -9321,7 +9321,7 @@
           "method": "gpt_only",
           "status": "controller_running",
           "started_utc": "2026-10-07T05:21:40.221446+00:00",
-          "observed_control_steps": 65
+          "observed_control_steps": 152
         },
         {
           "task": "CannedFoodInBinTask",
@@ -9329,7 +9329,15 @@
           "method": "pi05_plus_gpt",
           "status": "controller_running",
           "started_utc": "2026-10-07T05:25:56.565577+00:00",
-          "observed_control_steps": 0
+          "observed_control_steps": 135
+        },
+        {
+          "task": "CannedFoodInBinTask",
+          "seed": 0,
+          "method": "gpt_only",
+          "status": "controller_running",
+          "started_utc": "2026-10-07T05:31:03.149245+00:00",
+          "observed_control_steps": 80
         }
       ],
       "summary": {

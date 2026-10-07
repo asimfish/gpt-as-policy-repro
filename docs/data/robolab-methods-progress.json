@@ -250,8 +250,9 @@
       "seed": 0,
       "methods": {
         "gpt_only": {
-          "status": "pending",
-          "episode_id": null
+          "status": "running",
+          "episode_id": null,
+          "observed_control_steps": 75
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -320,7 +321,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 0
+          "observed_control_steps": 135
         }
       },
       "paired_complete": false
@@ -637,7 +638,7 @@
         "gpt_only": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 65
+          "observed_control_steps": 152
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -4325,6 +4326,15 @@
       "eligible": false
     },
     {
+      "run_id": "direct_20261007T053101Z_CannedFoodInBinTask_seed0",
+      "task": "CannedFoodInBinTask",
+      "seed": 0,
+      "method": "gpt_only",
+      "status": "controller_running",
+      "started_utc": "2026-10-07T05:31:03.149245+00:00",
+      "eligible": false
+    },
+    {
       "run_id": "hybrid_20261002T090455Z_BlocksInBinTask_seed0",
       "task": "BlocksInBinTask",
       "seed": 0,
@@ -5376,7 +5386,7 @@
       "method": "gpt_only",
       "status": "controller_running",
       "started_utc": "2026-10-07T05:21:40.221446+00:00",
-      "observed_control_steps": 65
+      "observed_control_steps": 152
     },
     {
       "task": "CannedFoodInBinTask",
@@ -5384,7 +5394,15 @@
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-07T05:25:56.565577+00:00",
-      "observed_control_steps": 0
+      "observed_control_steps": 135
+    },
+    {
+      "task": "CannedFoodInBinTask",
+      "seed": 0,
+      "method": "gpt_only",
+      "status": "controller_running",
+      "started_utc": "2026-10-07T05:31:03.149245+00:00",
+      "observed_control_steps": 75
     }
   ],
   "summary": {
