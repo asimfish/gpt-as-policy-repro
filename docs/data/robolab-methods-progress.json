@@ -250,9 +250,8 @@
       "seed": 0,
       "methods": {
         "gpt_only": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 75
+          "status": "audit_pending",
+          "episode_id": null
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -267,8 +266,9 @@
       "seed": 1,
       "methods": {
         "gpt_only": {
-          "status": "pending",
-          "episode_id": null
+          "status": "running",
+          "episode_id": null,
+          "observed_control_steps": 35
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -321,7 +321,7 @@
         "pi05_plus_gpt": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 135
+          "observed_control_steps": 271
         }
       },
       "paired_complete": false
@@ -636,16 +636,15 @@
       "seed": 4,
       "methods": {
         "gpt_only": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 152
+          "status": "complete",
+          "episode_id": "robolab_RubiksCubeTask__seed4__gpt_only"
         },
         "pi05_plus_gpt": {
           "status": "complete",
           "episode_id": "robolab_RubiksCubeTask__seed4__pi05_plus_gpt"
         }
       },
-      "paired_complete": false
+      "paired_complete": true
     },
     {
       "case_id": "SauceBottlesCrateTask__seed0",
@@ -3018,6 +3017,38 @@
       "evidence": "data/robolab-method-episodes/robolab_RubiksCubeTask__seed3__pi05_plus_gpt.json"
     },
     {
+      "id": "robolab_RubiksCubeTask__seed4__gpt_only",
+      "run_id": "direct_20261007T052139Z_RubiksCubeTask_seed4",
+      "case_id": "RubiksCubeTask__seed4",
+      "task": "RubiksCubeTask",
+      "seed": 4,
+      "method": "gpt_only",
+      "success": true,
+      "complete": true,
+      "eligible": true,
+      "control_steps": 152,
+      "decisions": 31,
+      "terminated": true,
+      "truncated": false,
+      "actions_by_mode": {
+        "student": 0,
+        "edit": 0,
+        "eef": 152
+      },
+      "pi05_inference_calls": 0,
+      "initial_state_hash": "48c56b26c5afcb2ce7fc7cfead2b1485787b6bb2f7280cef65877159fbac908a",
+      "native_horizon": 600,
+      "audit": "data/robolab-method-episodes/robolab_RubiksCubeTask__seed4__gpt_only-audit.json",
+      "audit_sha256": "a18374b6d436764677707a493688165e5493fd7132530716e431d9017f6df9ff",
+      "video": "media/robolab-methods/robolab_RubiksCubeTask__seed4__gpt_only.mp4",
+      "poster": "media/robolab-methods/robolab_RubiksCubeTask__seed4__gpt_only.jpg",
+      "video_sha256": "d38c5d096badfe84789d1ccf9d7e16c1d4e8aa12ed56c046663fa199f7fbf227",
+      "source_video_sha256": "b8d7a29a73c2f64d317decc3393c739fcce8ed107f6fad11894abf43fad3843a",
+      "video_bytes": 665995,
+      "duration_seconds": 10.2,
+      "evidence": "data/robolab-method-episodes/robolab_RubiksCubeTask__seed4__gpt_only.json"
+    },
+    {
       "id": "robolab_RubiksCubeTask__seed4__pi05_plus_gpt",
       "run_id": "hybrid_20261007T045112Z_RubiksCubeTask_seed4",
       "case_id": "RubiksCubeTask__seed4",
@@ -4321,17 +4352,26 @@
       "task": "RubiksCubeTask",
       "seed": 4,
       "method": "gpt_only",
-      "status": "controller_running",
+      "status": "complete",
       "started_utc": "2026-10-07T05:21:40.221446+00:00",
-      "eligible": false
+      "eligible": true
     },
     {
       "run_id": "direct_20261007T053101Z_CannedFoodInBinTask_seed0",
       "task": "CannedFoodInBinTask",
       "seed": 0,
       "method": "gpt_only",
-      "status": "controller_running",
+      "status": "controller_finished",
       "started_utc": "2026-10-07T05:31:03.149245+00:00",
+      "eligible": false
+    },
+    {
+      "run_id": "direct_20261007T054219Z_CannedFoodInBinTask_seed1",
+      "task": "CannedFoodInBinTask",
+      "seed": 1,
+      "method": "gpt_only",
+      "status": "controller_running",
+      "started_utc": "2026-10-07T05:42:20.133174+00:00",
       "eligible": false
     },
     {
@@ -5381,48 +5421,40 @@
   ],
   "active_runs": [
     {
-      "task": "RubiksCubeTask",
-      "seed": 4,
-      "method": "gpt_only",
-      "status": "controller_running",
-      "started_utc": "2026-10-07T05:21:40.221446+00:00",
-      "observed_control_steps": 152
-    },
-    {
       "task": "CannedFoodInBinTask",
       "seed": 4,
       "method": "pi05_plus_gpt",
       "status": "controller_running",
       "started_utc": "2026-10-07T05:25:56.565577+00:00",
-      "observed_control_steps": 135
+      "observed_control_steps": 271
     },
     {
       "task": "CannedFoodInBinTask",
-      "seed": 0,
+      "seed": 1,
       "method": "gpt_only",
       "status": "controller_running",
-      "started_utc": "2026-10-07T05:31:03.149245+00:00",
-      "observed_control_steps": 75
+      "started_utc": "2026-10-07T05:42:20.133174+00:00",
+      "observed_control_steps": 35
     }
   ],
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
-    "completed_pairs": 36,
-    "complete_method_runs": 80,
+    "completed_pairs": 37,
+    "complete_method_runs": 81,
     "methods": {
       "gpt_only": {
         "all_completed": {
-          "evaluated": 39,
-          "successes": 38,
+          "evaluated": 40,
+          "successes": 39,
           "failures": 1,
-          "success_rate": 0.9743589743589743
+          "success_rate": 0.975
         },
         "paired_completed": {
-          "evaluated": 36,
-          "successes": 35,
+          "evaluated": 37,
+          "successes": 36,
           "failures": 1,
-          "success_rate": 0.9722222222222222
+          "success_rate": 0.972972972972973
         }
       },
       "pi05_plus_gpt": {
@@ -5433,10 +5465,10 @@
           "success_rate": 0.926829268292683
         },
         "paired_completed": {
-          "evaluated": 36,
-          "successes": 33,
+          "evaluated": 37,
+          "successes": 34,
           "failures": 3,
-          "success_rate": 0.9166666666666666
+          "success_rate": 0.918918918918919
         }
       }
     }
