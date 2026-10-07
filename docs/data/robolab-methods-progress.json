@@ -318,8 +318,9 @@
           "episode_id": null
         },
         "pi05_plus_gpt": {
-          "status": "pending",
-          "episode_id": null
+          "status": "running",
+          "episode_id": null,
+          "observed_control_steps": 0
         }
       },
       "paired_complete": false
@@ -586,8 +587,8 @@
       "seed": 1,
       "methods": {
         "gpt_only": {
-          "status": "audit_pending",
-          "episode_id": null
+          "status": "complete",
+          "episode_id": "robolab_RubiksCubeTask__seed1__gpt_only"
         },
         "pi05_plus_gpt": {
           "status": "pending",
@@ -618,16 +619,15 @@
       "seed": 3,
       "methods": {
         "gpt_only": {
-          "status": "running",
-          "episode_id": null,
-          "observed_control_steps": 125
+          "status": "complete",
+          "episode_id": "robolab_RubiksCubeTask__seed3__gpt_only"
         },
         "pi05_plus_gpt": {
           "status": "complete",
           "episode_id": "robolab_RubiksCubeTask__seed3__pi05_plus_gpt"
         }
       },
-      "paired_complete": false
+      "paired_complete": true
     },
     {
       "case_id": "RubiksCubeTask__seed4",
@@ -637,7 +637,7 @@
         "gpt_only": {
           "status": "running",
           "episode_id": null,
-          "observed_control_steps": 0
+          "observed_control_steps": 65
         },
         "pi05_plus_gpt": {
           "status": "complete",
@@ -2889,6 +2889,38 @@
       "evidence": "data/robolab-method-episodes/robolab_RubiksCubeTask__seed0__gpt_only.json"
     },
     {
+      "id": "robolab_RubiksCubeTask__seed1__gpt_only",
+      "run_id": "direct_20261007T050324Z_RubiksCubeTask_seed1",
+      "case_id": "RubiksCubeTask__seed1",
+      "task": "RubiksCubeTask",
+      "seed": 1,
+      "method": "gpt_only",
+      "success": true,
+      "complete": true,
+      "eligible": true,
+      "control_steps": 148,
+      "decisions": 30,
+      "terminated": true,
+      "truncated": false,
+      "actions_by_mode": {
+        "student": 0,
+        "edit": 0,
+        "eef": 148
+      },
+      "pi05_inference_calls": 0,
+      "initial_state_hash": "48c56b26c5afcb2ce7fc7cfead2b1485787b6bb2f7280cef65877159fbac908a",
+      "native_horizon": 600,
+      "audit": "data/robolab-method-episodes/robolab_RubiksCubeTask__seed1__gpt_only-audit.json",
+      "audit_sha256": "e9c6da72e62c00e249283bef69e73a06b6ec391c8d388acc11c191398c5e9cf9",
+      "video": "media/robolab-methods/robolab_RubiksCubeTask__seed1__gpt_only.mp4",
+      "poster": "media/robolab-methods/robolab_RubiksCubeTask__seed1__gpt_only.jpg",
+      "video_sha256": "c5481b74fc35288fc5259ef5ebffbc5bd9f13f827ecba5c6c4db8f9612e56c03",
+      "source_video_sha256": "39107f6c0e1bcde04cae9873603658890be40d0717f638decc908af3368231b7",
+      "video_bytes": 643125,
+      "duration_seconds": 9.934,
+      "evidence": "data/robolab-method-episodes/robolab_RubiksCubeTask__seed1__gpt_only.json"
+    },
+    {
       "id": "robolab_RubiksCubeTask__seed2__gpt_only",
       "run_id": "direct_20261007T050324Z_RubiksCubeTask_seed2",
       "case_id": "RubiksCubeTask__seed2",
@@ -2919,6 +2951,38 @@
       "video_bytes": 711788,
       "duration_seconds": 11.2,
       "evidence": "data/robolab-method-episodes/robolab_RubiksCubeTask__seed2__gpt_only.json"
+    },
+    {
+      "id": "robolab_RubiksCubeTask__seed3__gpt_only",
+      "run_id": "direct_20261007T050739Z_RubiksCubeTask_seed3",
+      "case_id": "RubiksCubeTask__seed3",
+      "task": "RubiksCubeTask",
+      "seed": 3,
+      "method": "gpt_only",
+      "success": true,
+      "complete": true,
+      "eligible": true,
+      "control_steps": 157,
+      "decisions": 32,
+      "terminated": true,
+      "truncated": false,
+      "actions_by_mode": {
+        "student": 0,
+        "edit": 0,
+        "eef": 157
+      },
+      "pi05_inference_calls": 0,
+      "initial_state_hash": "48c56b26c5afcb2ce7fc7cfead2b1485787b6bb2f7280cef65877159fbac908a",
+      "native_horizon": 600,
+      "audit": "data/robolab-method-episodes/robolab_RubiksCubeTask__seed3__gpt_only-audit.json",
+      "audit_sha256": "9a5344900994a10536f43a9db9519a9a0eac3b435955e255bab94de7263afe94",
+      "video": "media/robolab-methods/robolab_RubiksCubeTask__seed3__gpt_only.mp4",
+      "poster": "media/robolab-methods/robolab_RubiksCubeTask__seed3__gpt_only.jpg",
+      "video_sha256": "f7030faa0673901dba29203478e8c374a4751e66d6c63e20d6fa6be4330a6a60",
+      "source_video_sha256": "bae78f68dd5be5bfe0f487a035a15abcb1928da7ae74af5b587f59a3e4f81a16",
+      "video_bytes": 687629,
+      "duration_seconds": 10.534,
+      "evidence": "data/robolab-method-episodes/robolab_RubiksCubeTask__seed3__gpt_only.json"
     },
     {
       "id": "robolab_RubiksCubeTask__seed3__pi05_plus_gpt",
@@ -4229,9 +4293,9 @@
       "task": "RubiksCubeTask",
       "seed": 1,
       "method": "gpt_only",
-      "status": "controller_running",
+      "status": "complete",
       "started_utc": "2026-10-07T05:03:25.356356+00:00",
-      "eligible": false
+      "eligible": true
     },
     {
       "run_id": "direct_20261007T050324Z_RubiksCubeTask_seed2",
@@ -4247,9 +4311,9 @@
       "task": "RubiksCubeTask",
       "seed": 3,
       "method": "gpt_only",
-      "status": "controller_running",
+      "status": "complete",
       "started_utc": "2026-10-07T05:07:40.458248+00:00",
-      "eligible": false
+      "eligible": true
     },
     {
       "run_id": "direct_20261007T052139Z_RubiksCubeTask_seed4",
@@ -5294,52 +5358,53 @@
       "status": "complete",
       "started_utc": "2026-10-07T04:51:13.029583+00:00",
       "eligible": true
+    },
+    {
+      "run_id": "hybrid_20261007T052556Z_CannedFoodInBinTask_seed4",
+      "task": "CannedFoodInBinTask",
+      "seed": 4,
+      "method": "pi05_plus_gpt",
+      "status": "controller_running",
+      "started_utc": "2026-10-07T05:25:56.565577+00:00",
+      "eligible": false
     }
   ],
   "active_runs": [
-    {
-      "task": "RubiksCubeTask",
-      "seed": 1,
-      "method": "gpt_only",
-      "status": "controller_running",
-      "started_utc": "2026-10-07T05:03:25.356356+00:00",
-      "observed_control_steps": 148
-    },
-    {
-      "task": "RubiksCubeTask",
-      "seed": 3,
-      "method": "gpt_only",
-      "status": "controller_running",
-      "started_utc": "2026-10-07T05:07:40.458248+00:00",
-      "observed_control_steps": 125
-    },
     {
       "task": "RubiksCubeTask",
       "seed": 4,
       "method": "gpt_only",
       "status": "controller_running",
       "started_utc": "2026-10-07T05:21:40.221446+00:00",
+      "observed_control_steps": 65
+    },
+    {
+      "task": "CannedFoodInBinTask",
+      "seed": 4,
+      "method": "pi05_plus_gpt",
+      "status": "controller_running",
+      "started_utc": "2026-10-07T05:25:56.565577+00:00",
       "observed_control_steps": 0
     }
   ],
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
-    "completed_pairs": 35,
-    "complete_method_runs": 78,
+    "completed_pairs": 36,
+    "complete_method_runs": 80,
     "methods": {
       "gpt_only": {
         "all_completed": {
-          "evaluated": 37,
-          "successes": 36,
+          "evaluated": 39,
+          "successes": 38,
           "failures": 1,
-          "success_rate": 0.972972972972973
+          "success_rate": 0.9743589743589743
         },
         "paired_completed": {
-          "evaluated": 35,
-          "successes": 34,
+          "evaluated": 36,
+          "successes": 35,
           "failures": 1,
-          "success_rate": 0.9714285714285714
+          "success_rate": 0.9722222222222222
         }
       },
       "pi05_plus_gpt": {
@@ -5350,10 +5415,10 @@
           "success_rate": 0.926829268292683
         },
         "paired_completed": {
-          "evaluated": 35,
-          "successes": 32,
+          "evaluated": 36,
+          "successes": 33,
           "failures": 3,
-          "success_rate": 0.9142857142857143
+          "success_rate": 0.9166666666666666
         }
       }
     }
