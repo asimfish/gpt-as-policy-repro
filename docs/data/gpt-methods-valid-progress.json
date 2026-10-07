@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-07T05:11:08.902303+00:00",
+  "snapshot": "2026-10-07T05:18:17.554441+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9269,11 +9269,11 @@
   },
   "infrastructure": {
     "schema": "gpt_policy_infrastructure_bundle.v1",
-    "archive": "downloads/infrastructure_bundle_20261007T045900Z.tar.gz",
-    "bytes": 1046598,
-    "sha256": "d482b1e934f08ff4836f57655429d09b95b606177e46ae783e874081c1fff31c",
-    "files": 896,
-    "created_utc": "2026-10-07T04:58:00.098542+00:00",
+    "archive": "downloads/infrastructure_bundle_20261007T051618Z.tar.gz",
+    "bytes": 1055991,
+    "sha256": "6e4a885624509f8ff2e870e7677c707fbe236c7d777345bb8e394b7d5491a2f6",
+    "files": 898,
+    "created_utc": "2026-10-07T05:16:20.726051+00:00",
     "active_methods": [
       "gpt_only",
       "pi05_plus_gpt"
@@ -9301,7 +9301,7 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 20,
+      "observed_control_steps": 100,
       "active_runs": [
         {
           "task": "RubiksCubeTask",
@@ -9309,7 +9309,7 @@
           "method": "gpt_only",
           "status": "controller_running",
           "started_utc": "2026-10-07T05:03:25.356356+00:00",
-          "observed_control_steps": 20
+          "observed_control_steps": 100
         },
         {
           "task": "RubiksCubeTask",
@@ -9317,7 +9317,7 @@
           "method": "gpt_only",
           "status": "controller_running",
           "started_utc": "2026-10-07T05:03:25.356354+00:00",
-          "observed_control_steps": 35
+          "observed_control_steps": 145
         },
         {
           "task": "RubiksCubeTask",
@@ -9325,7 +9325,7 @@
           "method": "gpt_only",
           "status": "controller_running",
           "started_utc": "2026-10-07T05:07:40.458248+00:00",
-          "observed_control_steps": 0
+          "observed_control_steps": 50
         }
       ],
       "summary": {
