@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-07T05:18:17.554441+00:00",
+  "snapshot": "2026-10-07T05:24:50.100571+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9285,7 +9285,7 @@
     "robolab": {
       "planned_pairs": 50,
       "planned_method_runs": 100,
-      "status": "controller_running",
+      "status": "controller_finished",
       "task": "RubiksCubeTask",
       "seed": 1,
       "method": "gpt_only",
@@ -9301,23 +9301,15 @@
         "complete_episode": false,
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
-      "observed_control_steps": 100,
+      "observed_control_steps": 148,
       "active_runs": [
         {
           "task": "RubiksCubeTask",
           "seed": 1,
           "method": "gpt_only",
-          "status": "controller_running",
+          "status": "controller_finished",
           "started_utc": "2026-10-07T05:03:25.356356+00:00",
-          "observed_control_steps": 100
-        },
-        {
-          "task": "RubiksCubeTask",
-          "seed": 2,
-          "method": "gpt_only",
-          "status": "controller_running",
-          "started_utc": "2026-10-07T05:03:25.356354+00:00",
-          "observed_control_steps": 145
+          "observed_control_steps": 148
         },
         {
           "task": "RubiksCubeTask",
@@ -9325,21 +9317,29 @@
           "method": "gpt_only",
           "status": "controller_running",
           "started_utc": "2026-10-07T05:07:40.458248+00:00",
-          "observed_control_steps": 50
+          "observed_control_steps": 125
+        },
+        {
+          "task": "RubiksCubeTask",
+          "seed": 4,
+          "method": "gpt_only",
+          "status": "controller_running",
+          "started_utc": "2026-10-07T05:21:40.221446+00:00",
+          "observed_control_steps": 0
         }
       ],
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
         "completed_pairs": 35,
-        "complete_method_runs": 77,
+        "complete_method_runs": 78,
         "methods": {
           "gpt_only": {
             "all_completed": {
-              "evaluated": 36,
-              "successes": 35,
+              "evaluated": 37,
+              "successes": 36,
               "failures": 1,
-              "success_rate": 0.9722222222222222
+              "success_rate": 0.972972972972973
             },
             "paired_completed": {
               "evaluated": 35,
