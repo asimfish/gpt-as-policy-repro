@@ -1,0 +1,32 @@
+{
+  "id": "robolab_RubiksCubeTask__seed0__gpt_only",
+  "run_id": "direct_20261007T045112Z_RubiksCubeTask_seed0",
+  "case_id": "RubiksCubeTask__seed0",
+  "task": "RubiksCubeTask",
+  "seed": 0,
+  "method": "gpt_only",
+  "success": true,
+  "complete": true,
+  "eligible": true,
+  "control_steps": 132,
+  "decisions": 27,
+  "terminated": true,
+  "truncated": false,
+  "actions_by_mode": {
+    "student": 0,
+    "edit": 0,
+    "eef": 132
+  },
+  "pi05_inference_calls": 0,
+  "initial_state_hash": "48c56b26c5afcb2ce7fc7cfead2b1485787b6bb2f7280cef65877159fbac908a",
+  "native_horizon": 600,
+  "audit": "data/robolab-method-episodes/robolab_RubiksCubeTask__seed0__gpt_only-audit.json",
+  "audit_sha256": "2785ad44266dc239c886de6abce2d9e4c329afd694bf2008994699fcf93ddd58",
+  "video": "media/robolab-methods/robolab_RubiksCubeTask__seed0__gpt_only.mp4",
+  "poster": "media/robolab-methods/robolab_RubiksCubeTask__seed0__gpt_only.jpg",
+  "video_sha256": "d39a079a37163b6f21f531acfb858ea2abc9f0d4e3366a9848579f1e6e581acc",
+  "source_video_sha256": "1df56c7c1a952ea5095c78c2f7387d623aa7d1160ed00597088163154b54f061",
+  "video_bytes": 585007,
+  "duration_seconds": 8.867,
+  "evidence": "data/robolab-method-episodes/robolab_RubiksCubeTask__seed0__gpt_only.json"
+}
