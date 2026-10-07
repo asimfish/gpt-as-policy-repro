@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-06T16:40:55.608139+00:00",
+  "snapshot": "2026-10-07T04:51:24.489699+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9297,11 +9297,11 @@
     "robolab": {
       "planned_pairs": 50,
       "planned_method_runs": 100,
-      "status": "infrastructure_interrupted",
+      "status": "starting",
       "task": "RubiksCubeTask",
-      "seed": 1,
+      "seed": 3,
       "method": "pi05_plus_gpt",
-      "started_utc": "2026-10-06T16:34:14.797963+00:00",
+      "started_utc": "2026-10-07T04:51:13.029692+00:00",
       "results_eligible": true,
       "action_audit_status": "pending",
       "direct_implementation_status": "native_episode_audited",
@@ -9314,7 +9314,32 @@
         "evidence": "data/robolab-gpt-prefix-audit.json"
       },
       "observed_control_steps": 0,
-      "active_runs": [],
+      "active_runs": [
+        {
+          "task": "RubiksCubeTask",
+          "seed": 3,
+          "method": "pi05_plus_gpt",
+          "status": "starting",
+          "started_utc": "2026-10-07T04:51:13.029692+00:00",
+          "observed_control_steps": 0
+        },
+        {
+          "task": "RubiksCubeTask",
+          "seed": 4,
+          "method": "pi05_plus_gpt",
+          "status": "starting",
+          "started_utc": "2026-10-07T04:51:13.029583+00:00",
+          "observed_control_steps": 0
+        },
+        {
+          "task": "RubiksCubeTask",
+          "seed": 0,
+          "method": "gpt_only",
+          "status": "starting",
+          "started_utc": "2026-10-07T04:51:13.096774+00:00",
+          "observed_control_steps": 0
+        }
+      ],
       "summary": {
         "planned_pairs": 50,
         "planned_method_runs": 100,
