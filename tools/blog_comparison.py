@@ -3,6 +3,7 @@ import argparse
 import hashlib
 import html
 import json
+import math
 from pathlib import Path
 import re
 import statistics
@@ -11,6 +12,9 @@ METHODS={'gpt_only':'GPT Direct','pi05_plus_gpt':'π0.5 + GPT Hybrid'}
 ORIGINAL={'gpt':'gpt_only','mix':'pi05_plus_gpt'}
 SEEDS=('eval_seed','layout_id','reset_seed','simulator_initial_seed','policy_rng_seed')
 TOKEN_KEYS=('totalTokens','inputTokens','cachedInputTokens','cacheWriteInputTokens','outputTokens','reasoningOutputTokens')
+RECORDED_FIELDS=('states','eef_positions','eef_quaternions_wxyz')
+CONFIG_MATCHES=('layout_matches','resolved_configuration_matches','native_horizon_matches',
+    'control_dt_matches','decision_cap_matches','context_version_matches','teacher_prompt_hash_matches','student_identity_matches')
 
 
 def read(path):return json.loads(path.read_text())
@@ -31,7 +35,11 @@ def metrics(rows):
     tokens=[r.get('tokens') for r in rows]
     present=[r for r in tokens if r is not None]
     fields={k:sum(integer(r[k]) for r in present) for k in TOKEN_KEYS}
+    native=[r['native_complete'] for r in rows if 'native_complete' in r]
+    assert all(type(v) is bool for v in native)
     return dict(episodes=len(rows),successes=sum(r['success'] for r in rows),
+        native_completion_samples=len(native),native_complete=sum(native) if native else None,
+        adjudicated_failures=sum(not v for v in native) if len(native)==len(rows) else None,
         success_rate=sum(r['success'] for r in rows)/len(rows),**mean_score(rows),
         control_steps=steps,executed_chunks=sum(integer(r['chunks']) for r in rows),
         corrected_steps=sum(integer(r['corrected_steps']) for r in rows),
@@ -61,6 +69,7 @@ def compare_cases(original,current):
         assert a['seeds']==b['seeds'], 'Same case ID with different seed fields is not aligned'
         details.append(dict(case_id=key[0],method=key[1],original_success=a['success'],
             reproduction_success=b['success'],original_score=a.get('score'),reproduction_score=b.get('score'),
+            original_native_complete=a.get('native_complete'),reproduction_native_complete=b.get('native_complete'),
             success_changed=a['success']!=b['success'],evidence=b['evidence']))
     return dict(alignment='case identifiers and five seed fields; historical full physics states unverified',
         common_case_pairs=len({r['case_id'] for r in details}),common_method_runs=len(details),
@@ -120,12 +129,79 @@ def collect(source,docs,gate):
                 assert tokens['cachedInputTokens']<=tokens['inputTokens'] and tokens['reasoningOutputTokens']<=tokens['outputTokens']
             row=dict(cohort=cohort,case_id=e['case_id'],method=e['method'],run_id=e['run_id'],
                 task=e.get('task',e.get('identity',{}).get('task')),success=e['success'],score=e.get('score'),
+                native_complete=True,
                 steps=e['control_steps'],chunks=len(executed),decision_events=e['decisions'],corrected_steps=corrected,
                 tokens=tokens,evidence=e['evidence'],max_decisions=integer(run_config['max_decisions']))
             if cohort=='robodojo':row['seeds']={k:e['identity'][k] for k in SEEDS}
             records.append(row)
     assert len(records)==200
     return records,inputs,extra_inputs
+
+def recovered_summary(rows):
+    assert len(rows)==98 and len(indexed(rows))==98
+    for r in rows:
+        actual={k:all(r['original_recorded_fields'][k][field]==r['reproduction_recorded_fields'][k][field]
+                 for field in ('shape','dtype','sha256')) for k in RECORDED_FIELDS}
+        assert actual==r['recorded_field_matches']
+        assert all(type(r[k]) is bool for k in CONFIG_MATCHES)
+        assert r['teacher_prompt_hash_matches']==(r['original_teacher_prompt_sha256']==r['reproduction_teacher_prompt_sha256'])
+    return dict(common_method_runs=len(rows),common_case_pairs=len({r['case_id'] for r in rows}),
+        recorded_field_matches={k:sum(r['recorded_field_matches'][k] for r in rows) for k in RECORDED_FIELDS},
+        **{k:sum(r[k] for r in rows) for k in CONFIG_MATCHES},
+        all_recorded_robot_fields_match=sum(all(r['recorded_field_matches'].values()) for r in rows))
+
+def inspection_summary(rows):
+    assert len(rows)==len(indexed(rows))==98
+    for r in rows:
+        assert all(type(r['max_absolute_difference'][k]) in (float,int) and math.isfinite(r['max_absolute_difference'][k]) and r['max_absolute_difference'][k]>=0 for k in RECORDED_FIELDS)
+        assert type(r['prompt_equal_after_replacing_working_directory_line']) is bool
+        assert type(r['archived_prompt_matches_prearchive_run_hash']) is bool
+    return dict(episodes=len(rows),max_absolute_difference={k:max(r['max_absolute_difference'][k] for r in rows) for k in RECORDED_FIELDS},
+        prompt_equal_after_replacing_working_directory_line=sum(r['prompt_equal_after_replacing_working_directory_line'] for r in rows),
+        archived_prompt_matches_prearchive_run_hash=sum(r['archived_prompt_matches_prearchive_run_hash'] for r in rows))
+
+def load_recovery(source,original,current,gate_sha):
+    q=source/'publication_checks/historical_protocol_20261008'
+    if not (q/'recovered_comparison.json').exists():return None
+    proof_data=(q/'original_record_recount.json').read_bytes();proof=json.loads(proof_data)
+    recovered=read(q/'recovered_comparison.json')
+    assert proof['verified'] is True and proof['core_archives_verified']==100
+    assert proof['original_control_steps_verified']==80971
+    assert recovered['verified'] is True and recovered['original_record_recount_sha256']==sha(proof_data)
+    assert recovered['native_certificate_sha256']==gate_sha
+    assert recovered['original_gallery_sha256']==sha((q/'original_robolab_gallery.json').read_bytes())
+    for name,digest in recovered['files_sha256'].items():
+        path=Path(name);assert not path.is_absolute() and '..' not in path.parts
+        assert sha((source/path).read_bytes())==digest,name
+    old=indexed(original);new=indexed([r for r in current if r['cohort']=='robodojo'])
+    original_archives=[]
+    for r in proof['records']:
+        method={'direct':'gpt_only','hybrid':'pi05_plus_gpt'}[r['method']];row=old[r['case_id'],method]
+        assert r['evaluation_success']==row['success'] and r['native_score']==row['score']
+        assert r['native_complete']==row['native_complete'] and r['control_steps']==row['steps']
+        assert r['decision_count']==row['chunks'] and r['tokens']==row['tokens']
+        expected=r['source_steps'].get('edit',0)+r['source_steps'].get('eef',0) if method=='pi05_plus_gpt' else 0
+        assert expected==row['corrected_steps']
+        original_archives.append(dict(case_id=r['case_id'],method=method,core_sha256=r['core_sha256']))
+    assert len(original_archives)==100 and len(indexed(original_archives))==100
+    for r in recovered['robodojo']['cases']:assert r['run_id']==new[r['case_id'],r['method']]['run_id']
+    assert recovered['robodojo']['summary']==recovered_summary(recovered['robodojo']['cases'])
+    inspection=read(q/'initial_difference_inspection.json')
+    assert inspection['verified'] is True and inspection['original_record_recount_sha256']==sha(proof_data)
+    assert inspection['recovered_comparison_sha256']==sha((q/'recovered_comparison.json').read_bytes())
+    assert inspection['summary']==inspection_summary(inspection['cases'])
+    assert set(indexed(inspection['cases']))==set(indexed(recovered['robodojo']['cases']))
+    for name,digest in inspection['files_sha256'].items():
+        path=Path(name);assert not path.is_absolute() and '..' not in path.parts
+        assert sha((source/path).read_bytes())==digest,name
+    return dict(dataset=proof['dataset'],revision=proof['revision'],
+        source_url='https://huggingface.co/datasets/'+proof['dataset']+'/tree/'+proof['revision'],
+        attribution='Original GPT-as-Policy authors; YuMoool public archival dataset, CC BY 4.0.',
+        core_archives_verified=100,original_control_steps_verified=80971,
+        original_record_recount_sha256=sha(proof_data),original_archives=original_archives,
+        recorded_joint_action_state_joins_verified=True,full_observation_archives_verified=False,
+        historical_full_physics_state_verified=False,configuration_comparison=recovered,
+        recorded_initial_difference_inspection=inspection)
 
 def prepare(source,docs):
     q=source/'publication_checks/blog_alignment_20261008'
@@ -142,6 +218,7 @@ def prepare(source,docs):
     raw=read(q/'original_robodojo_cases.json')['cases']
     original=[dict(case_id=r['case_id'],method=ORIGINAL[r['method']],task=r['task'],success=r['success'],
         score=r['score'],steps=r['steps'],chunks=r['chunks'],corrected_steps=r['corrected_steps'],
+        native_complete=r['native_complete'],status=r['status'],
         tokens={k:r['tokens'][k] for k in TOKEN_KEYS},seeds={k:r['seeds'][k] for k in SEEDS}) for r in raw]
     assert len(original)==100 and len(indexed(original))==100
     own_dojo=[r for r in current if r['cohort']=='robodojo'];lab=read(q/'original_robolab.json')
@@ -157,6 +234,7 @@ def prepare(source,docs):
         published=next(r for r in lab['methods'] if r['id']==alias)
         assert published['episodes']==50 and published['successes']==sum(r['original_successes'] for r in lab_tasks if r['method']==method)
     comparison=dict(schema='gpt_policy_blog_comparison.v1',independent_evaluation_complete=True,
+        original_record_recovery=load_recovery(source,original,current,sha(gate_data)),
         historical_equivalence_verified=False,native_completion_commit=gate['published_commit'],
         native_completion_sha256=sha(gate_data),original_sources={k:sources[k] for k in ('GPT-as-Policy','public-website','original_robodojo_cases.json','original_robolab.json','original_robolab_leaderboard.csv')},
         original_robodojo_episodes=original,reproduction_episodes=current,
@@ -169,6 +247,7 @@ def prepare(source,docs):
             methods={m:dict(original_successes=sum(t['original_successes'] for t in lab_tasks if t['method']==m),
                 reproduction=metrics([r for r in own_lab if r['method']==m]),episodes=50) for m in METHODS},tasks=lab_tasks),
         limitations=['一对 RoboDojo layout4 改为预冻结 layout5；原面板另存，两个面板共享49对。',
+            '原RoboDojo Direct为48条原生完整轨迹加2条RPC超时前缀裁定失败；本次50条均原生完整，基础设施中断另行保留并有界重试。两个口径分列，不能据成功总数相同认定协议一致。',
             '匹配案例ID与种子不能证明历史完整物理初态相同；RoboLab仅按任务汇总比较。',
             'RoboLab Direct 使用自有 EEF 适配器，历史完整源码与prompt未恢复。',
             '原 RoboLab 含历史结果及授权重试，两个 BlocksInBin Direct 重试使用500而非180决策；本次不采用该混合预算协议。',
@@ -197,6 +276,7 @@ def verify_public(docs):
         assert set(lookup)=={(e['case_id'],e['method']) for e in document['episodes']}
         for e in document['episodes']:
             row=lookup[e['case_id'],e['method']]
+            assert row['native_complete'] is True
             assert row['run_id']==e['run_id'] and row['success']==e['success'] and row['score']==e.get('score')
             assert row['steps']==e['control_steps'] and row['decision_events']==e['decisions'] and row['evidence']==e['evidence']
             if e['method']=='pi05_plus_gpt':assert row['corrected_steps']==e['actions_by_mode']['edit']+e['actions_by_mode']['eef']
@@ -220,6 +300,36 @@ def verify_public(docs):
     assert value['robodojo']['case_alignment']==compare_cases(old,own)
     assert value['robodojo']['tasks']==task_comparison(old,own)
     for method in METHODS:assert metrics([r for r in old if r['method']==method])==value['robodojo']['methods'][method]['original']
+    assert sum(r['native_complete'] for r in old if r['method']=='gpt_only')==48
+    assert sum(r['native_complete'] for r in old if r['method']=='pi05_plus_gpt')==50
+    adjudicated=[r for r in old if not r['native_complete']]
+    assert {r['case_id'] for r in adjudicated}=={'classify_objects_by_language__standard__g0__l1','pack_objects_into_box__random__g0__l2'}
+    assert all(r['method']=='gpt_only' and r['success'] is False and r['score'] is None for r in adjudicated)
+    recovery=value.get('original_record_recovery')
+    if recovery is not None:
+        assert recovery['core_archives_verified']==100 and recovery['original_control_steps_verified']==sum(r['steps'] for r in old)==80971
+        assert recovery['full_observation_archives_verified'] is False and recovery['historical_full_physics_state_verified'] is False
+        assert set(indexed(recovery['original_archives']))==set(indexed(old))
+        config=recovery['configuration_comparison'];assert config['verified'] is True
+        assert config['native_certificate_sha256']==value['native_completion_sha256']
+        assert config['original_record_recount_sha256']==recovery['original_record_recount_sha256']
+        assert config['robodojo']['summary']==recovered_summary(config['robodojo']['cases'])
+        aligned=indexed(config['robodojo']['cases']);own_lookup=indexed(own)
+        assert set(aligned)==set(indexed(old))&set(own_lookup)
+        for key,r in aligned.items():assert r['run_id']==own_lookup[key]['run_id']
+        inspection=recovery['recorded_initial_difference_inspection']
+        assert inspection['verified'] is True and inspection['historical_full_physics_state_verified'] is False
+        assert inspection['original_record_recount_sha256']==recovery['original_record_recount_sha256']
+        assert inspection['summary']==inspection_summary(inspection['cases'])
+        assert set(indexed(inspection['cases']))==set(aligned)
+        for r in inspection['cases']:assert r['run_id']==own_lookup[r['case_id'],r['method']]['run_id']
+        lab=config['robolab']['task_method_control_horizons'];assert len(lab)==20
+        assert {(r['task'],r['method']) for r in lab}=={(r['task'],r['method']) for r in current if r['cohort']=='robolab'}
+        for r in lab:
+            assert r['control_horizon_matches']==(r['original_control_horizon']==r['reproduction_control_horizon'])
+            assert r['original_slots_are_seed_identities'] is False and r['historical_per_slot_decision_caps_verified'] is False
+            task=next(t for t in value['robolab']['tasks'] if t['task']==r['task'] and t['method']==r['method'])
+            assert task['original_successes']==r['original_successes']
     assert (docs/'blog-comparison.html').read_text()==render(value)
     assert 'blog-comparison.html' in (docs/'scenes.html').read_text()
 
@@ -236,8 +346,8 @@ def render(value):
     rows=[]
     for method,values in value['robodojo']['methods'].items():
         a,b=values['original'],values['reproduction']
-        rows.append([METHODS[method],f'{a["successes"]}/{a["episodes"]}',f'{b["successes"]}/{b["episodes"]}',score(a),score(b),f'{a["control_steps"]:,} / {b["control_steps"]:,}',f'{a["executed_chunks"]:,} / {b["executed_chunks"]:,}',usage(a)+' / '+usage(b)])
-    main=table(['方法','原成功数','本次成功数','原Score×100','本次Score×100','控制步 原/本次','执行段 原/本次','累计Token 原/本次'],rows)
+        rows.append([METHODS[method],f'{a["successes"]}/{a["episodes"]}',f'{b["successes"]}/{b["episodes"]}',f'{a["native_complete"]} / {b["native_complete"]}',score(a),score(b),f'{a["control_steps"]:,} / {b["control_steps"]:,}',f'{a["executed_chunks"]:,} / {b["executed_chunks"]:,}',usage(a)+' / '+usage(b)])
+    main=table(['方法','原成功数','本次成功数','原生完整 原/本次','原Score×100','本次Score×100','控制步 原/本次','执行段 原/本次','累计Token 原/本次'],rows)
     a=value['robodojo']['methods']['pi05_plus_gpt']['original'];b=value['robodojo']['methods']['pi05_plus_gpt']['reproduction']
     correction=f'Hybrid 原纠错 {a["corrected_steps"]:,}/{a["control_steps"]:,} 步（{a["correction_fraction"]:.2%}）；本次 {b["corrected_steps"]:,}/{b["control_steps"]:,} 步（{b["correction_fraction"]:.2%}）。纠错按实际执行的 edit/EEF 控制步计数。累计Token包含缓存输入，不能直接换算费用；执行段只计 executed_steps&gt;0，与作者提取口径一致。'
     tasks=table(['RoboDojo任务','方法','原成功数/5','本次成功数/5'],[[t['task'],METHODS[t['method']],t['original']['successes'],t['reproduction']['successes']] for t in value['robodojo']['tasks']])
@@ -246,7 +356,13 @@ def render(value):
     alignment=value['robodojo']['case_alignment'];paired=table(['共同案例','方法','原成功','本次成功','原Score','本次Score','本次证据'],[[r['case_id'],METHODS[r['method']],'是' if r['original_success'] else '否','是' if r['reproduction_success'] else '否',r['original_score'] if r['original_score'] is not None else '缺失',r['reproduction_score'],dict(href=r['evidence'],text='案例JSON')] for r in alignment['cases']])
     changed='；'.join(METHODS[m]+f'：{r["changed_success_outcomes"]}/{r["episodes"]}条成功判定不同' for m,r in alignment['methods'].items())
     document='<h2>RoboLab决策预算观察</h2><p>本次决策上限100000，主要受原生控制时域约束。原报告部分Direct回合采用180/500决策。下表只观察已有轨迹在相应决策数内是否已终止，不能当作新预算的实际成功率；尚未终止不计为失败。</p>'+budgets
-    return '<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>与原 blog 的逐项对照</title><style>body{font:16px/1.65 system-ui,sans-serif;max-width:1200px;margin:auto;padding:24px;color:#182238;background:#f6f8fb}h1,h2{line-height:1.3}a{color:#1555b0}.panel{background:white;border:1px solid #dce2ec;border-radius:12px;padding:18px;margin:20px 0}.scroll{overflow-x:auto}table{border-collapse:collapse;min-width:620px;width:100%}th,td{text-align:left;border-bottom:1px solid #e1e6ef;padding:9px;font-size:14px}th{background:#eef2f9}li{margin:8px 0}details{margin:20px 0}code{overflow-wrap:anywhere}@media(max-width:600px){body{padding:14px}}</style><main><a href="scenes.html">← 复现报告</a><h1>与原 blog 的逐项对照</h1><div class="panel"><strong>两方法200回合执行和审计已完成；历史等价性尚未证明。</strong><p>本页比较独立运行与作者公开快照。相同总成功数不能证明案例结果或控制实现一致，数值差异也不能单独定位原因。</p><p><a href="data/blog-comparison.json">下载完整对照 JSON</a> · <a href="data/reproduction-completion.json">查看原始执行验收证明</a> · <a href="https://github.com/anonymous-report-421/GPT-as-Policy">作者公开源码</a></p></div><h2>RoboDojo 主结果与执行统计</h2>'+main+'<p>'+correction+'</p><h2>逐任务比较</h2>'+tasks+lab+document+'<h2>共同案例对照</h2><p>共同49对、98条方法回合的案例ID与五个种子字段相同；完整历史物理初态未核验。'+E(changed)+'。layout4与layout5保持分列，未合并为相同案例。</p><details><summary>展开98条共同案例</summary>'+paired+'</details><h2>协议与来源限制</h2><ul>'+''.join('<li>'+E(t)+'</li>' for t in value['limitations'])+'</ul><p>原RoboLab总数为 Direct49/50、Hybrid46/50；本次同为49/50、46/50，逐任务表展示了失败分布差异。两批历史初态未配对，不能计算逐seed一致率。</p><p>原数据固定提交：<code>'+E(value['original_sources']['GPT-as-Policy']['commit'])+'</code>；网站数据提交：<code>'+E(value['original_sources']['public-website']['commit'])+'</code>。文件SHA与来源URL见对照JSON；新的统计提取证据独立封存，原200回合验收证明不改写。</p></main></html>'
+    recovery=value.get('original_record_recovery');recovery_panel=''
+    if recovery:
+        s=recovery['configuration_comparison']['robodojo']['summary']
+        n=recovery['recorded_initial_difference_inspection']['summary']
+        delta=n['max_absolute_difference']
+        recovery_panel='<section class="panel" id="original-record-recovery"><h2>原始公开档案独立重算</h2><p>100个核心档案已逐包校验SHA，80,971步控制的动作及执行后关节状态已与轨迹逐步核对；原Direct13/50与Hybrid24/50及其Score、纠错和累计Token均重算一致。这是原记录的核验；本次独立运行结果仍保持下表中的13/50与21/50。</p><p>原Direct仅48条原生完整，另2条RPC超时前缀按作者协议裁定失败。本次Direct50条均原生完整；已保留的中断不补入原生失败。</p><p>共同98条回合：布局、解析配置、原生时域、控制步长均'+str(s['layout_matches'])+'/98一致；初始关节状态哈希'+str(s['recorded_field_matches']['states'])+'/98、末端位置'+str(s['recorded_field_matches']['eef_positions'])+'/98、姿态四元数哈希'+str(s['recorded_field_matches']['eef_quaternions_wxyz'])+'/98、prompt哈希'+str(s['teacher_prompt_hash_matches'])+'/98一致。</p><p>这些字节差异很小：初始关节最大绝对数值差'+format(delta['states'],'.3e')+'，四元数'+format(delta['eef_quaternions_wxyz'],'.3e')+'，末端位置为零。'+str(n['prompt_equal_after_replacing_working_directory_line'])+'/98条归档prompt只替换工作目录行后，其余字节完全一致；数据导出曾规范化私有路径，归档prompt不保留运行时原哈希。不能把哈希不同直接解释为控制指令或物理环境发生实质变化，也未证明原始模型输入、隐藏物理状态和服务状态完全相同。</p><p>RoboLab20个任务/方法组合的原生控制时域全部一致；视频最终槽位不是配对种子，也未证明逐槽位决策预算。</p><p><a href="'+E(recovery['source_url'],quote=True)+'">公开原始数据集（固定版本）</a> · '+E(recovery['attribution'])+' 完整RGB档案及隐藏物理、模型状态尚未核验；原源码存在多个已归档版本。</p></section>'
+    return '<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>与原 blog 的逐项对照</title><style>body{font:16px/1.65 system-ui,sans-serif;max-width:1200px;margin:auto;padding:24px;color:#182238;background:#f6f8fb}h1,h2{line-height:1.3}a{color:#1555b0}.panel{background:white;border:1px solid #dce2ec;border-radius:12px;padding:18px;margin:20px 0}.scroll{overflow-x:auto}table{border-collapse:collapse;min-width:620px;width:100%}th,td{text-align:left;border-bottom:1px solid #e1e6ef;padding:9px;font-size:14px}th{background:#eef2f9}li{margin:8px 0}details{margin:20px 0}code{overflow-wrap:anywhere}@media(max-width:600px){body{padding:14px}}</style><main><a href="scenes.html">← 复现报告</a><h1>与原 blog 的逐项对照</h1><div class="panel"><strong>两方法200回合执行和审计已完成；历史等价性尚未证明。</strong><p>本页比较独立运行与作者公开快照。相同总成功数不能证明案例结果或控制实现一致，数值差异也不能单独定位原因。</p><p><a href="data/blog-comparison.json">下载完整对照 JSON</a> · <a href="data/reproduction-completion.json">查看原始执行验收证明</a> · <a href="https://github.com/anonymous-report-421/GPT-as-Policy">作者公开源码</a></p></div>'+recovery_panel+'<h2>RoboDojo 主结果与执行统计</h2>'+main+'<p>'+correction+'</p><h2>逐任务比较</h2>'+tasks+lab+document+'<h2>共同案例对照</h2><p>共同49对、98条方法回合的案例ID与五个种子字段相同；完整历史物理初态未核验。'+E(changed)+'。layout4与layout5保持分列，未合并为相同案例。</p><details><summary>展开98条共同案例</summary>'+paired+'</details><h2>协议与来源限制</h2><ul>'+''.join('<li>'+E(t)+'</li>' for t in value['limitations'])+'</ul><p>原RoboLab总数为 Direct49/50、Hybrid46/50；本次同为49/50、46/50，逐任务表展示了失败分布差异。两批历史初态未配对，不能计算逐seed一致率。</p><p>原数据固定提交：<code>'+E(value['original_sources']['GPT-as-Policy']['commit'])+'</code>；网站数据提交：<code>'+E(value['original_sources']['public-website']['commit'])+'</code>。文件SHA与来源URL见对照JSON；新的统计提取证据独立封存，原200回合验收证明不改写。</p></main></html>'
 
 def build(source,out):
     value=prepare(source,out)

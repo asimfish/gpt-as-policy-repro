@@ -1,7 +1,7 @@
 """Denominator, alignment and public-data drift oracles for blog comparison."""
 import json,shutil,tempfile,unittest
 from pathlib import Path
-from blog_comparison import budget_observation,compare_cases,indexed,metrics,task_comparison,verify_public
+from blog_comparison import budget_observation,compare_cases,indexed,metrics,task_comparison,verify_public,recovered_summary
 
 
 def row(case='shared',success=False,score=None):
@@ -9,6 +9,24 @@ def row(case='shared',success=False,score=None):
                 steps=10,chunks=2,corrected_steps=0,tokens=None,seeds={'layout_id':0},evidence='data/evidence.json')
 
 class BlogComparisonTest(unittest.TestCase):
+    def test_native_completion_coverage_does_not_impute_unknown_or_adjudicated_score(self):
+        a=dict(row(success=True,score=1),native_complete=True)
+        b=dict(row(),native_complete=False)
+        result=metrics([a,b]);self.assertEqual(result['native_complete'],1)
+        self.assertEqual(result['adjudicated_failures'],1);self.assertEqual(result['score_samples'],1)
+        self.assertIsNone(metrics([row()])['native_complete'])
+        self.assertIsNone(metrics([a,row()])['adjudicated_failures'])
+
+    def test_recovered_summary_rejects_false_match_claim(self):
+        docs=Path(__file__).resolve().parents[1]/'docs'
+        value=json.loads((docs/'data/blog-comparison.json').read_text())
+        recovery=value.get('original_record_recovery')
+        if recovery is None:self.skipTest('Recovery page not built yet')
+        rows=recovery['configuration_comparison']['robodojo']['cases']
+        recovered_summary(rows)
+        rows[0]['recorded_field_matches']['states']=not rows[0]['recorded_field_matches']['states']
+        with self.assertRaises(AssertionError):recovered_summary(rows)
+
     def test_missing_scores_keep_success_denominator_and_are_not_zero_imputed(self):
         result=metrics([row(success=True,score=1),row(score=None)])
         self.assertEqual(result['episodes'],2);self.assertEqual(result['success_rate'],.5)
