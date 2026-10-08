@@ -70,6 +70,10 @@ def render(out, valid=False, update_board=True):
     bundle=data.get('infrastructure')
     bundle_status='所选 RoboDojo 与 RoboLab 各 100 回合、各 50 对均已通过完整终验；包内保留冻结清单、失败证据索引及终验凭据。<a href="data/reproduction-completion.json">查看完整验收证明 ↓</a>。RoboLab Direct 使用自有 EEF 适配器，历史源码与完整物理初态不可得，未独立重算 IK。' if bundle and bundle['full_reproduction_complete'] else '这是当前基建快照，全量实验仍在推进。'
     bundle_html='' if not bundle else f'<div class="panel" id="infra-bundle-download"><h3>复现实验基建下载</h3><p>运行脚本、两方法队列、动作审计、冻结场景、Direct 接口、测试与 systemd 模板。已核对归档内全部文件；{bundle_status}</p><p><a href="{E(bundle["archive"])}" download>下载基建包 · {bundle["bytes"]/2**20:.2f} MiB ↓</a> · <a href="data/infrastructure-bundle.json">文件校验与版本 JSON ↓</a></p><details><summary>SHA256 校验</summary><code>{bundle["sha256"]}</code></details></div>'
+    comparison_html=''
+    if (out/'data/blog-comparison.json').is_file():
+        comparison_html='<div class="panel" id="blog-comparison-summary"><h3>与原 blog 的一致性</h3><p>当前200回合的执行与审计已完成，历史环境和实现等价性尚未证明。总成功数相同也可能来自不同任务或案例；完整失败保留，场景变更分列。<a href="blog-comparison.html">查看逐任务、共同案例、纠错比例和Token对照 ↗</a> · <a href="data/blog-comparison.json">下载对照数据 ↓</a></p></div>'
+    bundle_html+=comparison_html
 
     task_rows = []
     for task in data.get('task_summary', []):
@@ -111,6 +115,7 @@ def render(out, valid=False, update_board=True):
             supplemental_summary=data['supplementary']['robolab']['summary']
             document = re.sub(r'<span id="robolab-infra-progress">.*?</span>',
                               f'<span id="robolab-infra-progress">{supplemental_summary["complete_method_runs"]} / {supplemental_summary["planned_method_runs"]} 条已完整审计，{supplemental_summary["completed_pairs"]} / {supplemental_summary["planned_pairs"]} 对已完成。<a href="robolab-methods.html">补充结果与完整回放 ↗</a></span>', document)
+        document=re.sub(r'<div class="panel" id="blog-comparison-summary">.*?</div>','',document,flags=re.S)
         document=re.sub(r'<div class="panel" id="infra-bundle-download">.*?</div>',bundle_html,document,flags=re.S)
         # Do not leave a historical baseline date beside current primary counts.
         document = re.sub(r'(<p class="updated">)(?:数据快照|主方法快照) · [^<]*(</p>)',
@@ -156,6 +161,7 @@ def render(out, valid=False, update_board=True):
         document = document.replace('<title>GPT Direct / Hybrid · 独立复现结果</title>',
                                     '<title>GPT Direct / Hybrid · 独立补齐面板</title>')
         document = document.replace('50 个冻结案例的配对矩阵', '50 个有效案例的配对矩阵')
+    document=document.replace('<section class="report-section"><h2>复现口径与证据边界</h2>',comparison_html+'<section class="report-section"><h2>复现口径与证据边界</h2>',1)
     (out / ('gpt-methods-valid.html' if valid else 'gpt-methods.html')).write_text(document)
 
 

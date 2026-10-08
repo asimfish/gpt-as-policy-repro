@@ -71,6 +71,8 @@ def verify_gpt_dataset(root, progress, manifest_name):
 
 
 def verify(root):
+    from blog_comparison import verify_public
+    verify_public(root)
     report=json.loads((root/'data/report.json').read_text());rows=report['episodes']
     summary=report['summary']['pi05_prefix15'];prefix=[r for r in rows if r['method']=='pi05_prefix15']
     valid=[r for r in prefix if r['eligible']]

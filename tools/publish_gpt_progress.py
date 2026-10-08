@@ -18,7 +18,7 @@ GENERATED = ('docs/index.html', 'docs/scenes.html', 'docs/gpt-methods.html', 'do
              'docs/gpt-methods-valid.html', 'docs/data/gpt-methods-valid-progress.json',
              'docs/data/gpt-valid-media-manifest.json', 'docs/data/gpt-valid-cohort.json',
              'docs/data/gpt-episodes/', 'docs/data/gpt-attempts/', 'docs/data/robolab-gpt-prefix-audit.json',
-             'docs/downloads/infrastructure_bundle_', 'docs/data/infrastructure-bundle.json', 'docs/data/reproduction-completion.json', 'docs/media/gpt-episodes/', 'docs/assets/gpt.css', 'docs/assets/gpt.js')
+             'docs/downloads/infrastructure_bundle_', 'docs/data/infrastructure-bundle.json', 'docs/data/reproduction-completion.json', 'docs/blog-comparison.html', 'docs/data/blog-comparison.json', 'docs/media/gpt-episodes/', 'docs/assets/gpt.css', 'docs/assets/gpt.js')
 
 
 def git(repo, *args, env=None, stdin=None):
@@ -100,7 +100,7 @@ def verify_online(repo, source):
     files = ('scenes.html', 'gpt-methods.html', 'data/gpt-methods-progress.json', 'assets/gpt.js', 'assets/gpt.css')
     commit = git(repo, 'rev-parse', 'HEAD')
     files=list(files)
-    optional_names = ('docs/data/robolab-gpt-prefix-audit.json', 'docs/data/infrastructure-bundle.json', 'docs/data/reproduction-completion.json',
+    optional_names = ('docs/data/robolab-gpt-prefix-audit.json', 'docs/data/infrastructure-bundle.json', 'docs/data/reproduction-completion.json', 'docs/blog-comparison.html', 'docs/data/blog-comparison.json',
         'docs/robolab-methods.html', 'docs/data/robolab-methods-progress.json',
         'docs/gpt-methods-valid.html', 'docs/data/gpt-methods-valid-progress.json',
         'docs/data/gpt-valid-cohort.json', 'docs/data/gpt-valid-media-manifest.json')
@@ -176,6 +176,7 @@ def publish(repo, source, credentials_repo, proxy):
     subprocess.run([sys.executable, str(tools / 'build_gpt_site.py'), '--source', str(source), '--out', str(repo / 'docs')], check=True)
     current = json.loads((repo / 'docs/data/gpt-methods-progress.json').read_text())
     assert {e['id'] for e in old['episodes']} <= {e['id'] for e in current['episodes']}, 'Audit regression; refuse to erase published episodes'
+    subprocess.run([sys.executable,str(tools/'blog_comparison.py'),'--source',str(source),'--out',str(repo/'docs')],check=True)
     subprocess.run([sys.executable, str(tools / 'verify_site.py'), str(repo / 'docs')], check=True)
     check_worktree(repo)
     changed = [p for p in git(repo, 'ls-files', '--modified').splitlines() if owned(p)]
