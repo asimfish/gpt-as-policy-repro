@@ -1,5 +1,6 @@
 """Compare the sealed independent cohort to immutable public author snapshots."""
 import argparse
+from collections import Counter
 import hashlib
 import html
 import json
@@ -203,6 +204,78 @@ def load_recovery(source,original,current,gate_sha):
         historical_full_physics_state_verified=False,configuration_comparison=recovered,
         recorded_initial_difference_inspection=inspection)
 
+def worker_fidelity_summary(rows):
+    assert len(rows)==len(indexed(rows))==98
+    for r in rows:
+        assert r['original_cli']=='codex-cli 0.153.4'
+        assert r['original_rejection_stop'] in (None,5)
+        count=integer(r['reproduction_recorded_rejections'])
+        assert r['crosses_original_five_rejection_stop']==(r['original_rejection_stop']==5 and count>=5)
+        assert all(type(r['images'][name]['pixel_equal']) is bool for name in ('cam_high','cam_left_wrist','cam_right_wrist'))
+    return dict(common_method_runs=98,crosses_original_five_rejection_stop=sum(r['crosses_original_five_rejection_stop'] for r in rows),
+        original_cli_counts=dict(Counter(r['original_cli'] for r in rows)),
+        reproduction_cli_counts=dict(Counter(r['reproduction_cli'] for r in rows)),
+        initial_model_preview_pixel_matches={name:sum(r['images'][name]['pixel_equal'] for r in rows) for name in ('cam_high','cam_left_wrist','cam_right_wrist')})
+
+def load_worker_fidelity(source,gate_sha,recovery,current):
+    q=source/'publication_checks/worker_fidelity_20261008'
+    if not (q/'historical_worker_offline_gate.json').exists():return None
+    documents={name:read(q/name) for name in ('worker_protocol_inspection.json','historical_worker_manifest.json',
+        'historical_worker_offline_gate.json','original_cli_toolchain.json','original_cli_zero_turn_probe.json','initial_model_rgb_differences.json')}
+    hashes={name:sha((q/name).read_bytes()) for name in documents}
+    inspection=documents['worker_protocol_inspection.json'];manifest=documents['historical_worker_manifest.json']
+    offline=documents['historical_worker_offline_gate.json'];cli=documents['original_cli_zero_turn_probe.json']
+    assert inspection['verified'] is True and inspection['native_certificate_sha256']==gate_sha
+    assert inspection['original_record_recount_sha256']==recovery['original_record_recount_sha256']
+    assert len(inspection['original'])==len(inspection['reproduction'])==100
+    assert set(indexed(inspection['reproduction']))==set(indexed([r for r in current if r['cohort']=='robodojo']))
+    assert all(r['worker']['codex_version']=='codex-cli 0.153.4' for r in inspection['original'])
+    # Capture-time readings are bound to the original audits or separately SHA
+    # recorded. Recheck audit proofs, worker identity and additional inputs;
+    # this is not a new scan of all sealed native action evidence.
+    for r in inspection['reproduction']:
+        required=set(r['separately_captured_inputs'])|{name for name in r['inputs_sha256'] if name.endswith(('complete_action_audit.json','worker.json'))}
+        for name in required:
+            path=Path(name);assert not path.is_absolute() and '..' not in path.parts
+            assert sha((source/path).read_bytes())==r['inputs_sha256'][name]
+    assert manifest['verified'] is True and len(manifest['cases'])==100 and len(manifest['source_profiles'])==5
+    assert manifest['cli']['toolchain_receipt_sha256']==hashes['original_cli_toolchain.json']
+    for gate in (offline,cli):
+        assert gate['verified'] is True and gate['manifest_sha256']==hashes['historical_worker_manifest.json']
+        assert len(gate['profiles'])==5 and gate['model_calls']==gate['simulator_steps']==0
+    rgb=documents['initial_model_rgb_differences.json']
+    assert rgb['verified'] is True and rgb['worker_protocol_inspection_sha256']==hashes['worker_protocol_inspection.json']
+    assert set(indexed(rgb['cases']))==set(indexed(inspection['common_cases']))
+    value=dict(evidence_sha256=hashes,common_cases=inspection['common_cases'],
+        common_summary=worker_fidelity_summary(inspection['common_cases']),
+        original_cli_counts=inspection['summary']['original_cli_counts'],reproduction_cli_counts=inspection['summary']['reproduction_cli_counts'],
+        original_five_rejection_stop_episodes=inspection['summary']['original_five_rejection_stop_episodes'],
+        initial_model_rgb_difference_summary=rgb['summary'],
+        reconstructed_source_profiles=5,reconstructed_worker_versions=4,historical_case_assignments=100,
+        isolated_cli_version='codex-cli 0.153.4',offline_source_profiles_verified=5,offline_protocol_scenarios_verified=30,
+        real_cli_initialization_profiles_verified=5,compatibility_probe_model_calls=0,compatibility_probe_ephemeral_override=True,
+        original_gateway_source_recovered=False,original_model_service_snapshot_recovered=False,
+        historical_protocol_equivalence=False,full_blog_reproduction_complete=False,
+        scope='Recorded rejection branches and initial model-preview bytes; exact historical source staging plus offline execution and zero-turn CLI initialization. '
+            'Fresh physical canary is separate and has no new audited score here. Fifth-stop crossings are not counterfactual success estimates.')
+    validate_worker_fidelity(value)
+    return value
+
+def validate_worker_fidelity(value):
+    assert value['common_summary']==worker_fidelity_summary(value['common_cases'])
+    assert value['original_cli_counts']=={'codex-cli 0.153.4':100}
+    assert value['reproduction_cli_counts']=={'codex-cli 0.159.2':96,'codex-cli 0.153.4':4}
+    assert value['original_five_rejection_stop_episodes']==78
+    for name in ('reconstructed_source_profiles','offline_source_profiles_verified','real_cli_initialization_profiles_verified'):assert value[name]==5
+    assert value['reconstructed_worker_versions']==4 and value['historical_case_assignments']==100
+    assert value['offline_protocol_scenarios_verified']==30 and value['compatibility_probe_model_calls']==0
+    assert value['original_gateway_source_recovered'] is False and value['original_model_service_snapshot_recovered'] is False
+    assert value['historical_protocol_equivalence'] is False and value['full_blog_reproduction_complete'] is False
+    for r in value['initial_model_rgb_difference_summary'].values():
+        assert r['episodes']==98 and r['pixel_identical_episodes']==0
+        assert 0<=r['mean_absolute_channel_difference_mean']<=r['mean_absolute_channel_difference_max']<=255
+        assert 0<=r['changed_pixel_fraction_mean']<=1
+
 def prepare(source,docs):
     q=source/'publication_checks/blog_alignment_20261008'
     if not (q/'original_sources.json').exists():return None
@@ -254,6 +327,7 @@ def prepare(source,docs):
             '本次RoboLab日志的决策上限为100000，主要受原生控制时域约束；180/500决策表仅截看已有轨迹，不是新预算评测或因果解释。',
             'Token 为控制器最后记录的累计计数，包含缓存输入；RoboLab缺少独立用量汇总，保持未知，不能作为零消耗或账单金额。',
             'π0.5、Cosmos和DreamZero全量基线尚未纳入此前两方法范围。'])
+    comparison['historical_worker_fidelity']=load_worker_fidelity(source,sha(gate_data),comparison['original_record_recovery'],current)
     receipt=dict(schema='gpt_policy_blog_statistics_audit.v1',verified=True,complete_native_episodes=200,
         native_completion_sha256=sha(gate_data),files_sha256=inputs,additional_statistics_inputs=extra_inputs,
         method='Original audit/result/config SHA bindings; history coverage and correction counts checked against sealed native audit. History absent from older audit manifests and cumulative usage files are separately captured with current SHA, not retroactively claimed as original gate inputs. No model or simulator calls.',
@@ -330,8 +404,32 @@ def verify_public(docs):
             assert r['original_slots_are_seed_identities'] is False and r['historical_per_slot_decision_caps_verified'] is False
             task=next(t for t in value['robolab']['tasks'] if t['task']==r['task'] and t['method']==r['method'])
             assert task['original_successes']==r['original_successes']
+    worker=value.get('historical_worker_fidelity')
+    if worker is not None:
+        validate_worker_fidelity(worker)
+        assert set(indexed(worker['common_cases']))==set(indexed(old))&set(indexed(own))
+        for r in worker['common_cases']:assert r['run_id']==indexed(own)[r['case_id'],r['method']]['run_id']
     assert (docs/'blog-comparison.html').read_text()==render(value)
     assert 'blog-comparison.html' in (docs/'scenes.html').read_text()
+
+def worker_fidelity_panel(value):
+    worker=value.get('historical_worker_fidelity')
+    if worker is None:return ''
+    s=worker['common_summary'];rgb=worker['initial_model_rgb_difference_summary']
+    differences=[r['mean_absolute_channel_difference_mean'] for r in rgb.values()]
+    return ('<section class="panel" id="historical-worker-fidelity"><h2>历史控制器与CLI恢复</h2>'
+        '<p>原100条全部使用Codex CLI 0.153.4；本次封存结果中96条使用0.159.2，4条使用0.153.4。'
+        '原源码包含5套文件组合、4个控制器版本；其中78条对应累计5次输入拒绝后终止的版本。'
+        '共同98条中，有'+str(s['crosses_original_five_rejection_stop'])+'条本次轨迹超过对应原版的5次终止阈值。'
+        '这是实际记录与停止规则的差异，不是按原版重跑成绩，也不能推断成功率会如何变化。</p>'
+        '<p>已独立安装0.153.4并逐字节恢复5套历史源码，100个原案例均绑定对应版本。'
+        '5套源码通过30项离线事件循环场景及5次真实CLI初始化，兼容性检查未启动模型推理。'
+        '初始化检查使用临时线程，尚未验证原持久历史行为；缺失的历史网关模块由明确标注的当前授权运行环境桥接。</p>'
+        '<p>另设独立历史版本试跑入口，使用原布局、种子、时域和预算，保留首次尝试；本页不计入新的未审计成绩。'
+        '封存200回合及其证明保持原样。RoboLab历史Direct源码、逐槽180/500预算与重试选择协议仍未恢复。</p>'
+        '<p>三个相机初始模型图像均0/98逐像素相同；0–255通道范围内的跨案例平均绝对差为'
+        +format(min(differences),'.3f')+'–'+format(max(differences),'.3f')+'。这些RGB测量不证明隐藏物理状态相同，也不解释结果差异。'
+        '版本对应、图像测量和独立检查SHA见<a href="data/blog-comparison.json">完整JSON</a>。</p></section>')
 
 def render(value):
     E=html.escape
@@ -356,12 +454,12 @@ def render(value):
     alignment=value['robodojo']['case_alignment'];paired=table(['共同案例','方法','原成功','本次成功','原Score','本次Score','本次证据'],[[r['case_id'],METHODS[r['method']],'是' if r['original_success'] else '否','是' if r['reproduction_success'] else '否',r['original_score'] if r['original_score'] is not None else '缺失',r['reproduction_score'],dict(href=r['evidence'],text='案例JSON')] for r in alignment['cases']])
     changed='；'.join(METHODS[m]+f'：{r["changed_success_outcomes"]}/{r["episodes"]}条成功判定不同' for m,r in alignment['methods'].items())
     document='<h2>RoboLab决策预算观察</h2><p>本次决策上限100000，主要受原生控制时域约束。原报告部分Direct回合采用180/500决策。下表只观察已有轨迹在相应决策数内是否已终止，不能当作新预算的实际成功率；尚未终止不计为失败。</p>'+budgets
-    recovery=value.get('original_record_recovery');recovery_panel=''
+    recovery=value.get('original_record_recovery');recovery_panel=worker_fidelity_panel(value)
     if recovery:
         s=recovery['configuration_comparison']['robodojo']['summary']
         n=recovery['recorded_initial_difference_inspection']['summary']
         delta=n['max_absolute_difference']
-        recovery_panel='<section class="panel" id="original-record-recovery"><h2>原始公开档案独立重算</h2><p>100个核心档案已逐包校验SHA，80,971步控制的动作及执行后关节状态已与轨迹逐步核对；原Direct13/50与Hybrid24/50及其Score、纠错和累计Token均重算一致。这是原记录的核验；本次独立运行结果仍保持下表中的13/50与21/50。</p><p>原Direct仅48条原生完整，另2条RPC超时前缀按作者协议裁定失败。本次Direct50条均原生完整；已保留的中断不补入原生失败。</p><p>共同98条回合：布局、解析配置、原生时域、控制步长均'+str(s['layout_matches'])+'/98一致；初始关节状态哈希'+str(s['recorded_field_matches']['states'])+'/98、末端位置'+str(s['recorded_field_matches']['eef_positions'])+'/98、姿态四元数哈希'+str(s['recorded_field_matches']['eef_quaternions_wxyz'])+'/98、prompt哈希'+str(s['teacher_prompt_hash_matches'])+'/98一致。</p><p>这些字节差异很小：初始关节最大绝对数值差'+format(delta['states'],'.3e')+'，四元数'+format(delta['eef_quaternions_wxyz'],'.3e')+'，末端位置为零。'+str(n['prompt_equal_after_replacing_working_directory_line'])+'/98条归档prompt只替换工作目录行后，其余字节完全一致；数据导出曾规范化私有路径，归档prompt不保留运行时原哈希。不能把哈希不同直接解释为控制指令或物理环境发生实质变化，也未证明原始模型输入、隐藏物理状态和服务状态完全相同。</p><p>RoboLab20个任务/方法组合的原生控制时域全部一致；视频最终槽位不是配对种子，也未证明逐槽位决策预算。</p><p><a href="'+E(recovery['source_url'],quote=True)+'">公开原始数据集（固定版本）</a> · '+E(recovery['attribution'])+' 完整RGB档案及隐藏物理、模型状态尚未核验；原源码存在多个已归档版本。</p></section>'
+        recovery_panel+='<section class="panel" id="original-record-recovery"><h2>原始公开档案独立重算</h2><p>100个核心档案已逐包校验SHA，80,971步控制的动作及执行后关节状态已与轨迹逐步核对；原Direct13/50与Hybrid24/50及其Score、纠错和累计Token均重算一致。这是原记录的核验；本次独立运行结果仍保持下表中的13/50与21/50。</p><p>原Direct仅48条原生完整，另2条RPC超时前缀按作者协议裁定失败。本次Direct50条均原生完整；已保留的中断不补入原生失败。</p><p>共同98条回合：布局、解析配置、原生时域、控制步长均'+str(s['layout_matches'])+'/98一致；初始关节状态哈希'+str(s['recorded_field_matches']['states'])+'/98、末端位置'+str(s['recorded_field_matches']['eef_positions'])+'/98、姿态四元数哈希'+str(s['recorded_field_matches']['eef_quaternions_wxyz'])+'/98、prompt哈希'+str(s['teacher_prompt_hash_matches'])+'/98一致。</p><p>这些字节差异很小：初始关节最大绝对数值差'+format(delta['states'],'.3e')+'，四元数'+format(delta['eef_quaternions_wxyz'],'.3e')+'，末端位置为零。'+str(n['prompt_equal_after_replacing_working_directory_line'])+'/98条归档prompt只替换工作目录行后，其余字节完全一致；数据导出曾规范化私有路径，归档prompt不保留运行时原哈希。不能把哈希不同直接解释为控制指令或物理环境发生实质变化，也未证明原始模型输入、隐藏物理状态和服务状态完全相同。</p><p>RoboLab20个任务/方法组合的原生控制时域全部一致；视频最终槽位不是配对种子，也未证明逐槽位决策预算。</p><p><a href="'+E(recovery['source_url'],quote=True)+'">公开原始数据集（固定版本）</a> · '+E(recovery['attribution'])+' 完整RGB档案及隐藏物理、模型状态尚未核验；原源码存在多个已归档版本。</p></section>'
     return '<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>与原 blog 的逐项对照</title><style>body{font:16px/1.65 system-ui,sans-serif;max-width:1200px;margin:auto;padding:24px;color:#182238;background:#f6f8fb}h1,h2{line-height:1.3}a{color:#1555b0}.panel{background:white;border:1px solid #dce2ec;border-radius:12px;padding:18px;margin:20px 0}.scroll{overflow-x:auto}table{border-collapse:collapse;min-width:620px;width:100%}th,td{text-align:left;border-bottom:1px solid #e1e6ef;padding:9px;font-size:14px}th{background:#eef2f9}li{margin:8px 0}details{margin:20px 0}code{overflow-wrap:anywhere}@media(max-width:600px){body{padding:14px}}</style><main><a href="scenes.html">← 复现报告</a><h1>与原 blog 的逐项对照</h1><div class="panel"><strong>两方法200回合执行和审计已完成；历史等价性尚未证明。</strong><p>本页比较独立运行与作者公开快照。相同总成功数不能证明案例结果或控制实现一致，数值差异也不能单独定位原因。</p><p><a href="data/blog-comparison.json">下载完整对照 JSON</a> · <a href="data/reproduction-completion.json">查看原始执行验收证明</a> · <a href="https://github.com/anonymous-report-421/GPT-as-Policy">作者公开源码</a></p></div>'+recovery_panel+'<h2>RoboDojo 主结果与执行统计</h2>'+main+'<p>'+correction+'</p><h2>逐任务比较</h2>'+tasks+lab+document+'<h2>共同案例对照</h2><p>共同49对、98条方法回合的案例ID与五个种子字段相同；完整历史物理初态未核验。'+E(changed)+'。layout4与layout5保持分列，未合并为相同案例。</p><details><summary>展开98条共同案例</summary>'+paired+'</details><h2>协议与来源限制</h2><ul>'+''.join('<li>'+E(t)+'</li>' for t in value['limitations'])+'</ul><p>原RoboLab总数为 Direct49/50、Hybrid46/50；本次同为49/50、46/50，逐任务表展示了失败分布差异。两批历史初态未配对，不能计算逐seed一致率。</p><p>原数据固定提交：<code>'+E(value['original_sources']['GPT-as-Policy']['commit'])+'</code>；网站数据提交：<code>'+E(value['original_sources']['public-website']['commit'])+'</code>。文件SHA与来源URL见对照JSON；新的统计提取证据独立封存，原200回合验收证明不改写。</p></main></html>'
 
 def build(source,out):

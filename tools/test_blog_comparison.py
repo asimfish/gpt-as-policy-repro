@@ -1,7 +1,7 @@
 """Denominator, alignment and public-data drift oracles for blog comparison."""
 import json,shutil,tempfile,unittest
 from pathlib import Path
-from blog_comparison import budget_observation,compare_cases,indexed,metrics,task_comparison,verify_public,recovered_summary
+from blog_comparison import budget_observation,compare_cases,indexed,metrics,task_comparison,verify_public,recovered_summary,worker_fidelity_summary,validate_worker_fidelity
 
 
 def row(case='shared',success=False,score=None):
@@ -9,6 +9,21 @@ def row(case='shared',success=False,score=None):
                 steps=10,chunks=2,corrected_steps=0,tokens=None,seeds={'layout_id':0},evidence='data/evidence.json')
 
 class BlogComparisonTest(unittest.TestCase):
+    def test_recorded_fifth_stop_claim_is_recomputed(self):
+        docs=Path(__file__).resolve().parents[1]/'docs'
+        value=json.loads((docs/'data/blog-comparison.json').read_text()).get('historical_worker_fidelity')
+        if value is None:self.skipTest('Worker reconstruction page not built yet')
+        validate_worker_fidelity(value)
+        rows=value['common_cases'];rows[0]['crosses_original_five_rejection_stop']=not rows[0]['crosses_original_five_rejection_stop']
+        with self.assertRaises(AssertionError):worker_fidelity_summary(rows)
+
+    def test_source_compatibility_gate_cannot_claim_historical_equivalence(self):
+        docs=Path(__file__).resolve().parents[1]/'docs'
+        value=json.loads((docs/'data/blog-comparison.json').read_text()).get('historical_worker_fidelity')
+        if value is None:self.skipTest('Worker reconstruction page not built yet')
+        value['historical_protocol_equivalence']=True
+        with self.assertRaises(AssertionError):validate_worker_fidelity(value)
+
     def test_native_completion_coverage_does_not_impute_unknown_or_adjudicated_score(self):
         a=dict(row(success=True,score=1),native_complete=True)
         b=dict(row(),native_complete=False)
