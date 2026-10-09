@@ -22858,6 +22858,85 @@
     "original_model_service_snapshot_recovered": false,
     "historical_protocol_equivalence": false,
     "full_blog_reproduction_complete": false,
-    "scope": "Recorded rejection branches and initial model-preview bytes; exact historical source staging plus offline execution and zero-turn CLI initialization. Fresh physical canary is separate and has no new audited score here. Fifth-stop crossings are not counterfactual success estimates."
+    "original_version_execution": {
+      "verified": true,
+      "canary_results": [
+        {
+          "episode_id": "direct__arrange_largest_number__random__g0__l0",
+          "method": "gpt_only",
+          "status": "native_complete_audited",
+          "profile_id": "3486581698d536d5708eeee0980553ccd2f12374468f00d69dae7604aa139e95",
+          "benchmark_eligible": false,
+          "full_blog_reproduction_complete": false,
+          "source_video": {
+            "frames": 1051,
+            "complete_decode_passed": true,
+            "sha256": "cfb97d2af3eaa0e272265334f8da181e07150ecda2bab99fb773dea83f8677d0"
+          },
+          "native_actions": 1050,
+          "decisions": 210,
+          "native_success": false,
+          "native_score": 0.3,
+          "complete_action_audit_sha256": "ab5a2af5a8f8c232274d3a61036e63ed62b1da4e68b9dfd5ace9fc6529b617e5",
+          "source_and_control_chain_verified": true,
+          "historical_protocol_equivalence": false,
+          "original_native_score": 0.3,
+          "original_success": false,
+          "original_decisions": 210
+        },
+        {
+          "episode_id": "hybrid__arrange_largest_number__random__g0__l0",
+          "method": "pi05_plus_gpt",
+          "status": "native_complete_audited",
+          "profile_id": "a6df3c7605db25b267362bb5edea0306024d9522837ad8787f614c7698cc8bb4",
+          "benchmark_eligible": false,
+          "full_blog_reproduction_complete": false,
+          "source_video": {
+            "frames": 1051,
+            "complete_decode_passed": true,
+            "sha256": "85fb2e7b12d1f32cd89c7a4f6344063e1e9c055b1c8d96197dae2efee412b3f5"
+          },
+          "native_actions": 1050,
+          "decisions": 127,
+          "native_success": false,
+          "native_score": 0.3,
+          "complete_action_audit_sha256": "522927ea4bd2e1ae5ca6f60f92d4ed9bb0b4cdea961b27564a764dd1248af026",
+          "source_and_control_chain_verified": true,
+          "historical_protocol_equivalence": false,
+          "original_native_score": 0.05,
+          "original_success": false,
+          "original_decisions": 117
+        }
+      ],
+      "remaining_cohort": {
+        "pairs_planned": 49,
+        "episodes_planned": 98,
+        "pilot_reused_for_grading": false,
+        "first_attempts_audited": 0,
+        "native_complete_audited": 0,
+        "phase_at_snapshot": "running",
+        "current_episode_at_snapshot": "direct__arrange_largest_number__standard__g0__l1",
+        "captured_utc": "2026-10-09T16:37:57.909287+00:00",
+        "observed_native_steps": 65,
+        "current_run_complete_audit": false,
+        "automatic_physical_retries": 0,
+        "historical_protocol_equivalence": false,
+        "full_blog_reproduction_complete": false
+      },
+      "pilot_included_in_benchmark": false,
+      "automatic_physical_retries": 0,
+      "evidence_sha256": {
+        "worker_fidelity_20261008/historical_canary_evidence_gate.json": "c8239c0509cf9d6106ee2c51e087c8e64a23c2e8a96b79e56383af7e83efd47f",
+        "worker_fidelity_20261008/historical_canary_admission.json": "20e6ef82e3e261cc0845f554e251bc57ae131d9085cbe13f5c76efa83ccfeeee",
+        "worker_fidelity_20261008/historical_pair_preflight.json": "e522c379f54b93955e4bbfcc22e70b33c73de04cdd3fc190d3bc052b361fc299",
+        "historical_cohort_20261010/cohort_plan.json": "d564c1e7cde3d1bfb7aabe80b247100bf31f8b849fdb7789f264692ece30345d",
+        "historical_cohort_20261010/runtime_snapshot.json": "d9c022ac2bbde563d1418fe15f82904ee3c63a95d075b556aacc473f56009632",
+        "historical_cohort_20261010/activation.json": "53649597ceb749b1e03b6326639ebb0d292aa3b163b76adbeb968bee9c86d83a",
+        "historical_cohort_20261010/implementation_checks.json": "f9394f78488d38602531a4422639ac9d0a8ae388405f30473f1438966b5d20bf"
+      },
+      "historical_protocol_equivalence": false,
+      "full_blog_reproduction_complete": false
+    },
+    "scope": "Recorded rejection branches and initial model-preview bytes; exact historical source staging plus offline execution and zero-turn CLI initialization. Fresh physical execution has separate evidence and never changes the sealed 200-run cohort. Fifth-stop crossings are not counterfactual success estimates."
   }
 }
