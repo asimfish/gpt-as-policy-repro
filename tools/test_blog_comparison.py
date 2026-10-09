@@ -1,7 +1,7 @@
 """Denominator, alignment and public-data drift oracles for blog comparison."""
 import json,shutil,tempfile,unittest
 from pathlib import Path
-from blog_comparison import budget_observation,compare_cases,indexed,metrics,task_comparison,verify_public,recovered_summary,worker_fidelity_summary,validate_worker_fidelity
+from blog_comparison import budget_observation,compare_cases,indexed,metrics,task_comparison,verify_public,recovered_summary,worker_fidelity_summary,validate_worker_fidelity,validate_historical_execution
 
 
 def row(case='shared',success=False,score=None):
@@ -9,6 +9,30 @@ def row(case='shared',success=False,score=None):
                 steps=10,chunks=2,corrected_steps=0,tokens=None,seeds={'layout_id':0},evidence='data/evidence.json')
 
 class BlogComparisonTest(unittest.TestCase):
+    def physical_pilot(self):
+        rows=[dict(method=m,status='native_complete_audited',benchmark_eligible=False,native_success=False,
+                   native_score=.3,native_actions=1050,decisions=n,
+                   source_video=dict(frames=1051,complete_decode_passed=True),
+                   historical_protocol_equivalence=False,full_blog_reproduction_complete=False)
+              for m,n in [('gpt_only',210),('pi05_plus_gpt',127)]]
+        value=dict(verified=True,historical_protocol_equivalence=False,full_blog_reproduction_complete=False,
+                   pilot_included_in_benchmark=False,automatic_physical_retries=0,canary_results=rows,
+                   remaining_cohort=dict(pairs_planned=49,episodes_planned=98,pilot_reused_for_grading=False,
+                                        native_complete_audited=0,first_attempts_audited=0,automatic_physical_retries=0,
+                                        historical_protocol_equivalence=False,full_blog_reproduction_complete=False))
+        return value
+
+    def test_physical_pilot_cannot_become_historical_or_benchmark_completion(self):
+        value=self.physical_pilot();validate_historical_execution(value)
+        value['pilot_included_in_benchmark']=True
+        with self.assertRaises(AssertionError):validate_historical_execution(value)
+        value['pilot_included_in_benchmark']=False;value['full_blog_reproduction_complete']=True
+        with self.assertRaises(AssertionError):validate_historical_execution(value)
+
+    def test_remaining_cohort_cannot_count_prefix_as_complete(self):
+        value=self.physical_pilot();value['remaining_cohort']['native_complete_audited']=1
+        with self.assertRaises(AssertionError):validate_historical_execution(value)
+
     def test_recorded_fifth_stop_claim_is_recomputed(self):
         docs=Path(__file__).resolve().parents[1]/'docs'
         value=json.loads((docs/'data/blog-comparison.json').read_text()).get('historical_worker_fidelity')

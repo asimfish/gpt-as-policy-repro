@@ -217,6 +217,76 @@ def worker_fidelity_summary(rows):
         reproduction_cli_counts=dict(Counter(r['reproduction_cli'] for r in rows)),
         initial_model_preview_pixel_matches={name:sum(r['images'][name]['pixel_equal'] for r in rows) for name in ('cam_high','cam_left_wrist','cam_right_wrist')})
 
+def validate_historical_execution(value):
+    assert value['verified'] is True
+    assert value['historical_protocol_equivalence'] is False and value['full_blog_reproduction_complete'] is False
+    assert value['pilot_included_in_benchmark'] is False and value['automatic_physical_retries']==0
+    rows=value['canary_results'];assert len(rows)==2 and {r['method'] for r in rows}==set(METHODS)
+    for r in rows:
+        assert r['status']=='native_complete_audited' and r['benchmark_eligible'] is False
+        assert type(r['native_success']) is bool and type(r['native_score']) in (int,float) and 0<=r['native_score']<=1
+        assert integer(r['native_actions'])==1050 and integer(r['decisions'])>0
+        assert r['source_video']['frames']==r['native_actions']+1 and r['source_video']['complete_decode_passed'] is True
+        assert r['historical_protocol_equivalence'] is False and r['full_blog_reproduction_complete'] is False
+    queue=value['remaining_cohort']
+    assert queue['pairs_planned']==49 and queue['episodes_planned']==98 and queue['pilot_reused_for_grading'] is False
+    assert 0<=integer(queue['native_complete_audited'])<=integer(queue['first_attempts_audited'])<=98
+    assert queue['automatic_physical_retries']==0
+    assert queue['historical_protocol_equivalence'] is False and queue['full_blog_reproduction_complete'] is False
+
+def load_historical_execution(source):
+    q=source/'publication_checks/worker_fidelity_20261008';out=source/'publication_checks/historical_cohort_20261010'
+    if not (q/'historical_canary_evidence_gate.json').exists() or not (out/'runtime_snapshot.json').exists():return None
+    gate=read(q/'historical_canary_evidence_gate.json');admission=read(q/'historical_canary_admission.json')
+    assert gate['verified'] is True and gate['complete_native_audited']==2
+    assert gate['admission_sha256']==sha((q/'historical_canary_admission.json').read_bytes())
+    root=source/gate['cohort'];assert gate['plan_sha256']==admission['plan_sha256']==sha((root/'pair_plan.json').read_bytes())
+    assert (root/'pair_plan.json').read_bytes()==(q/'historical_pair_preflight.json').read_bytes()
+    for row in gate['results']:
+        run=root/row['method'];proof=read(run/'complete_action_audit.json')
+        assert sha((run/'complete_action_audit.json').read_bytes())==row['complete_action_audit_sha256']
+        assert proof['verified'] is True and proof['complete_episode'] is True
+        assert proof['native_actions']==row['native_actions'] and proof['decisions']==row['decisions']
+        for name,digest in proof['files_sha256'].items():
+            path=Path(name);assert not path.is_absolute() and '..' not in path.parts
+            assert sha((run/path).read_bytes())==digest
+        assert sha((run/'sim/sensors.mp4').read_bytes())==row['source_video']['sha256']
+        outcome=read(run/'sim/evaluation_outcome.json')
+        assert outcome['native_success']==row['native_success'] and outcome['native_score']==row['native_score']
+    snapshot=read(out/'runtime_snapshot.json');plan=read(out/'cohort_plan.json');activation=read(out/'activation.json')
+    digest=sha((out/'cohort_plan.json').read_bytes())
+    assert digest==snapshot['plan_sha256']==activation['plan_sha256']
+    assert plan['episodes_planned']==98 and len(plan['pairs'])==49 and plan['physical_retry_limit']==0
+    assert plan['pilot']['reused_for_grading'] is False and snapshot['progress']['episodes_planned']==98
+    original=read(source/'publication_checks/historical_protocol_20261008/original_record_recount.json')
+    original_rows={r['episode_id']:r for r in original['records']}
+    results=[]
+    for row in gate['results']:
+        previous=original_rows[row['episode_id']]
+        results.append(dict(row,original_native_score=previous['native_score'],
+                            original_success=previous['evaluation_success'],original_decisions=previous['decision_count']))
+    progress=snapshot['progress']
+    assert progress['first_attempts_audited']==len(progress['results'])
+    assert progress['native_complete_audited']==sum(r['status']=='native_complete_audited' for r in progress['results'])
+    for name,digest in plan['source_sha256'].items():assert sha((source/name).read_bytes())==digest
+    assert plan['receipt_sha256']['historical_worker_manifest.json']==sha((q/'historical_worker_manifest.json').read_bytes())
+    # Running observations remain separate from audited scores. A capture is a
+    # dated snapshot and cannot assert that a background process is still alive.
+    remaining=dict(pairs_planned=49,episodes_planned=98,pilot_reused_for_grading=False,
+        first_attempts_audited=progress['first_attempts_audited'],native_complete_audited=progress['native_complete_audited'],
+        phase_at_snapshot=progress['phase'],current_episode_at_snapshot=progress['current_episode'],
+        captured_utc=snapshot['captured_utc'],observed_native_steps=snapshot['observed_native_steps'],
+        current_run_complete_audit=False,automatic_physical_retries=0,
+        historical_protocol_equivalence=False,full_blog_reproduction_complete=False)
+    value=dict(verified=True,canary_results=results,remaining_cohort=remaining,
+        pilot_included_in_benchmark=False,automatic_physical_retries=0,
+        evidence_sha256={'worker_fidelity_20261008/'+name:sha((q/name).read_bytes()) for name in
+                        ('historical_canary_evidence_gate.json','historical_canary_admission.json','historical_pair_preflight.json')},
+        historical_protocol_equivalence=False,full_blog_reproduction_complete=False)
+    value['evidence_sha256'].update({'historical_cohort_20261010/'+name:sha((out/name).read_bytes()) for name in
+                                   ('cohort_plan.json','runtime_snapshot.json','activation.json','implementation_checks.json')})
+    validate_historical_execution(value);return value
+
 def load_worker_fidelity(source,gate_sha,recovery,current):
     q=source/'publication_checks/worker_fidelity_20261008'
     if not (q/'historical_worker_offline_gate.json').exists():return None
@@ -256,8 +326,9 @@ def load_worker_fidelity(source,gate_sha,recovery,current):
         real_cli_initialization_profiles_verified=5,compatibility_probe_model_calls=0,compatibility_probe_ephemeral_override=True,
         original_gateway_source_recovered=False,original_model_service_snapshot_recovered=False,
         historical_protocol_equivalence=False,full_blog_reproduction_complete=False,
+        original_version_execution=load_historical_execution(source),
         scope='Recorded rejection branches and initial model-preview bytes; exact historical source staging plus offline execution and zero-turn CLI initialization. '
-            'Fresh physical canary is separate and has no new audited score here. Fifth-stop crossings are not counterfactual success estimates.')
+            'Fresh physical execution has separate evidence and never changes the sealed 200-run cohort. Fifth-stop crossings are not counterfactual success estimates.')
     validate_worker_fidelity(value)
     return value
 
@@ -271,6 +342,7 @@ def validate_worker_fidelity(value):
     assert value['offline_protocol_scenarios_verified']==30 and value['compatibility_probe_model_calls']==0
     assert value['original_gateway_source_recovered'] is False and value['original_model_service_snapshot_recovered'] is False
     assert value['historical_protocol_equivalence'] is False and value['full_blog_reproduction_complete'] is False
+    if value.get('original_version_execution') is not None:validate_historical_execution(value['original_version_execution'])
     for r in value['initial_model_rgb_difference_summary'].values():
         assert r['episodes']==98 and r['pixel_identical_episodes']==0
         assert 0<=r['mean_absolute_channel_difference_mean']<=r['mean_absolute_channel_difference_max']<=255
@@ -417,6 +489,21 @@ def worker_fidelity_panel(value):
     if worker is None:return ''
     s=worker['common_summary'];rgb=worker['initial_model_rgb_difference_summary']
     differences=[r['mean_absolute_channel_difference_mean'] for r in rgb.values()]
+    execution=worker.get('original_version_execution');physical=''
+    if execution:
+        rows={r['method']:r for r in execution['canary_results']};queue=execution['remaining_cohort']
+        physical=('<p id="historical-native-execution">原版本配对试跑已完成：Direct '+str(rows['gpt_only']['native_actions'])
+            +'步 / '+str(rows['gpt_only']['decisions'])+'次决策；Hybrid '+str(rows['pi05_plus_gpt']['native_actions'])
+            +'步 / '+str(rows['pi05_plus_gpt']['decisions'])+'次决策。Direct '+('成功' if rows['gpt_only']['native_success'] else '失败')
+            +'，分数'+str(rows['gpt_only']['native_score'])+'；Hybrid '+('成功' if rows['pi05_plus_gpt']['native_success'] else '失败')
+            +'，分数'+str(rows['pi05_plus_gpt']['native_score'])+'。完整动作和原视频审计通过。'
+            '同案例原Hybrid分数为'+str(rows['pi05_plus_gpt']['original_native_score'])
+            +'，不能据链路审计通过声称结果一致。试跑单独保留，不计入基准面板。</p>'
+            '<p>其余49对 / 98次首次尝试已独立冻结并启动。快照UTC '+html.escape(queue['captured_utc'])
+            +'：已审计首次尝试 '+str(queue['first_attempts_audited'])+'/98，原生完整 '+str(queue['native_complete_audited'])
+            +'；当时案例 <span style="overflow-wrap:anywhere">'+html.escape(queue['current_episode_at_snapshot'] or '无')+'</span>，观察到 '
+            +str(queue['observed_native_steps'])+'个控制步。运行观察不是完整成绩；后台状态可能已推进。'
+            '自动物理重试0，未完成前缀和无效布局不计成绩。</p>')
     return ('<section class="panel" id="historical-worker-fidelity"><h2>历史控制器与CLI恢复</h2>'
         '<p>原100条全部使用Codex CLI 0.153.4；本次封存结果中96条使用0.159.2，4条使用0.153.4。'
         '原源码包含5套文件组合、4个控制器版本；其中78条对应累计5次输入拒绝后终止的版本。'
@@ -425,7 +512,7 @@ def worker_fidelity_panel(value):
         '<p>已独立安装0.153.4并逐字节恢复5套历史源码，100个原案例均绑定对应版本。'
         '5套源码通过30项离线事件循环场景及5次真实CLI初始化，兼容性检查未启动模型推理。'
         '初始化检查使用临时线程，尚未验证原持久历史行为；缺失的历史网关模块由明确标注的当前授权运行环境桥接。</p>'
-        '<p>另设独立历史版本试跑入口，使用原布局、种子、时域和预算，保留首次尝试；本页不计入新的未审计成绩。'
+        +physical+'<p>独立历史版本执行使用原布局、种子、时域和预算，保留首次尝试。'
         '封存200回合及其证明保持原样。RoboLab历史Direct源码、逐槽180/500预算与重试选择协议仍未恢复。</p>'
         '<p>三个相机初始模型图像均0/98逐像素相同；0–255通道范围内的跨案例平均绝对差为'
         +format(min(differences),'.3f')+'–'+format(max(differences),'.3f')+'。这些RGB测量不证明隐藏物理状态相同，也不解释结果差异。'
