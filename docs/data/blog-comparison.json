@@ -22912,12 +22912,12 @@
         "pairs_planned": 49,
         "episodes_planned": 98,
         "pilot_reused_for_grading": false,
-        "first_attempts_audited": 10,
-        "native_complete_audited": 8,
+        "first_attempts_audited": 12,
+        "native_complete_audited": 10,
         "phase_at_snapshot": "running",
-        "current_episode_at_snapshot": "direct__build_tower__standard__g0__l0",
-        "captured_utc": "2026-10-10T11:03:39.072492+00:00",
-        "observed_native_steps": 135,
+        "current_episode_at_snapshot": "direct__build_tower__standard__g0__l1",
+        "captured_utc": "2026-10-10T15:37:58.718049+00:00",
+        "observed_native_steps": 10,
         "episode_results": [
           {
             "schema": "gpt_policy_historical_cohort_episode_gate.v1",
@@ -23165,10 +23165,60 @@
               "complete_decode_passed": true,
               "sha256": "05dc12cb7f31e8b8f7507099ac91fc7153856c7b7c39532498e9c2df68b33ca5"
             }
+          },
+          {
+            "schema": "gpt_policy_historical_cohort_episode_gate.v1",
+            "verified": true,
+            "verified_utc": "2026-10-10T13:22:21.091797+00:00",
+            "episode_id": "direct__build_tower__standard__g0__l0",
+            "method": "gpt_only",
+            "profile_id": "3486581698d536d5708eeee0980553ccd2f12374468f00d69dae7604aa139e95",
+            "status": "native_complete_audited",
+            "first_attempt_retained": true,
+            "automatic_physical_retries": 0,
+            "plan_sha256": "d564c1e7cde3d1bfb7aabe80b247100bf31f8b849fdb7789f264692ece30345d",
+            "native_success": false,
+            "native_score": 0.3,
+            "historical_protocol_equivalence": false,
+            "full_blog_reproduction_complete": false,
+            "runtime_identity_verified": true,
+            "native_actions": 1050,
+            "decisions": 210,
+            "complete_action_audit_sha256": "7a6417b2836110c836a656ec5393c6e9c87606f6e8b83a613e9fe288ca5a2354",
+            "source_video": {
+              "frames": 1051,
+              "complete_decode_passed": true,
+              "sha256": "96c25931d6252b03f6379026912dddf272329318286bdfdda53ee626ae4568b5"
+            }
+          },
+          {
+            "schema": "gpt_policy_historical_cohort_episode_gate.v1",
+            "verified": true,
+            "verified_utc": "2026-10-10T15:33:49.063071+00:00",
+            "episode_id": "hybrid__build_tower__standard__g0__l0",
+            "method": "pi05_plus_gpt",
+            "profile_id": "840372bd4b10fe0bba0eb46a08112374dae46c1ebca49ed561ee893f11f7cfe3",
+            "status": "native_complete_audited",
+            "first_attempt_retained": true,
+            "automatic_physical_retries": 0,
+            "plan_sha256": "d564c1e7cde3d1bfb7aabe80b247100bf31f8b849fdb7789f264692ece30345d",
+            "native_success": true,
+            "native_score": 1.0,
+            "historical_protocol_equivalence": false,
+            "full_blog_reproduction_complete": false,
+            "runtime_identity_verified": true,
+            "native_actions": 716,
+            "decisions": 48,
+            "complete_action_audit_sha256": "1094785258e5726b3af77704a954c9e4087d3eccea57568524eb4aebde0d472c",
+            "source_video": {
+              "frames": 717,
+              "complete_decode_passed": true,
+              "sha256": "001d5a08e2a52854dd2e2faa556ec18e306ae23c0f1bea94fb28f2cf650e1391"
+            }
           }
         ],
         "status_counts": {
-          "native_complete_audited": 8,
+          "native_complete_audited": 10,
           "controller_incomplete": 1,
           "startup_failed_no_execution": 1
         },
@@ -23186,9 +23236,11 @@
           "direct__arrange_largest_number__standard__g0__l0": [
             "usageLimitExceeded"
           ],
-          "hybrid__arrange_largest_number__standard__g0__l0": []
+          "hybrid__arrange_largest_number__standard__g0__l0": [],
+          "direct__build_tower__standard__g0__l0": [],
+          "hybrid__build_tower__standard__g0__l0": []
         },
-        "unclaimed_episodes_at_snapshot": 87,
+        "unclaimed_episodes_at_snapshot": 85,
         "current_run_complete_audit": false,
         "automatic_physical_retries": 0,
         "historical_protocol_equivalence": false,
@@ -23201,7 +23253,7 @@
         "worker_fidelity_20261008/historical_canary_admission.json": "20e6ef82e3e261cc0845f554e251bc57ae131d9085cbe13f5c76efa83ccfeeee",
         "worker_fidelity_20261008/historical_pair_preflight.json": "e522c379f54b93955e4bbfcc22e70b33c73de04cdd3fc190d3bc052b361fc299",
         "historical_cohort_20261010/cohort_plan.json": "d564c1e7cde3d1bfb7aabe80b247100bf31f8b849fdb7789f264692ece30345d",
-        "historical_cohort_20261010/runtime_snapshot.json": "c8d6f4b8787866f47b8d5fc9b13650fd95c8735a9570fd49a8bf0e3b5a100d09",
+        "historical_cohort_20261010/runtime_snapshot.json": "707d4a5650e08c3580d5e08964464d31b972cf4d2f22097d10f80bbd31f8a1a4",
         "historical_cohort_20261010/activation.json": "53649597ceb749b1e03b6326639ebb0d292aa3b163b76adbeb968bee9c86d83a",
         "historical_cohort_20261010/implementation_checks.json": "f9394f78488d38602531a4422639ac9d0a8ae388405f30473f1438966b5d20bf",
         "historical_cohort_20261010/episode_evidence/direct__arrange_largest_number__standard__g0__l1/evidence_gate.json": "4fc1d5c2d8d73053ee92b138066c251e4323c4b86e3600f48803cc5cd0e1d806",
@@ -23223,6 +23275,10 @@
         "historical_cohort_20261010/episode_evidence/direct__arrange_largest_number__standard__g0__l0/evidence_gate.json": "d2f1684d628c41a2a293356692cda1c006ae13c6355d4ba72408f06efd645d06",
         "historical_cohort_20261010/episode_evidence/hybrid__arrange_largest_number__standard__g0__l0/evidence_gate.json": "d36ee25f055ded488b024842ef583f4eb96afe5344cb065d39f18bc27149c520",
         "historical_cohort_20261010/episode_evidence/hybrid__arrange_largest_number__standard__g0__l0/complete_action_audit.json": "48430b56834bb0bf3743eedfd7e16cfa8a77b5944fc625132e423783e1d18946",
+        "historical_cohort_20261010/episode_evidence/direct__build_tower__standard__g0__l0/evidence_gate.json": "1fa8aeb1bbe05543649b1a2318d11fafc5302c167ee99c3e8b93793d47f80885",
+        "historical_cohort_20261010/episode_evidence/direct__build_tower__standard__g0__l0/complete_action_audit.json": "7a6417b2836110c836a656ec5393c6e9c87606f6e8b83a613e9fe288ca5a2354",
+        "historical_cohort_20261010/episode_evidence/hybrid__build_tower__standard__g0__l0/evidence_gate.json": "cdc20dc33ddbfdd47e2fc9ef048e1d859f8af5db1a3cd521c87419561d152400",
+        "historical_cohort_20261010/episode_evidence/hybrid__build_tower__standard__g0__l0/complete_action_audit.json": "1094785258e5726b3af77704a954c9e4087d3eccea57568524eb4aebde0d472c",
         "historical_cohort_20261010/continuation_evidence/20261010T095831Z/admission.json": "8974eff008aa2e08950796bd872d94ee08a5271bb78a213a6e95832b401591f6",
         "historical_cohort_20261010/continuation_evidence/20261010T095831Z/availability.json": "3d1d01d207563c926093e9ab3acd765cf453c6dbb6370d260b46098a555a8a16",
         "historical_resume_20261010/current_service_probe.json": "3d1d01d207563c926093e9ab3acd765cf453c6dbb6370d260b46098a555a8a16",
