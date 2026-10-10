@@ -323,11 +323,14 @@ def load_historical_execution(source):
                                    ('cohort_plan.json','runtime_snapshot.json','activation.json','implementation_checks.json')})
     value['evidence_sha256'].update({'historical_cohort_20261010/'+name:sha((out/name).read_bytes()) for name in snapshot.get('episode_evidence_sha256',{})})
     if snapshot.get('continuation'):
-        assert sha((out/'continuation_admission.json').read_bytes())==snapshot['continuation']['admission_sha256']
-        value['evidence_sha256']['historical_cohort_20261010/continuation_admission.json']=snapshot['continuation']['admission_sha256']
-        resumed=read(out/'continuation_admission.json');resume=source/'publication_checks/historical_resume_20261010'
-        available=read(resume/'current_service_probe.json')
-        assert resumed['plan_sha256']==digest and resumed['availability_sha256']==sha((resume/'current_service_probe.json').read_bytes())
+        value['continuation']=snapshot['continuation']
+        for field in ('admission','availability'):
+            name=snapshot['continuation'][field+'_path'];assert re.fullmatch(r'continuation_evidence/20\d{6}T\d{6}Z/(admission|availability)\.json',name)
+            assert sha((out/name).read_bytes())==snapshot['continuation'][field+'_sha256']
+            value['evidence_sha256']['historical_cohort_20261010/'+name]=snapshot['continuation'][field+'_sha256']
+        resumed=read(out/snapshot['continuation']['admission_path']);resume=source/'publication_checks/historical_resume_20261010'
+        available=read(out/snapshot['continuation']['availability_path'])
+        assert resumed['plan_sha256']==digest and resumed['availability_sha256']==snapshot['continuation']['availability_sha256']
         assert available['verified'] is True and available['model_available'] is True and available['reply_exact_ok'] is True
         assert available['model']==plan['model'] and available['cli_version']==plan['cli_version']
         assert resumed['physical_retry_limit']==0 and resumed['original_execution_source_unchanged'] is True
