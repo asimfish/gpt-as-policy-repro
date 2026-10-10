@@ -339,6 +339,14 @@ def load_historical_execution(source):
             'model_turn_start_calls','service_tools_registered','simulator_steps','authentication_copied')}
         for name in ('current_service_probe.json','failure_contract.json','implementation_checks.json','activation.json'):
             value['evidence_sha256']['historical_resume_20261010/'+name]=sha((resume/name).read_bytes())
+    if 'first_attempt_completion_sha256' in snapshot:
+        complete=read(out/'first_attempt_completion.json')
+        assert sha((out/'first_attempt_completion.json').read_bytes())==snapshot['first_attempt_completion_sha256']
+        assert complete['verified'] is True and complete['episodes']==98 and len(episodes)==98
+        assert complete['complete_native_audited']==remaining['native_complete_audited']
+        assert complete['episode_gate_sha256']=={r['episode_id']:snapshot['episode_evidence_sha256']['episode_evidence/'+r['episode_id']+'/evidence_gate.json'] for r in episodes}
+        assert complete['automatic_physical_retries']==0 and complete['full_blog_reproduction_complete'] is False
+        value['evidence_sha256']['historical_cohort_20261010/first_attempt_completion.json']=snapshot['first_attempt_completion_sha256']
     validate_historical_execution(value);return value
 
 def load_worker_fidelity(source,gate_sha,recovery,current):
