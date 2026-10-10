@@ -13,7 +13,7 @@ import time
 import urllib.request
 
 
-GENERATED = ('docs/index.html', 'docs/scenes.html', 'docs/gpt-methods.html', 'docs/robolab-methods.html', 'docs/data/robolab-methods-progress.json', 'docs/data/robolab-method-episodes/', 'docs/media/robolab-methods/',
+GENERATED = ('docs/index.html', 'docs/scenes.html', 'docs/robolab.html', 'docs/assets/site.css', 'docs/assets/site.js', 'docs/gpt-methods.html', 'docs/robolab-methods.html', 'docs/data/robolab-methods-progress.json', 'docs/data/robolab-method-episodes/', 'docs/media/robolab-methods/',
              'docs/data/gpt-methods-progress.json', 'docs/data/gpt-media-manifest.json',
              'docs/gpt-methods-valid.html', 'docs/data/gpt-methods-valid-progress.json',
              'docs/data/gpt-valid-media-manifest.json', 'docs/data/gpt-valid-cohort.json',
@@ -100,7 +100,7 @@ def verify_online(repo, source):
     files = ('scenes.html', 'gpt-methods.html', 'data/gpt-methods-progress.json', 'assets/gpt.js', 'assets/gpt.css')
     commit = git(repo, 'rev-parse', 'HEAD')
     files=list(files)
-    optional_names = ('docs/data/robolab-gpt-prefix-audit.json', 'docs/data/infrastructure-bundle.json', 'docs/data/reproduction-completion.json', 'docs/blog-comparison.html', 'docs/data/blog-comparison.json',
+    optional_names = ('docs/assets/site.css', 'docs/assets/site.js', 'docs/robolab.html', 'docs/data/robolab-gpt-prefix-audit.json', 'docs/data/infrastructure-bundle.json', 'docs/data/reproduction-completion.json', 'docs/blog-comparison.html', 'docs/data/blog-comparison.json',
         'docs/robolab-methods.html', 'docs/data/robolab-methods-progress.json',
         'docs/gpt-methods-valid.html', 'docs/data/gpt-methods-valid-progress.json',
         'docs/data/gpt-valid-cohort.json', 'docs/data/gpt-valid-media-manifest.json')

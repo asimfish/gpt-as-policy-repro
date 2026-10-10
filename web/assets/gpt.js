@@ -6,7 +6,7 @@ function setTheme(value) {
   theme.setAttribute('aria-label', value === 'dark' ? '切换为浅色主题' : '切换为深色主题');
   try { localStorage.setItem('gpt-policy-theme', value); } catch {}
 }
-try { setTheme(localStorage.getItem('gpt-policy-theme') || 'dark'); } catch { setTheme('dark'); }
+try { setTheme(localStorage.getItem('gpt-policy-theme') || 'light'); } catch { setTheme('light'); }
 theme.addEventListener('click', () => setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
 const task = document.querySelector('#gpt-task'), method = document.querySelector('#gpt-method');
 const status = document.querySelector('#gpt-status'), search = document.querySelector('#gpt-search');
@@ -35,3 +35,7 @@ function focusEpisode() {
 }
 window.addEventListener('hashchange', focusEpisode);
 filter(); focusEpisode();
+function revealAnchor(){let node=document.getElementById(location.hash.slice(1));while(node){if(node.tagName==='DETAILS')node.open=true;node=node.parentElement}}
+window.addEventListener('hashchange',revealAnchor);revealAnchor();
+const tocLinks=[...document.querySelectorAll('.report-toc a[href^="#"]')];
+if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting){for(const link of tocLinks)link.classList.toggle('active',link.hash==='#'+entry.target.id)}}},{rootMargin:'-10% 0px -65% 0px'});for(const link of tocLinks){const target=document.querySelector(link.hash);if(target)observer.observe(target)}}

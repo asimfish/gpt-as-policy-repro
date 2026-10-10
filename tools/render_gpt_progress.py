@@ -3,6 +3,7 @@ from html import escape as E
 import json
 from pathlib import Path
 import re
+from report_layout import decorate_board, decorate_method_page, decorate_supplemental, benchmark_charts
 
 START, END = '<!-- GPT_PROGRESS_START -->', '<!-- GPT_PROGRESS_END -->'
 METHODS = {'gpt_only': 'GPT Direct', 'pi05_plus_gpt': 'π0.5 + GPT Hybrid'}
@@ -65,8 +66,10 @@ def render(out, valid=False, update_board=True):
     assert data['schema'] == 'gpt_policy_progress.v2'
     episodes = {e['id']: e for e in data['episodes']}
     s, snapshot = data['summary'], E(data['snapshot'])
-    stats = summary_html(data)
+    stats = summary_html(data) + benchmark_charts(data,None)
     supplement = robolab_html(data)
+    if supplement:
+        supplement='<details class="supplemental-note"><summary>RoboLab 补充评测 · 查看执行与审计说明 ↗</summary>'+supplement+'</details>'
     bundle=data.get('infrastructure')
     bundle_status='所选 RoboDojo 与 RoboLab 各 100 回合、各 50 对均已通过完整终验；包内保留冻结清单、失败证据索引及终验凭据。<a href="data/reproduction-completion.json">查看完整验收证明 ↓</a>。RoboLab Direct 使用自有 EEF 适配器，历史源码与完整物理初态不可得，未独立重算 IK。' if bundle and bundle['full_reproduction_complete'] else '这是当前基建快照，全量实验仍在推进。'
     bundle_html='' if not bundle else f'<div class="panel" id="infra-bundle-download"><h3>复现实验基建下载</h3><p>运行脚本、两方法队列、动作审计、冻结场景、Direct 接口、测试与 systemd 模板。已核对归档内全部文件；{bundle_status}</p><p><a href="{E(bundle["archive"])}" download>下载基建包 · {bundle["bytes"]/2**20:.2f} MiB ↓</a> · <a href="data/infrastructure-bundle.json">文件校验与版本 JSON ↓</a></p><details><summary>SHA256 校验</summary><code>{bundle["sha256"]}</code></details></div>'
@@ -80,7 +83,7 @@ def render(out, valid=False, update_board=True):
         values = [task['methods'][m]['all_completed'] for m in METHODS]
         cells = ''.join(f'<td>{v["successes"]} / {v["evaluated"]}<small>平均 score {v["mean_score"]:.3f}</small></td>' if v['evaluated'] else '<td>待完成</td>' for v in values)
         task_rows.append(f'<tr><td>{E(task["task_label"])}</td>{cells}<td>{task["completed_pairs"]} / {task["planned_pairs"]}</td></tr>')
-    task_table = '<section class="report-section"><div class="section-heading"><h2>逐任务独立结果</h2><a href="#gpt-rollouts">跳转到完整回放 ↓</a></div><p class="section-intro">每格为成功数 / 已审计完整回合数；平均 score 使用同一分母。未运行案例不能当作零分失败。</p><div class="panel table-wrap"><table><thead><tr><th>任务</th><th>GPT Direct</th><th>Hybrid</th><th>已配齐案例</th></tr></thead><tbody>' + ''.join(task_rows) + '</tbody></table></div></section>'
+    task_table = '<section class="report-section" id="method-task-results"><div class="section-heading"><h2>逐任务独立结果</h2><a href="#gpt-rollouts">跳转到完整回放 ↓</a></div><p class="section-intro">每格为成功数 / 已审计完整回合数；平均 score 使用同一分母。未运行案例不能当作零分失败。</p><div class="panel table-wrap"><table><thead><tr><th>任务</th><th>GPT Direct</th><th>Hybrid</th><th>已配齐案例</th></tr></thead><tbody>' + ''.join(task_rows) + '</tbody></table></div></section>'
     coverage='50个配对案例的100条轨迹均已完整执行和审计；这是本项目全量主实验结果，历史环境和模型服务等价性仍有限制。' if s['complete_method_runs']==100 and s['completed_pairs']==50 else '当前是部分样本，任务覆盖尚不均衡，不能视为全量成功率或原报告数值的复现结论。'
     intro = '<p class="section-intro">计划为 RoboDojo 50 个冻结案例 × 两种方法，共 100 条完整轨迹。'+coverage+'</p>'
     if valid:
@@ -120,7 +123,7 @@ def render(out, valid=False, update_board=True):
         # Do not leave a historical baseline date beside current primary counts.
         document = re.sub(r'(<p class="updated">)(?:数据快照|主方法快照) · [^<]*(</p>)',
                           rf'\g<1>主方法快照 · {snapshot}\g<2>', document, count=1)
-        path.write_text(document)
+        path.write_text(decorate_board(document,out,data))
     rows, cards = [], []
     for case in data['cases']:
         cells = []
@@ -161,8 +164,10 @@ def render(out, valid=False, update_board=True):
         document = document.replace('<title>GPT Direct / Hybrid · 独立复现结果</title>',
                                     '<title>GPT Direct / Hybrid · 独立补齐面板</title>')
         document = document.replace('50 个冻结案例的配对矩阵', '50 个有效案例的配对矩阵')
+    document=document.replace('<details class="panel" open><summary>查看全部 50 个案例', '<details class="panel"><summary>查看全部 50 个案例',1)
     document=document.replace('<section class="report-section"><h2>复现口径与证据边界</h2>',comparison_html+'<section class="report-section"><h2>复现口径与证据边界</h2>',1)
-    (out / ('gpt-methods-valid.html' if valid else 'gpt-methods.html')).write_text(document)
+    (out / ('gpt-methods-valid.html' if valid else 'gpt-methods.html')).write_text(decorate_method_page(document))
+    decorate_supplemental(out)
 
 
 if __name__ == '__main__':
