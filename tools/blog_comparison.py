@@ -233,6 +233,22 @@ def validate_historical_execution(value):
     assert 0<=integer(queue['native_complete_audited'])<=integer(queue['first_attempts_audited'])<=98
     assert queue['automatic_physical_retries']==0
     assert queue['historical_protocol_equivalence'] is False and queue['full_blog_reproduction_complete'] is False
+    if 'episode_results' in queue:
+        episodes=queue['episode_results'];assert len(episodes)==queue['first_attempts_audited']
+        assert len({r['episode_id'] for r in episodes})==len(episodes)
+        assert sum(r['status']=='native_complete_audited' for r in episodes)==queue['native_complete_audited']
+        assert dict(Counter(r['status'] for r in episodes))==queue['status_counts']
+        for r in episodes:
+            assert r['method'] in METHODS and r['automatic_physical_retries']==0 and r['first_attempt_retained'] is True
+            if r['status']=='native_complete_audited':
+                assert type(r['native_success']) is bool and type(r['native_score']) in (int,float) and 0<=r['native_score']<=1
+                assert integer(r['native_actions'])>0 and integer(r['decisions'])>0
+                assert r['source_video']['frames']==r['native_actions']+1 and r['source_video']['complete_decode_passed'] is True
+            else:
+                assert r['native_success'] is None and r['native_score'] is None
+            if r['status']=='startup_failed_no_execution':
+                assert r['stopped_prefix_actions']==0 and r['runtime_identity_verified'] is False
+                assert r['failure_reason']=='usageLimitExceeded'
 
 def load_historical_execution(source):
     q=source/'publication_checks/worker_fidelity_20261008';out=source/'publication_checks/historical_cohort_20261010'
@@ -268,6 +284,23 @@ def load_historical_execution(source):
     progress=snapshot['progress']
     assert progress['first_attempts_audited']==len(progress['results'])
     assert progress['native_complete_audited']==sum(r['status']=='native_complete_audited' for r in progress['results'])
+    episodes=[]
+    for result in progress['results']:
+        episode=result['episode_id'];assert re.fullmatch(r'[A-Za-z0-9_]+',episode)
+        relative='episode_evidence/'+episode+'/evidence_gate.json'
+        assert sha((out/relative).read_bytes())==snapshot['episode_evidence_sha256'][relative]
+        proof=read(out/relative);assert proof['verified'] is True and proof['plan_sha256']==digest
+        row=next(r for pair in plan['pairs'] for r in pair['cases'] if r['episode_id']==episode)
+        assert proof['method']==row['method'] and proof['profile_id']==row['profile_id']
+        for key,item in result.items():assert proof.get(key)==item
+        for name,field in [('complete_action_audit.json','complete_action_audit_sha256'),('stopped_prefix_audit.json','stopped_prefix_audit_sha256')]:
+            if field in proof:
+                audit_path='episode_evidence/'+episode+'/'+name
+                assert sha((out/audit_path).read_bytes())==snapshot['episode_evidence_sha256'][audit_path]==proof[field]
+                audit=read(out/audit_path);assert audit['verified'] is True
+                if name=='complete_action_audit.json':
+                    assert audit['complete_episode'] is True and audit['native_actions']==proof['native_actions'] and audit['decisions']==proof['decisions']
+        episodes.append({k:v for k,v in proof.items() if k!='evidence_inputs_sha256'})
     for name,digest in plan['source_sha256'].items():assert sha((source/name).read_bytes())==digest
     assert plan['receipt_sha256']['historical_worker_manifest.json']==sha((q/'historical_worker_manifest.json').read_bytes())
     # Running observations remain separate from audited scores. A capture is a
@@ -276,6 +309,9 @@ def load_historical_execution(source):
         first_attempts_audited=progress['first_attempts_audited'],native_complete_audited=progress['native_complete_audited'],
         phase_at_snapshot=progress['phase'],current_episode_at_snapshot=progress['current_episode'],
         captured_utc=snapshot['captured_utc'],observed_native_steps=snapshot['observed_native_steps'],
+        episode_results=episodes,status_counts=dict(Counter(r['status'] for r in episodes)),
+        capacity_error_codes_by_episode=snapshot.get('capacity_error_codes_by_episode',{}),
+        unclaimed_episodes_at_snapshot=snapshot.get('unclaimed_episodes'),
         current_run_complete_audit=False,automatic_physical_retries=0,
         historical_protocol_equivalence=False,full_blog_reproduction_complete=False)
     value=dict(verified=True,canary_results=results,remaining_cohort=remaining,
@@ -285,6 +321,21 @@ def load_historical_execution(source):
         historical_protocol_equivalence=False,full_blog_reproduction_complete=False)
     value['evidence_sha256'].update({'historical_cohort_20261010/'+name:sha((out/name).read_bytes()) for name in
                                    ('cohort_plan.json','runtime_snapshot.json','activation.json','implementation_checks.json')})
+    value['evidence_sha256'].update({'historical_cohort_20261010/'+name:sha((out/name).read_bytes()) for name in snapshot.get('episode_evidence_sha256',{})})
+    if snapshot.get('continuation'):
+        assert sha((out/'continuation_admission.json').read_bytes())==snapshot['continuation']['admission_sha256']
+        value['evidence_sha256']['historical_cohort_20261010/continuation_admission.json']=snapshot['continuation']['admission_sha256']
+        resumed=read(out/'continuation_admission.json');resume=source/'publication_checks/historical_resume_20261010'
+        available=read(resume/'current_service_probe.json')
+        assert resumed['plan_sha256']==digest and resumed['availability_sha256']==sha((resume/'current_service_probe.json').read_bytes())
+        assert available['verified'] is True and available['model_available'] is True and available['reply_exact_ok'] is True
+        assert available['model']==plan['model'] and available['cli_version']==plan['cli_version']
+        assert resumed['physical_retry_limit']==0 and resumed['original_execution_source_unchanged'] is True
+        for name,source_sha in resumed['source_sha256'].items():assert sha((source/name).read_bytes())==source_sha
+        value['service_availability_at_continuation']={k:available[k] for k in ('checked_utc','model','cli_version','model_available',
+            'model_turn_start_calls','service_tools_registered','simulator_steps','authentication_copied')}
+        for name in ('current_service_probe.json','failure_contract.json','implementation_checks.json','activation.json'):
+            value['evidence_sha256']['historical_resume_20261010/'+name]=sha((resume/name).read_bytes())
     validate_historical_execution(value);return value
 
 def load_worker_fidelity(source,gate_sha,recovery,current):
@@ -504,6 +555,16 @@ def worker_fidelity_panel(value):
             +'；当时案例 <span style="overflow-wrap:anywhere">'+html.escape(queue['current_episode_at_snapshot'] or '无')+'</span>，观察到 '
             +str(queue['observed_native_steps'])+'个控制步。运行观察不是完整成绩；后台状态可能已推进。'
             '自动物理重试0，未完成前缀和无效布局不计成绩。</p>')
+        if queue.get('episode_results'):
+            complete=[r for r in queue['episode_results'] if r['status']=='native_complete_audited']
+            prefixes=[r for r in queue['episode_results'] if r['status']=='controller_incomplete']
+            startup=[r for r in queue['episode_results'] if r['status']=='startup_failed_no_execution']
+            physical+=('<p id="historical-cohort-results">本阶段已审计的完整回合：'+str(sum(r['native_success'] for r in complete))
+                +'次成功、'+str(sum(not r['native_success'] for r in complete))+'次原生失败。另保留'
+                +str(len(prefixes))+'次中断前缀（'+str(sum(r.get('stopped_prefix_actions',0) for r in prefixes))
+                +'个控制步）和'+str(len(startup))+'次零动作启动失败；两者均无完整成绩。'
+                '模型用量上限曾中断队列，缺少run.json的启动失败已独立审计，原执行源码和首次尝试未替换。'
+                '快照阶段：'+html.escape(queue['phase_at_snapshot'])+'。逐次审计门与动作审计SHA见完整JSON。</p>')
     return ('<section class="panel" id="historical-worker-fidelity"><h2>历史控制器与CLI恢复</h2>'
         '<p>原100条全部使用Codex CLI 0.153.4；本次封存结果中96条使用0.159.2，4条使用0.153.4。'
         '原源码包含5套文件组合、4个控制器版本；其中78条对应累计5次输入拒绝后终止的版本。'

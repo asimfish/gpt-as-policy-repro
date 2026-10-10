@@ -33,6 +33,31 @@ class BlogComparisonTest(unittest.TestCase):
         value=self.physical_pilot();value['remaining_cohort']['native_complete_audited']=1
         with self.assertRaises(AssertionError):validate_historical_execution(value)
 
+    def test_startup_or_prefix_failures_cannot_acquire_native_scores(self):
+        value=self.physical_pilot();queue=value['remaining_cohort']
+        prefix=dict(episode_id='hybrid__case',method='pi05_plus_gpt',status='controller_incomplete',
+                    automatic_physical_retries=0,first_attempt_retained=True,native_success=None,native_score=None)
+        startup=dict(prefix,episode_id='direct__case',method='gpt_only',status='startup_failed_no_execution',
+                     stopped_prefix_actions=0,runtime_identity_verified=False,failure_reason='usageLimitExceeded')
+        queue.update(first_attempts_audited=2,episode_results=[prefix,startup],
+                     status_counts={'controller_incomplete':1,'startup_failed_no_execution':1})
+        validate_historical_execution(value)
+        for row in queue['episode_results']:
+            row['native_score']=0
+            with self.assertRaises(AssertionError):validate_historical_execution(value)
+            row['native_score']=None
+        startup['runtime_identity_verified']=True
+        with self.assertRaises(AssertionError):validate_historical_execution(value)
+
+    def test_historical_attempt_duplicates_and_inconsistent_complete_counts_fail(self):
+        value=self.physical_pilot();queue=value['remaining_cohort']
+        row=dict(episode_id='direct__case',method='gpt_only',status='controller_incomplete',
+                 automatic_physical_retries=0,first_attempt_retained=True,native_success=None,native_score=None)
+        queue.update(first_attempts_audited=2,episode_results=[row,dict(row)],status_counts={'controller_incomplete':2})
+        with self.assertRaises(AssertionError):validate_historical_execution(value)
+        queue.update(first_attempts_audited=1,episode_results=[row],status_counts={'controller_incomplete':1},native_complete_audited=1)
+        with self.assertRaises(AssertionError):validate_historical_execution(value)
+
     def test_recorded_fifth_stop_claim_is_recomputed(self):
         docs=Path(__file__).resolve().parents[1]/'docs'
         value=json.loads((docs/'data/blog-comparison.json').read_text()).get('historical_worker_fidelity')
