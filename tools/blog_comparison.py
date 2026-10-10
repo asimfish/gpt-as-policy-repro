@@ -301,7 +301,7 @@ def load_historical_execution(source):
                 if name=='complete_action_audit.json':
                     assert audit['complete_episode'] is True and audit['native_actions']==proof['native_actions'] and audit['decisions']==proof['decisions']
         episodes.append({k:v for k,v in proof.items() if k!='evidence_inputs_sha256'})
-    for name,digest in plan['source_sha256'].items():assert sha((source/name).read_bytes())==digest
+    for name,source_digest in plan['source_sha256'].items():assert sha((source/name).read_bytes())==source_digest
     assert plan['receipt_sha256']['historical_worker_manifest.json']==sha((q/'historical_worker_manifest.json').read_bytes())
     # Running observations remain separate from audited scores. A capture is a
     # dated snapshot and cannot assert that a background process is still alive.

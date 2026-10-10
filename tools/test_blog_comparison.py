@@ -1,7 +1,7 @@
 """Denominator, alignment and public-data drift oracles for blog comparison."""
-import json,shutil,tempfile,unittest
+import hashlib,json,shutil,tempfile,unittest
 from pathlib import Path
-from blog_comparison import budget_observation,compare_cases,indexed,metrics,task_comparison,verify_public,recovered_summary,worker_fidelity_summary,validate_worker_fidelity,validate_historical_execution
+from blog_comparison import budget_observation,compare_cases,indexed,metrics,task_comparison,verify_public,recovered_summary,worker_fidelity_summary,validate_worker_fidelity,validate_historical_execution,load_historical_execution
 
 
 def row(case='shared',success=False,score=None):
@@ -28,6 +28,63 @@ class BlogComparisonTest(unittest.TestCase):
         with self.assertRaises(AssertionError):validate_historical_execution(value)
         value['pilot_included_in_benchmark']=False;value['full_blog_reproduction_complete']=True
         with self.assertRaises(AssertionError):validate_historical_execution(value)
+
+    def continuation_fixture(self,root):
+        def put(name,value):
+            path=root/name;path.parent.mkdir(parents=True,exist_ok=True)
+            data=(json.dumps(value)+'\n').encode();path.write_bytes(data)
+            return hashlib.sha256(data).hexdigest()
+        q='publication_checks/worker_fidelity_20261008/'
+        out='publication_checks/historical_cohort_20261010/'
+        pilot='historical_worker_campaign/pilot'
+        pair={'pilot':True};pair_sha=put(pilot+'/pair_plan.json',pair)
+        put(q+'historical_pair_preflight.json',pair)
+        admission_sha=put(q+'historical_canary_admission.json',dict(plan_sha256=pair_sha))
+        rows=[];records=[]
+        for method,decisions in [('gpt_only',210),('pi05_plus_gpt',127)]:
+            proof_sha=put(pilot+'/'+method+'/complete_action_audit.json',dict(verified=True,complete_episode=True,native_actions=1050,decisions=decisions,files_sha256={}))
+            video=root/pilot/method/'sim/sensors.mp4';video.parent.mkdir();video.write_bytes(b'fixture-video')
+            put(pilot+'/'+method+'/sim/evaluation_outcome.json',dict(native_success=False,native_score=.3))
+            rows.append(dict(self.physical_pilot()['canary_results'][len(rows)],episode_id=method,
+                             complete_action_audit_sha256=proof_sha,source_video=dict(frames=1051,complete_decode_passed=True,sha256=hashlib.sha256(video.read_bytes()).hexdigest())))
+            records.append(dict(episode_id=method,native_score=.3,evaluation_success=False,decision_count=decisions))
+        put(q+'historical_canary_evidence_gate.json',dict(verified=True,complete_native_audited=2,admission_sha256=admission_sha,plan_sha256=pair_sha,cohort=pilot,results=rows))
+        manifest_sha=put(q+'historical_worker_manifest.json',{})
+        source_sha=put('controller.json',{'source':'distinct-from-plan'})
+        plan_sha=put(out+'cohort_plan.json',dict(episodes_planned=98,pairs=[{} for _ in range(49)],physical_retry_limit=0,
+                     pilot=dict(reused_for_grading=False),source_sha256={'controller.json':source_sha},
+                     receipt_sha256={'historical_worker_manifest.json':manifest_sha},model='gpt-6-astra',cli_version='codex-cli 0.153.4'))
+        self.assertNotEqual(source_sha,plan_sha)
+        put(out+'activation.json',dict(plan_sha256=plan_sha));put(out+'implementation_checks.json',{})
+        prefix='continuation_evidence/20261010T095831Z/'
+        available=dict(verified=True,model_available=True,reply_exact_ok=True,model='gpt-6-astra',cli_version='codex-cli 0.153.4',
+                       checked_utc='2026-10-10T09:30:47Z',model_turn_start_calls=1,service_tools_registered=0,simulator_steps=0,authentication_copied=False)
+        available_sha=put(out+prefix+'availability.json',available)
+        resumed=dict(plan_sha256=plan_sha,availability_sha256=available_sha,physical_retry_limit=0,original_execution_source_unchanged=True,source_sha256={'controller.json':source_sha})
+        resumed_sha=put(out+prefix+'admission.json',resumed)
+        snapshot=dict(plan_sha256=plan_sha,captured_utc='2026-10-10T11:03:39Z',observed_native_steps=0,
+                      episode_evidence_sha256={},progress=dict(episodes_planned=98,first_attempts_audited=0,results=[],native_complete_audited=0,phase='running',current_episode=None),
+                      continuation=dict(admission_path=prefix+'admission.json',admission_sha256=resumed_sha,availability_path=prefix+'availability.json',availability_sha256=available_sha))
+        put(out+'runtime_snapshot.json',snapshot)
+        put('publication_checks/historical_protocol_20261008/original_record_recount.json',dict(records=records))
+        for name in ['current_service_probe.json','failure_contract.json','implementation_checks.json','activation.json']:
+            put('publication_checks/historical_resume_20261010/'+name,{})
+        return put,snapshot,resumed,out,prefix
+
+    def test_continuation_matches_plan_after_distinct_controller_source_hash(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory);self.continuation_fixture(root)
+            value=load_historical_execution(root)
+            self.assertEqual(value['remaining_cohort']['first_attempts_audited'],0)
+            self.assertTrue(value['service_availability_at_continuation']['model_available'])
+
+    def test_continuation_rejects_wrong_plan_even_with_valid_document_hash(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory);put,snapshot,resumed,out,prefix=self.continuation_fixture(root)
+            resumed['plan_sha256']='another-plan'
+            snapshot['continuation']['admission_sha256']=put(out+prefix+'admission.json',resumed)
+            put(out+'runtime_snapshot.json',snapshot)
+            with self.assertRaises(AssertionError):load_historical_execution(root)
 
     def test_remaining_cohort_cannot_count_prefix_as_complete(self):
         value=self.physical_pilot();value['remaining_cohort']['native_complete_audited']=1
