@@ -22912,11 +22912,11 @@
         "pairs_planned": 49,
         "episodes_planned": 98,
         "pilot_reused_for_grading": false,
-        "first_attempts_audited": 25,
-        "native_complete_audited": 21,
+        "first_attempts_audited": 26,
+        "native_complete_audited": 22,
         "phase_at_snapshot": "waiting_for_available_gpu_and_ports",
-        "current_episode_at_snapshot": "hybrid__classify_objects__standard__g0__l2",
-        "captured_utc": "2026-10-11T10:01:03.288452+00:00",
+        "current_episode_at_snapshot": "direct__classify_objects__standard__g0__l3",
+        "captured_utc": "2026-10-11T10:43:10.881896+00:00",
         "observed_native_steps": 0,
         "episode_results": [
           {
@@ -23535,10 +23535,35 @@
               "complete_decode_passed": true,
               "sha256": "4461c4e675c78677fe2227a0e39bf28c6a1c8b510143dc6cdd171b631f2c3429"
             }
+          },
+          {
+            "schema": "gpt_policy_historical_cohort_episode_gate.v1",
+            "verified": true,
+            "verified_utc": "2026-10-11T10:41:37.649261+00:00",
+            "episode_id": "hybrid__classify_objects__standard__g0__l2",
+            "method": "pi05_plus_gpt",
+            "profile_id": "840372bd4b10fe0bba0eb46a08112374dae46c1ebca49ed561ee893f11f7cfe3",
+            "status": "native_complete_audited",
+            "first_attempt_retained": true,
+            "automatic_physical_retries": 0,
+            "plan_sha256": "d564c1e7cde3d1bfb7aabe80b247100bf31f8b849fdb7789f264692ece30345d",
+            "native_success": false,
+            "native_score": 0.4,
+            "historical_protocol_equivalence": false,
+            "full_blog_reproduction_complete": false,
+            "runtime_identity_verified": true,
+            "native_actions": 1100,
+            "decisions": 93,
+            "complete_action_audit_sha256": "7ffc91fcc428ff63f8b4728628da34c72301914bfaaa6a9fbb0745d25b2449ae",
+            "source_video": {
+              "frames": 1101,
+              "complete_decode_passed": true,
+              "sha256": "66b72aad0f9fd5ef65b996c0c529ca9e18355d1b20355f700fc1eed6f178e7ed"
+            }
           }
         ],
         "status_counts": {
-          "native_complete_audited": 21,
+          "native_complete_audited": 22,
           "controller_incomplete": 1,
           "startup_failed_no_execution": 1,
           "infrastructure_failed": 2
@@ -23547,17 +23572,17 @@
           "schema": "gpt_policy_historical_result_alignment.v1",
           "verified": true,
           "summary": {
-            "audited_attempts": 25,
-            "own_complete_native": 21,
-            "both_native_complete": 20,
+            "audited_attempts": 26,
+            "own_complete_native": 22,
+            "both_native_complete": 21,
             "own_incomplete_unscored": 4,
             "original_incomplete_excluded": 1,
             "both_incomplete_unscored": 0,
-            "success_matches": 13,
+            "success_matches": 14,
             "success_differences": 7,
-            "score_matches": 9,
+            "score_matches": 10,
             "score_differences": 11,
-            "control_step_matches": 7,
+            "control_step_matches": 8,
             "control_step_differences": 13
           },
           "records": [
@@ -24135,6 +24160,29 @@
               "score_match": true,
               "control_step_match": false,
               "comparison_status": "same_result"
+            },
+            {
+              "episode_id": "hybrid__classify_objects__standard__g0__l2",
+              "method": "pi05_plus_gpt",
+              "own_gate_sha256": "00dd1dab17220fea8ebc1227a6ff34f2917b3bd0ffd87dbba633708b73b8dc06",
+              "original_core_sha256": "a0a001fbebf4ef50c3fc1f748274dc9e493c316626a8b1221a7ef4efaa2958a3",
+              "own_complete_native": true,
+              "original_complete_native": true,
+              "original_evaluation_success": false,
+              "original_native_success": false,
+              "original_native_score": 0.4,
+              "original_native_actions": 1100,
+              "original_decisions": 94,
+              "own_native_success": false,
+              "own_native_score": 0.4,
+              "own_native_actions": 1100,
+              "own_decisions": 93,
+              "own_stopped_prefix_actions": null,
+              "both_native_complete": true,
+              "success_match": true,
+              "score_match": true,
+              "control_step_match": true,
+              "comparison_status": "same_result"
             }
           ],
           "historical_protocol_equivalence": false,
@@ -24170,9 +24218,10 @@
           "hybrid__classify_objects__standard__g0__l0": [],
           "direct__classify_objects__standard__g0__l1": [],
           "hybrid__classify_objects__standard__g0__l1": [],
-          "direct__classify_objects__standard__g0__l2": []
+          "direct__classify_objects__standard__g0__l2": [],
+          "hybrid__classify_objects__standard__g0__l2": []
         },
-        "unclaimed_episodes_at_snapshot": 72,
+        "unclaimed_episodes_at_snapshot": 71,
         "current_run_complete_audit": false,
         "automatic_physical_retries": 0,
         "historical_protocol_equivalence": false,
@@ -24185,7 +24234,7 @@
         "worker_fidelity_20261008/historical_canary_admission.json": "20e6ef82e3e261cc0845f554e251bc57ae131d9085cbe13f5c76efa83ccfeeee",
         "worker_fidelity_20261008/historical_pair_preflight.json": "e522c379f54b93955e4bbfcc22e70b33c73de04cdd3fc190d3bc052b361fc299",
         "historical_cohort_20261010/cohort_plan.json": "d564c1e7cde3d1bfb7aabe80b247100bf31f8b849fdb7789f264692ece30345d",
-        "historical_cohort_20261010/runtime_snapshot.json": "cb892b011bcfbe06bbd2dcbb67b8bbd0d82ed8c69a5078bd16d2503f28a49605",
+        "historical_cohort_20261010/runtime_snapshot.json": "34ce7476c494f8c9a59b450ad323e52618a7d7fd6666cde875c7c1b3e277fc42",
         "historical_cohort_20261010/activation.json": "53649597ceb749b1e03b6326639ebb0d292aa3b163b76adbeb968bee9c86d83a",
         "historical_cohort_20261010/implementation_checks.json": "f9394f78488d38602531a4422639ac9d0a8ae388405f30473f1438966b5d20bf",
         "historical_cohort_20261010/episode_evidence/direct__arrange_largest_number__standard__g0__l1/evidence_gate.json": "4fc1d5c2d8d73053ee92b138066c251e4323c4b86e3600f48803cc5cd0e1d806",
@@ -24235,6 +24284,8 @@
         "historical_cohort_20261010/episode_evidence/hybrid__classify_objects__standard__g0__l1/complete_action_audit.json": "17ae1ee723c8b2846d51076c552eca79264a85143597e9da9f092c91061509a4",
         "historical_cohort_20261010/episode_evidence/direct__classify_objects__standard__g0__l2/evidence_gate.json": "37605c8e41496ca0e3b0a4fb8096142773b6c045aa95804a979f82cb3bee6753",
         "historical_cohort_20261010/episode_evidence/direct__classify_objects__standard__g0__l2/complete_action_audit.json": "62452daf214535743409a2548be56c13cfcb3cbf542f68afc034208eea21cacd",
+        "historical_cohort_20261010/episode_evidence/hybrid__classify_objects__standard__g0__l2/evidence_gate.json": "00dd1dab17220fea8ebc1227a6ff34f2917b3bd0ffd87dbba633708b73b8dc06",
+        "historical_cohort_20261010/episode_evidence/hybrid__classify_objects__standard__g0__l2/complete_action_audit.json": "7ffc91fcc428ff63f8b4728628da34c72301914bfaaa6a9fbb0745d25b2449ae",
         "historical_protocol_20261008/original_record_recount.json": "711c0bc1d4d2978bb49143a83cf027ea6a1f38516250ee4fa6cf335118c4b779",
         "historical_cohort_20261010/continuation_evidence/20261011T051055Z/admission.json": "c3df1a1ac02c7495718ea18d76a79be415926a630e651080597c537d0c8bf1ba",
         "historical_cohort_20261010/continuation_evidence/20261011T051055Z/availability.json": "20bdbe979dac6f34e4d76909b297a4edd7874445bba908ed8b7af6390fe0e072",
