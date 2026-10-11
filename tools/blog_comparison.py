@@ -217,6 +217,62 @@ def worker_fidelity_summary(rows):
         reproduction_cli_counts=dict(Counter(r['reproduction_cli'] for r in rows)),
         initial_model_preview_pixel_matches={name:sum(r['images'][name]['pixel_equal'] for r in rows) for name in ('cam_high','cam_left_wrist','cam_right_wrist')})
 
+def historical_result_alignment(episodes,original_records,gate_hashes):
+    """Compare selected author records only where both runs completed natively."""
+    originals={r['episode_id']:r for r in original_records}
+    assert len(originals)==len(original_records)
+    assert len({r['episode_id'] for r in episodes})==len(episodes)
+    rows=[]
+    for own in episodes:
+        episode=own['episode_id'];assert episode in originals
+        assert re.fullmatch(r'[A-Za-z0-9_]+',episode) and own['method'] in METHODS
+        previous=originals[episode]
+        assert previous['method']=={'gpt_only':'direct','pi05_plus_gpt':'hybrid'}[own['method']]
+        assert re.fullmatch(r'[a-f0-9]{64}',previous['core_sha256'])
+        assert re.fullmatch(r'[a-f0-9]{64}',gate_hashes[episode])
+        complete=own['status']=='native_complete_audited'
+        original_complete=previous['native_complete'];assert type(original_complete) is bool
+        assert type(previous['evaluation_success']) is bool
+        if complete:
+            assert type(own['native_success']) is bool
+            assert type(own['native_score']) in (int,float) and 0<=own['native_score']<=1
+            assert integer(own['native_actions'])>0 and integer(own['decisions'])>0
+        else:assert own['native_success'] is None and own['native_score'] is None
+        if original_complete:
+            assert type(previous['native_score']) in (int,float) and 0<=previous['native_score']<=1
+            assert integer(previous['control_steps'])>0 and integer(previous['decision_count'])>0
+        else:assert previous['native_score'] is None
+        both=complete and original_complete
+        same_success=own['native_success']==previous['evaluation_success'] if both else None
+        same_score=own['native_score']==previous['native_score'] if both else None
+        status=('same_result' if same_success and same_score else 'different_result') if both else (
+            'original_incomplete' if complete else 'own_incomplete' if original_complete else 'both_incomplete')
+        rows.append(dict(episode_id=episode,method=own['method'],own_gate_sha256=gate_hashes[episode],
+            original_core_sha256=previous['core_sha256'],own_complete_native=complete,
+            original_complete_native=original_complete,original_evaluation_success=previous['evaluation_success'],
+            original_native_success=previous['evaluation_success'] if original_complete else None,
+            original_native_score=previous['native_score'],original_native_actions=integer(previous['control_steps']),
+            original_decisions=integer(previous['decision_count']),
+            own_native_success=own['native_success'],own_native_score=own['native_score'],
+            own_native_actions=own.get('native_actions') if complete else None,
+            own_decisions=own.get('decisions') if complete else None,
+            own_stopped_prefix_actions=own.get('stopped_prefix_actions'),
+            both_native_complete=both,success_match=same_success,score_match=same_score,
+            control_step_match=own['native_actions']==previous['control_steps'] if both else None,
+            comparison_status=status))
+    eligible=[r for r in rows if r['both_native_complete']]
+    summary=dict(audited_attempts=len(rows),own_complete_native=sum(r['own_complete_native'] for r in rows),
+        both_native_complete=len(eligible),own_incomplete_unscored=sum(not r['own_complete_native'] for r in rows),
+        original_incomplete_excluded=sum(r['comparison_status']=='original_incomplete' for r in rows),
+        both_incomplete_unscored=sum(r['comparison_status']=='both_incomplete' for r in rows),
+        success_matches=sum(r['success_match'] for r in eligible),success_differences=sum(not r['success_match'] for r in eligible),
+        score_matches=sum(r['score_match'] for r in eligible),score_differences=sum(not r['score_match'] for r in eligible),
+        control_step_matches=sum(r['control_step_match'] for r in eligible),
+        control_step_differences=sum(not r['control_step_match'] for r in eligible))
+    return dict(schema='gpt_policy_historical_result_alignment.v1',verified=True,summary=summary,records=rows,
+        historical_protocol_equivalence=False,full_blog_reproduction_complete=False)
+
+
 def validate_historical_execution(value):
     assert value['verified'] is True
     assert value['historical_protocol_equivalence'] is False and value['full_blog_reproduction_complete'] is False
@@ -249,6 +305,31 @@ def validate_historical_execution(value):
             if r['status']=='startup_failed_no_execution':
                 assert r['stopped_prefix_actions']==0 and r['runtime_identity_verified'] is False
                 assert r['failure_reason']=='usageLimitExceeded'
+        alignment=queue.get('original_result_alignment')
+        if alignment is not None:
+            originals=[dict(episode_id=r['episode_id'],
+                method={'gpt_only':'direct','pi05_plus_gpt':'hybrid'}[r['method']],
+                core_sha256=r['original_core_sha256'],native_complete=r['original_complete_native'],
+                evaluation_success=r['original_evaluation_success'],native_score=r['original_native_score'],
+                control_steps=r['original_native_actions'],decision_count=r['original_decisions']) for r in alignment['records']]
+            hashes={r['episode_id']:value['evidence_sha256']['historical_cohort_20261010/episode_evidence/'+r['episode_id']+'/evidence_gate.json'] for r in episodes}
+            expected=historical_result_alignment(episodes,originals,hashes)
+            expected['original_record_recount_sha256']=value['evidence_sha256']['historical_protocol_20261008/original_record_recount.json']
+            assert alignment==expected
+
+
+def validate_historical_author_alignment(alignment,original_episodes,recovery):
+    assert alignment['original_record_recount_sha256']==recovery['original_record_recount_sha256']
+    originals=indexed(original_episodes);archives=indexed(recovery['original_archives'])
+    for row in alignment['records']:
+        prefix,case_id=row['episode_id'].split('__',1)
+        assert prefix=={'gpt_only':'direct','pi05_plus_gpt':'hybrid'}[row['method']]
+        key=(case_id,row['method']);previous=originals[key]
+        assert row['original_complete_native']==previous['native_complete']
+        assert row['original_evaluation_success']==previous['success']
+        assert row['original_native_score']==previous['score']
+        assert row['original_native_actions']==previous['steps']
+        assert row['original_core_sha256']==archives[key]['core_sha256']
 
 def load_historical_execution(source):
     q=source/'publication_checks/worker_fidelity_20261008';out=source/'publication_checks/historical_cohort_20261010'
@@ -274,7 +355,11 @@ def load_historical_execution(source):
     assert digest==snapshot['plan_sha256']==activation['plan_sha256']
     assert plan['episodes_planned']==98 and len(plan['pairs'])==49 and plan['physical_retry_limit']==0
     assert plan['pilot']['reused_for_grading'] is False and snapshot['progress']['episodes_planned']==98
-    original=read(source/'publication_checks/historical_protocol_20261008/original_record_recount.json')
+    original_path=source/'publication_checks/historical_protocol_20261008/original_record_recount.json'
+    original=read(original_path)
+    original_metadata=read(original_path.with_name('recovered_comparison.json'))
+    assert original['verified'] is True and original_metadata['verified'] is True
+    assert original_metadata['original_record_recount_sha256']==sha(original_path.read_bytes())
     original_rows={r['episode_id']:r for r in original['records']}
     results=[]
     for row in gate['results']:
@@ -305,11 +390,15 @@ def load_historical_execution(source):
     assert plan['receipt_sha256']['historical_worker_manifest.json']==sha((q/'historical_worker_manifest.json').read_bytes())
     # Running observations remain separate from audited scores. A capture is a
     # dated snapshot and cannot assert that a background process is still alive.
+    alignment=historical_result_alignment(episodes,original['records'],{
+        r['episode_id']:snapshot['episode_evidence_sha256']['episode_evidence/'+r['episode_id']+'/evidence_gate.json'] for r in episodes})
+    alignment['original_record_recount_sha256']=sha(original_path.read_bytes())
     remaining=dict(pairs_planned=49,episodes_planned=98,pilot_reused_for_grading=False,
         first_attempts_audited=progress['first_attempts_audited'],native_complete_audited=progress['native_complete_audited'],
         phase_at_snapshot=progress['phase'],current_episode_at_snapshot=progress['current_episode'],
         captured_utc=snapshot['captured_utc'],observed_native_steps=snapshot['observed_native_steps'],
         episode_results=episodes,status_counts=dict(Counter(r['status'] for r in episodes)),
+        original_result_alignment=alignment,
         capacity_error_codes_by_episode=snapshot.get('capacity_error_codes_by_episode',{}),
         unclaimed_episodes_at_snapshot=snapshot.get('unclaimed_episodes'),
         current_run_complete_audit=False,automatic_physical_retries=0,
@@ -322,6 +411,7 @@ def load_historical_execution(source):
     value['evidence_sha256'].update({'historical_cohort_20261010/'+name:sha((out/name).read_bytes()) for name in
                                    ('cohort_plan.json','runtime_snapshot.json','activation.json','implementation_checks.json')})
     value['evidence_sha256'].update({'historical_cohort_20261010/'+name:sha((out/name).read_bytes()) for name in snapshot.get('episode_evidence_sha256',{})})
+    value['evidence_sha256']['historical_protocol_20261008/original_record_recount.json']=alignment['original_record_recount_sha256']
     if snapshot.get('continuation'):
         value['continuation']=snapshot['continuation']
         for field in ('admission','availability'):
@@ -543,8 +633,41 @@ def verify_public(docs):
         validate_worker_fidelity(worker)
         assert set(indexed(worker['common_cases']))==set(indexed(old))&set(indexed(own))
         for r in worker['common_cases']:assert r['run_id']==indexed(own)[r['case_id'],r['method']]['run_id']
+        execution=worker.get('original_version_execution')
+        alignment=execution['remaining_cohort'].get('original_result_alignment') if execution else None
+        if alignment is not None:
+            assert recovery is not None
+            validate_historical_author_alignment(alignment,old,recovery)
     assert (docs/'blog-comparison.html').read_text()==render(value)
     assert 'blog-comparison.html' in (docs/'scenes.html').read_text()
+
+def historical_alignment_panel(alignment):
+    if not alignment or not alignment['records']:return ''
+    E=html.escape;s=alignment['summary'];body=''
+    def result(complete,success,score):
+        return ('成功' if success else '失败')+' · '+format(score,'.2f') if complete else '原生未完整'
+    labels={'same_result':'成绩一致','different_result':'成绩不同','own_incomplete':'本次未完整',
+            'original_incomplete':'原记录未完整','both_incomplete':'双方未完整'}
+    for row in alignment['records']:
+        own_steps=str(row['own_native_actions']) if row['own_complete_native'] else (
+            str(row['own_stopped_prefix_actions'])+'（前缀）' if row['own_stopped_prefix_actions'] is not None else '—')
+        cells=[row['episode_id'],METHODS[row['method']],
+            result(row['original_complete_native'],row['original_native_success'],row['original_native_score']),
+            result(row['own_complete_native'],row['own_native_success'],row['own_native_score']),
+            str(row['original_native_actions']),own_steps,labels[row['comparison_status']]]
+        body+='<tr data-episode-id="'+E(row['episode_id'],quote=True)+'" data-comparison-status="'+row['comparison_status']+'">'+''.join('<td>'+E(c)+'</td>' for c in cells)+'</tr>'
+    headers=['案例 / 首次尝试','方法','作者成绩（Score 0–1）','本次成绩（Score 0–1）','作者控制步','本次控制步','对照']
+    return ('<p id="historical-original-alignment-summary">原版本执行与作者所选公开记录逐项对照：双方原生完整 '
+        +str(s['both_native_complete'])+'条；成功判定 '+str(s['success_matches'])+'条一致、'+str(s['success_differences'])
+        +'条不同；分数 '+str(s['score_matches'])+'条一致、'+str(s['score_differences'])+'条不同。本次未完整 '
+        +str(s['own_incomplete_unscored'])+'条不计成绩；另 '+str(s['original_incomplete_excluded'])
+        +'条本次完整而原记录未原生完整，不纳入成绩一致率。试跑不参与本表。</p>'
+        '<details class="panel" id="historical-original-alignment"><summary>展开'+str(s['audited_attempts'])
+        +'次原版本首次尝试对照</summary><p>控制步数相同不证明动作轨迹相同；成绩差异不能据此归因于模型或物理环境。'
+        '原档案和本次审计门SHA见<a href="data/blog-comparison.json">完整JSON</a>。</p>'
+        '<div class="scroll"><table><thead><tr>'+''.join('<th>'+E(h)+'</th>' for h in headers)
+        +'</tr></thead><tbody>'+body+'</tbody></table></div></details>')
+
 
 def worker_fidelity_panel(value):
     worker=value.get('historical_worker_fidelity')
@@ -578,6 +701,7 @@ def worker_fidelity_panel(value):
                 +str(len(infrastructure))+'次基础设施失败；上述未完成尝试均无完整成绩。'
                 '模型用量上限曾中断队列，缺少run.json的启动失败已独立审计，原执行源码和首次尝试未替换。'
                 '快照阶段：'+html.escape(queue['phase_at_snapshot'])+'。逐次审计门与动作审计SHA见完整JSON。</p>')
+        physical+=historical_alignment_panel(queue.get('original_result_alignment'))
     return ('<section class="panel" id="historical-worker-fidelity"><h2>历史控制器与CLI恢复</h2>'
         '<p>原100条全部使用Codex CLI 0.153.4；本次封存结果中96条使用0.159.2，4条使用0.153.4。'
         '原源码包含5套文件组合、4个控制器版本；其中78条对应累计5次输入拒绝后终止的版本。'

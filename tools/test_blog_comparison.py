@@ -8,6 +8,115 @@ def row(case='shared',success=False,score=None):
     return dict(case_id=case,method='gpt_only',task='task',success=success,score=score,
                 steps=10,chunks=2,corrected_steps=0,tokens=None,seeds={'layout_id':0},evidence='data/evidence.json')
 
+class HistoricalResultAlignmentTest(unittest.TestCase):
+    def fixture(self):
+        episodes=[];originals=[];hashes={}
+        for i,(own_complete,original_complete,own_success,original_success,own_score,original_score) in enumerate([
+                (True,True,True,True,1.0,1.0),
+                (True,True,False,True,.3,1.0),
+                (False,True,None,True,None,1.0),
+                (True,False,False,False,.5,None),
+                (False,False,None,False,None,None)]):
+            episode='direct__case_'+str(i)
+            episodes.append(dict(episode_id=episode,method='gpt_only',
+                status='native_complete_audited' if own_complete else 'infrastructure_failed',
+                native_success=own_success,native_score=own_score,
+                native_actions=886 if own_complete else None,decisions=60 if own_complete else None))
+            originals.append(dict(episode_id=episode,method='direct',native_complete=original_complete,
+                evaluation_success=original_success,native_score=original_score,
+                control_steps=867,decision_count=61,core_sha256='a'*64))
+            hashes[episode]='b'*64
+        return episodes,originals,hashes
+
+    def test_alignment_preserves_incomplete_denominators_and_actual_differences(self):
+        from blog_comparison import historical_result_alignment
+        episodes,originals,hashes=self.fixture()
+        result=historical_result_alignment(episodes,originals,hashes)
+        self.assertEqual(result['summary'],dict(audited_attempts=5,own_complete_native=3,both_native_complete=2,
+            own_incomplete_unscored=2,original_incomplete_excluded=1,both_incomplete_unscored=1,
+            success_matches=1,success_differences=1,score_matches=1,score_differences=1,
+            control_step_matches=0,control_step_differences=2))
+        self.assertEqual([r['comparison_status'] for r in result['records']],
+            ['same_result','different_result','own_incomplete','original_incomplete','both_incomplete'])
+        for row in result['records'][2:]:
+            self.assertIsNone(row['success_match']);self.assertIsNone(row['score_match'])
+        self.assertIsNone(result['records'][3]['original_native_success'])
+        self.assertFalse(result['records'][3]['original_evaluation_success'])
+
+    def test_duplicate_or_missing_original_identity_is_rejected(self):
+        from blog_comparison import historical_result_alignment
+        episodes,originals,hashes=self.fixture()
+        with self.assertRaises(AssertionError):historical_result_alignment(episodes,originals+[originals[0]],hashes)
+        with self.assertRaises(AssertionError):historical_result_alignment(episodes,originals[1:],hashes)
+
+    def test_mismatched_method_or_invalid_score_or_source_digest_is_rejected(self):
+        from blog_comparison import historical_result_alignment
+        for field,value in [('method','hybrid'),('native_score',True),('native_score',float('nan')),('core_sha256','wrong')]:
+            episodes,originals,hashes=self.fixture();originals[0][field]=value
+            with self.subTest(field=field,value=value),self.assertRaises(AssertionError):
+                historical_result_alignment(episodes,originals,hashes)
+
+    def test_incomplete_attempt_cannot_become_a_scored_difference(self):
+        from blog_comparison import historical_result_alignment
+        episodes,originals,hashes=self.fixture();episodes[2]['native_score']=0
+        with self.assertRaises(AssertionError):historical_result_alignment(episodes,originals,hashes)
+
+    def test_matching_control_step_count_does_not_claim_matching_trajectory(self):
+        from blog_comparison import historical_result_alignment
+        episodes,originals,hashes=self.fixture();originals[0]['control_steps']=886
+        result=historical_result_alignment(episodes,originals,hashes)
+        self.assertEqual(result['summary']['control_step_matches'],1)
+        self.assertNotIn('trajectory_verified',result)
+        self.assertFalse(result['historical_protocol_equivalence'])
+
+    def test_alignment_summary_or_gate_binding_cannot_be_changed(self):
+        from blog_comparison import historical_result_alignment
+        episodes,originals,hashes=self.fixture()
+        for row in episodes:
+            row.update(automatic_physical_retries=0,first_attempt_retained=True,
+                source_video=dict(frames=887,complete_decode_passed=True))
+        execution=BlogComparisonTest().physical_pilot();queue=execution['remaining_cohort']
+        queue.update(first_attempts_audited=5,native_complete_audited=3,episode_results=episodes,
+            status_counts={'native_complete_audited':3,'infrastructure_failed':2})
+        alignment=historical_result_alignment(episodes,originals,hashes)
+        alignment['original_record_recount_sha256']='c'*64
+        queue['original_result_alignment']=alignment
+        execution['evidence_sha256']={'historical_protocol_20261008/original_record_recount.json':'c'*64,
+            **{'historical_cohort_20261010/episode_evidence/'+episode+'/evidence_gate.json':digest for episode,digest in hashes.items()}}
+        validate_historical_execution(execution)
+        alignment['summary']['score_differences']=0
+        with self.assertRaises(AssertionError):validate_historical_execution(execution)
+        alignment['summary']['score_differences']=1
+        alignment['records'][0]['own_gate_sha256']='d'*64
+        with self.assertRaises(AssertionError):validate_historical_execution(execution)
+
+    def test_panel_discloses_both_incomplete_and_differing_results(self):
+        from blog_comparison import historical_result_alignment,historical_alignment_panel
+        episodes,originals,hashes=self.fixture()
+        panel=historical_alignment_panel(historical_result_alignment(episodes,originals,hashes))
+        self.assertIn('双方原生完整 2条',panel)
+        self.assertIn('分数 1条一致、1条不同',panel)
+        self.assertIn('本次未完整 2条不计成绩',panel)
+        self.assertIn('另 1条本次完整而原记录未原生完整',panel)
+        self.assertIn('控制步数相同不证明动作轨迹相同',panel)
+        self.assertEqual(panel.count('<tr data-episode-id='),5)
+        self.assertIn('双方未完整',panel)
+
+    def test_author_values_cannot_be_forged_while_retaining_the_record_digest(self):
+        from blog_comparison import historical_result_alignment,validate_historical_author_alignment
+        episodes,originals,hashes=self.fixture()
+        alignment=historical_result_alignment(episodes,originals,hashes)
+        alignment['original_record_recount_sha256']='c'*64
+        public=[dict(case_id=r['episode_id'].split('__',1)[1],method='gpt_only',
+            native_complete=r['native_complete'],success=r['evaluation_success'],
+            score=r['native_score'],steps=r['control_steps']) for r in originals]
+        recovery=dict(original_record_recount_sha256='c'*64,original_archives=[
+            dict(case_id=r['case_id'],method=r['method'],core_sha256='a'*64) for r in public])
+        validate_historical_author_alignment(alignment,public,recovery)
+        alignment['records'][0]['original_native_score']=.8
+        with self.assertRaises(AssertionError):validate_historical_author_alignment(alignment,public,recovery)
+
+
 class BlogComparisonTest(unittest.TestCase):
     def physical_pilot(self):
         rows=[dict(method=m,status='native_complete_audited',benchmark_eligible=False,native_success=False,
@@ -66,7 +175,9 @@ class BlogComparisonTest(unittest.TestCase):
                       episode_evidence_sha256={},progress=dict(episodes_planned=98,first_attempts_audited=0,results=[],native_complete_audited=0,phase='running',current_episode=None),
                       continuation=dict(admission_path=prefix+'admission.json',admission_sha256=resumed_sha,availability_path=prefix+'availability.json',availability_sha256=available_sha))
         put(out+'runtime_snapshot.json',snapshot)
-        put('publication_checks/historical_protocol_20261008/original_record_recount.json',dict(records=records))
+        record_sha=put('publication_checks/historical_protocol_20261008/original_record_recount.json',dict(verified=True,records=records))
+        put('publication_checks/historical_protocol_20261008/recovered_comparison.json',
+            dict(verified=True,original_record_recount_sha256=record_sha))
         for name in ['current_service_probe.json','failure_contract.json','implementation_checks.json','activation.json']:
             put('publication_checks/historical_resume_20261010/'+name,{})
         return put,snapshot,resumed,out,prefix
@@ -84,6 +195,14 @@ class BlogComparisonTest(unittest.TestCase):
             resumed['plan_sha256']='another-plan'
             snapshot['continuation']['admission_sha256']=put(out+prefix+'admission.json',resumed)
             put(out+'runtime_snapshot.json',snapshot)
+            with self.assertRaises(AssertionError):load_historical_execution(root)
+
+    def test_historical_alignment_rejects_changed_author_record_bytes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory);self.continuation_fixture(root)
+            path=root/'publication_checks/historical_protocol_20261008/original_record_recount.json'
+            value=json.loads(path.read_text());value['records'][0]['native_score']=.5
+            path.write_text(json.dumps(value)+'\n')
             with self.assertRaises(AssertionError):load_historical_execution(root)
 
     def test_remaining_cohort_cannot_count_prefix_as_complete(self):
