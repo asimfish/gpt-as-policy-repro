@@ -22912,11 +22912,11 @@
         "pairs_planned": 49,
         "episodes_planned": 98,
         "pilot_reused_for_grading": false,
-        "first_attempts_audited": 21,
-        "native_complete_audited": 17,
+        "first_attempts_audited": 22,
+        "native_complete_audited": 18,
         "phase_at_snapshot": "running",
-        "current_episode_at_snapshot": "hybrid__classify_objects__standard__g0__l0",
-        "captured_utc": "2026-10-11T05:16:44.601465+00:00",
+        "current_episode_at_snapshot": "direct__classify_objects__standard__g0__l1",
+        "captured_utc": "2026-10-11T05:50:01.602034+00:00",
         "observed_native_steps": 0,
         "episode_results": [
           {
@@ -23435,10 +23435,35 @@
             "recovery_scope": "Only the joined first native start and zero-action CUDA reset failure are audited. No completed run identity is inferred. The claim remains unscored and cannot be replayed.",
             "historical_protocol_equivalence": false,
             "full_blog_reproduction_complete": false
+          },
+          {
+            "schema": "gpt_policy_historical_cohort_episode_gate.v1",
+            "verified": true,
+            "verified_utc": "2026-10-11T05:47:32.051005+00:00",
+            "episode_id": "hybrid__classify_objects__standard__g0__l0",
+            "method": "pi05_plus_gpt",
+            "profile_id": "840372bd4b10fe0bba0eb46a08112374dae46c1ebca49ed561ee893f11f7cfe3",
+            "status": "native_complete_audited",
+            "first_attempt_retained": true,
+            "automatic_physical_retries": 0,
+            "plan_sha256": "d564c1e7cde3d1bfb7aabe80b247100bf31f8b849fdb7789f264692ece30345d",
+            "native_success": true,
+            "native_score": 1.0,
+            "historical_protocol_equivalence": false,
+            "full_blog_reproduction_complete": false,
+            "runtime_identity_verified": true,
+            "native_actions": 886,
+            "decisions": 60,
+            "complete_action_audit_sha256": "c3a772fbbfe33a1da414b633784054e5cef97ea9b221e652d38d55bce9963568",
+            "source_video": {
+              "frames": 887,
+              "complete_decode_passed": true,
+              "sha256": "a7b7aae0ae23d2685533c95660abd92a9adc05bacad3cd9d93d2107b05a4ad53"
+            }
           }
         ],
         "status_counts": {
-          "native_complete_audited": 17,
+          "native_complete_audited": 18,
           "controller_incomplete": 1,
           "startup_failed_no_execution": 1,
           "infrastructure_failed": 2
@@ -23468,9 +23493,10 @@
           "hybrid__build_tower__standard__g0__l3": [],
           "direct__build_tower__standard__g0__l4": [],
           "hybrid__build_tower__standard__g0__l4": [],
-          "direct__classify_objects__standard__g0__l0": []
+          "direct__classify_objects__standard__g0__l0": [],
+          "hybrid__classify_objects__standard__g0__l0": []
         },
-        "unclaimed_episodes_at_snapshot": 76,
+        "unclaimed_episodes_at_snapshot": 75,
         "current_run_complete_audit": false,
         "automatic_physical_retries": 0,
         "historical_protocol_equivalence": false,
@@ -23483,7 +23509,7 @@
         "worker_fidelity_20261008/historical_canary_admission.json": "20e6ef82e3e261cc0845f554e251bc57ae131d9085cbe13f5c76efa83ccfeeee",
         "worker_fidelity_20261008/historical_pair_preflight.json": "e522c379f54b93955e4bbfcc22e70b33c73de04cdd3fc190d3bc052b361fc299",
         "historical_cohort_20261010/cohort_plan.json": "d564c1e7cde3d1bfb7aabe80b247100bf31f8b849fdb7789f264692ece30345d",
-        "historical_cohort_20261010/runtime_snapshot.json": "099a29eee945de187b450241944a177a0bcca9645622d50a12267407f3583e11",
+        "historical_cohort_20261010/runtime_snapshot.json": "6562332e71d0f79434eda2fd3140cef0f40773cc1e79cf1086f38cc1a87e3854",
         "historical_cohort_20261010/activation.json": "53649597ceb749b1e03b6326639ebb0d292aa3b163b76adbeb968bee9c86d83a",
         "historical_cohort_20261010/implementation_checks.json": "f9394f78488d38602531a4422639ac9d0a8ae388405f30473f1438966b5d20bf",
         "historical_cohort_20261010/episode_evidence/direct__arrange_largest_number__standard__g0__l1/evidence_gate.json": "4fc1d5c2d8d73053ee92b138066c251e4323c4b86e3600f48803cc5cd0e1d806",
@@ -23525,6 +23551,8 @@
         "historical_cohort_20261010/episode_evidence/direct__build_tower__standard__g0__l4/complete_action_audit.json": "002b308b49dd78c53b47b4cdaa265ce3999fb37286178230754d0d9bd8f9cbeb",
         "historical_cohort_20261010/episode_evidence/hybrid__build_tower__standard__g0__l4/evidence_gate.json": "333417023a41f9c8f66eb1f81c249a4d5f0048055f13d8a8cae7e5ec5cbf2cb1",
         "historical_cohort_20261010/episode_evidence/direct__classify_objects__standard__g0__l0/evidence_gate.json": "d287855fe37945bd6988fdecbae180072c40855321c319300dc4e56971ccf126",
+        "historical_cohort_20261010/episode_evidence/hybrid__classify_objects__standard__g0__l0/evidence_gate.json": "a8594673c9e990ef6ce5ae489c779ec8d5fa90f8fff00dbad8c570ef03ffd6cc",
+        "historical_cohort_20261010/episode_evidence/hybrid__classify_objects__standard__g0__l0/complete_action_audit.json": "c3a772fbbfe33a1da414b633784054e5cef97ea9b221e652d38d55bce9963568",
         "historical_cohort_20261010/continuation_evidence/20261011T051055Z/admission.json": "c3df1a1ac02c7495718ea18d76a79be415926a630e651080597c537d0c8bf1ba",
         "historical_cohort_20261010/continuation_evidence/20261011T051055Z/availability.json": "20bdbe979dac6f34e4d76909b297a4edd7874445bba908ed8b7af6390fe0e072",
         "historical_resume_20261010/current_service_probe.json": "3d1d01d207563c926093e9ab3acd765cf453c6dbb6370d260b46098a555a8a16",
