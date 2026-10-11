@@ -22912,11 +22912,11 @@
         "pairs_planned": 49,
         "episodes_planned": 98,
         "pilot_reused_for_grading": false,
-        "first_attempts_audited": 20,
+        "first_attempts_audited": 21,
         "native_complete_audited": 17,
-        "phase_at_snapshot": "blocked_infrastructure_requires_review",
-        "current_episode_at_snapshot": "hybrid__build_tower__standard__g0__l4",
-        "captured_utc": "2026-10-11T04:45:20.553003+00:00",
+        "phase_at_snapshot": "running",
+        "current_episode_at_snapshot": "hybrid__classify_objects__standard__g0__l0",
+        "captured_utc": "2026-10-11T05:16:44.601465+00:00",
         "observed_native_steps": 0,
         "episode_results": [
           {
@@ -23407,13 +23407,41 @@
             "historical_protocol_equivalence": false,
             "full_blog_reproduction_complete": false,
             "runtime_identity_verified": false
+          },
+          {
+            "schema": "gpt_policy_historical_cohort_episode_gate.v1",
+            "verified": true,
+            "verified_utc": "2026-10-11T05:08:16.615429+00:00",
+            "episode_id": "direct__classify_objects__standard__g0__l0",
+            "method": "gpt_only",
+            "profile_id": "3486581698d536d5708eeee0980553ccd2f12374468f00d69dae7604aa139e95",
+            "status": "infrastructure_failed",
+            "original_attempt_status": "controller_incomplete",
+            "failure_reason": "native_cuda_reset_error",
+            "first_attempt_retained": true,
+            "automatic_physical_retries": 0,
+            "plan_sha256": "d564c1e7cde3d1bfb7aabe80b247100bf31f8b849fdb7789f264692ece30345d",
+            "native_success": null,
+            "native_score": null,
+            "worker_identity_verified": true,
+            "controller_source_launch_verified": true,
+            "runtime_identity_verified": false,
+            "native_case_metadata_verified": true,
+            "stopped_prefix_decisions": 0,
+            "stopped_prefix_actions": 0,
+            "service_tool_calls": 1,
+            "native_reset_observed": true,
+            "run_metadata_fabricated": false,
+            "recovery_scope": "Only the joined first native start and zero-action CUDA reset failure are audited. No completed run identity is inferred. The claim remains unscored and cannot be replayed.",
+            "historical_protocol_equivalence": false,
+            "full_blog_reproduction_complete": false
           }
         ],
         "status_counts": {
           "native_complete_audited": 17,
           "controller_incomplete": 1,
           "startup_failed_no_execution": 1,
-          "infrastructure_failed": 1
+          "infrastructure_failed": 2
         },
         "capacity_error_codes_by_episode": {
           "direct__arrange_largest_number__standard__g0__l1": [],
@@ -23439,9 +23467,10 @@
           "direct__build_tower__standard__g0__l3": [],
           "hybrid__build_tower__standard__g0__l3": [],
           "direct__build_tower__standard__g0__l4": [],
-          "hybrid__build_tower__standard__g0__l4": []
+          "hybrid__build_tower__standard__g0__l4": [],
+          "direct__classify_objects__standard__g0__l0": []
         },
-        "unclaimed_episodes_at_snapshot": 78,
+        "unclaimed_episodes_at_snapshot": 76,
         "current_run_complete_audit": false,
         "automatic_physical_retries": 0,
         "historical_protocol_equivalence": false,
@@ -23454,7 +23483,7 @@
         "worker_fidelity_20261008/historical_canary_admission.json": "20e6ef82e3e261cc0845f554e251bc57ae131d9085cbe13f5c76efa83ccfeeee",
         "worker_fidelity_20261008/historical_pair_preflight.json": "e522c379f54b93955e4bbfcc22e70b33c73de04cdd3fc190d3bc052b361fc299",
         "historical_cohort_20261010/cohort_plan.json": "d564c1e7cde3d1bfb7aabe80b247100bf31f8b849fdb7789f264692ece30345d",
-        "historical_cohort_20261010/runtime_snapshot.json": "27df8a0584d94e40f229837a6927145f25a3e763919a6145acb3177e4bf4daf7",
+        "historical_cohort_20261010/runtime_snapshot.json": "099a29eee945de187b450241944a177a0bcca9645622d50a12267407f3583e11",
         "historical_cohort_20261010/activation.json": "53649597ceb749b1e03b6326639ebb0d292aa3b163b76adbeb968bee9c86d83a",
         "historical_cohort_20261010/implementation_checks.json": "f9394f78488d38602531a4422639ac9d0a8ae388405f30473f1438966b5d20bf",
         "historical_cohort_20261010/episode_evidence/direct__arrange_largest_number__standard__g0__l1/evidence_gate.json": "4fc1d5c2d8d73053ee92b138066c251e4323c4b86e3600f48803cc5cd0e1d806",
@@ -23495,8 +23524,9 @@
         "historical_cohort_20261010/episode_evidence/direct__build_tower__standard__g0__l4/evidence_gate.json": "63cb68f22f63cb73c9fbda514bd3c315d897030682dfe779a09de6244ff7df45",
         "historical_cohort_20261010/episode_evidence/direct__build_tower__standard__g0__l4/complete_action_audit.json": "002b308b49dd78c53b47b4cdaa265ce3999fb37286178230754d0d9bd8f9cbeb",
         "historical_cohort_20261010/episode_evidence/hybrid__build_tower__standard__g0__l4/evidence_gate.json": "333417023a41f9c8f66eb1f81c249a4d5f0048055f13d8a8cae7e5ec5cbf2cb1",
-        "historical_cohort_20261010/continuation_evidence/20261011T040020Z/admission.json": "e68c173475ab913de1f0ca81f9af9803f696413a3034753146488cc46c080d12",
-        "historical_cohort_20261010/continuation_evidence/20261011T040020Z/availability.json": "893132070a0985620aec75899d24b5245958daca21c99d9ce3eed376d30cd727",
+        "historical_cohort_20261010/episode_evidence/direct__classify_objects__standard__g0__l0/evidence_gate.json": "d287855fe37945bd6988fdecbae180072c40855321c319300dc4e56971ccf126",
+        "historical_cohort_20261010/continuation_evidence/20261011T051055Z/admission.json": "c3df1a1ac02c7495718ea18d76a79be415926a630e651080597c537d0c8bf1ba",
+        "historical_cohort_20261010/continuation_evidence/20261011T051055Z/availability.json": "20bdbe979dac6f34e4d76909b297a4edd7874445bba908ed8b7af6390fe0e072",
         "historical_resume_20261010/current_service_probe.json": "3d1d01d207563c926093e9ab3acd765cf453c6dbb6370d260b46098a555a8a16",
         "historical_resume_20261010/failure_contract.json": "7fd01db3a5f3fb8e5f1fc9d4263a338f59d511005ce4a7c35c37f46a3fa27efb",
         "historical_resume_20261010/implementation_checks.json": "09cb842d0415a7d146f793dbef867abf1da151c75cd25a33cc319ad2a3578a20",
@@ -23505,13 +23535,13 @@
       "historical_protocol_equivalence": false,
       "full_blog_reproduction_complete": false,
       "continuation": {
-        "admission_path": "continuation_evidence/20261011T040020Z/admission.json",
-        "admission_sha256": "e68c173475ab913de1f0ca81f9af9803f696413a3034753146488cc46c080d12",
-        "availability_path": "continuation_evidence/20261011T040020Z/availability.json",
-        "availability_sha256": "893132070a0985620aec75899d24b5245958daca21c99d9ce3eed376d30cd727"
+        "admission_path": "continuation_evidence/20261011T051055Z/admission.json",
+        "admission_sha256": "c3df1a1ac02c7495718ea18d76a79be415926a630e651080597c537d0c8bf1ba",
+        "availability_path": "continuation_evidence/20261011T051055Z/availability.json",
+        "availability_sha256": "20bdbe979dac6f34e4d76909b297a4edd7874445bba908ed8b7af6390fe0e072"
       },
       "service_availability_at_continuation": {
-        "checked_utc": "2026-10-11T04:28:28.971608+00:00",
+        "checked_utc": "2026-10-11T05:14:43.007001+00:00",
         "model": "gpt-6-astra",
         "cli_version": "codex-cli 0.153.4",
         "model_available": true,
