@@ -115,6 +115,25 @@ class BlogComparisonTest(unittest.TestCase):
         queue.update(first_attempts_audited=1,episode_results=[row],status_counts={'controller_incomplete':1},native_complete_audited=1)
         with self.assertRaises(AssertionError):validate_historical_execution(value)
 
+    def test_report_discloses_infrastructure_failure_with_other_unscored_attempts(self):
+        from blog_comparison import worker_fidelity_panel
+        execution=self.physical_pilot()
+        for result in execution['canary_results']:
+            result['original_native_score']=.05
+        execution['remaining_cohort'].update(captured_utc='2026-10-11T04:45:20Z',
+            current_episode_at_snapshot='hybrid__case',observed_native_steps=0,
+            phase_at_snapshot='blocked_infrastructure_requires_review',first_attempts_audited=3,
+            episode_results=[dict(status='controller_incomplete',stopped_prefix_actions=656),
+                dict(status='startup_failed_no_execution'),dict(status='infrastructure_failed')])
+        panel=worker_fidelity_panel(dict(historical_worker_fidelity=dict(
+            common_summary=dict(crosses_original_five_rejection_stop=11),
+            initial_model_rgb_difference_summary={'camera':dict(mean_absolute_channel_difference_mean=1)},
+            original_version_execution=execution)))
+        self.assertIn('1次基础设施失败',panel)
+        self.assertIn('1次中断前缀（656个控制步）',panel)
+        self.assertIn('1次零动作启动失败',panel)
+        self.assertIn('上述未完成尝试均无完整成绩',panel)
+
     def test_recorded_fifth_stop_claim_is_recomputed(self):
         docs=Path(__file__).resolve().parents[1]/'docs'
         value=json.loads((docs/'data/blog-comparison.json').read_text()).get('historical_worker_fidelity')

@@ -570,10 +570,12 @@ def worker_fidelity_panel(value):
             complete=[r for r in queue['episode_results'] if r['status']=='native_complete_audited']
             prefixes=[r for r in queue['episode_results'] if r['status']=='controller_incomplete']
             startup=[r for r in queue['episode_results'] if r['status']=='startup_failed_no_execution']
+            infrastructure=[r for r in queue['episode_results'] if r['status']=='infrastructure_failed']
             physical+=('<p id="historical-cohort-results">本阶段已审计的完整回合：'+str(sum(r['native_success'] for r in complete))
                 +'次成功、'+str(sum(not r['native_success'] for r in complete))+'次原生失败。另保留'
                 +str(len(prefixes))+'次中断前缀（'+str(sum(r.get('stopped_prefix_actions',0) for r in prefixes))
-                +'个控制步）和'+str(len(startup))+'次零动作启动失败；两者均无完整成绩。'
+                +'个控制步）、'+str(len(startup))+'次零动作启动失败、'
+                +str(len(infrastructure))+'次基础设施失败；上述未完成尝试均无完整成绩。'
                 '模型用量上限曾中断队列，缺少run.json的启动失败已独立审计，原执行源码和首次尝试未替换。'
                 '快照阶段：'+html.escape(queue['phase_at_snapshot'])+'。逐次审计门与动作审计SHA见完整JSON。</p>')
     return ('<section class="panel" id="historical-worker-fidelity"><h2>历史控制器与CLI恢复</h2>'
