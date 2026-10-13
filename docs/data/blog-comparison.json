@@ -22914,9 +22914,9 @@
         "pilot_reused_for_grading": false,
         "first_attempts_audited": 27,
         "native_complete_audited": 23,
-        "phase_at_snapshot": "interrupted",
-        "current_episode_at_snapshot": null,
-        "captured_utc": "2026-10-13T18:01:48.303103+00:00",
+        "phase_at_snapshot": "running",
+        "current_episode_at_snapshot": "hybrid__classify_objects__standard__g0__l3",
+        "captured_utc": "2026-10-13T19:11:22.915990+00:00",
         "observed_native_steps": 0,
         "episode_results": [
           {
@@ -24274,7 +24274,7 @@
           "hybrid__classify_objects__standard__g0__l2": [],
           "direct__classify_objects__standard__g0__l3": []
         },
-        "unclaimed_episodes_at_snapshot": 71,
+        "unclaimed_episodes_at_snapshot": 70,
         "current_run_complete_audit": false,
         "automatic_physical_retries": 0,
         "historical_protocol_equivalence": false,
@@ -24287,7 +24287,7 @@
         "worker_fidelity_20261008/historical_canary_admission.json": "20e6ef82e3e261cc0845f554e251bc57ae131d9085cbe13f5c76efa83ccfeeee",
         "worker_fidelity_20261008/historical_pair_preflight.json": "e522c379f54b93955e4bbfcc22e70b33c73de04cdd3fc190d3bc052b361fc299",
         "historical_cohort_20261010/cohort_plan.json": "d564c1e7cde3d1bfb7aabe80b247100bf31f8b849fdb7789f264692ece30345d",
-        "historical_cohort_20261010/runtime_snapshot.json": "57a6229cf2015d0f48ac2b8b6bb660a9d4f8f2f119662fa12242ca36275d609a",
+        "historical_cohort_20261010/runtime_snapshot.json": "0e256035182937ceeb44861148303eb3b10b6091a6ce73730062e1c99752c878",
         "historical_cohort_20261010/activation.json": "53649597ceb749b1e03b6326639ebb0d292aa3b163b76adbeb968bee9c86d83a",
         "historical_cohort_20261010/implementation_checks.json": "f9394f78488d38602531a4422639ac9d0a8ae388405f30473f1438966b5d20bf",
         "historical_cohort_20261010/episode_evidence/direct__arrange_largest_number__standard__g0__l1/evidence_gate.json": "4fc1d5c2d8d73053ee92b138066c251e4323c4b86e3600f48803cc5cd0e1d806",
@@ -24345,8 +24345,8 @@
         "historical_cohort_20261010/episode_evidence/direct__classify_objects__standard__g0__l3/launch_claim.json": "64eb5b0552083c699d5b6d86fdf39c1daba11ad7b3084b0336e57a7c00bf6a2b",
         "historical_cohort_20261010/episode_evidence/direct__classify_objects__standard__g0__l3/complete_action_audit.json": "10838263117d0f7c01883ec66ead4e3a3e7acdad28e1c6da36d9ff3f008c19c6",
         "historical_protocol_20261008/original_record_recount.json": "711c0bc1d4d2978bb49143a83cf027ea6a1f38516250ee4fa6cf335118c4b779",
-        "historical_cohort_20261010/continuation_evidence/20261011T051055Z/admission.json": "c3df1a1ac02c7495718ea18d76a79be415926a630e651080597c537d0c8bf1ba",
-        "historical_cohort_20261010/continuation_evidence/20261011T051055Z/availability.json": "20bdbe979dac6f34e4d76909b297a4edd7874445bba908ed8b7af6390fe0e072",
+        "historical_cohort_20261010/continuation_evidence/20261013T190424Z/admission.json": "d865554bb5c54e6ad43f95cf16758f077d5641235da4c73cdf76e6570f647da8",
+        "historical_cohort_20261010/continuation_evidence/20261013T190424Z/availability.json": "1152d286f291cbbb9b97c9f0931abda83e101416f3b24c3049b1e44f12d8a49d",
         "historical_resume_20261010/current_service_probe.json": "3d1d01d207563c926093e9ab3acd765cf453c6dbb6370d260b46098a555a8a16",
         "historical_resume_20261010/failure_contract.json": "7fd01db3a5f3fb8e5f1fc9d4263a338f59d511005ce4a7c35c37f46a3fa27efb",
         "historical_resume_20261010/implementation_checks.json": "09cb842d0415a7d146f793dbef867abf1da151c75cd25a33cc319ad2a3578a20",
@@ -24355,13 +24355,15 @@
       "historical_protocol_equivalence": false,
       "full_blog_reproduction_complete": false,
       "continuation": {
-        "admission_path": "continuation_evidence/20261011T051055Z/admission.json",
-        "admission_sha256": "c3df1a1ac02c7495718ea18d76a79be415926a630e651080597c537d0c8bf1ba",
-        "availability_path": "continuation_evidence/20261011T051055Z/availability.json",
-        "availability_sha256": "20bdbe979dac6f34e4d76909b297a4edd7874445bba908ed8b7af6390fe0e072"
+        "admission_path": "continuation_evidence/20261013T190424Z/admission.json",
+        "admission_sha256": "d865554bb5c54e6ad43f95cf16758f077d5641235da4c73cdf76e6570f647da8",
+        "availability_path": "continuation_evidence/20261013T190424Z/availability.json",
+        "availability_sha256": "1152d286f291cbbb9b97c9f0931abda83e101416f3b24c3049b1e44f12d8a49d",
+        "runtime_view_path": "continuation_evidence/20261013T190424Z/runtime_view.json",
+        "runtime_view_sha256": "6c665a81eb593bf8b43339967c885b0cc3c088a4a760cd1eea8c307bb3e113a2"
       },
       "service_availability_at_continuation": {
-        "checked_utc": "2026-10-11T05:14:43.007001+00:00",
+        "checked_utc": "2026-10-13T19:09:10.371991+00:00",
         "model": "gpt-6-astra",
         "cli_version": "codex-cli 0.153.4",
         "model_available": true,
