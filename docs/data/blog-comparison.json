@@ -22912,11 +22912,11 @@
         "pairs_planned": 49,
         "episodes_planned": 98,
         "pilot_reused_for_grading": false,
-        "first_attempts_audited": 26,
-        "native_complete_audited": 22,
-        "phase_at_snapshot": "waiting_for_available_gpu_and_ports",
-        "current_episode_at_snapshot": "direct__classify_objects__standard__g0__l3",
-        "captured_utc": "2026-10-11T10:43:10.881896+00:00",
+        "first_attempts_audited": 27,
+        "native_complete_audited": 23,
+        "phase_at_snapshot": "interrupted",
+        "current_episode_at_snapshot": null,
+        "captured_utc": "2026-10-13T18:01:48.303103+00:00",
         "observed_native_steps": 0,
         "episode_results": [
           {
@@ -23560,10 +23560,39 @@
               "complete_decode_passed": true,
               "sha256": "66b72aad0f9fd5ef65b996c0c529ca9e18355d1b20355f700fc1eed6f178e7ed"
             }
+          },
+          {
+            "schema": "gpt_policy_historical_cohort_episode_gate.v1",
+            "verified": true,
+            "verified_utc": "2026-10-13T17:35:21.724261+00:00",
+            "episode_id": "direct__classify_objects__standard__g0__l3",
+            "method": "gpt_only",
+            "profile_id": "3486581698d536d5708eeee0980553ccd2f12374468f00d69dae7604aa139e95",
+            "status": "native_complete_audited",
+            "original_attempt_status": "running",
+            "first_attempt_retained": true,
+            "automatic_physical_retries": 0,
+            "plan_sha256": "d564c1e7cde3d1bfb7aabe80b247100bf31f8b849fdb7789f264692ece30345d",
+            "native_success": false,
+            "native_score": 0.15,
+            "native_actions": 1100,
+            "decisions": 220,
+            "runtime_identity_verified": true,
+            "complete_action_audit_sha256": "10838263117d0f7c01883ec66ead4e3a3e7acdad28e1c6da36d9ff3f008c19c6",
+            "source_video": {
+              "frames": 1101,
+              "complete_decode_passed": true,
+              "sha256": "06f31fd20115f7d2adfe80056735c38b68cc6f3f7ad5012418e0ada3c83f4139"
+            },
+            "native_completion_recovery_sha256": "ed863fc0e1637068add252619483590c5995a11f55c3fd08e754892e67632e55",
+            "recovery_source_sha256": "6995cb7224f9c66c3ea4c1bd65fa0a3aa5b300165f460a111f61a1fb0089aac2",
+            "supervisor_exit_status_observed": false,
+            "historical_protocol_equivalence": false,
+            "full_blog_reproduction_complete": false
           }
         ],
         "status_counts": {
-          "native_complete_audited": 22,
+          "native_complete_audited": 23,
           "controller_incomplete": 1,
           "startup_failed_no_execution": 1,
           "infrastructure_failed": 2
@@ -23572,18 +23601,18 @@
           "schema": "gpt_policy_historical_result_alignment.v1",
           "verified": true,
           "summary": {
-            "audited_attempts": 26,
-            "own_complete_native": 22,
-            "both_native_complete": 21,
+            "audited_attempts": 27,
+            "own_complete_native": 23,
+            "both_native_complete": 22,
             "own_incomplete_unscored": 4,
             "original_incomplete_excluded": 1,
             "both_incomplete_unscored": 0,
             "success_matches": 14,
-            "success_differences": 7,
+            "success_differences": 8,
             "score_matches": 10,
-            "score_differences": 11,
+            "score_differences": 12,
             "control_step_matches": 8,
-            "control_step_differences": 13
+            "control_step_differences": 14
           },
           "records": [
             {
@@ -24183,6 +24212,29 @@
               "score_match": true,
               "control_step_match": true,
               "comparison_status": "same_result"
+            },
+            {
+              "episode_id": "direct__classify_objects__standard__g0__l3",
+              "method": "gpt_only",
+              "own_gate_sha256": "391c8c276ce51eaf552d51efea5e5709843fa5a097919581979be05a1368ae2e",
+              "original_core_sha256": "7ac3daa6ae49ae6cdcad29d11a23fd49040e6a053e8682255da11e663fcfb0a5",
+              "own_complete_native": true,
+              "original_complete_native": true,
+              "original_evaluation_success": true,
+              "original_native_success": true,
+              "original_native_score": 1.0,
+              "original_native_actions": 615,
+              "original_decisions": 123,
+              "own_native_success": false,
+              "own_native_score": 0.15,
+              "own_native_actions": 1100,
+              "own_decisions": 220,
+              "own_stopped_prefix_actions": null,
+              "both_native_complete": true,
+              "success_match": false,
+              "score_match": false,
+              "control_step_match": false,
+              "comparison_status": "different_result"
             }
           ],
           "historical_protocol_equivalence": false,
@@ -24219,7 +24271,8 @@
           "direct__classify_objects__standard__g0__l1": [],
           "hybrid__classify_objects__standard__g0__l1": [],
           "direct__classify_objects__standard__g0__l2": [],
-          "hybrid__classify_objects__standard__g0__l2": []
+          "hybrid__classify_objects__standard__g0__l2": [],
+          "direct__classify_objects__standard__g0__l3": []
         },
         "unclaimed_episodes_at_snapshot": 71,
         "current_run_complete_audit": false,
@@ -24234,7 +24287,7 @@
         "worker_fidelity_20261008/historical_canary_admission.json": "20e6ef82e3e261cc0845f554e251bc57ae131d9085cbe13f5c76efa83ccfeeee",
         "worker_fidelity_20261008/historical_pair_preflight.json": "e522c379f54b93955e4bbfcc22e70b33c73de04cdd3fc190d3bc052b361fc299",
         "historical_cohort_20261010/cohort_plan.json": "d564c1e7cde3d1bfb7aabe80b247100bf31f8b849fdb7789f264692ece30345d",
-        "historical_cohort_20261010/runtime_snapshot.json": "34ce7476c494f8c9a59b450ad323e52618a7d7fd6666cde875c7c1b3e277fc42",
+        "historical_cohort_20261010/runtime_snapshot.json": "57a6229cf2015d0f48ac2b8b6bb660a9d4f8f2f119662fa12242ca36275d609a",
         "historical_cohort_20261010/activation.json": "53649597ceb749b1e03b6326639ebb0d292aa3b163b76adbeb968bee9c86d83a",
         "historical_cohort_20261010/implementation_checks.json": "f9394f78488d38602531a4422639ac9d0a8ae388405f30473f1438966b5d20bf",
         "historical_cohort_20261010/episode_evidence/direct__arrange_largest_number__standard__g0__l1/evidence_gate.json": "4fc1d5c2d8d73053ee92b138066c251e4323c4b86e3600f48803cc5cd0e1d806",
@@ -24286,6 +24339,11 @@
         "historical_cohort_20261010/episode_evidence/direct__classify_objects__standard__g0__l2/complete_action_audit.json": "62452daf214535743409a2548be56c13cfcb3cbf542f68afc034208eea21cacd",
         "historical_cohort_20261010/episode_evidence/hybrid__classify_objects__standard__g0__l2/evidence_gate.json": "00dd1dab17220fea8ebc1227a6ff34f2917b3bd0ffd87dbba633708b73b8dc06",
         "historical_cohort_20261010/episode_evidence/hybrid__classify_objects__standard__g0__l2/complete_action_audit.json": "7ffc91fcc428ff63f8b4728628da34c72301914bfaaa6a9fbb0745d25b2449ae",
+        "historical_cohort_20261010/episode_evidence/direct__classify_objects__standard__g0__l3/evidence_gate.json": "391c8c276ce51eaf552d51efea5e5709843fa5a097919581979be05a1368ae2e",
+        "historical_cohort_20261010/episode_evidence/direct__classify_objects__standard__g0__l3/native_completion_recovery.json": "ed863fc0e1637068add252619483590c5995a11f55c3fd08e754892e67632e55",
+        "historical_cohort_20261010/episode_evidence/direct__classify_objects__standard__g0__l3/attempt.json": "e05a93348b0de7ba964237833f68b51ada1925752b34ed4a8890d76d89f97290",
+        "historical_cohort_20261010/episode_evidence/direct__classify_objects__standard__g0__l3/launch_claim.json": "64eb5b0552083c699d5b6d86fdf39c1daba11ad7b3084b0336e57a7c00bf6a2b",
+        "historical_cohort_20261010/episode_evidence/direct__classify_objects__standard__g0__l3/complete_action_audit.json": "10838263117d0f7c01883ec66ead4e3a3e7acdad28e1c6da36d9ff3f008c19c6",
         "historical_protocol_20261008/original_record_recount.json": "711c0bc1d4d2978bb49143a83cf027ea6a1f38516250ee4fa6cf335118c4b779",
         "historical_cohort_20261010/continuation_evidence/20261011T051055Z/admission.json": "c3df1a1ac02c7495718ea18d76a79be415926a630e651080597c537d0c8bf1ba",
         "historical_cohort_20261010/continuation_evidence/20261011T051055Z/availability.json": "20bdbe979dac6f34e4d76909b297a4edd7874445bba908ed8b7af6390fe0e072",
