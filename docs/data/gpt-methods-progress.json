@@ -1,6 +1,6 @@
 {
   "schema": "gpt_policy_progress.v2",
-  "snapshot": "2026-10-13T21:07:56.406826+00:00",
+  "snapshot": "2026-10-13T21:24:05.092496+00:00",
   "summary": {
     "planned_pairs": 50,
     "planned_method_runs": 100,
@@ -9281,11 +9281,11 @@
   },
   "infrastructure": {
     "schema": "gpt_policy_infrastructure_bundle.v1",
-    "archive": "downloads/infrastructure_bundle_20261013T210630Z.tar.gz",
-    "bytes": 10273672,
-    "sha256": "ae990ec808765579237f8a44b69ec53edb1f0bdaf89ea3414673eaa47f2a5b7a",
-    "files": 1419,
-    "created_utc": "2026-10-13T21:07:33.174081+00:00",
+    "archive": "downloads/infrastructure_bundle_20261013T212303Z.tar.gz",
+    "bytes": 10459073,
+    "sha256": "a2db46306f5b7fe87524c85a52eca3eac6f71562f9643987ca80773861c637c2",
+    "files": 1422,
+    "created_utc": "2026-10-13T21:23:38.741979+00:00",
     "active_methods": [
       "gpt_only",
       "pi05_plus_gpt"
