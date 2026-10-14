@@ -22912,12 +22912,12 @@
         "pairs_planned": 49,
         "episodes_planned": 98,
         "pilot_reused_for_grading": false,
-        "first_attempts_audited": 39,
-        "native_complete_audited": 32,
+        "first_attempts_audited": 40,
+        "native_complete_audited": 33,
         "phase_at_snapshot": "running",
-        "current_episode_at_snapshot": "hybrid__fold_clothes__random__g0__l0",
-        "captured_utc": "2026-10-14T17:47:10.925298+00:00",
-        "observed_native_steps": 0,
+        "current_episode_at_snapshot": "direct__fold_clothes__random__g0__l1",
+        "captured_utc": "2026-10-14T18:33:32.714812+00:00",
+        "observed_native_steps": 200,
         "episode_results": [
           {
             "schema": "gpt_policy_historical_cohort_episode_gate.v1",
@@ -23884,10 +23884,35 @@
             "recovery_scope": "Original first attempt retained without replay. Joined stream retry failure is infrastructure evidence, not a native task failure or quota diagnosis.",
             "historical_protocol_equivalence": false,
             "full_blog_reproduction_complete": false
+          },
+          {
+            "schema": "gpt_policy_historical_cohort_episode_gate.v1",
+            "verified": true,
+            "verified_utc": "2026-10-14T17:59:00.139859+00:00",
+            "episode_id": "hybrid__fold_clothes__random__g0__l0",
+            "method": "pi05_plus_gpt",
+            "profile_id": "a6df3c7605db25b267362bb5edea0306024d9522837ad8787f614c7698cc8bb4",
+            "status": "native_complete_audited",
+            "first_attempt_retained": true,
+            "automatic_physical_retries": 0,
+            "plan_sha256": "d564c1e7cde3d1bfb7aabe80b247100bf31f8b849fdb7789f264692ece30345d",
+            "native_success": true,
+            "native_score": 1.0,
+            "historical_protocol_equivalence": false,
+            "full_blog_reproduction_complete": false,
+            "runtime_identity_verified": true,
+            "native_actions": 315,
+            "decisions": 24,
+            "complete_action_audit_sha256": "31ebae840c662b1a45d23d34e3e3fc5075cabe92ff6ef514336cec453c119bb3",
+            "source_video": {
+              "frames": 316,
+              "complete_decode_passed": true,
+              "sha256": "28da99cbd2d5af9259779c38cef0f83cce13170d5b026c64d6d037a21fb44e2a"
+            }
           }
         ],
         "status_counts": {
-          "native_complete_audited": 32,
+          "native_complete_audited": 33,
           "controller_incomplete": 3,
           "startup_failed_no_execution": 1,
           "infrastructure_failed": 3
@@ -23896,18 +23921,18 @@
           "schema": "gpt_policy_historical_result_alignment.v1",
           "verified": true,
           "summary": {
-            "audited_attempts": 39,
-            "own_complete_native": 32,
-            "both_native_complete": 31,
+            "audited_attempts": 40,
+            "own_complete_native": 33,
+            "both_native_complete": 32,
             "own_incomplete_unscored": 7,
             "original_incomplete_excluded": 1,
             "both_incomplete_unscored": 0,
-            "success_matches": 21,
+            "success_matches": 22,
             "success_differences": 10,
-            "score_matches": 15,
+            "score_matches": 16,
             "score_differences": 16,
             "control_step_matches": 12,
-            "control_step_differences": 19
+            "control_step_differences": 20
           },
           "records": [
             {
@@ -24806,6 +24831,29 @@
               "score_match": null,
               "control_step_match": null,
               "comparison_status": "own_incomplete"
+            },
+            {
+              "episode_id": "hybrid__fold_clothes__random__g0__l0",
+              "method": "pi05_plus_gpt",
+              "own_gate_sha256": "e115a4e7d5e6cfb5b6e10ee4372f1fc96200f7dcd582d1a18f3000df53aee878",
+              "original_core_sha256": "e60112691ebfd3e1efcb668e664b7346767a4c31c2af5e0761ebb9e7812c6223",
+              "own_complete_native": true,
+              "original_complete_native": true,
+              "original_evaluation_success": true,
+              "original_native_success": true,
+              "original_native_score": 1.0,
+              "original_native_actions": 312,
+              "original_decisions": 24,
+              "own_native_success": true,
+              "own_native_score": 1.0,
+              "own_native_actions": 315,
+              "own_decisions": 24,
+              "own_stopped_prefix_actions": null,
+              "both_native_complete": true,
+              "success_match": true,
+              "score_match": true,
+              "control_step_match": false,
+              "comparison_status": "same_result"
             }
           ],
           "historical_protocol_equivalence": false,
@@ -24855,9 +24903,10 @@
           "hybrid__classify_objects_by_language__standard__g0__l3": [],
           "direct__classify_objects_by_language__standard__g0__l4": [],
           "hybrid__classify_objects_by_language__standard__g0__l4": [],
-          "direct__fold_clothes__random__g0__l0": []
+          "direct__fold_clothes__random__g0__l0": [],
+          "hybrid__fold_clothes__random__g0__l0": []
         },
-        "unclaimed_episodes_at_snapshot": 58,
+        "unclaimed_episodes_at_snapshot": 57,
         "current_run_complete_audit": false,
         "automatic_physical_retries": 0,
         "historical_protocol_equivalence": false,
@@ -24870,7 +24919,7 @@
         "worker_fidelity_20261008/historical_canary_admission.json": "20e6ef82e3e261cc0845f554e251bc57ae131d9085cbe13f5c76efa83ccfeeee",
         "worker_fidelity_20261008/historical_pair_preflight.json": "e522c379f54b93955e4bbfcc22e70b33c73de04cdd3fc190d3bc052b361fc299",
         "historical_cohort_20261010/cohort_plan.json": "d564c1e7cde3d1bfb7aabe80b247100bf31f8b849fdb7789f264692ece30345d",
-        "historical_cohort_20261010/runtime_snapshot.json": "e23970bc1d378ff790cea2a08a19556d13b23e32194a05cfaa1a9068d0e3b8c7",
+        "historical_cohort_20261010/runtime_snapshot.json": "a7d384e6390776717762af101a1c296cfa9c2e21e3bb864be6bd9b0404dc9c9a",
         "historical_cohort_20261010/activation.json": "53649597ceb749b1e03b6326639ebb0d292aa3b163b76adbeb968bee9c86d83a",
         "historical_cohort_20261010/implementation_checks.json": "f9394f78488d38602531a4422639ac9d0a8ae388405f30473f1438966b5d20bf",
         "historical_cohort_20261010/episode_evidence/direct__arrange_largest_number__standard__g0__l1/evidence_gate.json": "4fc1d5c2d8d73053ee92b138066c251e4323c4b86e3600f48803cc5cd0e1d806",
@@ -24950,6 +24999,8 @@
         "historical_cohort_20261010/episode_evidence/hybrid__classify_objects_by_language__standard__g0__l4/evidence_gate.json": "995dc1925eb0bb608e58328a9bd31e3beeb20e32f04511949457ce45ad4b7470",
         "historical_cohort_20261010/episode_evidence/hybrid__classify_objects_by_language__standard__g0__l4/stopped_prefix_audit.json": "690fa014234d3a4ee56069c99fd67a65ce2993c80e103bb1e6421cd4b5c735fe",
         "historical_cohort_20261010/episode_evidence/direct__fold_clothes__random__g0__l0/evidence_gate.json": "80a6e90011e71bd3af415ec76b875570f0dba229e2c1f022766f55603bc8c57c",
+        "historical_cohort_20261010/episode_evidence/hybrid__fold_clothes__random__g0__l0/evidence_gate.json": "e115a4e7d5e6cfb5b6e10ee4372f1fc96200f7dcd582d1a18f3000df53aee878",
+        "historical_cohort_20261010/episode_evidence/hybrid__fold_clothes__random__g0__l0/complete_action_audit.json": "31ebae840c662b1a45d23d34e3e3fc5075cabe92ff6ef514336cec453c119bb3",
         "historical_protocol_20261008/original_record_recount.json": "711c0bc1d4d2978bb49143a83cf027ea6a1f38516250ee4fa6cf335118c4b779",
         "historical_cohort_20261010/continuation_evidence/20261014T170654Z/admission.json": "d5df4ac697eba78a28ad95b7f7ac127195baaae24df13bf5b99b6fd022f70b25",
         "historical_cohort_20261010/continuation_evidence/20261014T170654Z/availability.json": "8716ab783b270ac460c9ffe12333e37f55c5eacd099b80eeb671ce793424bd71",
